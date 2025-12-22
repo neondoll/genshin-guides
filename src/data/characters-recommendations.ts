@@ -12,6 +12,7 @@ export default {
   [CharacterNames.BENNETT]: (await import("./Bennett-recommendations")).default,
   [CharacterNames.DILUC]: (await import("./Diluc-recommendations")).default,
   [CharacterNames.DIONA]: (await import("./Diona-recommendations")).default,
+  [CharacterNames.DORI]: (await import("./Dori-recommendations")).default,
   [CharacterNames.GANYU]: (await import("./Ganyu-recommendations")).default,
   [CharacterNames.GOROU]: (await import("./Gorou-recommendations")).default,
   [CharacterNames.JEAN]: (await import("./Jean-recommendations")).default,

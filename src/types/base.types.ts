@@ -27,6 +27,7 @@ export const CharacterNames = {
   DAHLIA: "Далия",
   DILUC: "Дилюк",
   DIONA: "Диона",
+  DORI: "Дори",
   DURIN: "Дурин",
   GANYU: "Гань Юй",
   GOROU: "Горо",
