@@ -1,0 +1,68 @@
+import { type VideoSource, type VideoSourceId, VideoSourceIds } from "@/types/base.types";
+
+export default {
+  [VideoSourceIds.ALL_ABOUT_ALL_TALENTS]: {
+    id: VideoSourceIds.ALL_ABOUT_ALL_TALENTS,
+    author: "Miron MinMax",
+    title: "ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
+    date: "2024-01-19",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239080",
+    youtube: "https://youtu.be/UQpDXX2Umyk",
+  },
+  [VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON]: {
+    id: VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON,
+    author: "Miron MinMax",
+    title: "С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей",
+    date: "2025-01-15",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239189",
+    youtube: "https://youtu.be/NfgsESKwsdk",
+  },
+  [VideoSourceIds.GUIDE_TO_AINO_IN_6_0]: {
+    id: VideoSourceIds.GUIDE_TO_AINO_IN_6_0,
+    author: "Анимекул",
+    title: "Зачем нужна Айно? | Подробный гайд на Айно [Genshin Impact 6.0]",
+    date: "2025-09-11",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239064",
+    youtube: "https://youtu.be/u-bzTR12UuA",
+  },
+  [VideoSourceIds.GUIDE_TO_ARLECCHINO_IN_5_3]: {
+    id: VideoSourceIds.GUIDE_TO_ARLECCHINO_IN_5_3,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Арлекино в 5.3",
+    date: "2025-01-22",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239191",
+    youtube: "https://youtu.be/VY0Kt2AaMGY",
+  },
+  [VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER]: {
+    id: VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
+    author: "Miron MinMax",
+    title: "Лучшее Доступное Оружия для Каждого Персонажа",
+    date: "2024-11-10",
+    vkvideo: "https://vk.com/video-227044935_456239169",
+    youtube: "https://youtu.be/zVspDJZPa4Y",
+  },
+  [VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER]: {
+    id: VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
+    author: "Miron MinMax",
+    title: "Лучшее Оружие для Каждого Персонажа",
+    date: "2024-11-03",
+    vkvideo: "https://vk.com/video-227044935_456239166",
+    youtube: "https://youtu.be/cjatyGw0EO0",
+  },
+  [VideoSourceIds.WHO_NEEDS_LEVELING_PART_1]: {
+    id: VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
+    author: "Miron MinMax",
+    title: "КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.1 feat.@AnimeCool_Genshin",
+    date: "2023-09-23",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239108",
+    youtube: "https://youtu.be/lhEME9s3HO0?si=qq9FUJwH0JLSTC-H",
+  },
+  [VideoSourceIds.WHO_NEEDS_LEVELING_PART_2]: {
+    id: VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
+    author: "Miron MinMax",
+    title: "КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.2 feat.@AnimeCool_Genshin",
+    date: "2023-09-25",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239106",
+    youtube: "https://youtu.be/Yz95Iw1q-es",
+  },
+} as Record<VideoSourceId, VideoSource>;

@@ -1,0 +1,23 @@
+import { WeaponNames } from "@/types/base.types";
+
+export const WEAPON_MIHOYO_ICONS = {
+  [WeaponNames.ASTRAL_VULTURES_CRIMSON_PLUMAGE]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/11/14/d3bb0f9d936379661d409644e4269ff1_2888646900955247330.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.BALLAD_OF_THE_FJORDS]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/18/51635400/bd385748dfaefad1cddca86948a4846c_3638463614629064659.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.CASHFLOW_SUPERVISION]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/19/51635400/6d8248633da24c16368b6570bf578874_2915978243291227348.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.CRIMSON_MOONS_SEMBLANCE]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/23/237301566/ce91a453b9a942c9ab20df0f62caa033_6509317760517540619.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.FINALE_OF_THE_DEEP]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/19/51635400/3139f087dee78d3856ab63fd6845ae61_1359358122120399762.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.FLAME_FORGED_INSIGHT]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/21/62b7410999e0777b83bd4be9334226bc_1124279062957674054.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.FLOWING_PURITY]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/19/51635400/0130ca8183d3daa2eddbb9200a1d776f_7923611670879405043.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.FLUTE_OF_EZPITZAL]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/bdd740ad879d22a1fc4e3770cc9c73bd_5479414831341401728.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.LUMIDOUCE_ELEGY]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/31/3dff07a4b024917cb63c933d2078ccc8_8401589850337226556.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.MASTER_KEY]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/9fca47d88e241f45ae1568ca386c9e6f_3876291412959841816.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.SACRIFICIAL_JADE]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/18/51635400/58d2970c1997ad52dfbb43017dac3ce8_2114572788886202769.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.SONG_OF_STILLNESS]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/19/51635400/2cec558b676eefaafe23b64d42f2067e_4006968745169489513.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.SURFS_UP]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/6ce2e0da75fbdc19fc4b6f9e7bae9049_5151463723015160354.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.THE_DAYBREAK_CHRONICLES]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/11/25/888f15859930696bb17aeb61f35fa340_139096456278287885.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.TIDAL_SHADOW]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/19/51635400/17a33544c58e2a45ad5f1a4a5a68906a_527978459054418336.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.TOME_OF_THE_ETERNAL_FLOW]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/19/51635400/5828ed7b48c39e5d15aaf6f2495ddabc_7967597263662363735.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.ULTIMATE_OVERLORDS_MEGA_MAGIC_SWORD]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2023/12/13/9eb77ebc428cc08b695d166c70d72012_8077919549792565749.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.URAKU_MISUGIRI]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/12/237301566/97083537849c199bc3fa7fed8a49d010_1826315996536770474.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.VIViD_NOTIONS]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/4eed5f1f892cf722e4f8df1778a0a1f1_3249018324800310475.png?x-oss-process=image%2Fformat%2Cwebp",
+} as Record<string, string>;
