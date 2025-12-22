@@ -3,10 +3,10 @@ import { CharacterNames } from "@/types/base.types";
 export const CHARACTER_MIHOYO_ICONS = {
   [CharacterNames.AINO]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/09/70239714/8de27885f9ecab5db5e6a2bc69fda15d_6967953783443502732.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.ARLECCHINO]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/21/70239714/672e65470bfd14b664596c2a7f7eaaf8_6373678808378922111.png?x-oss-process=image%2Fformat%2Cwebp",
+  [CharacterNames.DAHLIA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/06/17/70239714/6e6c5161386ae8dbff7e6d098c9e6ca3_8649965576470821435.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.DURIN]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/11/28/70239714/e709c028a5a1b5e8fa957c1db914f893_8034371223701907993.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.JAHODA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/12/02/70239714/290a8010e15d6a75729c3f5bfcbda3ca_5594969066848104165.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.VARESA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/26/70239714/8e069d8d2ebf92fa2e78a0507f0c749a_6935232209907120535.png?x-oss-process=image%2Fformat%2Cwebp",
-  "Далия": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/06/17/70239714/6e6c5161386ae8dbff7e6d098c9e6ca3_8649965576470821435.png?x-oss-process=image%2Fformat%2Cwebp",
   "Иансан": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/26/70239714/ddafd4c71a8e0d0cefd5ee7e9deff6d6_4477498942125188633.png?x-oss-process=image%2Fformat%2Cwebp",
   "Инеффа": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/29/70239714/bffbb9b2d064472393f75084b4428a5e_689708039142215456.png?x-oss-process=image%2Fformat%2Cwebp",
   "Ифа": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/05/04/70239714/118809bff067dcfffca5b52dbcfafa85_4788136769261586703.png?x-oss-process=image%2Fformat%2Cwebp",

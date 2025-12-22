@@ -12,6 +12,7 @@ export default {
   [CharacterNames.BENNETT]: (await import("./Bennett-recommendations")).default,
   [CharacterNames.GANYU]: (await import("./Ganyu-recommendations")).default,
   [CharacterNames.GOROU]: (await import("./Gorou-recommendations")).default,
+  [CharacterNames.JEAN]: (await import("./Jean-recommendations")).default,
   [CharacterNames.KAMISATO_AYAKA]: (await import("./KamisatoAyaka-recommendations")).default,
   [CharacterNames.KAMISATO_AYATO]: (await import("./KamisatoAyato-recommendations")).default,
   [CharacterNames.VARESA]: (await import("./Varesa-recommendations")).default,
