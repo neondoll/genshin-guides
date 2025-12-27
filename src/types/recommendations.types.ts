@@ -21,6 +21,11 @@ export interface CharacterRecommendations {
     stats: Record<"sands" | "goblet" | "circlet" | "additional", Array<{ name: string; notes?: string[] }>>;
   };
   constellationOrSignatureWeapon?: string;
+  detachments?: Array<{
+    template: [string, string, string, string];
+    variants: Array<[string, string, string, string]>;
+    best?: boolean;
+  }>;
   keyConstellations?: Array<1 | 2 | 3 | 4 | 5 | 6>;
   recommendedLevel?: string;
   roleIds: CharacterRoleId[];

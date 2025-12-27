@@ -33,6 +33,14 @@ export default {
     vkvideo: "https://vkvideo.ru/video-227044935_456239191",
     youtube: "https://youtu.be/VY0Kt2AaMGY",
   },
+  [VideoSourceIds.GUIDE_TO_VARESA_IN_6_2]: {
+    id: VideoSourceIds.GUIDE_TO_VARESA_IN_6_2,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Варесу в 6.2 [Genshin Impact]",
+    date: "2025-12-23",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239283",
+    youtube: "https://youtu.be/mZE4e2S_S0g",
+  },
   [VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER]: {
     id: VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
     author: "Miron MinMax",

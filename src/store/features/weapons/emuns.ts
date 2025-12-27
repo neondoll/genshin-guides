@@ -4,6 +4,7 @@ export const WEAPON_MIHOYO_ICONS = {
   [WeaponNames.ASTRAL_VULTURES_CRIMSON_PLUMAGE]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/11/14/d3bb0f9d936379661d409644e4269ff1_2888646900955247330.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.BALLAD_OF_THE_FJORDS]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/18/51635400/bd385748dfaefad1cddca86948a4846c_3638463614629064659.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.CASHFLOW_SUPERVISION]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/09/19/51635400/6d8248633da24c16368b6570bf578874_2915978243291227348.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.CRANES_ECHOING_CALL]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/30/237301566/7d49f94bfb8725b8c04332b11eb7df60_7597357212509081070.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.CRIMSON_MOONS_SEMBLANCE]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/23/237301566/ce91a453b9a942c9ab20df0f62caa033_6509317760517540619.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.EARTH_SHAKER]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/dc6bf4c87afe67014579743618e97371_6360663376854922140.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.FINALE_OF_THE_DEEP]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/19/51635400/3139f087dee78d3856ab63fd6845ae61_1359358122120399762.png?x-oss-process=image%2Fformat%2Cwebp",

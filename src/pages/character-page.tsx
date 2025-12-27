@@ -219,7 +219,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                   </TableRow>
                 )}
                 {recommendations.signatureWeaponNames && recommendations.signatureWeaponNames.map((signatureWeaponName, index) => (
-                  <TableRow>
+                  <TableRow key={signatureWeaponName}>
                     {index === 0 && (
                       <TableCell
                         className="text-base text-slate-700 dark:text-slate-300"
@@ -238,7 +238,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                 ))}
                 {recommendations.constellationOrSignatureWeapon && (
                   <TableRow>
-                    <TableCell className="text-base text-slate-700 dark:text-slate-300">C1 или Сигна?</TableCell>
+                    <TableCell className="text-base text-slate-700 dark:text-slate-300">Сигна или Созвездия?</TableCell>
                     <TableCell className="text-pretty whitespace-normal">
                       {recommendations.constellationOrSignatureWeapon}
                     </TableCell>
