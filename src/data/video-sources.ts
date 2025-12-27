@@ -33,6 +33,14 @@ export default {
     vkvideo: "https://vkvideo.ru/video-227044935_456239191",
     youtube: "https://youtu.be/VY0Kt2AaMGY",
   },
+  [VideoSourceIds.GUIDE_TO_DURIN_IN_6_2]: {
+    id: VideoSourceIds.GUIDE_TO_DURIN_IN_6_2,
+    author: "Miron MinMax",
+    title: "Дурин - Паверкрип Сян Лин? Гайд на Дурина",
+    date: "2025-12-03",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239277",
+    youtube: "https://youtu.be/s7cCUf-tQ_E",
+  },
   [VideoSourceIds.GUIDE_TO_VARESA_IN_6_2]: {
     id: VideoSourceIds.GUIDE_TO_VARESA_IN_6_2,
     author: "Miron MinMax",

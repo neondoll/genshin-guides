@@ -29,6 +29,7 @@ export default {
   constellationOrSignatureWeapon: "Однозначно Сигна",
   detachments: [
     {
+      description: "Реакция Перегрузка",
       template: [CharacterNames.VARESA, CharacterNames.CHEVREUSE, "Пиро персонаж", "Полезный персонаж"],
       variants: [
         [CharacterNames.VARESA, CharacterNames.DURIN, CharacterNames.IANSAN, CharacterNames.CHEVREUSE],

@@ -22,8 +22,9 @@ export interface CharacterRecommendations {
   };
   constellationOrSignatureWeapon?: string;
   detachments?: Array<{
+    description?: string;
     template: [string, string, string, string];
-    variants: Array<[string, string, string, string]>;
+    variants?: Array<[string, string, string, string]>;
     best?: boolean;
   }>;
   keyConstellations?: Array<1 | 2 | 3 | 4 | 5 | 6>;
