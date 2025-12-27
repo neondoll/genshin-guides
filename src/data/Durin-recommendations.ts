@@ -1,27 +1,8 @@
-import { CharacterNames, CharacterRoleIds, VideoSourceIds, WeaponNames } from "@/types/base.types";
+import { CharacterRoleIds, VideoSourceIds, WeaponNames } from "@/types/base.types";
 import type { CharacterRecommendations } from "@/types/recommendations.types";
 
 export default {
-  detachments: [
-    {
-      description: `${CharacterNames.DURIN} как основной дамагер (реакция Пар)`,
-      template: [CharacterNames.DURIN, "Гидро персонаж", "Полезный персонаж", CharacterNames.BENNETT],
-      variants: [
-        [CharacterNames.DURIN, CharacterNames.MONA, CharacterNames.FURINA, CharacterNames.BENNETT],
-        [CharacterNames.DURIN, CharacterNames.XINGQIU, CharacterNames.FURINA, CharacterNames.BENNETT],
-        [CharacterNames.DURIN, CharacterNames.XINGQIU, CharacterNames.FISCHL, CharacterNames.BENNETT],
-      ],
-    },
-    {
-      description: `${CharacterNames.DURIN} как основной дамагер (реакция Перегрузка)`,
-      template: [CharacterNames.DURIN, CharacterNames.CHEVREUSE, CharacterNames.BENNETT, "Электро персонаж"],
-      variants: [[CharacterNames.DURIN, CharacterNames.CHEVREUSE, CharacterNames.BENNETT, CharacterNames.FISCHL]],
-    },
-    {
-      description: `${CharacterNames.DURIN} как основной дамагер из кармана`,
-      template: [CharacterNames.DURIN, CharacterNames.MONA, "Полезный персонаж", "Полезный персонаж"],
-    }
-  ],
+  recommendedLevel: "80/90",
   roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SUPPORT],
   signatureWeaponNames: [WeaponNames.ATHAME_ARTIS],
   talents: [
