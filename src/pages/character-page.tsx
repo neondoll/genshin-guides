@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router";
 import type { CharacterName } from "@/types/base.types";
 import type {
   CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
+  CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
   CharacterRecommendations as Recommendations,
   CharacterTalentRecommendations as TalentRecommendations,
   CharacterWeaponRecommendations as WeaponRecommendations,
@@ -19,20 +20,22 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CharacterImage } from "@/store/features/characters/components";
 import { cn } from "@/lib/utils";
 import { ElementImage } from "@/store/features/elements/components";
 import { formatPercent } from "@/utils/format";
-import { Home } from "@/components/ui/icons";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Home, SquarePlay } from "@/components/ui/icons";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useCharacter } from "@/store/features/characters/hooks";
 import { useTalent } from "@/store/features/talents/hooks";
 import { WeaponImage } from "@/store/features/weapons/components";
 import BestTooltip from "@/components/best-tooltip";
-import characterRoles from "@/data/character-roles";
-import charactersRecommendations from "@/data/characters-recommendations";
+import CHARACTER_ROLES from "@/data/character-roles";
+import CHARACTERS_RECOMMENDATIONS from "@/data/characters-recommendations";
+import VIDEO_SOURCES from "@/data/video-sources";
 
 const CharacterPage: FC = () => {
   const { characterId } = useParams();
@@ -145,13 +148,15 @@ const CharacterPage: FC = () => {
 const RecommendationTabs = {
   ARTIFACTS: { label: "Артефакты", value: "artifacts" },
   BASE: { label: "Базовые", value: "base" },
+  DETACHMENTS: { label: "Отряды", value: "detachments" },
   ROLES: { label: "Роли", value: "roles" },
   TALENTS: { label: "Таланты", value: "talents" },
+  VIDEO_SOURCES: { label: "Видео-источники", value: "video-sources" },
   WEAPONS: { label: "Оружие", value: "weapons" },
 } as const;
 
 const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
-  const recommendations = useMemo(() => charactersRecommendations[name], [name]);
+  const recommendations = useMemo(() => CHARACTERS_RECOMMENDATIONS[name], [name]);
   const tabs = useMemo(() => {
     const items = [];
 
@@ -168,6 +173,14 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
 
     if (recommendations?.artifacts) {
       items.push(RecommendationTabs.ARTIFACTS);
+    }
+
+    if (recommendations?.detachments) {
+      items.push(RecommendationTabs.DETACHMENTS);
+    }
+
+    if (recommendations?.videoSourceIds) {
+      items.push(RecommendationTabs.VIDEO_SOURCES);
     }
 
     return items;
@@ -239,7 +252,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                 {recommendations.constellationOrSignatureWeapon && (
                   <TableRow>
                     <TableCell className="text-base text-slate-700 dark:text-slate-300">Сигна или Созвездия?</TableCell>
-                    <TableCell className="text-pretty whitespace-normal">
+                    <TableCell className="text-pretty whitespace-pre-line">
                       {recommendations.constellationOrSignatureWeapon}
                     </TableCell>
                   </TableRow>
@@ -251,7 +264,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
             <Table>
               <TableBody>
                 {recommendations.roleIds.map((roleId) => {
-                  const role = characterRoles[roleId];
+                  const role = CHARACTER_ROLES[roleId];
 
                   return (
                     <TableRow key={roleId}>
@@ -293,7 +306,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                             </TableCell>
                           )}
                           <TableCell className="text-pretty">{recommendation.name}</TableCell>
-                          <TableCell>
+                          <TableCell className="whitespace-normal">
                             {recommendation.notes && (
                               <ul className="pl-5 list-outside list-disc">
                                 {recommendation.notes.map((note, index) => (
@@ -315,7 +328,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                             </TableCell>
                           )}
                           <TableCell className="text-pretty">{recommendation.name}</TableCell>
-                          <TableCell>
+                          <TableCell className="whitespace-normal">
                             {recommendation.notes && (
                               <ul className="pl-5 list-outside list-disc">
                                 {recommendation.notes.map((note, index) => (
@@ -337,7 +350,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                             </TableCell>
                           )}
                           <TableCell className="text-pretty">{recommendation.name}</TableCell>
-                          <TableCell>
+                          <TableCell className="whitespace-normal">
                             {recommendation.notes && (
                               <ul className="pl-5 list-outside list-disc">
                                 {recommendation.notes.map((note, index) => (
@@ -359,7 +372,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                             </TableCell>
                           )}
                           <TableCell className="text-pretty">{recommendation.name}</TableCell>
-                          <TableCell>
+                          <TableCell className="whitespace-normal">
                             {recommendation.notes && (
                               <ul className="pl-5 list-outside list-disc">
                                 {recommendation.notes.map((note, index) => (
@@ -374,6 +387,16 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                   </Table>
                 </div>
               </div>
+            )}
+          </TabsContent>
+          <TabsContent value={RecommendationTabs.DETACHMENTS.value}>
+            {recommendations.detachments && (
+              <CharacterDetachmentRecommendations recommendations={recommendations.detachments} />
+            )}
+          </TabsContent>
+          <TabsContent value={RecommendationTabs.VIDEO_SOURCES.value}>
+            {recommendations.videoSourceIds && (
+              <CharacterVideoSources videoSourceIds={recommendations.videoSourceIds} />
             )}
           </TabsContent>
         </Tabs>
@@ -548,6 +571,9 @@ const CharacterArtifactSetRecommendationsTable: FC<{
   const hasBest = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.best));
   }, [recommendations]);
+  const hasNotes = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.notes));
+  }, [recommendations]);
   const hasPercent = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.percent));
   }, [recommendations]);
@@ -588,6 +614,17 @@ const CharacterArtifactSetRecommendationsTable: FC<{
                       {recommendation.percent ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
                     </TableCell>
                   )}
+                  {hasNotes && (
+                    <TableCell className="whitespace-normal">
+                      {recommendation.notes && (
+                        <ul className="pl-5 list-outside list-disc">
+                          {recommendation.notes.map((note, index) => (
+                            <li className="text-pretty" key={index}>{note}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </TableCell>
+                  )}
                 </TableRow>
               );
             case "complete":
@@ -618,12 +655,80 @@ const CharacterArtifactSetRecommendationsTable: FC<{
                       {recommendation.percent ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
                     </TableCell>
                   )}
+                  {hasNotes && (
+                    <TableCell className="whitespace-normal">
+                      {recommendation.notes && (
+                        <ul className="pl-5 list-outside list-disc">
+                          {recommendation.notes.map((note, index) => (
+                            <li className="text-pretty" key={index}>{note}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </TableCell>
+                  )}
                 </TableRow>
               );
           }
 
           return null;
         })}
+      </TableBody>
+    </Table>
+  );
+};
+const CharacterDetachmentItemRecommendation: FC<{ item: DetachmentItemRecommendation }> = ({ item }) => {
+  switch (item.type) {
+    case "character":
+      return (
+        <div className="flex flex-col gap-1 justify-center items-center">
+          <CharacterImage className="shrink-0 size-16 rounded-md rounded-br-2xl" name={item.name} />
+          <p className="text-center">{item.name}</p>
+        </div>
+      );
+    case "other":
+      return (
+        <div className="flex flex-col gap-1 justify-center items-center">
+          <p className="text-center">{item.title}</p>
+        </div>
+      );
+  }
+};
+const CharacterDetachmentRecommendations: FC<{
+  recommendations: NonNullable<Recommendations["detachments"]>;
+}> = ({ recommendations }) => {
+  const hasBest = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.best));
+  }, [recommendations]);
+  const hasDescription = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.description));
+  }, [recommendations]);
+  const hasVariants = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.variants));
+  }, [recommendations]);
+
+  return (
+    <Table>
+      <TableBody>
+        {recommendations.map((recommendation, index) => (
+          <TableRow key={index}>
+            {hasBest && (
+              <TableCell className="w-16">
+                <BestTooltip className="size-12" value={recommendation.best} />
+              </TableCell>
+            )}
+            {hasDescription && (
+              <TableCell className="text-pretty whitespace-normal">{recommendation.description}</TableCell>
+            )}
+            <TableCell className="text-pretty whitespace-normal">
+              <div className="grid grid-cols-4 gap-2">
+                {recommendation.template.map((item, index) => (
+                  <CharacterDetachmentItemRecommendation item={item} key={index} />
+                ))}
+              </div>
+            </TableCell>
+            {hasVariants && <TableCell className="text-pretty whitespace-normal">{recommendation.variants}</TableCell>}
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );
@@ -673,6 +778,10 @@ const CharacterTalentRecommendationsTable: FC<{
   recommendations: TalentRecommendations;
   talent: Talent;
 }> = ({ recommendations, talent }) => {
+  const hasReferenceLevel = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.referenceLevel));
+  }, [recommendations]);
+
   return (
     <Table className="table-fixed">
       <TableBody>
@@ -680,7 +789,88 @@ const CharacterTalentRecommendationsTable: FC<{
           <TableRow key={recommendation.type}>
             <TableCell className="text-center text-pretty whitespace-normal">{talent[recommendation.type].name}</TableCell>
             <TableCell className="text-center text-pretty whitespace-normal">{recommendation.priority}</TableCell>
-            <TableCell className="text-center text-pretty whitespace-normal">{recommendation.referenceLevel}</TableCell>
+            {hasReferenceLevel && (
+              <TableCell className="text-center text-pretty whitespace-normal">{recommendation.referenceLevel}</TableCell>
+            )}
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+const CharacterVideoSources: FC<{
+  videoSourceIds: NonNullable<Recommendations["videoSourceIds"]>;
+}> = ({ videoSourceIds }) => {
+  const videoSources = useMemo(() => {
+    return videoSourceIds.map(videoSourceId => VIDEO_SOURCES[videoSourceId]).sort((a, b) => {
+      const aDateTime = new Date(a.date).getTime();
+      const bDateTime = new Date(b.date).getTime();
+
+      return aDateTime === bDateTime ? a.title.localeCompare(b.title) : bDateTime - aDateTime;
+    });
+  }, [videoSourceIds]);
+
+  const hasRutube = useMemo(() => {
+    return videoSources.some(videoSource => Boolean(videoSource.rutube));
+  }, [videoSources]);
+  const hasVkvideo = useMemo(() => {
+    return videoSources.some(videoSource => Boolean(videoSource.vkvideo));
+  }, [videoSources]);
+  const hasYoutube = useMemo(() => {
+    return videoSources.some(videoSource => Boolean(videoSource.vkvideo));
+  }, [videoSources]);
+
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead className="text-center">Автор</TableHead>
+          <TableHead className="text-center">Название</TableHead>
+          <TableHead className="text-center">Дата выхода</TableHead>
+          {hasRutube && <TableHead className="text-center">RUYUBE</TableHead>}
+          {hasVkvideo && <TableHead className="text-center">VK Видео</TableHead>}
+          {hasYoutube && <TableHead className="text-center">YouTube</TableHead>}
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {videoSources.map(videoSource => (
+          <TableRow key={videoSource.id}>
+            <TableCell className="text-center">{videoSource.author}</TableCell>
+            <TableCell className="text-pretty whitespace-normal">{videoSource.title}</TableCell>
+            <TableCell className="text-center">{videoSource.date}</TableCell>
+            {hasRutube && (
+              <TableCell className="text-center">
+                {videoSource.rutube && (
+                  <Button asChild size="icon-sm">
+                    <a href={videoSource.rutube} target="_blank">
+                      <SquarePlay />
+                    </a>
+                  </Button>
+                )}
+              </TableCell>
+            )}
+            {hasVkvideo && (
+              <TableCell className="text-center">
+                {videoSource.vkvideo && (
+                  <Button asChild size="icon-sm">
+                    <a href={videoSource.vkvideo} target="_blank">
+                      <SquarePlay />
+                    </a>
+                  </Button>
+                )}
+              </TableCell>
+            )}
+            {hasYoutube && (
+              <TableCell className="text-center">
+                {videoSource.youtube && (
+                  <Button asChild size="icon-sm">
+                    <a href={videoSource.youtube} target="_blank">
+                      <SquarePlay />
+                    </a>
+                  </Button>
+                )}
+              </TableCell>
+            )}
           </TableRow>
         ))}
       </TableBody>
@@ -727,6 +917,9 @@ const CharacterWeaponRecommendationsTable: FC<{ recommendations: WeaponRecommend
   const hasBest = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.best));
   }, [recommendations]);
+  const hasNotes = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.notes));
+  }, [recommendations]);
   const hasR = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.r));
   }, [recommendations]);
@@ -768,6 +961,17 @@ const CharacterWeaponRecommendationsTable: FC<{ recommendations: WeaponRecommend
                 })}
               >
                 {recommendation.percent ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
+              </TableCell>
+            )}
+            {hasNotes && (
+              <TableCell className="whitespace-normal">
+                {recommendation.notes && (
+                  <ul className="pl-5 list-outside list-disc">
+                    {recommendation.notes.map((note, index) => (
+                      <li className="text-pretty" key={index}>{note}</li>
+                    ))}
+                  </ul>
+                )}
               </TableCell>
             )}
           </TableRow>

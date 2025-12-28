@@ -1,8 +1,9 @@
-import type { ArtifactSetName, CharacterRoleId, VideoSourceId, WeaponName } from "./base.types";
+import type { ArtifactSetName, CharacterName, CharacterRoleId, VideoSourceId, WeaponName } from "./base.types";
 
 interface CharacterArtifactSetRecommendationTemplate {
   best?: boolean;
   percent?: number;
+  notes?: string[];
 }
 
 interface CharacterCombinedArtifactSetRecommendation extends CharacterArtifactSetRecommendationTemplate {
@@ -15,15 +16,26 @@ interface CharacterCompleteArtifactSetRecommendation extends CharacterArtifactSe
   name: ArtifactSetName;
 }
 
+interface CharacterDetachmentCharacterRecommendations {
+  type: "character";
+  name: CharacterName;
+}
+
+interface CharacterDetachmentOtherRecommendation {
+  type: "other";
+  title: string;
+}
+
 export interface CharacterRecommendations {
   artifacts?: {
     sets: CharacterArtifactSetRecommendations | Record<string, CharacterArtifactSetRecommendations>;
     stats: Record<"sands" | "goblet" | "circlet" | "additional", Array<{ name: string; notes?: string[] }>>;
   };
+  attackCombinations?: Record<string, string[]>;
   constellationOrSignatureWeapon?: string;
   detachments?: Array<{
     description?: string;
-    template: [string, string, string, string];
+    template: [CharacterDetachmentItemRecommendation, CharacterDetachmentItemRecommendation, CharacterDetachmentItemRecommendation, CharacterDetachmentItemRecommendation];
     variants?: Array<[string, string, string, string]>;
     best?: boolean;
   }>;
@@ -32,7 +44,7 @@ export interface CharacterRecommendations {
   roleIds: CharacterRoleId[];
   signatureWeaponNames?: WeaponName[];
   talents: CharacterTalentRecommendations | Record<string, CharacterTalentRecommendations>;
-  videoSourceIds: VideoSourceId[];
+  videoSourceIds?: VideoSourceId[];
   weapons: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
 }
 
@@ -48,8 +60,10 @@ interface CharacterWeaponRecommendation {
   postfix?: string;
   r?: 1 | 2 | 3 | 4 | 5;
   percent?: number;
+  notes?: string[];
 }
 
 export type CharacterArtifactSetRecommendations = Array<CharacterCompleteArtifactSetRecommendation | CharacterCombinedArtifactSetRecommendation>;
+export type CharacterDetachmentItemRecommendation = CharacterDetachmentCharacterRecommendations | CharacterDetachmentOtherRecommendation;
 export type CharacterTalentRecommendations = Array<CharacterTalentRecommendation>;
 export type CharacterWeaponRecommendations = Array<CharacterWeaponRecommendation>;

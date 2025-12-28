@@ -30,7 +30,12 @@ export default {
   detachments: [
     {
       description: "Реакция Перегрузка",
-      template: [CharacterNames.VARESA, CharacterNames.CHEVREUSE, "Пиро персонаж", "Полезный персонаж"],
+      template: [
+        { type: "character", name: CharacterNames.VARESA },
+        { type: "character", name: CharacterNames.CHEVREUSE },
+        { type: "other", title: "Пиро персонаж" },
+        { type: "other", title: "Полезный персонаж" },
+      ],
       variants: [
         [CharacterNames.VARESA, CharacterNames.DURIN, CharacterNames.IANSAN, CharacterNames.CHEVREUSE],
         [CharacterNames.VARESA, CharacterNames.MAVUIKA, CharacterNames.IANSAN, CharacterNames.CHEVREUSE],
@@ -38,7 +43,12 @@ export default {
       best: true,
     },
     {
-      template: [CharacterNames.VARESA, "", "", ""],
+      template: [
+        { type: "character", name: CharacterNames.VARESA },
+        { type: "other", title: "" },
+        { type: "other", title: "" },
+        { type: "other", title: "" },
+      ],
       variants: [[CharacterNames.VARESA, CharacterNames.FURINA, CharacterNames.IANSAN, CharacterNames.XIANYUN]],
     },
   ],
@@ -50,7 +60,7 @@ export default {
     { type: "combat2", priority: "По необходимости", referenceLevel: 8 },
     { type: "combat3", priority: "Во вторую очередь", referenceLevel: 9 },
   ],
-  videoSourceIds: [VideoSourceIds.GUIDE_TO_VARESA_IN_6_2],
+  videoSourceIds: [VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_AnimeCool, VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_MironMinMax],
   weapons: {
     [ArtifactSetNames.LONG_NIGHTS_OATH]: [
       { name: WeaponNames.VIViD_NOTIONS, best: "Лучшее оружие", percent: 1.3014 },

@@ -1,1 +1,1 @@
-export { Check, ChevronRight, Circle, Home, Moon, MoreHorizontal, Spotlight, Sun } from "lucide-react";
+export { Check, ChevronRight, Circle, Home, Moon, MoreHorizontal, Spotlight, SquarePlay, Sun } from "lucide-react";
