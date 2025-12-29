@@ -168,8 +168,14 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
     }
 
     items.push(RecommendationTabs.ROLES);
-    items.push(RecommendationTabs.TALENTS);
-    items.push(RecommendationTabs.WEAPONS);
+
+    if (recommendations?.talents) {
+      items.push(RecommendationTabs.TALENTS);
+    }
+
+    if (recommendations?.weapons) {
+      items.push(RecommendationTabs.WEAPONS);
+    }
 
     if (recommendations?.artifacts) {
       items.push(RecommendationTabs.ARTIFACTS);
@@ -279,10 +285,14 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
             </Table>
           </TabsContent>
           <TabsContent value={RecommendationTabs.TALENTS.value}>
-            <CharacterTalentRecommendations name={name} recommendations={recommendations.talents} />
+            {recommendations.talents && (
+              <CharacterTalentRecommendations name={name} recommendations={recommendations.talents} />
+            )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.WEAPONS.value}>
-            <CharacterWeaponRecommendations recommendations={recommendations.weapons} />
+            {recommendations.weapons && (
+              <CharacterWeaponRecommendations recommendations={recommendations.weapons} />
+            )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.ARTIFACTS.value}>
             {recommendations.artifacts && (
@@ -680,16 +690,27 @@ const CharacterDetachmentItemRecommendation: FC<{ item: DetachmentItemRecommenda
   switch (item.type) {
     case "character":
       return (
-        <div className="flex flex-col gap-1 justify-center items-center">
+        <Card className="flex flex-col gap-1 justify-start items-center p-2">
           <CharacterImage className="shrink-0 size-16 rounded-md rounded-br-2xl" name={item.name} />
-          <p className="text-center">{item.name}</p>
-        </div>
+          <p className="my-auto text-center">{item.name}</p>
+        </Card>
+      );
+    case "element":
+      return (
+        <Card className="flex flex-col gap-1 justify-start items-center p-2">
+          <ElementImage className="shrink-0 p-2 size-16 rounded-md rounded-br-2xl" name={item.name} />
+          <p className="my-auto text-center">
+            {item.name}
+            {" "}
+            персонаж
+          </p>
+        </Card>
       );
     case "other":
       return (
-        <div className="flex flex-col gap-1 justify-center items-center">
-          <p className="text-center">{item.title}</p>
-        </div>
+        <Card className="flex flex-col gap-1 justify-start items-center p-2">
+          <p className="my-auto text-center">{item.title}</p>
+        </Card>
       );
   }
 };
@@ -720,13 +741,23 @@ const CharacterDetachmentRecommendations: FC<{
               <TableCell className="text-pretty whitespace-normal">{recommendation.description}</TableCell>
             )}
             <TableCell className="text-pretty whitespace-normal">
-              <div className="grid grid-cols-4 gap-2">
+              <div className="grid grid-cols-[repeat(4,calc(var(--spacing)*24.5))] gap-2">
                 {recommendation.template.map((item, index) => (
                   <CharacterDetachmentItemRecommendation item={item} key={index} />
                 ))}
               </div>
             </TableCell>
-            {hasVariants && <TableCell className="text-pretty whitespace-normal">{recommendation.variants}</TableCell>}
+            {hasVariants && (
+              <TableCell className="space-y-2 text-pretty whitespace-normal">
+                {recommendation.variants?.map((variant, index) => (
+                  <div className="grid grid-cols-[repeat(4,calc(var(--spacing)*24.5))] gap-2" key={index}>
+                    {variant.map((item, index) => (
+                      <CharacterDetachmentItemRecommendation item={item} key={index} />
+                    ))}
+                  </div>
+                ))}
+              </TableCell>
+            )}
           </TableRow>
         ))}
       </TableBody>
@@ -735,7 +766,7 @@ const CharacterDetachmentRecommendations: FC<{
 };
 const CharacterTalentRecommendations: FC<{
   name: CharacterName;
-  recommendations: Recommendations["talents"];
+  recommendations: NonNullable<Recommendations["talents"]>;
 }> = ({ name, recommendations }) => {
   const { talent } = useTalent(name);
 
@@ -877,7 +908,9 @@ const CharacterVideoSources: FC<{
     </Table>
   );
 };
-const CharacterWeaponRecommendations: FC<{ recommendations: Recommendations["weapons"] }> = ({ recommendations }) => {
+const CharacterWeaponRecommendations: FC<{
+  recommendations: NonNullable<Recommendations["weapons"]>;
+}> = ({ recommendations }) => {
   if (Array.isArray(recommendations)) {
     return <CharacterWeaponRecommendationsTable recommendations={recommendations} />;
   }

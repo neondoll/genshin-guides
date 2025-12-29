@@ -1,4 +1,11 @@
-import { ArtifactSetNames, CharacterNames, CharacterRoleIds, VideoSourceIds, WeaponNames } from "@/types/base.types";
+import {
+  ArtifactSetNames,
+  CharacterNames,
+  CharacterRoleIds,
+  ElementNames,
+  VideoSourceIds,
+  WeaponNames,
+} from "@/types/base.types";
 import type { CharacterRecommendations } from "@/types/recommendations.types";
 
 export default {
@@ -38,9 +45,8 @@ export default {
     {
       template: [
         { type: "character", name: CharacterNames.INEFFA },
-        { type: "other", title: "Гидро герой" },
-        { type: "other", title: "Нод-Край герой" },
-        { type: "other", title: "" },
+        { type: "element", name: ElementNames.HYDRO },
+        { type: "other", title: "Нод-Край персонаж" },
       ],
     },
   ],

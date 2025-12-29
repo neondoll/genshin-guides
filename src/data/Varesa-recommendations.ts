@@ -1,4 +1,11 @@
-import { ArtifactSetNames, CharacterNames, CharacterRoleIds, VideoSourceIds, WeaponNames } from "@/types/base.types";
+import {
+  ArtifactSetNames,
+  CharacterNames,
+  CharacterRoleIds,
+  ElementNames,
+  VideoSourceIds,
+  WeaponNames,
+} from "@/types/base.types";
 import type { CharacterRecommendations } from "@/types/recommendations.types";
 
 export default {
@@ -33,23 +40,35 @@ export default {
       template: [
         { type: "character", name: CharacterNames.VARESA },
         { type: "character", name: CharacterNames.CHEVREUSE },
-        { type: "other", title: "Пиро персонаж" },
+        { type: "element", name: ElementNames.PYRO },
         { type: "other", title: "Полезный персонаж" },
       ],
       variants: [
-        [CharacterNames.VARESA, CharacterNames.DURIN, CharacterNames.IANSAN, CharacterNames.CHEVREUSE],
-        [CharacterNames.VARESA, CharacterNames.MAVUIKA, CharacterNames.IANSAN, CharacterNames.CHEVREUSE],
+        [
+          { type: "character", name: CharacterNames.VARESA },
+          { type: "character", name: CharacterNames.DURIN },
+          { type: "character", name: CharacterNames.IANSAN },
+          { type: "character", name: CharacterNames.CHEVREUSE },
+        ],
+        [
+          { type: "character", name: CharacterNames.VARESA },
+          { type: "character", name: CharacterNames.MAVUIKA },
+          { type: "character", name: CharacterNames.IANSAN },
+          { type: "character", name: CharacterNames.CHEVREUSE },
+        ],
       ],
       best: true,
     },
     {
-      template: [
-        { type: "character", name: CharacterNames.VARESA },
-        { type: "other", title: "" },
-        { type: "other", title: "" },
-        { type: "other", title: "" },
+      template: [{ type: "character", name: CharacterNames.VARESA }],
+      variants: [
+        [
+          { type: "character", name: CharacterNames.VARESA },
+          { type: "character", name: CharacterNames.FURINA },
+          { type: "character", name: CharacterNames.IANSAN },
+          { type: "character", name: CharacterNames.XIANYUN },
+        ],
       ],
-      variants: [[CharacterNames.VARESA, CharacterNames.FURINA, CharacterNames.IANSAN, CharacterNames.XIANYUN]],
     },
   ],
   recommendedLevel: "90/90",

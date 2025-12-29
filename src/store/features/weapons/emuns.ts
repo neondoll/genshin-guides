@@ -10,6 +10,7 @@ export const WEAPON_MIHOYO_ICONS = {
   [WeaponNames.CRANES_ECHOING_CALL]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/30/237301566/7d49f94bfb8725b8c04332b11eb7df60_7597357212509081070.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.CRIMSON_MOONS_SEMBLANCE]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/23/237301566/ce91a453b9a942c9ab20df0f62caa033_6509317760517540619.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.EARTH_SHAKER]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/dc6bf4c87afe67014579743618e97371_6360663376854922140.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.FANG_OF_THE_MOUNTAIN_KING]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/1fd3c498faccab68bfa5d961477a8c29_2936359463997877474.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.FINALE_OF_THE_DEEP]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/19/51635400/3139f087dee78d3856ab63fd6845ae61_1359358122120399762.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.FLAME_FORGED_INSIGHT]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/21/62b7410999e0777b83bd4be9334226bc_1124279062957674054.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.FLOWING_PURITY]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/19/51635400/0130ca8183d3daa2eddbb9200a1d776f_7923611670879405043.png?x-oss-process=image%2Fformat%2Cwebp",

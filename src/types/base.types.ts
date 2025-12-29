@@ -25,11 +25,13 @@ export const CharacterNames = {
   AINO: "Айно",
   ALBEDO: "Альбедо",
   ALHAITHAM: "Аль-Хайтам",
+  ARATAKI_ITTO: "Итто",
   ARLECCHINO: "Арлекино",
   BAIZHU: "Бай Чжу",
   BARBARA: "Барбара",
   BEIDOU: "Бэй Доу",
   BENNETT: "Беннет",
+  CANDACE: "Кандакия",
   CHEVREUSE: "Шеврёз",
   DAHLIA: "Далия",
   DEHYA: "Дэхья",
@@ -39,14 +41,20 @@ export const CharacterNames = {
   DURIN: "Дурин",
   FISCHL: "Фишль",
   FURINA: "Фурина",
+  GAMING: "Ка Мин",
   GANYU: "Гань Юй",
   GOROU: "Горо",
   IANSAN: "Иансан",
+  IFA: "Ифа",
   INEFFA: "Инеффа",
   JAHODA: "Ягода",
   JEAN: "Джинн",
+  KACHINA: "Качина",
+  KAEDEHARA_KAZUHA: "Кадзуха",
   KAMISATO_AYAKA: "Аяка",
   KAMISATO_AYATO: "Аято",
+  KAVEH: "Кавех",
+  KINICH: "Кинич",
   MAVUIKA: "Мавуика",
   MONA: "Мона",
   VARESA: "Вареса",
@@ -62,6 +70,15 @@ export const CharacterRoleIds = {
   DPS: "dps",
   SUPPORT: "support",
   SURVIVABILITY: "survivability",
+} as const;
+export const ElementNames = {
+  ANEMO: "Анемо",
+  CRYO: "Крио",
+  DENDRO: "Дендро",
+  ELECTRO: "Электро",
+  GEO: "Гео",
+  HYDRO: "Гидро",
+  PYRO: "Пиро",
 } as const;
 export const VideoSourceIds = {
   ALL_ABOUT_ALL_TALENTS: "all_about_all_talents",
@@ -105,6 +122,7 @@ export const WeaponNames = {
   EARTH_SHAKER: "Сотрясающий землю",
   ELEGY_FOR_THE_END: "Элегия погибели",
   ENGULFING_LIGHTNING: "Сияющая жатва",
+  FANG_OF_THE_MOUNTAIN_KING: "Клык Горного короля",
   FAVONIUS_CODEX: "Кодекс Фавония",
   FAVONIUS_GREATSWORD: "Двуручный меч Фавония",
   FAVONIUS_LANCE: "Копьё Фавония",
@@ -116,6 +134,7 @@ export const WeaponNames = {
   FLOWING_PURITY: "Сверкание чистых вод",
   FLUTE_OF_EZPITZAL: "Флейта Эспицаль",
   FRACTURED_HALO: "Расколотый ореол",
+  FREEDOM_SWORN: "Клятва свободы",
   HAKUSHIN_RING: "Кольцо Хакусин",
   HAMAYUMI: "Хамаюми",
   HARAN_GEPPAKU_FUTSU: "Харан гэппаку фуцу",
@@ -171,6 +190,7 @@ export const WeaponNames = {
   THUNDERING_PULSE: "Громовой пульс",
   TIDAL_SHADOW: "Тень волны",
   TOME_OF_THE_ETERNAL_FLOW: "Обряд вечного течения",
+  TOUKABOU_SHIGURE: "Токабо сигурэ",
   TULAYTULLAHS_REMEMBRANCE: "Воспоминания Тулайтуллы",
   ULTIMATE_OVERLORDS_MEGA_MAGIC_SWORD: "«Магический супермеч высшего владыки»",
   URAKU_MISUGIRI: "Ураку мисугири",
@@ -178,13 +198,16 @@ export const WeaponNames = {
   VORTEX_VANQUISHER: "Покоритель вихря",
   WAVEBREAKERS_FIN: "Режущий волны плавник",
   WHITE_TASSEL: "Белая кисть",
+  WHITEBLIND: "Белая тень",
   WOLF_FANG: "Волчий клык",
   WOLFS_GRAVESTONE: "Волчья погибель",
+  XIPHOS_MOONLIGHT: "Лунное сияние ксифоса",
 } as const;
 
 export type ArtifactSetName = typeof ArtifactSetNames[keyof typeof ArtifactSetNames];
 export type CharacterName = typeof CharacterNames[keyof typeof CharacterNames];
 export type CharacterRoleId = typeof CharacterRoleIds[keyof typeof CharacterRoleIds];
+export type ElementName = typeof ElementNames[keyof typeof ElementNames];
 export type Rarity = 1 | 2 | 3 | 4 | 5;
 export type VideoSourceId = typeof VideoSourceIds[keyof typeof VideoSourceIds];
 export type WeaponName = typeof WeaponNames[keyof typeof WeaponNames];
