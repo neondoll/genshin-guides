@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { Weapon } from "genshin-db";
 
+import type { Weapon, WeaponName } from "./types";
 import { getWeapon, getWeaponsNames } from "@/utils/genshinDbAdapter";
 
 interface WeaponsState {
-  entities: Record<string, Omit<Weapon, "stats"> | null>;
-  names: string[];
+  entities: { [P in WeaponName]?: Weapon | null };
+  names: WeaponName[];
 }
 
 const initialState: WeaponsState = { entities: {}, names: [] };
 
-export const fetchWeaponByName = createAsyncThunk("weapons/fetchByName", async (weaponName: string, { getState }) => {
+export const fetchWeaponByName = createAsyncThunk("weapons/fetchByName", async (weaponName: WeaponName, { getState }) => {
   const state = getState() as { weapons: WeaponsState };
 
   const stateWeapon = state.weapons.entities[weaponName];

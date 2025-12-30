@@ -1,6 +1,9 @@
-import type { CharacterRoleId, ElementName, VideoSourceId, WeaponName } from "./base.types";
+import type { VideoSourceId } from "./base.types";
 import type { ArtifactSetName } from "@/store/features/artifact-sets";
+import type { CharacterRoleId } from "@/store/features/character-roles";
 import type { CharacterName } from "@/store/features/characters";
+import type { ElementName } from "@/store/features/elements";
+import type { WeaponName } from "@/store/features/weapons";
 
 interface CharacterArtifactSetRecommendationTemplate {
   best?: boolean;

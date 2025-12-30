@@ -1,6 +1,6 @@
-import { WeaponNames } from "@/types/base.types";
+import { type WeaponName, WeaponNames } from "./types";
 
-export const WEAPON_MIHOYO_ICONS = {
+export const WeaponIcons = {
   [WeaponNames.ABSOLUTION]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/05/30/d5da78d8dd0ac8814b699d6195145776_7211910286782963050.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.ASTRAL_VULTURES_CRIMSON_PLUMAGE]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/11/14/d3bb0f9d936379661d409644e4269ff1_2888646900955247330.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.ATHAME_ARTIS]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/11/25/69991219a3eab8162a67513d013e6ef0_6929917729223804184.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -36,4 +36,4 @@ export const WEAPON_MIHOYO_ICONS = {
   [WeaponNames.ULTIMATE_OVERLORDS_MEGA_MAGIC_SWORD]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2023/12/13/9eb77ebc428cc08b695d166c70d72012_8077919549792565749.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.URAKU_MISUGIRI]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/03/12/237301566/97083537849c199bc3fa7fed8a49d010_1826315996536770474.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.VIViD_NOTIONS]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/4eed5f1f892cf722e4f8df1778a0a1f1_3249018324800310475.png?x-oss-process=image%2Fformat%2Cwebp",
-} as Record<string, string>;
+} as { [P in WeaponName]?: string };

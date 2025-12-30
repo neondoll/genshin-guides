@@ -1,6 +1,9 @@
 import { ArtifactSetNames } from "@/store/features/artifact-sets";
+import { CharacterRoleIds } from "@/store/features/character-roles";
 import { CharacterNames } from "@/store/features/characters";
-import { CharacterRoleIds, ElementNames, VideoSourceIds, WeaponNames } from "@/types/base.types";
+import { ElementNames } from "@/store/features/elements";
+import { WeaponNames } from "@/store/features/weapons";
+import { VideoSourceIds } from "@/types/base.types";
 import type { CharacterRecommendations } from "@/types/recommendations.types";
 
 export default {

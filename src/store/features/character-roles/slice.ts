@@ -1,6 +1,11 @@
-import { type CharacterRole, type CharacterRoleId, CharacterRoleIds } from "@/types/base.types";
+import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 
-export default {
+import { type CharacterRole, type CharacterRoleId, CharacterRoleIds } from "./types";
+import type { RootState } from "@/store";
+
+export const characterRolesAdapter = createEntityAdapter<CharacterRole>();
+
+const initialState = characterRolesAdapter.getInitialState(undefined, {
   [CharacterRoleIds.ON_FIELD]: {
     id: CharacterRoleIds.ON_FIELD,
     name: "На поле",
@@ -31,4 +36,19 @@ export default {
     description: "Если вы столкнулись с сильными или многочисленными противниками, такие персонажи более эффективно справятся с их натиском и позволят найти возможность переломить ход битвы.",
     image: import.meta.env.BASE_URL + "images/Character_Role_Survivability.webp",
   },
-} as Record<CharacterRoleId, CharacterRole>;
+});
+
+export const characterRolesSlice = createSlice({
+  name: "characterRoles",
+  initialState,
+  reducers: {},
+});
+
+export default characterRolesSlice.reducer;
+
+export const { selectAll: selectAllCharacterRoles } = characterRolesAdapter.getSelectors((state: RootState) => state.characterRoles);
+
+export const selectCharacterRolesByIds = createSelector(
+  [selectAllCharacterRoles, (_, ids: CharacterRoleId[]) => ids],
+  (characterRoles, ids) => characterRoles.filter(characterRole => ids.includes(characterRole.id)),
+);

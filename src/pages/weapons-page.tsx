@@ -10,10 +10,9 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import { Home } from "@/components/ui/icons";
-import { WeaponImage } from "@/store/features/weapons/components";
-import { useWeaponsNames } from "@/store/features/weapons/hooks";
+import { cn } from "@/lib/utils";
+import { useWeaponsNames, WeaponImage, type WeaponName } from "@/store/features/weapons";
 
 const WeaponsPage: FC = () => {
   const { weaponsNames, error, loading } = useWeaponsNames();
@@ -60,7 +59,7 @@ const WeaponsPage: FC = () => {
     </>
   );
 };
-const WeaponCard: FC<{ name: string }> = ({ name }) => {
+const WeaponCard: FC<{ name: WeaponName }> = ({ name }) => {
   return (
     <Card
       className={cn([

@@ -11,10 +11,9 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import { Home } from "@/components/ui/icons";
-import { useWeapon } from "@/store/features/weapons/hooks";
-import { WeaponImage } from "@/store/features/weapons/components";
+import { cn } from "@/lib/utils";
+import { useWeapon, WeaponImage } from "@/store/features/weapons";
 
 function extractValues(str: string): [string, number][] {
   const regex = /<color=#([A-Fa-f0-9]+)>\{(\d+(?:\.\d+)?)}<\/color>/g;
@@ -32,9 +31,11 @@ function extractValues(str: string): [string, number][] {
 
 const WeaponPage: FC = () => {
   const { weaponId } = useParams();
-  const { weapon, error, loading } = useWeapon(JSON.parse(weaponId as string));
 
-  const weaponName = useMemo(() => weapon?.name || "NONE", [weapon]);
+  const weaponName = useMemo(() => JSON.parse(weaponId as string), [weaponId]);
+
+  const { weapon, error, loading } = useWeapon(weaponName);
+
   const weaponEffect = useMemo(() => {
     if (!weapon?.effectTemplateRaw) return undefined;
 

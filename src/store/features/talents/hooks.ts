@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchTalentByCharacterName } from "./slice";
+import type { CharacterName } from "../characters";
 import { useAppDispatch, useAppSelector } from "@/store";
 
-export const useTalent = (characterName: string) => {
+export const useTalent = (characterName: CharacterName) => {
   const dispatch = useAppDispatch();
   const talents = useAppSelector(state => state.talents.entities);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getTalent = useCallback(async (characterName: string) => {
+  const getTalent = useCallback(async (characterName: CharacterName) => {
     try {
       setLoading(true);
       const result = await dispatch(fetchTalentByCharacterName(characterName));
@@ -24,8 +25,8 @@ export const useTalent = (characterName: string) => {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((characterName: string) => !!talents[characterName], [talents]);
-  const preloadTalent = useCallback((characterName: string) => {
+  const isStored = useCallback((characterName: CharacterName) => !!talents[characterName], [talents]);
+  const preloadTalent = useCallback((characterName: CharacterName) => {
     if (!isStored(characterName)) {
       getTalent(characterName);
     }

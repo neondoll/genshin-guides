@@ -17,15 +17,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, SquarePlay } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import CHARACTER_ROLES from "@/data/character-roles";
 import CHARACTERS_RECOMMENDATIONS from "@/data/characters-recommendations";
 import VIDEO_SOURCES from "@/data/video-sources";
 import { cn } from "@/lib/utils";
+import { useAppSelector } from "@/store";
 import { ArtifactSetImage } from "@/store/features/artifact-sets";
+import { selectCharacterRolesByIds } from "@/store/features/character-roles";
 import { CharacterImage, type CharacterName, useCharacter } from "@/store/features/characters";
-import { ElementImage } from "@/store/features/elements/components";
-import { useTalent } from "@/store/features/talents/hooks";
-import { WeaponImage } from "@/store/features/weapons/components";
+import { ElementImage } from "@/store/features/elements";
+import { useTalent } from "@/store/features/talents";
+import { WeaponImage } from "@/store/features/weapons";
 import type {
   CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
   CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
@@ -96,7 +97,7 @@ const CharacterPage: FC = () => {
         <div>
           <div className="flex gap-1 items-center mb-1 text-[2rem]/10.5">
             <h1>{character?.name}</h1>
-            {character?.elementText && (
+            {character?.elementText && character.elementText !== "Нет" && (
               <ElementImage className="shrink-0 size-7" name={character.elementText} />
             )}
           </div>
@@ -265,22 +266,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
             </Table>
           </TabsContent>
           <TabsContent value={RecommendationTabs.ROLES.value}>
-            <Table>
-              <TableBody>
-                {recommendations.roleIds.map((roleId) => {
-                  const role = CHARACTER_ROLES[roleId];
-
-                  return (
-                    <TableRow key={roleId}>
-                      <TableCell className="w-14">
-                        <img alt={role.name} className="aspect-square size-10" src={role.image} />
-                      </TableCell>
-                      <TableCell className="text-pretty whitespace-normal">{role.description}</TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
+            <CharacterRoleRecommendations recommendations={recommendations.roleIds} />
           </TabsContent>
           <TabsContent value={RecommendationTabs.TALENTS.value}>
             {recommendations.talents && (
@@ -408,129 +394,6 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
             )}
           </TabsContent>
         </Tabs>
-        {/* <div className="flex gap-x-6 items-center">
-          <p className="text-lg text-slate-700 dark:text-slate-300">Роли</p>
-          <div className="space-y-2">
-            {recommendations.roleIds.map((roleId) => {
-              const role = characterRoles[roleId];
-
-              return (
-                <div className="flex gap-x-6 items-center" key={roleId}>
-                  <img alt={role.name} className="shrink-0 size-16" src={role.image} />
-                  <p className="text-base text-pretty">{role.description}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        <div className="flex gap-x-6 items-center">
-          <p className="text-lg text-slate-700 dark:text-slate-300">Таланты</p>
-          <CharacterTalentRecommendations name={name} recommendations={recommendations.talent} />
-        </div>
-        <div className="flex gap-x-6 items-center">
-          <p className="text-lg text-slate-700 dark:text-slate-300">Оружие</p>
-          <div className="space-y-2">
-            {recommendations.weapons.map((weapon) => (
-              <CharacterWeaponRecommendation key={weapon.name} recommendation={weapon} />
-            ))}
-          </div>
-        </div>
-        <div className="flex gap-x-6 items-center">
-          <p className="text-lg text-slate-700 dark:text-slate-300">Артефакты</p>
-          <div className="space-y-2">
-            <div className="flex gap-x-6 items-center">
-              <p className="text-lg text-slate-700 dark:text-slate-300">Наборы</p>
-              <div className="space-y-2">
-                {recommendations.artifacts.sets.map((artifactSet) => {
-                  switch (artifactSet.type) {
-                    case "complete":
-                      return (
-                        <CharacterCompleteArtifactSetRecommendation
-                          key={`complete-${artifactSet.name}`}
-                          recommendation={artifactSet}
-                        />
-                      );
-                  }
-
-                  return null;
-                })}
-              </div>
-            </div>
-            <div className="flex gap-x-6 items-center">
-              <p className="text-lg text-slate-700 dark:text-slate-300">Характеристики</p>
-              <div className="space-y-2">
-                <div className="flex gap-x-6 items-center">
-                  <p className="text-lg text-slate-700 dark:text-slate-300">Часы</p>
-                  <div className="space-y-2">
-                    {recommendations.artifacts.stats.sands.map((stat) => (
-                      <div className="flex gap-x-6 items-center" key={stat.name}>
-                        <p className="text-base text-pretty">{stat.name}</p>
-                        {stat.notes && (
-                          <ul className="pl-5 list-outside list-disc">
-                            {stat.notes.map((note, index) => (
-                              <li className="text-base text-pretty" key={index}>{note}</li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex gap-x-6 items-center">
-                  <p className="text-lg text-slate-700 dark:text-slate-300">Кубок</p>
-                  <div className="space-y-2">
-                    {recommendations.artifacts.stats.goblet.map((stat) => (
-                      <div className="flex gap-x-6 items-center" key={stat.name}>
-                        <p className="text-base text-pretty">{stat.name}</p>
-                        {stat.notes && (
-                          <ul className="pl-5 list-outside list-disc">
-                            {stat.notes.map((note, index) => (
-                              <li className="text-base text-pretty" key={index}>{note}</li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex gap-x-6 items-center">
-                  <p className="text-lg text-slate-700 dark:text-slate-300">Корона</p>
-                  <div className="space-y-2">
-                    {recommendations.artifacts.stats.circlet.map((stat) => (
-                      <div className="flex gap-x-6 items-center" key={stat.name}>
-                        <p className="text-base text-pretty">{stat.name}</p>
-                        {stat.notes && (
-                          <ul className="pl-5 list-outside list-disc">
-                            {stat.notes.map((note, index) => (
-                              <li className="text-base text-pretty" key={index}>{note}</li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex gap-x-6 items-center">
-                  <p className="text-lg text-slate-700 dark:text-slate-300">Доп.</p>
-                  <div className="space-y-2">
-                    {recommendations.artifacts.stats.additional.map((stat) => (
-                      <div className="flex gap-x-6 items-center" key={stat.name}>
-                        <p className="text-base text-pretty">{stat.name}</p>
-                        {stat.notes && (
-                          <ul className="pl-5 list-outside list-disc">
-                            {stat.notes.map((note, index) => (
-                              <li className="text-base text-pretty" key={index}>{note}</li>
-                            ))}
-                          </ul>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
       </CardContent>
     </Card>
   );
@@ -756,6 +619,24 @@ const CharacterDetachmentRecommendations: FC<{
                 ))}
               </TableCell>
             )}
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  );
+};
+const CharacterRoleRecommendations: FC<{ recommendations: Recommendations["roleIds"] }> = ({ recommendations }) => {
+  const characterRoles = useAppSelector(state => selectCharacterRolesByIds(state, recommendations));
+
+  return (
+    <Table>
+      <TableBody>
+        {characterRoles.map(characterRole => (
+          <TableRow key={characterRole.id}>
+            <TableCell className="w-14">
+              <img alt={characterRole.name} className="aspect-square size-10" src={characterRole.image} />
+            </TableCell>
+            <TableCell className="text-pretty whitespace-normal">{characterRole.description}</TableCell>
           </TableRow>
         ))}
       </TableBody>

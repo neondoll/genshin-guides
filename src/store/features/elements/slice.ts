@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { Element } from "genshin-db";
 
+import type { Element, ElementName } from "./types";
 import { getElement } from "@/utils/genshinDbAdapter";
 
 interface ElementsState {
-  entities: Record<string, Element | null>;
-  names: string[];
+  entities: { [P in ElementName]?: Element | null };
+  names: ElementName[];
 }
 
 const initialState: ElementsState = { entities: {}, names: [] };
 
-export const fetchElementByName = createAsyncThunk("elements/fetchByName", async (elementName: string, { getState }) => {
+export const fetchElementByName = createAsyncThunk("elements/fetchByName", async (elementName: ElementName, { getState }) => {
   const state = getState() as { elements: ElementsState };
 
   const stateElement = state.elements.entities[elementName];

@@ -1,12 +1,13 @@
 import type { FC } from "react";
 
-import { cn } from "@/lib/utils";
-import { RARITY_GRADIENTS } from "@/lib/rarity";
 import { useWeapon } from "./hooks";
-import { WEAPON_MIHOYO_ICONS } from "./emuns";
+import { WeaponIcons } from "./icons";
+import type { WeaponName } from "./types";
 import ImageWithFallback from "@/components/image-with-fallback";
+import { RARITY_GRADIENTS } from "@/lib/rarity";
+import { cn } from "@/lib/utils";
 
-export const WeaponImage: FC<{ className?: string; name: string }> = ({ className, name }) => {
+export const WeaponImage: FC<{ className?: string; name: WeaponName }> = ({ className, name }) => {
   const { weapon } = useWeapon(name);
 
   return weapon && (
@@ -14,7 +15,7 @@ export const WeaponImage: FC<{ className?: string; name: string }> = ({ classNam
       alt={weapon.name}
       className={cn(RARITY_GRADIENTS[weapon.rarity || 0], className)}
       draggable={false}
-      fallbackSrc={WEAPON_MIHOYO_ICONS[name]}
+      fallbackSrc={WeaponIcons[name]}
       src={weapon.images.mihoyo_icon}
     />
   );

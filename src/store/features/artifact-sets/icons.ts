@@ -50,4 +50,4 @@ export const ArtifactSetIcons = {
     goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/520482a32f80b5538d6d2e6dc8cc194a_3357590716156202832.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/cf017c10098946f6d3d19a6b2c49bd53_7064122714444153592.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-} as Record<ArtifactSetName, Record<"flower" | "plume" | "sands" | "goblet" | "circlet", string>>;
+} as { [P in ArtifactSetName]?: Record<"flower" | "plume" | "sands" | "goblet" | "circlet", string> };

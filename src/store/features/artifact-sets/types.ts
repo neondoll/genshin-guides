@@ -1,4 +1,4 @@
-import type { Artifact as GenshinDbArtifact } from "genshin-db";
+import type { Artifact as ArtifactDB } from "genshin-db";
 
 export const ArtifactSetNames = {
   CRIMSON_WITCH_OF_FLAMES: "Горящая алая ведьма",
@@ -26,6 +26,6 @@ export const ArtifactSetNames = {
 
 export type ArtifactSetName = typeof ArtifactSetNames[keyof typeof ArtifactSetNames];
 
-export interface ArtifactSet extends Omit<GenshinDbArtifact, "stats"> {
+export interface ArtifactSet extends ArtifactDB {
   name: ArtifactSetName;
 }

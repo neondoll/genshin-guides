@@ -1,4 +1,6 @@
-import type { Character as GenshinDbCharacter } from "genshin-db";
+import type { Character as CharacterDB } from "genshin-db";
+
+import type { ElementName } from "../elements";
 
 export const CharacterNames = {
   AINO: "Айно",
@@ -46,6 +48,7 @@ export const CharacterNames = {
 
 export type CharacterName = typeof CharacterNames[keyof typeof CharacterNames];
 
-export interface Character extends Omit<GenshinDbCharacter, "stats"> {
+export interface Character extends Omit<CharacterDB, "stats"> {
+  elementText: ElementName | "Нет";
   name: CharacterName;
 }

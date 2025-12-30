@@ -2,6 +2,9 @@ import genshindb, { Language } from "genshin-db";
 
 import type { ArtifactSet, ArtifactSetName } from "@/store/features/artifact-sets";
 import type { Character, CharacterName } from "@/store/features/characters";
+import type { Element, ElementName } from "@/store/features/elements";
+import type { Talent } from "@/store/features/talents";
+import type { Weapon, WeaponName } from "@/store/features/weapons";
 
 // Конфигурация для русского языка
 const DB_NAMES_OPTIONS = { matchCategories: true, resultLanguage: Language.Russian } as const;
@@ -43,44 +46,44 @@ export function getCharactersNames() {
   return genshindb.characters("names", DB_NAMES_OPTIONS) as CharacterName[];
 }
 
-export function getElement(elementName: string) {
+export function getElement(elementName: ElementName) {
   const elementData = genshindb.elements(elementName, DB_OPTIONS);
 
   if (!elementData) {
     return null;
   }
 
-  return elementData;
+  return elementData as Element;
 }
 
 export function getElementsNames() {
-  return genshindb.elements("names", DB_NAMES_OPTIONS) as string[];
+  return genshindb.elements("names", DB_NAMES_OPTIONS) as ElementName[];
 }
 
-export function getTalent(characterName: string) {
+export function getTalent(characterName: CharacterName) {
   const talentsData = genshindb.talents(characterName, DB_OPTIONS);
 
   if (!talentsData) {
     return null;
   }
 
-  return talentsData;
+  return talentsData as Talent;
 }
 
 export function getTalentsNames() {
-  return genshindb.talents("names", DB_NAMES_OPTIONS) as string[];
+  return genshindb.talents("names", DB_NAMES_OPTIONS) as CharacterName[];
 }
 
-export function getWeapon(weaponName: string) {
+export function getWeapon(weaponName: WeaponName) {
   const weaponData = genshindb.weapons(weaponName, DB_OPTIONS);
 
   if (!weaponData) {
     return null;
   }
 
-  return { ...weaponData, stats: undefined };
+  return { ...weaponData, stats: undefined } as Weapon;
 }
 
 export function getWeaponsNames() {
-  return genshindb.weapons("names", DB_NAMES_OPTIONS) as string[];
+  return genshindb.weapons("names", DB_NAMES_OPTIONS) as WeaponName[];
 }

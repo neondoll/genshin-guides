@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchElementByName } from "./slice";
+import type { ElementName } from "./types";
 import { useAppDispatch, useAppSelector } from "@/store";
 
-export const useElement = (name: string) => {
+export const useElement = (name: ElementName) => {
   const dispatch = useAppDispatch();
   const elements = useAppSelector(state => state.elements.entities);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getElement = useCallback(async (name: string) => {
+  const getElement = useCallback(async (name: ElementName) => {
     try {
       setLoading(true);
       const result = await dispatch(fetchElementByName(name));
@@ -24,8 +25,8 @@ export const useElement = (name: string) => {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((name: string) => !!elements[name], [elements]);
-  const preloadElement = useCallback((name: string) => {
+  const isStored = useCallback((name: ElementName) => !!elements[name], [elements]);
+  const preloadElement = useCallback((name: ElementName) => {
     if (!isStored(name)) {
       getElement(name);
     }

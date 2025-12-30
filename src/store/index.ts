@@ -2,14 +2,16 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 
 import { artifactSetsReducer } from "./features/artifact-sets";
+import { characterRolesReducer } from "@/store/features/character-roles";
 import { charactersReducer } from "./features/characters";
-import elementsReducer from "./features/elements/slice";
-import talentsReducer from "./features/talents/slice";
-import weaponsReducer from "./features/weapons/slice";
+import { elementsReducer } from "./features/elements";
+import { talentsReducer } from "./features/talents";
+import { weaponsReducer } from "./features/weapons";
 
 const store = configureStore({
   reducer: {
     artifactSets: artifactSetsReducer,
+    characterRoles: characterRolesReducer,
     characters: charactersReducer,
     elements: elementsReducer,
     talents: talentsReducer,

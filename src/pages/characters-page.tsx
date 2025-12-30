@@ -13,7 +13,7 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { CharacterImage, type CharacterName, useCharacter, useCharactersNames } from "@/store/features/characters";
-import { ElementImage } from "@/store/features/elements/components";
+import { ElementImage } from "@/store/features/elements";
 
 /* const useCharacters = () => {
   const [characters, setCharacters] = useState<string[]>([]);
@@ -97,7 +97,7 @@ const CharacterCard: FC<{ name: CharacterName }> = ({ name }) => {
     >
       <CardContent className="flex flex-col gap-6 items-center">
         <div className="relative shrink-0 size-24.5">
-          {character?.elementText && (
+          {character?.elementText && character.elementText !== "Нет" && (
             <ElementImage
               className={cn([
                 "absolute top-0 left-0 p-1 size-8.5 bg-gradient-to-br from-slate-200 to-slate-100 rounded-full border",

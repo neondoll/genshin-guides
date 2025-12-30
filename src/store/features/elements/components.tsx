@@ -1,8 +1,9 @@
 import type { FC } from "react";
 
-import { useElement } from "@/store/features/elements/hooks";
+import { useElement } from "./hooks";
+import type { ElementName } from "./types";
 
-export const ElementImage: FC<{ className?: string; name: string }> = ({ className, name }) => {
+export const ElementImage: FC<{ className?: string; name: ElementName }> = ({ className, name }) => {
   const { element } = useElement(name);
 
   return element && (

@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchWeaponByName, fetchWeaponsName } from "./slice";
+import type { WeaponName } from "./types";
 import { useAppDispatch, useAppSelector } from "@/store";
 
-export const useWeapon = (name: string) => {
+export const useWeapon = (name: WeaponName) => {
   const dispatch = useAppDispatch();
   const weapons = useAppSelector(state => state.weapons.entities);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getWeapon = useCallback(async (name: string) => {
+  const getWeapon = useCallback(async (name: WeaponName) => {
     try {
       setLoading(true);
       await dispatch(fetchWeaponByName(name));
@@ -23,8 +24,8 @@ export const useWeapon = (name: string) => {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((name: string) => !!weapons[name], [weapons]);
-  const preloadWeapon = useCallback((name: string) => {
+  const isStored = useCallback((name: WeaponName) => !!weapons[name], [weapons]);
+  const preloadWeapon = useCallback((name: WeaponName) => {
     if (!isStored(name)) {
       getWeapon(name);
     }

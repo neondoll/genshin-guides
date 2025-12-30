@@ -34,7 +34,11 @@ export const useCharacter = (name: CharacterName) => {
     }
   }, [getCharacter, isStored]);
 
-  const character = useMemo(() => characters[name], [characters, name]);
+  const character = useMemo(() => {
+    console.log(characters[name]);
+
+    return characters[name];
+  }, [characters, name]);
 
   useEffect(() => {
     preloadCharacter(name);
