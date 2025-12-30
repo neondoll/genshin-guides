@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchArtifactSetByName, fetchArtifactSetsName } from "./slice";
+import type { ArtifactSetName } from "./types";
 import { useAppDispatch, useAppSelector } from "@/store";
 
-export const useArtifactSet = (name: string) => {
+export const useArtifactSet = (name: ArtifactSetName) => {
   const dispatch = useAppDispatch();
   const artifactSets = useAppSelector(state => state.artifactSets.entities);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getArtifactSet = useCallback(async (name: string) => {
+  const getArtifactSet = useCallback(async (name: ArtifactSetName) => {
     try {
       setLoading(true);
       await dispatch(fetchArtifactSetByName(name));
@@ -23,8 +24,8 @@ export const useArtifactSet = (name: string) => {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((name: string) => !!artifactSets[name], [artifactSets]);
-  const preloadArtifactSet = useCallback((name: string) => {
+  const isStored = useCallback((name: ArtifactSetName) => !!artifactSets[name], [artifactSets]);
+  const preloadArtifactSet = useCallback((name: ArtifactSetName) => {
     if (!isStored(name)) {
       getArtifactSet(name);
     }

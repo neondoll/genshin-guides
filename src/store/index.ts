@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 
-import artifactSetsReducer from "./features/artifact-sets/slice";
-import charactersReducer from "./features/characters/slice";
+import { artifactSetsReducer } from "./features/artifact-sets";
+import { charactersReducer } from "./features/characters";
 import elementsReducer from "./features/elements/slice";
 import talentsReducer from "./features/talents/slice";
 import weaponsReducer from "./features/weapons/slice";

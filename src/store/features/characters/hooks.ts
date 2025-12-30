@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchCharacterByName, fetchCharactersName } from "./slice";
+import type { CharacterName } from "./types";
 import { useAppDispatch, useAppSelector } from "@/store";
 
-export const useCharacter = (name: string) => {
+export const useCharacter = (name: CharacterName) => {
   const dispatch = useAppDispatch();
   const characters = useAppSelector(state => state.characters.entities);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getCharacter = useCallback(async (name: string) => {
+  const getCharacter = useCallback(async (name: CharacterName) => {
     try {
       setLoading(true);
       await dispatch(fetchCharacterByName(name));
@@ -23,8 +24,8 @@ export const useCharacter = (name: string) => {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((name: string) => !!characters[name], [characters]);
-  const preloadCharacter = useCallback((name: string) => {
+  const isStored = useCallback((name: CharacterName) => !!characters[name], [characters]);
+  const preloadCharacter = useCallback((name: CharacterName) => {
     if (!isStored(name)) {
       getCharacter(name);
     }

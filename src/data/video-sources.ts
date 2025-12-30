@@ -49,6 +49,14 @@ export default {
     vkvideo: "https://vkvideo.ru/video-227044935_456239277",
     youtube: "https://youtu.be/s7cCUf-tQ_E",
   },
+  [VideoSourceIds.GUIDE_TO_FISCHL_IN_6_2]: {
+    id: VideoSourceIds.GUIDE_TO_FISCHL_IN_6_2,
+    author: "Miron MinMax",
+    title: "Все Ещё Имба | Подробный и Актуальный Гайд на Фишль [Genshin Impact]",
+    date: "2025-12-29",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239285",
+    youtube: "https://youtu.be/Pwe3zimTI0o",
+  },
   [VideoSourceIds.GUIDE_TO_INEFFA_IN_5_8]: {
     id: VideoSourceIds.GUIDE_TO_INEFFA_IN_5_8,
     author: "Miron MinMax",

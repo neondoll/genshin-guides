@@ -1,5 +1,8 @@
 import genshindb, { Language } from "genshin-db";
 
+import type { ArtifactSet, ArtifactSetName } from "@/store/features/artifact-sets";
+import type { Character, CharacterName } from "@/store/features/characters";
+
 // Конфигурация для русского языка
 const DB_NAMES_OPTIONS = { matchCategories: true, resultLanguage: Language.Russian } as const;
 const DB_OPTIONS = {
@@ -12,32 +15,32 @@ const DB_OPTIONS = {
   verboseCategories: false,
 };
 
-export function getArtifactSet(artifactSetName: string) {
+export function getArtifactSet(artifactSetName: ArtifactSetName) {
   const artifactData = genshindb.artifacts(artifactSetName, DB_OPTIONS);
 
   if (!artifactData) {
     return null;
   }
 
-  return artifactData;
+  return artifactData as ArtifactSet;
 }
 
 export function getArtifactSetsNames() {
-  return genshindb.artifacts("names", DB_NAMES_OPTIONS) as string[];
+  return genshindb.artifacts("names", DB_NAMES_OPTIONS) as ArtifactSetName[];
 }
 
-export function getCharacter(characterName: string) {
+export function getCharacter(characterName: CharacterName) {
   const characterData = genshindb.characters(characterName, DB_OPTIONS);
 
   if (!characterData) {
     return null;
   }
 
-  return { ...characterData, stats: undefined };
+  return { ...characterData, stats: undefined } as Character;
 }
 
 export function getCharactersNames() {
-  return genshindb.characters("names", DB_NAMES_OPTIONS) as string[];
+  return genshindb.characters("names", DB_NAMES_OPTIONS) as CharacterName[];
 }
 
 export function getElement(elementName: string) {

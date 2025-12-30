@@ -1,4 +1,5 @@
-import { ArtifactSetNames, CharacterRoleIds, WeaponNames } from "@/types/base.types";
+import { ArtifactSetNames } from "@/store/features/artifact-sets";
+import { CharacterRoleIds, WeaponNames } from "@/types/base.types";
 import type { CharacterRecommendations } from "@/types/recommendations.types";
 
 export default {

@@ -1,4 +1,4 @@
-import { type CharacterName, CharacterNames } from "@/types/base.types";
+import { type CharacterName, CharacterNames } from "@/store/features/characters";
 import type { CharacterRecommendations } from "@/types/recommendations.types";
 
 export default {
@@ -17,6 +17,7 @@ export default {
   [CharacterNames.DIONA]: (await import("./Diona-recommendations")).default,
   [CharacterNames.DORI]: (await import("./Dori-recommendations")).default,
   [CharacterNames.DURIN]: (await import("./Durin-recommendations")).default,
+  [CharacterNames.FISCHL]: (await import("./Fischl-recommendations")).default,
   [CharacterNames.GAMING]: (await import("./Gaming-recommendations")).default,
   [CharacterNames.GANYU]: (await import("./Ganyu-recommendations")).default,
   [CharacterNames.GOROU]: (await import("./Gorou-recommendations")).default,

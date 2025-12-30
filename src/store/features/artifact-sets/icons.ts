@@ -1,6 +1,6 @@
-import { ArtifactSetNames } from "@/types/base.types";
+import { type ArtifactSetName, ArtifactSetNames } from "./types";
 
-export const ARTIFACT_SET_MIHOYO_ICONS = {
+export const ArtifactSetIcons = {
   [ArtifactSetNames.FRAGMENT_OF_HARMONIC_WHIMSY]: {
     flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/7557f4558ab243d82e8b6b9994fc97ee_7613761242270338701.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/7df24b7057d7243b568a5a1eafa8ca1a_7141285034307751982.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -50,4 +50,4 @@ export const ARTIFACT_SET_MIHOYO_ICONS = {
     goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/520482a32f80b5538d6d2e6dc8cc194a_3357590716156202832.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/cf017c10098946f6d3d19a6b2c49bd53_7064122714444153592.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-} as Record<string, Record<"flower" | "plume" | "sands" | "goblet" | "circlet", string>>;
+} as Record<ArtifactSetName, Record<"flower" | "plume" | "sands" | "goblet" | "circlet", string>>;

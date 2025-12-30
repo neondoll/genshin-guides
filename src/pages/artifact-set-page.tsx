@@ -1,9 +1,7 @@
 import { type FC, useMemo } from "react";
 import { Link, useParams } from "react-router";
 
-import type { Rarity } from "@/types/base.types";
-import { ARTIFACT_SET_MIHOYO_ICONS } from "@/store/features/artifact-sets/enums";
-import { ArtifactSetImage } from "@/store/features/artifact-sets/components";
+import ImageWithFallback from "@/components/image-with-fallback";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
@@ -14,17 +12,19 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import { Home } from "@/components/ui/icons";
 import { RARITY_GRADIENTS } from "@/lib/rarity";
-import { useArtifactSet } from "@/store/features/artifact-sets/hooks";
-import ImageWithFallback from "@/components/image-with-fallback";
+import { cn } from "@/lib/utils";
+import { ArtifactSetIcons, ArtifactSetImage, useArtifactSet } from "@/store/features/artifact-sets";
+import type { Rarity } from "@/types/base.types";
 
 const ArtifactSetPage: FC = () => {
   const { artifactSetId } = useParams();
-  const { artifactSet, error, loading } = useArtifactSet(JSON.parse(artifactSetId as string));
 
-  const artifactSetName = useMemo(() => artifactSet?.name || "NONE", [artifactSet]);
+  const artifactSetName = useMemo(() => JSON.parse(artifactSetId as string), [artifactSetId]);
+
+  const { artifactSet, error, loading } = useArtifactSet(artifactSetName);
+
   const characteristics = useMemo(() => {
     return [
       { label: "Имя", value: artifactSet?.name },
@@ -130,7 +130,7 @@ const ArtifactSetPage: FC = () => {
                 alt={artifactSet.flower.name}
                 className={cn("size-12 rounded-md rounded-br-2xl", rarityGradient)}
                 draggable={false}
-                fallbackSrc={ARTIFACT_SET_MIHOYO_ICONS[artifactSet.name]?.flower}
+                fallbackSrc={ArtifactSetIcons[artifactSet.name]?.flower}
                 src={artifactSet.images.mihoyo_flower}
               />
               <div>
@@ -145,7 +145,7 @@ const ArtifactSetPage: FC = () => {
                 alt={artifactSet.plume.name}
                 className={cn("size-12 rounded-md rounded-br-2xl", rarityGradient)}
                 draggable={false}
-                fallbackSrc={ARTIFACT_SET_MIHOYO_ICONS[artifactSet.name]?.plume}
+                fallbackSrc={ArtifactSetIcons[artifactSet.name]?.plume}
                 src={artifactSet.images.mihoyo_plume}
               />
               <div>
@@ -160,7 +160,7 @@ const ArtifactSetPage: FC = () => {
                 alt={artifactSet.sands.name}
                 className={cn("size-12 rounded-md rounded-br-2xl", rarityGradient)}
                 draggable={false}
-                fallbackSrc={ARTIFACT_SET_MIHOYO_ICONS[artifactSet.name]?.sands}
+                fallbackSrc={ArtifactSetIcons[artifactSet.name]?.sands}
                 src={artifactSet.images.mihoyo_sands}
               />
               <div>
@@ -175,7 +175,7 @@ const ArtifactSetPage: FC = () => {
                 alt={artifactSet.goblet.name}
                 className={cn("size-12 rounded-md rounded-br-2xl", rarityGradient)}
                 draggable={false}
-                fallbackSrc={ARTIFACT_SET_MIHOYO_ICONS[artifactSet.name]?.goblet}
+                fallbackSrc={ArtifactSetIcons[artifactSet.name]?.goblet}
                 src={artifactSet.images.mihoyo_goblet}
               />
               <div>
@@ -190,7 +190,7 @@ const ArtifactSetPage: FC = () => {
                 alt={artifactSet.circlet.name}
                 className={cn("size-12 rounded-md rounded-br-2xl", rarityGradient)}
                 draggable={false}
-                fallbackSrc={ARTIFACT_SET_MIHOYO_ICONS[artifactSet.name]?.circlet}
+                fallbackSrc={ArtifactSetIcons[artifactSet.name]?.circlet}
                 src={artifactSet.images.mihoyo_circlet}
               />
               <div>

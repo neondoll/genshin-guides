@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import { Link } from "react-router";
 
-import { ArtifactSetImage } from "@/store/features/artifact-sets/components";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -11,9 +10,9 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
 import { Home } from "@/components/ui/icons";
-import { useArtifactSetsNames } from "@/store/features/artifact-sets/hooks";
+import { cn } from "@/lib/utils";
+import { ArtifactSetImage, type ArtifactSetName, useArtifactSetsNames } from "@/store/features/artifact-sets";
 
 const ArtifactSetsPage: FC = () => {
   const { artifactSetsNames, error, loading } = useArtifactSetsNames();
@@ -60,7 +59,7 @@ const ArtifactSetsPage: FC = () => {
     </>
   );
 };
-const ArtifactSetCard: FC<{ name: string }> = ({ name }) => {
+const ArtifactSetCard: FC<{ name: ArtifactSetName }> = ({ name }) => {
   return (
     <Card
       className={cn([

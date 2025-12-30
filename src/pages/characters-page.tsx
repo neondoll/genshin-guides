@@ -10,11 +10,10 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { CharacterImage } from "@/store/features/characters/components";
-import { cn } from "@/lib/utils";
-import { ElementImage } from "@/store/features/elements/components";
 import { Home } from "@/components/ui/icons";
-import { useCharacter, useCharactersNames } from "@/store/features/characters/hooks";
+import { cn } from "@/lib/utils";
+import { CharacterImage, type CharacterName, useCharacter, useCharactersNames } from "@/store/features/characters";
+import { ElementImage } from "@/store/features/elements/components";
 
 /* const useCharacters = () => {
   const [characters, setCharacters] = useState<string[]>([]);
@@ -85,7 +84,7 @@ const CharactersPage: FC = () => {
     </>
   );
 };
-const CharacterCard: FC<{ name: string }> = ({ name }) => {
+const CharacterCard: FC<{ name: CharacterName }> = ({ name }) => {
   const { character } = useCharacter(name);
 
   return (

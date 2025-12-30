@@ -2,15 +2,7 @@ import type { Talent } from "genshin-db";
 import { type FC, useMemo } from "react";
 import { Link, useParams } from "react-router";
 
-import type { CharacterName } from "@/types/base.types";
-import type {
-  CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
-  CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
-  CharacterRecommendations as Recommendations,
-  CharacterTalentRecommendations as TalentRecommendations,
-  CharacterWeaponRecommendations as WeaponRecommendations,
-} from "@/types/recommendations.types";
-import { ArtifactSetImage } from "@/store/features/artifact-sets/components";
+import BestTooltip from "@/components/best-tooltip";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
@@ -22,20 +14,26 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CharacterImage } from "@/store/features/characters/components";
-import { cn } from "@/lib/utils";
-import { ElementImage } from "@/store/features/elements/components";
-import { formatPercent } from "@/utils/format";
 import { Home, SquarePlay } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useCharacter } from "@/store/features/characters/hooks";
-import { useTalent } from "@/store/features/talents/hooks";
-import { WeaponImage } from "@/store/features/weapons/components";
-import BestTooltip from "@/components/best-tooltip";
 import CHARACTER_ROLES from "@/data/character-roles";
 import CHARACTERS_RECOMMENDATIONS from "@/data/characters-recommendations";
 import VIDEO_SOURCES from "@/data/video-sources";
+import { cn } from "@/lib/utils";
+import { ArtifactSetImage } from "@/store/features/artifact-sets";
+import { CharacterImage, type CharacterName, useCharacter } from "@/store/features/characters";
+import { ElementImage } from "@/store/features/elements/components";
+import { useTalent } from "@/store/features/talents/hooks";
+import { WeaponImage } from "@/store/features/weapons/components";
+import type {
+  CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
+  CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
+  CharacterRecommendations as Recommendations,
+  CharacterTalentRecommendations as TalentRecommendations,
+  CharacterWeaponRecommendations as WeaponRecommendations,
+} from "@/types/recommendations.types";
+import { formatPercent } from "@/utils/format";
 
 const CharacterPage: FC = () => {
   const { characterId } = useParams();

@@ -1,6 +1,6 @@
-import { CharacterNames } from "@/types/base.types";
+import { type CharacterName, CharacterNames } from "./types";
 
-export const CHARACTER_MIHOYO_ICONS = {
+export const CharacterIcons = {
   [CharacterNames.AINO]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/09/70239714/8de27885f9ecab5db5e6a2bc69fda15d_6967953783443502732.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.ARLECCHINO]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/21/70239714/672e65470bfd14b664596c2a7f7eaaf8_6373678808378922111.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.CHEVREUSE]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/07/70239714/a846729f31f16a987a8696466ebabcc0_4201736875484063474.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -44,4 +44,4 @@ export const CHARACTER_MIHOYO_ICONS = {
   "Шилонен": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/10/07/70239714/b663e62a652cfea13b60cbb756f88f84_7030055574710067357.png?x-oss-process=image%2Fformat%2Cwebp",
   "Эмилия": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/04/70239714/26a173f3a424de6892768b92b55919f0_1936358140667906470.png?x-oss-process=image%2Fformat%2Cwebp",
   "Эскофье": "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/05/04/70239714/2c913f2562c1ce59c1530fbf2e31dbd4_7669132097080207370.png?x-oss-process=image%2Fformat%2Cwebp",
-} as Record<string, string>;
+} as { [P in CharacterName]?: string };

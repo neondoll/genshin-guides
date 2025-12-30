@@ -1,17 +1,18 @@
 import { type FC, useMemo } from "react";
 
-import type { Rarity } from "@/types/base.types";
-import { cn } from "@/lib/utils";
-import { RARITY_GRADIENTS } from "@/lib/rarity";
 import { useArtifactSet } from "./hooks";
+import { ArtifactSetIcons } from "./icons";
+import type { ArtifactSetName } from "./types";
 import ImageWithFallback from "@/components/image-with-fallback";
-import { ARTIFACT_SET_MIHOYO_ICONS } from "@/store/features/artifact-sets/enums.ts";
+import { RARITY_GRADIENTS } from "@/lib/rarity";
+import { cn } from "@/lib/utils";
+import type { Rarity } from "@/types/base.types";
 
-export const ArtifactSetImage: FC<{ className?: string; name: string }> = ({ className, name }) => {
+export const ArtifactSetImage: FC<{ className?: string; name: ArtifactSetName }> = ({ className, name }) => {
   const { artifactSet } = useArtifactSet(name);
 
   const fallbackSrc = useMemo(() => {
-    const images = ARTIFACT_SET_MIHOYO_ICONS[name];
+    const images = ArtifactSetIcons[name];
 
     if (!images) {
       return undefined;

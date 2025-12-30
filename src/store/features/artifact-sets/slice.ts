@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { Artifact } from "genshin-db";
 
+import type { ArtifactSet, ArtifactSetName } from "./types";
 import { getArtifactSet, getArtifactSetsNames } from "@/utils/genshinDbAdapter";
 
 interface ArtifactSetsState {
-  entities: Record<string, Omit<Artifact, "stats"> | null>;
-  names: string[];
+  entities: { [P in ArtifactSetName]?: ArtifactSet | null };
+  names: ArtifactSetName[];
 }
 
 const initialState: ArtifactSetsState = { entities: {}, names: [] };
 
-export const fetchArtifactSetByName = createAsyncThunk("artifactSets/fetchByName", async (artifactSetName: string, { getState }) => {
+export const fetchArtifactSetByName = createAsyncThunk("artifactSets/fetchByName", async (artifactSetName: ArtifactSetName, { getState }) => {
   const state = getState() as { artifactSets: ArtifactSetsState };
 
   const stateArtifactSet = state.artifactSets.entities[artifactSetName];

@@ -1,4 +1,5 @@
-import { ArtifactSetNames, CharacterRoleIds, VideoSourceIds, WeaponNames } from "@/types/base.types";
+import { ArtifactSetNames } from "@/store/features/artifact-sets";
+import { CharacterRoleIds, VideoSourceIds, WeaponNames } from "@/types/base.types";
 import type { CharacterRecommendations } from "@/types/recommendations.types";
 
 export default {
@@ -22,7 +23,7 @@ export default {
   constellationOrSignatureWeapon: "Если нет Легендарного лука: С1 < Сигна\nЕсли есть Легендарный лук: С1 > Сигна",
   recommendedLevel: "80/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SUPPORT],
-  signatureWeaponNames: [WeaponNames.ELEGY_FOR_THE_END, WeaponNames.THE_DAYBREAK_CHRONICLES],
+  signatureWeaponNames: [WeaponNames.ELEGY_FOR_THE_END, WeaponNames.SKYWARD_HARP, WeaponNames.THE_DAYBREAK_CHRONICLES],
   talents: [
     { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
     { type: "combat2", priority: "Во вторую очередь", referenceLevel: 8 },
