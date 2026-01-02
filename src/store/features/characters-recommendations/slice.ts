@@ -25,8 +25,12 @@ export const fetchCharacterRecommendationsByName = createAsyncThunk("charactersR
   // console.log(`Загрузка рекомендаций персонажа "${characterName}" с сервера`);
 
   try {
-    const module = await allRecommendations[characterName]();
-    return { data: module.default, name: characterName };
+    if (characterName in allRecommendations) {
+      const module = await allRecommendations[characterName]();
+      return { data: module.default, name: characterName };
+    }
+
+    return { data: null, name: characterName };
   }
   catch (error) {
     console.error(error);

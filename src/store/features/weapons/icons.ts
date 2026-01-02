@@ -32,6 +32,7 @@ export const WeaponIcons = {
   [WeaponNames.RING_OF_YAXCHE]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/9ab70898644274ce31f91faea8216bd8_5924884446177979679.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SACRIFICIAL_JADE]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/18/51635400/58d2970c1997ad52dfbb43017dac3ce8_2114572788886202769.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SCION_OF_THE_BLAZING_SUN]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/18/51635400/b10e2c320e65f991f0e829879761af72_7924883850603523957.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.SILVERSHOWER_HEARTSTRINGS]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/06/25/bbfcbecb44910640904415c4c8f7a71d_6233228634431101260.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SNARE_HOOK]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/794f286cd49e6beb026d4729d6a0e491_2738340196396279380.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SONG_OF_STILLNESS]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/19/51635400/2cec558b676eefaafe23b64d42f2067e_4006968745169489513.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.STARCALLERS_WATCH]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/26/de225a286996965268c32027a6c484d9_2367767765928118667.png?x-oss-process=image%2Fformat%2Cwebp",

@@ -148,6 +148,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239180",
     youtube: "https://youtu.be/IoGwHEPCnYs",
   },
+  [VideoSourceIds.GUIDE_TO_RAIDEN_SHOGUN_IN_5_0]: {
+    id: VideoSourceIds.GUIDE_TO_RAIDEN_SHOGUN_IN_5_0,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Райдэн в 5.0",
+    date: "2024-10-02",
+    vkvideo: "https://vk.com/video-227044935_456239156",
+    youtube: "https://youtu.be/sDmNHMtfrhc",
+  },
   [VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_AnimeCool]: {
     id: VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_AnimeCool,
     author: "Анимекул",
@@ -171,6 +179,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     date: "2025-12-05",
     vkvideo: "https://vkvideo.ru/video-231668223_456239096",
     youtube: "https://youtu.be/X81tzU7NNws",
+  },
+  [VideoSourceIds.HOW_GOOD_IS_RAIDEN_SHOGUN_CONSTELLATIONS]: {
+    id: VideoSourceIds.HOW_GOOD_IS_RAIDEN_SHOGUN_CONSTELLATIONS,
+    author: "Miron MinMax",
+    title: "Насколько Хороши Созвездия Райдэн | И хороши ли?",
+    date: "2025-05-30",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239227",
+    youtube: "https://youtu.be/dzI9MhNl5Ic",
   },
   [VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER]: {
     id: VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
