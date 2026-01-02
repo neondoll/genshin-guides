@@ -1,0 +1,222 @@
+import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
+
+import { type VideoSource, type VideoSourceId, VideoSourceIds } from "./types";
+import type { RootState } from "@/store";
+
+export const videoSourcesAdapter = createEntityAdapter<VideoSource>({
+  sortComparer: (a, b) => {
+    const aDateTime = new Date(a.date).getTime();
+    const bDateTime = new Date(b.date).getTime();
+
+    return aDateTime === bDateTime ? a.title.localeCompare(b.title) : bDateTime - aDateTime;
+  },
+});
+
+const initialState = videoSourcesAdapter.getInitialState(undefined, {
+  [VideoSourceIds.ALL_ABOUT_ALL_TALENTS]: {
+    id: VideoSourceIds.ALL_ABOUT_ALL_TALENTS,
+    author: "Miron MinMax",
+    title: "ВСЁ про ВСЕ таланты ft.@AnimeCool_Genshin",
+    date: "2024-01-19",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239080",
+    youtube: "https://youtu.be/UQpDXX2Umyk",
+  },
+  [VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON]: {
+    id: VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON,
+    author: "Miron MinMax",
+    title: "С1 или Сигна? Что Лучше и Насколько? | Про Всех 5★ Персонажей",
+    date: "2025-01-15",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239189",
+    youtube: "https://youtu.be/NfgsESKwsdk",
+  },
+  [VideoSourceIds.GUIDE_TO_AINO_IN_6_0]: {
+    id: VideoSourceIds.GUIDE_TO_AINO_IN_6_0,
+    author: "Анимекул",
+    title: "Зачем нужна Айно? | Подробный гайд на Айно [Genshin Impact 6.0]",
+    date: "2025-09-11",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239064",
+    youtube: "https://youtu.be/u-bzTR12UuA",
+  },
+  [VideoSourceIds.GUIDE_TO_ARLECCHINO_IN_5_3]: {
+    id: VideoSourceIds.GUIDE_TO_ARLECCHINO_IN_5_3,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Арлекино в 5.3",
+    date: "2025-01-22",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239191",
+    youtube: "https://youtu.be/VY0Kt2AaMGY",
+  },
+  [VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_AnimeCool]: {
+    id: VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_AnimeCool,
+    author: "Анимекул",
+    title: "Дурин - Новая Пиро ИМБА? | Подробный гайд на Дурина",
+    date: "2025-12-02",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239092",
+    youtube: "https://youtu.be/N7NqGgOR2mA",
+  },
+  [VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_MironMinMax,
+    author: "Miron MinMax",
+    title: "Дурин - Паверкрип Сян Лин? Гайд на Дурина",
+    date: "2025-12-03",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239277",
+    youtube: "https://youtu.be/s7cCUf-tQ_E",
+  },
+  [VideoSourceIds.GUIDE_TO_FISCHL_IN_6_2]: {
+    id: VideoSourceIds.GUIDE_TO_FISCHL_IN_6_2,
+    author: "Miron MinMax",
+    title: "Все Ещё Имба | Подробный и Актуальный Гайд на Фишль [Genshin Impact]",
+    date: "2025-12-29",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239285",
+    youtube: "https://youtu.be/Pwe3zimTI0o",
+  },
+  [VideoSourceIds.GUIDE_TO_INEFFA_IN_5_8]: {
+    id: VideoSourceIds.GUIDE_TO_INEFFA_IN_5_8,
+    author: "Miron MinMax",
+    title: "Начало Нод-Края | Гайд на Инеффу | Genshin Impact 5.8",
+    date: "2025-07-30",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239244",
+    youtube: "https://youtu.be/b5lSX3PQOuw",
+  },
+  [VideoSourceIds.GUIDE_TO_JAHODA_IN_6_2]: {
+    id: VideoSourceIds.GUIDE_TO_JAHODA_IN_6_2,
+    author: "Анимекул",
+    title: "Зачем нужна Ягода? | Подробный гайд на Ягоду",
+    date: "2025-12-03",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239093",
+    youtube: "https://youtu.be/LExQacPYKZc",
+  },
+  [VideoSourceIds.GUIDE_TO_LAUMA_IN_6_0_AnimeCool]: {
+    id: VideoSourceIds.GUIDE_TO_LAUMA_IN_6_0_AnimeCool,
+    author: "Анимекул",
+    title: "Зачем нужна Лаума? | Подробный гайд на Лауму [Genshin Impact 6.0]",
+    date: "2025-09-09",
+    youtube: "https://youtu.be/Y2XmxQHkY6g",
+  },
+  [VideoSourceIds.GUIDE_TO_LAUMA_IN_6_0_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_LAUMA_IN_6_0_MironMinMax,
+    author: "Miron MinMax",
+    title: "Паверкрип Нахиды? Гайд на Лауму в 6.0",
+    date: "2025-09-10",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239254",
+    youtube: "https://youtu.be/BMpFDebyZck",
+  },
+  [VideoSourceIds.GUIDE_TO_MAVUIKA]: {
+    id: VideoSourceIds.GUIDE_TO_MAVUIKA,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Мавуику",
+    date: "2025-06-08",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239238",
+    youtube: "https://youtu.be/bGkCi_aBNrI",
+  },
+  [VideoSourceIds.GUIDE_TO_MUALANI_IN_5_8]: {
+    id: VideoSourceIds.GUIDE_TO_MUALANI_IN_5_8,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Муалани в 5.8",
+    date: "2025-08-18",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239248",
+    youtube: "https://youtu.be/xEglYZO38Rs",
+  },
+  [VideoSourceIds.GUIDE_TO_NAHIDA_IN_5_1]: {
+    id: VideoSourceIds.GUIDE_TO_NAHIDA_IN_5_1,
+    author: "Miron MinMax",
+    title: "Актуальный и Подробный | Гайд на Нахиду в 5.1",
+    date: "2024-10-23",
+    vkvideo: "https://vk.com/video-227044935_456239163",
+    youtube: "https://youtu.be/QZObIiFe8R8",
+  },
+  [VideoSourceIds.GUIDE_TO_NEFER_IN_6_1_AnimeCool]: {
+    id: VideoSourceIds.GUIDE_TO_NEFER_IN_6_1_AnimeCool,
+    author: "Анимекул",
+    title: "Нефер - Новая Дендро ИМБА? | Полный гайд на Нефер [Genshin Impact 6.1]",
+    date: "2025-10-23",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239074",
+    youtube: "https://youtu.be/o5ulYPCoEF4",
+  },
+  [VideoSourceIds.GUIDE_TO_NEFER_IN_6_1_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_NEFER_IN_6_1_MironMinMax,
+    author: "Miron MinMax",
+    title: "Нефер - Новая Дендро Имба? Гайд на Нефер в 6.1 [Genshin Impact]",
+    date: "2025-10-22",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239266",
+    youtube: "https://youtu.be/DcbkdNYCaqM",
+  },
+  [VideoSourceIds.GUIDE_TO_NEUVILLETTE_IN_5_2]: {
+    id: VideoSourceIds.GUIDE_TO_NEUVILLETTE_IN_5_2,
+    author: "Miron MinMax",
+    title: "Актуальный и Подробный | Гайд на Нёвилетта в 5.2",
+    date: "2024-12-11",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239180",
+    youtube: "https://youtu.be/IoGwHEPCnYs",
+  },
+  [VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_AnimeCool]: {
+    id: VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_AnimeCool,
+    author: "Анимекул",
+    title: "Гайд на Варесу 6.2. [Геншин импакт 6.2]",
+    date: "2025-12-21",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239107",
+    youtube: "https://youtu.be/j2UJtlB2f3I",
+  },
+  [VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_MironMinMax,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Варесу в 6.2 [Genshin Impact]",
+    date: "2025-12-23",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239283",
+    youtube: "https://youtu.be/mZE4e2S_S0g",
+  },
+  [VideoSourceIds.GUIDE_TO_VENTI_IN_6_2]: {
+    id: VideoSourceIds.GUIDE_TO_VENTI_IN_6_2,
+    author: "Анимекул",
+    title: "Новый Венти ИМБА? | Подробный гайд на Венти 6.2",
+    date: "2025-12-05",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239096",
+    youtube: "https://youtu.be/X81tzU7NNws",
+  },
+  [VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER]: {
+    id: VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
+    author: "Miron MinMax",
+    title: "Лучшее Доступное Оружия для Каждого Персонажа",
+    date: "2024-11-10",
+    vkvideo: "https://vk.com/video-227044935_456239169",
+    youtube: "https://youtu.be/zVspDJZPa4Y",
+  },
+  [VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER]: {
+    id: VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
+    author: "Miron MinMax",
+    title: "Лучшее Оружие для Каждого Персонажа",
+    date: "2024-11-03",
+    vkvideo: "https://vk.com/video-227044935_456239166",
+    youtube: "https://youtu.be/cjatyGw0EO0",
+  },
+  [VideoSourceIds.WHO_NEEDS_LEVELING_PART_1]: {
+    id: VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
+    author: "Miron MinMax",
+    title: "КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.1 feat.@AnimeCool_Genshin",
+    date: "2023-09-23",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239108",
+    youtube: "https://youtu.be/lhEME9s3HO0?si=qq9FUJwH0JLSTC-H",
+  },
+  [VideoSourceIds.WHO_NEEDS_LEVELING_PART_2]: {
+    id: VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
+    author: "Miron MinMax",
+    title: "КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.2 feat.@AnimeCool_Genshin",
+    date: "2023-09-25",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239106",
+    youtube: "https://youtu.be/Yz95Iw1q-es",
+  },
+});
+
+export const videoSourcesSlice = createSlice({
+  name: "videoSources",
+  initialState,
+  reducers: {},
+});
+
+export default videoSourcesSlice.reducer;
+
+export const { selectAll: selectAllVideoSources } = videoSourcesAdapter.getSelectors((state: RootState) => state.videoSources);
+
+export const selectVideoSourcesByIds = createSelector(
+  [selectAllVideoSources, (_, ids: VideoSourceId[]) => ids],
+  (videoSources, ids) => videoSources.filter(videoSource => ids.includes(videoSource.id)),
+);

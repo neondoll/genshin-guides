@@ -29,6 +29,13 @@ export const ArtifactSetIcons = {
     goblet: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/77b5fbe7f1897a203e19bdabb8b884f4_4669518943085154437.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/26650d6cbdc6b6a48ca5094dfe4582ab_3201644554629248035.png?x-oss-process=image%2Fformat%2Cwebp",
   },
+  [ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING]: {
+    flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/25c4512875bad223765a5a32c82b09a4_7122872897984003318.png?x-oss-process=image%2Fformat%2Cwebp",
+    plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/f474fffae44c4e7a91864113cf5b1f8e_6731765289436648875.png?x-oss-process=image%2Fformat%2Cwebp",
+    sands: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/54a344dc5aca025fbb6cc60a80f7790d_1576492692040107165.png?x-oss-process=image%2Fformat%2Cwebp",
+    goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/04dfdf0deae5f0fc58529dc89ee94d6f_3380820828725566086.png?x-oss-process=image%2Fformat%2Cwebp",
+    circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/7ce20dbf2ffc87b6b942c0f42d0b43d4_6363911804608985715.png?x-oss-process=image%2Fformat%2Cwebp",
+  },
   [ArtifactSetNames.OBSIDIAN_CODEX]: {
     flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/27/237301566/cd11df3be5420d2c53c2da0d3298eb92_5780698217766604061.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/7d671f861ea037febc1e4d2a15cbfb73_5145216481466413723.png?x-oss-process=image%2Fformat%2Cwebp",

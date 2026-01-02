@@ -1,0 +1,124 @@
+import type { CharacterRecommendations } from "../types";
+import { ArtifactSetNames } from "../../artifact-sets";
+import { CharacterRoleIds } from "../../character-roles";
+import { VideoSourceIds } from "../../video-sources";
+import { WeaponNames } from "../../weapons";
+
+export default {
+  artifacts: {
+    sets: {
+      "Прожарка | Перегрузка": [
+        { type: "complete", name: ArtifactSetNames.FRAGMENT_OF_HARMONIC_WHIMSY, best: true, percent: 1.051 },
+        { type: "complete", name: ArtifactSetNames.GLADIATORS_FINALE, percent: 1.000 },
+        { type: "complete", name: ArtifactSetNames.DESERT_PAVILION_CHRONICLE, percent: 0.973 },
+        { type: "complete", name: ArtifactSetNames.ECHOES_OF_AN_OFFERING, percent: 0.971 },
+        {
+          type: "combined",
+          names: [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.MARECHAUSSEE_HUNTER],
+          percent: 0.952,
+        },
+        {
+          type: "combined",
+          names: [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.GLADIATORS_FINALE],
+          percent: 0.946,
+        },
+        {
+          type: "combined",
+          names: [ArtifactSetNames.SHIMENAWAS_REMINISCENCE, ArtifactSetNames.GLADIATORS_FINALE],
+          percent: 0.933,
+        },
+      ],
+      "Пар | Таяние": [
+        { type: "complete", name: ArtifactSetNames.FRAGMENT_OF_HARMONIC_WHIMSY, best: true, percent: 1.042 },
+        { type: "complete", name: ArtifactSetNames.GLADIATORS_FINALE, percent: 1.000 },
+        { type: "complete", name: ArtifactSetNames.GILDED_DREAMS, percent: 0.983 },
+        { type: "complete", name: ArtifactSetNames.DESERT_PAVILION_CHRONICLE, percent: 0.968 },
+        { type: "complete", name: ArtifactSetNames.ECHOES_OF_AN_OFFERING, percent: 0.956 },
+        {
+          type: "combined",
+          names: [ArtifactSetNames.WANDERERS_TROUPE, ArtifactSetNames.GILDED_DREAMS],
+          percent: 0.953,
+        },
+        {
+          type: "combined",
+          names: [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.GILDED_DREAMS],
+          percent: 0.952,
+        },
+        {
+          type: "combined",
+          names: [ArtifactSetNames.GLADIATORS_FINALE, ArtifactSetNames.GILDED_DREAMS],
+          percent: 0.949,
+        },
+        {
+          type: "combined",
+          names: [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.MARECHAUSSEE_HUNTER],
+          percent: 0.945,
+        },
+      ],
+    },
+    stats: {
+      sands: [{ name: "Сила атаки %" }],
+      goblet: [{ name: "Бонус Пиро урона", notes: ["Лучше"] }, { name: "Сила атаки %" }],
+      circlet: [{ name: "Крит. урон" }, { name: "Шанс крит. попадания" }],
+      additional: [
+        { name: "Шанс крит. попадания", notes: ["Приоритетно", "от 65%"] },
+        { name: "Крит. урон", notes: ["Приоритетно", "от 150%"] },
+        { name: "Сила атаки %", notes: ["от 2000"] },
+        { name: "Мастерство стихий", notes: ["от 150 (если Арлекино активирует реакции)"] },
+        { name: "Восст. энергии", notes: ["Специально не собирать"] },
+      ],
+    },
+  },
+  constellationOrSignatureWeapon: "Сигна ~ C1. Лучше С1 и Сигна",
+  keyConstellations: [1, 2, 3, 6],
+  roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
+  signatureWeaponNames: [WeaponNames.CRIMSON_MOONS_SEMBLANCE],
+  talents: [
+    { type: "combat1", priority: "В первую очередь", referenceLevel: 10 },
+    { type: "combat2", priority: "По необходимости", referenceLevel: "6 | 8" },
+    { type: "combat3", priority: "Во вторую очередь", referenceLevel: "6 | 8" },
+  ],
+  videoSourceIds: [
+    VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON,
+    VideoSourceIds.GUIDE_TO_ARLECCHINO_IN_5_3,
+    VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
+    VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
+  ],
+  weapons: {
+    "Гиперкери | Прожарка | Перегрузка": [
+      { name: WeaponNames.CRIMSON_MOONS_SEMBLANCE, best: "Лучшее оружие", percent: 1.316 },
+      { name: WeaponNames.PRIMORDIAL_JADE_WINGED_SPEAR, percent: 1.124 },
+      { name: WeaponNames.STAFF_OF_THE_SCARLET_SANDS, percent: 1.112 },
+      { name: WeaponNames.LUMIDOUCE_ELEGY, percent: 1.103 },
+      { name: WeaponNames.DEATHMATCH, postfix: "1 враг", r: 5, percent: 1.087 },
+      { name: WeaponNames.STAFF_OF_HOMA, percent: 1.085 },
+      { name: WeaponNames.CALAMITY_QUELLER, percent: 1.063 },
+      { name: WeaponNames.DEATHMATCH, postfix: "1 враг", r: 1, percent: 1.032 },
+      { name: WeaponNames.WHITE_TASSEL, best: "Лучшее доступное оружие", percent: 1.000 },
+      { name: WeaponNames.BALLAD_OF_THE_FJORDS, percent: 0.968 },
+      { name: WeaponNames.SKYWARD_SPINE, percent: 0.948 },
+      { name: WeaponNames.BLACKCLIFF_POLE, percent: 0.899 },
+      { name: WeaponNames.MISSIVE_WINDSPEAR, percent: 0.875 },
+    ],
+    "Пар | Таяние": [
+      { name: WeaponNames.CRIMSON_MOONS_SEMBLANCE, best: "Лучшее оружие", percent: 1.309 },
+      { name: WeaponNames.STAFF_OF_THE_SCARLET_SANDS, percent: 1.156 },
+      { name: WeaponNames.PRIMORDIAL_JADE_WINGED_SPEAR, percent: 1.114 },
+      { name: WeaponNames.DEATHMATCH, postfix: "1 враг", r: 5, percent: 1.105 },
+      { name: WeaponNames.LUMIDOUCE_ELEGY, percent: 1.103 },
+      { name: WeaponNames.BALLAD_OF_THE_FJORDS, r: 5, percent: 1.098 },
+      { name: WeaponNames.STAFF_OF_HOMA, percent: 1.086 },
+      { name: WeaponNames.CALAMITY_QUELLER, percent: 1.062 },
+      { name: WeaponNames.VORTEX_VANQUISHER, percent: 1.044 },
+      { name: WeaponNames.DEATHMATCH, postfix: "1 враг", r: 1, percent: 1.043 },
+      { name: WeaponNames.LITHIC_SPEAR, postfix: "2 стака", r: 5, percent: 1.043 },
+      { name: WeaponNames.BALLAD_OF_THE_FJORDS, r: 1, percent: 1.023 },
+      { name: WeaponNames.WHITE_TASSEL, best: "Лучшее доступное оружие", percent: 1.000 },
+      { name: WeaponNames.MISSIVE_WINDSPEAR, percent: 0.990 },
+      { name: WeaponNames.DRAGONS_BANE, percent: 0.965 },
+      { name: WeaponNames.LITHIC_SPEAR, postfix: "2 стака", r: 1, percent: 0.965 },
+      { name: WeaponNames.SKYWARD_SPINE, percent: 0.943 },
+      { name: WeaponNames.BLACKCLIFF_POLE, percent: 0.938 },
+    ],
+  },
+} as CharacterRecommendations;

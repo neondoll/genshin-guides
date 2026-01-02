@@ -17,23 +17,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home, SquarePlay } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import CHARACTERS_RECOMMENDATIONS from "@/data/characters-recommendations";
-import VIDEO_SOURCES from "@/data/video-sources";
 import { cn } from "@/lib/utils";
 import { useAppSelector } from "@/store";
 import { ArtifactSetImage } from "@/store/features/artifact-sets";
 import { selectCharacterRolesByIds } from "@/store/features/character-roles";
 import { CharacterImage, type CharacterName, useCharacter } from "@/store/features/characters";
+import {
+  type CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
+  type CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
+  type CharacterRecommendations as Recommendations,
+  type CharacterTalentRecommendations as TalentRecommendations,
+  type CharacterWeaponRecommendations as WeaponRecommendations,
+  useCharacterRecommendations,
+} from "@/store/features/characters-recommendations";
 import { ElementImage } from "@/store/features/elements";
 import { useTalent } from "@/store/features/talents";
+import { selectVideoSourcesByIds } from "@/store/features/video-sources";
 import { WeaponImage } from "@/store/features/weapons";
-import type {
-  CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
-  CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
-  CharacterRecommendations as Recommendations,
-  CharacterTalentRecommendations as TalentRecommendations,
-  CharacterWeaponRecommendations as WeaponRecommendations,
-} from "@/types/recommendations.types";
 import { formatPercent } from "@/utils/format";
 
 const CharacterPage: FC = () => {
@@ -155,43 +155,44 @@ const RecommendationTabs = {
 } as const;
 
 const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
-  const recommendations = useMemo(() => CHARACTERS_RECOMMENDATIONS[name], [name]);
+  const { characterRecommendations } = useCharacterRecommendations(name);
+
   const tabs = useMemo(() => {
     const items = [];
 
     if (
-      recommendations?.constellationOrSignatureWeapon || recommendations?.keyConstellations
-      || recommendations?.recommendedLevel || recommendations?.signatureWeaponNames
+      characterRecommendations?.constellationOrSignatureWeapon || characterRecommendations?.keyConstellations
+      || characterRecommendations?.recommendedLevel || characterRecommendations?.signatureWeaponNames
     ) {
       items.push(RecommendationTabs.BASE);
     }
 
     items.push(RecommendationTabs.ROLES);
 
-    if (recommendations?.talents) {
+    if (characterRecommendations?.talents) {
       items.push(RecommendationTabs.TALENTS);
     }
 
-    if (recommendations?.weapons) {
+    if (characterRecommendations?.weapons) {
       items.push(RecommendationTabs.WEAPONS);
     }
 
-    if (recommendations?.artifacts) {
+    if (characterRecommendations?.artifacts) {
       items.push(RecommendationTabs.ARTIFACTS);
     }
 
-    if (recommendations?.detachments) {
+    if (characterRecommendations?.detachments) {
       items.push(RecommendationTabs.DETACHMENTS);
     }
 
-    if (recommendations?.videoSourceIds) {
+    if (characterRecommendations?.videoSourceIds) {
       items.push(RecommendationTabs.VIDEO_SOURCES);
     }
 
     return items;
-  }, [recommendations]);
+  }, [characterRecommendations]);
 
-  return recommendations && (
+  return characterRecommendations && (
     <Card className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
       <CardHeader>
         <CardTitle className="text-xl font-bold">Рекомендации по оружию, артефактам и отрядам</CardTitle>
@@ -220,28 +221,28 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
           <TabsContent value={RecommendationTabs.BASE.value}>
             <Table>
               <TableBody>
-                {recommendations.recommendedLevel && (
+                {characterRecommendations.recommendedLevel && (
                   <TableRow>
                     <TableCell className="text-base text-slate-700 dark:text-slate-300">
                       Рекомендованный уровень
                     </TableCell>
-                    <TableCell className="text-pretty whitespace-normal">{recommendations.recommendedLevel}</TableCell>
+                    <TableCell className="text-pretty whitespace-normal">{characterRecommendations.recommendedLevel}</TableCell>
                   </TableRow>
                 )}
-                {recommendations.keyConstellations && (
+                {characterRecommendations.keyConstellations && (
                   <TableRow>
                     <TableCell className="text-base text-slate-700 dark:text-slate-300">Ключевые созвездия</TableCell>
                     <TableCell className="text-pretty whitespace-normal">
-                      {recommendations.keyConstellations.join(", ")}
+                      {characterRecommendations.keyConstellations.join(", ")}
                     </TableCell>
                   </TableRow>
                 )}
-                {recommendations.signatureWeaponNames && recommendations.signatureWeaponNames.map((signatureWeaponName, index) => (
+                {characterRecommendations.signatureWeaponNames && characterRecommendations.signatureWeaponNames.map((signatureWeaponName, index) => (
                   <TableRow key={signatureWeaponName}>
                     {index === 0 && (
                       <TableCell
                         className="text-base text-slate-700 dark:text-slate-300"
-                        rowSpan={recommendations.signatureWeaponNames?.length}
+                        rowSpan={characterRecommendations.signatureWeaponNames?.length}
                       >
                         Сигнатурное оружие
                       </TableCell>
@@ -254,11 +255,11 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                     </TableCell>
                   </TableRow>
                 ))}
-                {recommendations.constellationOrSignatureWeapon && (
+                {characterRecommendations.constellationOrSignatureWeapon && (
                   <TableRow>
                     <TableCell className="text-base text-slate-700 dark:text-slate-300">Сигна или Созвездия?</TableCell>
                     <TableCell className="text-pretty whitespace-pre-line">
-                      {recommendations.constellationOrSignatureWeapon}
+                      {characterRecommendations.constellationOrSignatureWeapon}
                     </TableCell>
                   </TableRow>
                 )}
@@ -266,35 +267,35 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
             </Table>
           </TabsContent>
           <TabsContent value={RecommendationTabs.ROLES.value}>
-            <CharacterRoleRecommendations recommendations={recommendations.roleIds} />
+            <CharacterRoleRecommendations recommendations={characterRecommendations.roleIds} />
           </TabsContent>
           <TabsContent value={RecommendationTabs.TALENTS.value}>
-            {recommendations.talents && (
-              <CharacterTalentRecommendations name={name} recommendations={recommendations.talents} />
+            {characterRecommendations.talents && (
+              <CharacterTalentRecommendations name={name} recommendations={characterRecommendations.talents} />
             )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.WEAPONS.value}>
-            {recommendations.weapons && (
-              <CharacterWeaponRecommendations recommendations={recommendations.weapons} />
+            {characterRecommendations.weapons && (
+              <CharacterWeaponRecommendations recommendations={characterRecommendations.weapons} />
             )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.ARTIFACTS.value}>
-            {recommendations.artifacts && (
+            {characterRecommendations.artifacts && (
               <div className="space-y-4">
                 <div className="space-y-3">
                   <p className="text-lg font-medium text-slate-700 dark:text-slate-300">Наборы</p>
-                  <CharacterArtifactSetRecommendations recommendations={recommendations.artifacts.sets} />
+                  <CharacterArtifactSetRecommendations recommendations={characterRecommendations.artifacts.sets} />
                 </div>
                 <div className="space-y-3">
                   <p className="text-lg font-medium text-slate-700 dark:text-slate-300">Характеристики</p>
                   <Table>
                     <TableBody>
-                      {recommendations.artifacts.stats.sands.map((recommendation, index) => (
+                      {characterRecommendations.artifacts.stats.sands.map((recommendation, index) => (
                         <TableRow key={recommendation.name}>
                           {index === 0 && (
                             <TableCell
                               className="text-base text-slate-700 dark:text-slate-300"
-                              rowSpan={recommendations.artifacts?.stats.sands.length}
+                              rowSpan={characterRecommendations.artifacts?.stats.sands.length}
                             >
                               Часы
                             </TableCell>
@@ -311,12 +312,12 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                           </TableCell>
                         </TableRow>
                       ))}
-                      {recommendations.artifacts.stats.goblet.map((recommendation, index) => (
+                      {characterRecommendations.artifacts.stats.goblet.map((recommendation, index) => (
                         <TableRow key={recommendation.name}>
                           {index === 0 && (
                             <TableCell
                               className="text-base text-slate-700 dark:text-slate-300"
-                              rowSpan={recommendations.artifacts?.stats.goblet.length}
+                              rowSpan={characterRecommendations.artifacts?.stats.goblet.length}
                             >
                               Кубок
                             </TableCell>
@@ -333,12 +334,12 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                           </TableCell>
                         </TableRow>
                       ))}
-                      {recommendations.artifacts.stats.circlet.map((recommendation, index) => (
+                      {characterRecommendations.artifacts.stats.circlet.map((recommendation, index) => (
                         <TableRow key={recommendation.name}>
                           {index === 0 && (
                             <TableCell
                               className="text-base text-slate-700 dark:text-slate-300"
-                              rowSpan={recommendations.artifacts?.stats.circlet.length}
+                              rowSpan={characterRecommendations.artifacts?.stats.circlet.length}
                             >
                               Корона
                             </TableCell>
@@ -355,12 +356,12 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                           </TableCell>
                         </TableRow>
                       ))}
-                      {recommendations.artifacts.stats.additional.map((recommendation, index) => (
+                      {characterRecommendations.artifacts.stats.additional.map((recommendation, index) => (
                         <TableRow key={recommendation.name}>
                           {index === 0 && (
                             <TableCell
                               className="text-base text-slate-700 dark:text-slate-300"
-                              rowSpan={recommendations.artifacts?.stats.additional.length}
+                              rowSpan={characterRecommendations.artifacts?.stats.additional.length}
                             >
                               Доп.
                             </TableCell>
@@ -384,13 +385,13 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
             )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.DETACHMENTS.value}>
-            {recommendations.detachments && (
-              <CharacterDetachmentRecommendations recommendations={recommendations.detachments} />
+            {characterRecommendations.detachments && (
+              <CharacterDetachmentRecommendations recommendations={characterRecommendations.detachments} />
             )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.VIDEO_SOURCES.value}>
-            {recommendations.videoSourceIds && (
-              <CharacterVideoSources videoSourceIds={recommendations.videoSourceIds} />
+            {characterRecommendations.videoSourceIds && (
+              <CharacterVideoSources videoSourceIds={characterRecommendations.videoSourceIds} />
             )}
           </TabsContent>
         </Tabs>
@@ -711,14 +712,7 @@ const CharacterTalentRecommendationsTable: FC<{
 const CharacterVideoSources: FC<{
   videoSourceIds: NonNullable<Recommendations["videoSourceIds"]>;
 }> = ({ videoSourceIds }) => {
-  const videoSources = useMemo(() => {
-    return videoSourceIds.map(videoSourceId => VIDEO_SOURCES[videoSourceId]).sort((a, b) => {
-      const aDateTime = new Date(a.date).getTime();
-      const bDateTime = new Date(b.date).getTime();
-
-      return aDateTime === bDateTime ? a.title.localeCompare(b.title) : bDateTime - aDateTime;
-    });
-  }, [videoSourceIds]);
+  const videoSources = useAppSelector(state => selectVideoSourcesByIds(state, videoSourceIds));
 
   const hasRutube = useMemo(() => {
     return videoSources.some(videoSource => Boolean(videoSource.rutube));
