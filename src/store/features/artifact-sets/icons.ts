@@ -1,6 +1,13 @@
 import { type ArtifactSetName, ArtifactSetNames } from "./types";
 
 export const ArtifactSetIcons = {
+  [ArtifactSetNames.FINALE_OF_THE_DEEP_GALLERIES]: {
+    flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/bf39402f87db1168263c7c0898c8ab0c_4434336707917443666.png?x-oss-process=image%2Fformat%2Cwebp",
+    plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/c498b33d2359b12603471fd65bd22261_7001131486318823058.png?x-oss-process=image%2Fformat%2Cwebp",
+    sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/24/237301566/2a6efc1386ae931f69a7283451487697_7939111578634756094.png?x-oss-process=image%2Fformat%2Cwebp",
+    goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/24/237301566/968c157b2ae92b17e2e12f346ed306d3_3851334479611384372.png?x-oss-process=image%2Fformat%2Cwebp",
+    circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/24/237301566/0e1f032906e5b4969af48952cd1e9dc8_6167675672511935546.png?x-oss-process=image%2Fformat%2Cwebp",
+  },
   [ArtifactSetNames.FRAGMENT_OF_HARMONIC_WHIMSY]: {
     flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/7557f4558ab243d82e8b6b9994fc97ee_7613761242270338701.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/7df24b7057d7243b568a5a1eafa8ca1a_7141285034307751982.png?x-oss-process=image%2Fformat%2Cwebp",

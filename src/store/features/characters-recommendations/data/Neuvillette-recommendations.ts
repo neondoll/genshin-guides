@@ -3,29 +3,30 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
     sets: [{ type: "complete", name: ArtifactSetNames.MARECHAUSSEE_HUNTER }],
     stats: {
-      sands: [{ name: "HP %" }],
-      goblet: [{ name: "HP %", notes: ["Если в команде Фурина"] }, { name: "Бонус Гидро урона" }],
+      sands: [{ name: Stats.HP_PERCENTAGE }],
+      goblet: [{ name: Stats.HP_PERCENTAGE, notes: ["Если в команде Фурина"] }, { name: "Бонус Гидро урона" }],
       circlet: [
-        { name: "Шанс крит. попадания" },
-        { name: "Крит. урон", notes: ["Чаще всего"] },
-        { name: "HP %", notes: ["Иногда, особенно с Сигной"] },
+        { name: Stats.CRIT_RATE },
+        { name: Stats.CRIT_DMG, notes: ["Чаще всего"] },
+        { name: Stats.HP_PERCENTAGE, notes: ["Иногда, особенно с Сигной"] },
       ],
       additional: [
-        { name: "HP %", notes: ["от 30000"] },
+        { name: Stats.HP_PERCENTAGE, notes: ["от 30000"] },
         {
-          name: "Шанс крит. попадания",
+          name: Stats.CRIT_RATE,
           notes: [
             "от 65% в обычной ситуации",
             "от 35% при использовании полного комплекта Охотник Сумеречного двора и стремимся к 64%",
           ],
         },
-        { name: "Крит. урон", notes: ["от 160%"] },
-        { name: "Восст. энергии", notes: ["Специально не охотиться", "от 120%"] },
+        { name: Stats.CRIT_DMG, notes: ["от 160%"] },
+        { name: Stats.ENERGY_RECHARGE, notes: ["Специально не охотиться", "от 120%"] },
       ],
     },
   },

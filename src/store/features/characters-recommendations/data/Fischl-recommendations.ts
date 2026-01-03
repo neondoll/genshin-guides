@@ -3,6 +3,7 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -12,18 +13,18 @@ export default {
     ],
     stats: {
       sands: [
-        { name: "Сила атаки %", notes: ["в большинстве случаев"] },
-        { name: "Мастерство стихий", notes: ["можно поставить в стимуляционных отрядах"] },
-        { name: "Восст. энергии", notes: ["может пригодиться в Натиске"] },
+        { name: Stats.ATK_PERCENTAGE, notes: ["в большинстве случаев"] },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["можно поставить в стимуляционных отрядах"] },
+        { name: Stats.ENERGY_RECHARGE, notes: ["может пригодиться в Натиске"] },
       ],
-      goblet: [{ name: "Бонус Электро урона" }],
-      circlet: [{ name: "Шанс крит. попадания" }, { name: "Крит. урон" }],
+      goblet: [{ name: Stats.ELECTRO_DMG_BONUS }],
+      circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }],
       additional: [
-        { name: "Шанс крит. попадания", notes: ["Приоритетно"] },
-        { name: "Крит. урон", notes: ["Приоритетно"] },
-        { name: "Сила атаки %" },
-        { name: "Восст. энергии" },
-        { name: "Мастерство стихий", notes: ["ситуативно, для Стимуляций"] },
+        { name: Stats.CRIT_RATE, notes: ["Приоритетно"] },
+        { name: Stats.CRIT_DMG, notes: ["Приоритетно"] },
+        { name: Stats.ATK_PERCENTAGE },
+        { name: Stats.ENERGY_RECHARGE },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["ситуативно, для Стимуляций"] },
       ],
     },
   },

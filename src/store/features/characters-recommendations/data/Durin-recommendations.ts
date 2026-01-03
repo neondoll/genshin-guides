@@ -3,26 +3,27 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
     sets: [{ type: "complete", name: ArtifactSetNames.NOBLESSE_OBLIGE }],
     stats: {
       sands: [
-        { name: "Сила атаки %", notes: ["в большинстве случаев"] },
-        { name: "Мастерство стихий", notes: ["если играем в Бутонах"] },
+        { name: Stats.ATK_PERCENTAGE, notes: ["в большинстве случаев"] },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["если играем в Бутонах"] },
       ],
       goblet: [
-        { name: "Бонус Пиро урона", notes: ["если силы атаки больше или равно 2500"] },
-        { name: "Сила атаки %", notes: ["если силы атаки меньше или равно 2000"] },
+        { name: Stats.PYRO_DMG_BONUS, notes: ["если силы атаки больше или равно 2500"] },
+        { name: Stats.ATK_PERCENTAGE, notes: ["если силы атаки меньше или равно 2000"] },
       ],
-      circlet: [{ name: "Шанс крит. попадания" }, { name: "Крит. урон" }],
+      circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }],
       additional: [
-        { name: "Шанс крит. попадания" },
-        { name: "Крит. урон" },
-        { name: "Сила атаки %" },
-        { name: "Восст. энергии" },
-        { name: "Мастерство стихий" },
+        { name: Stats.CRIT_RATE },
+        { name: Stats.CRIT_DMG },
+        { name: Stats.ATK_PERCENTAGE },
+        { name: Stats.ENERGY_RECHARGE },
+        { name: Stats.ELEMENTAL_MASTERY },
       ],
     },
   },

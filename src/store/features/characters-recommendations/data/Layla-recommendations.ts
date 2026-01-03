@@ -3,6 +3,7 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 import { formatPercent } from "@/utils/format";
 
 export default {
@@ -14,26 +15,26 @@ export default {
     ],
     stats: {
       sands: [
-        { name: "HP %", notes: [formatPercent(0.907)] },
-        { name: "Восст. энергии", notes: [formatPercent(0.051)] },
-        { name: "Сила атаки %", notes: [formatPercent(0.025)] },
+        { name: Stats.HP_PERCENTAGE, notes: [formatPercent(0.907)] },
+        { name: Stats.ENERGY_RECHARGE, notes: [formatPercent(0.051)] },
+        { name: Stats.ATK_PERCENTAGE, notes: [formatPercent(0.025)] },
       ],
       goblet: [
-        { name: "HP %", notes: [formatPercent(0.902)] },
-        { name: "Бонус Крио урона", notes: [formatPercent(0.058)] },
-        { name: "Сила атаки %", notes: [formatPercent(0.015)] },
+        { name: Stats.HP_PERCENTAGE, notes: [formatPercent(0.902)] },
+        { name: Stats.CRYO_DMG_BONUS, notes: [formatPercent(0.058)] },
+        { name: Stats.ATK_PERCENTAGE, notes: [formatPercent(0.015)] },
       ],
       circlet: [
-        { name: "HP %", notes: [formatPercent(0.860)] },
-        { name: "Шанс крит. попадания", notes: [formatPercent(0.080)] },
-        { name: "Крит. урон", notes: [formatPercent(0.035)] },
+        { name: Stats.HP_PERCENTAGE, notes: [formatPercent(0.860)] },
+        { name: Stats.CRIT_RATE, notes: [formatPercent(0.080)] },
+        { name: Stats.CRIT_DMG, notes: [formatPercent(0.035)] },
       ],
       additional: [
-        { name: "HP %", notes: ["Приоритетно", "от 25000"] },
-        { name: "Восст. энергии", notes: ["от 120%"] },
-        { name: "Шанс крит. попадания", notes: ["от 50%"] },
-        { name: "Крит. урон", notes: ["от 120%"] },
-        { name: "Мастерство стихий", notes: ["от 250 (только при игре через реакции)"] },
+        { name: Stats.HP_PERCENTAGE, notes: ["Приоритетно", "от 25000"] },
+        { name: Stats.ENERGY_RECHARGE, notes: ["от 120%"] },
+        { name: Stats.CRIT_RATE, notes: ["от 50%"] },
+        { name: Stats.CRIT_DMG, notes: ["от 120%"] },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["от 250 (только при игре через реакции)"] },
       ],
     },
   },

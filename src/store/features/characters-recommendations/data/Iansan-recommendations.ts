@@ -2,6 +2,7 @@ import type { CharacterRecommendations } from "../types";
 import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -25,14 +26,17 @@ export default {
       },
     ],
     stats: {
-      sands: [{ name: "Сила атаки %" }, { name: "Восст. энергии" }],
-      goblet: [{ name: "Сила атаки %" }],
-      circlet: [{ name: "Сила атаки %" }],
+      sands: [{ name: Stats.ATK_PERCENTAGE }, { name: Stats.ENERGY_RECHARGE }],
+      goblet: [{ name: Stats.ATK_PERCENTAGE }],
+      circlet: [{ name: Stats.ATK_PERCENTAGE }],
       additional: [
-        { name: "Восст. энергии", notes: ["Приоритетно", "от 160%"] },
-        { name: "Сила атаки %", notes: ["от 2000", "2556 для 10 Ур. Взрыва стихии", "3000 для 13 Ур. Взрыва стихии"] },
-        { name: "Шанс крит. попадания" },
-        { name: "Крит. урон" },
+        { name: Stats.ENERGY_RECHARGE, notes: ["Приоритетно", "от 160%"] },
+        {
+          name: Stats.ATK_PERCENTAGE,
+          notes: ["от 2000", "2556 для 10 Ур. Взрыва стихии", "3000 для 13 Ур. Взрыва стихии"],
+        },
+        { name: Stats.CRIT_RATE },
+        { name: Stats.CRIT_DMG },
       ],
     },
   },

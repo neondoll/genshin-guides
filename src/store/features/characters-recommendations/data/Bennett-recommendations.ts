@@ -3,6 +3,7 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -11,17 +12,22 @@ export default {
       { type: "complete", name: ArtifactSetNames.EMBLEM_OF_SEVERED_FATE },
     ],
     stats: {
-      sands: [{ name: "Восст. энергии" }, { name: "HP %" }, { name: "Сила атаки %" }],
-      goblet: [{ name: "HP %" }, { name: "Сила атаки %" }, { name: "Бонус Пиро урона" }],
-      circlet: [{ name: "Бонус лечения" }, { name: "HP %" }, { name: "Шанс крит. попадания" }, { name: "Крит. урон" }],
+      sands: [{ name: Stats.ENERGY_RECHARGE }, { name: Stats.HP_PERCENTAGE }, { name: Stats.ATK_PERCENTAGE }],
+      goblet: [{ name: Stats.HP_PERCENTAGE }, { name: Stats.ATK_PERCENTAGE }, { name: Stats.PYRO_DMG_BONUS }],
+      circlet: [
+        { name: Stats.HEALING_BONUS },
+        { name: Stats.HP_PERCENTAGE },
+        { name: Stats.CRIT_RATE },
+        { name: Stats.CRIT_DMG },
+      ],
       additional: [
-        { name: "HP %", notes: ["Приоритетно", "от 25000"] },
-        { name: "Восст. энергии", notes: ["Приоритетно", "от 220%"] },
+        { name: Stats.HP_PERCENTAGE, notes: ["Приоритетно", "от 25000"] },
+        { name: Stats.ENERGY_RECHARGE, notes: ["Приоритетно", "от 220%"] },
         {
-          name: "Шанс крит. попадания",
+          name: Stats.CRIT_RATE,
           notes: ["от 50% (при использовании меча Фавония или если Беннет будет наносить дополнительный урон)"],
         },
-        { name: "Крит. урон", notes: ["от 120% (если Беннет будет наносить дополнительный урон)"] },
+        { name: Stats.CRIT_DMG, notes: ["от 120% (если Беннет будет наносить дополнительный урон)"] },
       ],
     },
   },

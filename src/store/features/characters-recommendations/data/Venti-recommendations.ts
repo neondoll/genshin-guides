@@ -3,6 +3,7 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -11,14 +12,14 @@ export default {
       { type: "complete", name: ArtifactSetNames.DESERT_PAVILION_CHRONICLE, notes: ["если играем на поле"] },
     ],
     stats: {
-      sands: [{ name: "Сила атаки %" }],
+      sands: [{ name: Stats.ATK_PERCENTAGE }],
       goblet: [{ name: "Бонус Анемо урона" }],
-      circlet: [{ name: "Шанс крит. попадания" }, { name: "Крит. урон" }],
+      circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }],
       additional: [
-        { name: "Шанс крит. попадания" },
-        { name: "Крит. урон" },
-        { name: "Сила атаки %" },
-        { name: "Восст. энергии", notes: ["140%-160%"] },
+        { name: Stats.CRIT_RATE },
+        { name: Stats.CRIT_DMG },
+        { name: Stats.ATK_PERCENTAGE },
+        { name: Stats.ENERGY_RECHARGE, notes: ["140%-160%"] },
       ],
     },
   },

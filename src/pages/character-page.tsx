@@ -837,7 +837,13 @@ const CharacterWeaponRecommendationsTable: FC<{ recommendations: WeaponRecommend
     <Table>
       <TableBody>
         {recommendations.map(recommendation => (
-          <TableRow key={recommendation.name + (recommendation.r ? `-R${recommendation.r}` : "")}>
+          <TableRow
+            key={
+              recommendation.name
+              + (recommendation.postfix ? `-(${recommendation.postfix})` : "")
+              + (recommendation.r ? `-R${recommendation.r}` : "")
+            }
+          >
             {hasBest && (
               <TableCell className="w-16">
                 <BestTooltip className="size-12" value={recommendation.best} />

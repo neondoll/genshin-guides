@@ -3,6 +3,7 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -13,14 +14,14 @@ export default {
       { type: "complete", name: ArtifactSetNames.INSTRUCTOR },
     ],
     stats: {
-      sands: [{ name: "Мастерство стихий" }],
-      goblet: [{ name: "Мастерство стихий" }, { name: "Бонус Дендро урона" }],
-      circlet: [{ name: "Шанс крит. попадания" }, { name: "Крит. урон" }, { name: "Мастерство стихий" }],
+      sands: [{ name: Stats.ELEMENTAL_MASTERY }],
+      goblet: [{ name: Stats.ELEMENTAL_MASTERY }, { name: "Бонус Дендро урона" }],
+      circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }, { name: Stats.ELEMENTAL_MASTERY }],
       additional: [
-        { name: "Шанс крит. попадания" },
-        { name: "Крит. урон" },
-        { name: "Мастерство стихий" },
-        { name: "Сила атаки %" },
+        { name: Stats.CRIT_RATE },
+        { name: Stats.CRIT_DMG },
+        { name: Stats.ELEMENTAL_MASTERY },
+        { name: Stats.ATK_PERCENTAGE },
       ],
     },
   },

@@ -5,6 +5,7 @@ import { CharacterNames } from "../../characters";
 import { ElementNames } from "../../elements";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -13,21 +14,21 @@ export default {
       { type: "complete", name: ArtifactSetNames.OBSIDIAN_CODEX },
     ],
     stats: {
-      sands: [{ name: "Сила атаки %" }],
+      sands: [{ name: Stats.ATK_PERCENTAGE }],
       goblet: [
         {
-          name: "Бонус Электро урона",
+          name: Stats.ELECTRO_DMG_BONUS,
           notes: [`Лучше в подавляющем числе случаев (Особенно если стоит ${ArtifactSetNames.OBSIDIAN_CODEX})`],
         },
-        { name: "Сила атаки %" },
+        { name: Stats.ATK_PERCENTAGE },
       ],
-      circlet: [{ name: "Шанс крит. попадания" }, { name: "Крит. урон" }],
+      circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }],
       additional: [
-        { name: "Шанс крит. попадания", notes: ["от 60%"] },
-        { name: "Крит. урон", notes: ["от 180%"] },
-        { name: "Сила атаки %", notes: ["от 1800"] },
-        { name: "Восст. энергии", notes: ["110% - 115%"] },
-        { name: "Мастерство стихий", notes: ["от 150 (при игре через реакцию Вегетация)"] },
+        { name: Stats.CRIT_RATE, notes: ["от 60%"] },
+        { name: Stats.CRIT_DMG, notes: ["от 180%"] },
+        { name: Stats.ATK_PERCENTAGE, notes: ["от 1800"] },
+        { name: Stats.ENERGY_RECHARGE, notes: ["110% - 115%"] },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["от 150 (при игре через реакцию Вегетация)"] },
       ],
     },
   },

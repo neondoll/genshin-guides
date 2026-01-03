@@ -5,6 +5,7 @@ import { CharacterNames } from "../../characters";
 import { ElementNames } from "../../elements";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -27,14 +28,14 @@ export default {
       { type: "complete", name: ArtifactSetNames.EMBLEM_OF_SEVERED_FATE, percent: 0.8785 },
     ],
     stats: {
-      sands: [{ name: "Мастерство стихий" }, { name: "Сила атаки %" }],
-      goblet: [{ name: "Мастерство стихий" }, { name: "Сила атаки %" }],
-      circlet: [{ name: "Шанс крит. попадания" }, { name: "Крит. урон" }],
+      sands: [{ name: Stats.ELEMENTAL_MASTERY }, { name: Stats.ATK_PERCENTAGE }],
+      goblet: [{ name: Stats.ELEMENTAL_MASTERY }, { name: Stats.ATK_PERCENTAGE }],
+      circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }],
       additional: [
-        { name: "Шанс крит. попадания", notes: ["от 60%"] },
-        { name: "Крит. урон", notes: ["от 120%"] },
-        { name: "Сила атаки %", notes: ["от 2000"] },
-        { name: "Мастерство стихий", notes: ["от 150"] },
+        { name: Stats.CRIT_RATE, notes: ["от 60%"] },
+        { name: Stats.CRIT_DMG, notes: ["от 120%"] },
+        { name: Stats.ATK_PERCENTAGE, notes: ["от 2000"] },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["от 150"] },
       ],
     },
   },

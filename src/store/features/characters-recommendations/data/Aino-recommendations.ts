@@ -3,6 +3,7 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -13,12 +14,12 @@ export default {
       { type: "complete", name: ArtifactSetNames.GILDED_DREAMS },
     ],
     stats: {
-      sands: [{ name: "Восст. энергии" }, { name: "Мастерство стихий" }],
-      goblet: [{ name: "Мастерство стихий" }],
-      circlet: [{ name: "Мастерство стихий" }],
+      sands: [{ name: Stats.ENERGY_RECHARGE }, { name: Stats.ELEMENTAL_MASTERY }],
+      goblet: [{ name: Stats.ELEMENTAL_MASTERY }],
+      circlet: [{ name: Stats.ELEMENTAL_MASTERY }],
       additional: [
-        { name: "Восст. энергии", notes: ["от 160%", "~200%"] },
-        { name: "Мастерство стихий", notes: ["от 500"] },
+        { name: Stats.ENERGY_RECHARGE, notes: ["от 160%", "~200%"] },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["от 500"] },
       ],
     },
   },

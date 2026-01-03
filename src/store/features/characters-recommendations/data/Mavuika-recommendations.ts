@@ -4,6 +4,7 @@ import { CharacterRoleIds } from "../../character-roles";
 import { CharacterNames } from "../../characters";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 const GameVariants = { DPS: "Основной урон", SUPPORT: "Поддержка" } as const;
 
@@ -16,7 +17,7 @@ export default {
     stats: {
       sands: [
         {
-          name: "Сила атаки %",
+          name: Stats.ATK_PERCENTAGE,
           notes: [
             "Гиперкерри | Перегрузка - Всегда",
             `Пар | Таяние - Лучше, если в отряде есть инструктор и отсутствует ${CharacterNames.BENNETT} или ${CharacterNames.IANSAN}`,
@@ -24,19 +25,19 @@ export default {
           ],
         },
         {
-          name: "Мастерство стихий",
+          name: Stats.ELEMENTAL_MASTERY,
           notes: [
             `Пар | Таяние - Всегда, если есть в команде ${CharacterNames.BENNETT} или ${CharacterNames.IANSAN} и мало МС в доп. статах`,
           ],
         },
       ],
-      goblet: [{ name: "Бонус Пиро урона" }],
-      circlet: [{ name: "Шанс крит. попадания" }, { name: "Крит. урон" }],
+      goblet: [{ name: Stats.PYRO_DMG_BONUS }],
+      circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }],
       additional: [
-        { name: "Сила атаки %" },
-        { name: "Шанс крит. попадания" },
-        { name: "Крит. урон" },
-        { name: "Мастерство стихий", notes: ["Если играем в Пар | Таяние"] },
+        { name: Stats.ATK_PERCENTAGE },
+        { name: Stats.CRIT_RATE },
+        { name: Stats.CRIT_DMG },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["Если играем в Пар | Таяние"] },
       ],
     },
   },

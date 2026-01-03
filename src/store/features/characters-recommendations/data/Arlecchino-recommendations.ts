@@ -3,6 +3,7 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -57,15 +58,15 @@ export default {
       ],
     },
     stats: {
-      sands: [{ name: "Сила атаки %" }],
-      goblet: [{ name: "Бонус Пиро урона", notes: ["Лучше"] }, { name: "Сила атаки %" }],
-      circlet: [{ name: "Крит. урон" }, { name: "Шанс крит. попадания" }],
+      sands: [{ name: Stats.ATK_PERCENTAGE }],
+      goblet: [{ name: Stats.PYRO_DMG_BONUS, notes: ["Лучше"] }, { name: Stats.ATK_PERCENTAGE }],
+      circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }],
       additional: [
-        { name: "Шанс крит. попадания", notes: ["Приоритетно", "от 65%"] },
-        { name: "Крит. урон", notes: ["Приоритетно", "от 150%"] },
-        { name: "Сила атаки %", notes: ["от 2000"] },
-        { name: "Мастерство стихий", notes: ["от 150 (если Арлекино активирует реакции)"] },
-        { name: "Восст. энергии", notes: ["Специально не собирать"] },
+        { name: Stats.CRIT_RATE, notes: ["Приоритетно", "от 65%"] },
+        { name: Stats.CRIT_DMG, notes: ["Приоритетно", "от 150%"] },
+        { name: Stats.ATK_PERCENTAGE, notes: ["от 2000"] },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["от 150 (если Арлекино активирует реакции)"] },
+        { name: Stats.ENERGY_RECHARGE, notes: ["Специально не собирать"] },
       ],
     },
   },

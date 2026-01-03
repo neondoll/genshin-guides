@@ -1,12 +1,14 @@
 import type { Artifact as ArtifactDB } from "genshin-db";
 
 export const ArtifactSetNames = {
+  ARCHAIC_PETRA: "Архаичный камень",
   BLIZZARD_STRAYER: "Заблудший в метели",
   CRIMSON_WITCH_OF_FLAMES: "Горящая алая ведьма",
   DEEPWOOD_MEMORIES: "Воспоминания дремучего леса",
   DESERT_PAVILION_CHRONICLE: "Хроники Чертогов в пустыне",
   ECHOES_OF_AN_OFFERING: "Отголоски подношения",
   EMBLEM_OF_SEVERED_FATE: "Эмблема рассечённой судьбы",
+  FINALE_OF_THE_DEEP_GALLERIES: "Финал галерей глубин",
   FLOWER_OF_PARADISE_LOST: "Цветок потерянного рая",
   FRAGMENT_OF_HARMONIC_WHIMSY: "Фрагмент гармонической фантазии",
   GILDED_DREAMS: "Позолоченные сны",
@@ -14,6 +16,7 @@ export const ArtifactSetNames = {
   GOLDEN_TROUPE: "Золотая труппа",
   INSTRUCTOR: "Инструктор",
   LONG_NIGHTS_OATH: "Клятва долгой ночи",
+  MAIDEN_BELOVED: "Возлюбленная юная дева",
   MARECHAUSSEE_HUNTER: "Охотник Сумеречного двора",
   NIGHT_OF_THE_SKYS_UNVEILING: "Ночь открытия неба",
   NOBLESSE_OBLIGE: "Церемония древней знати",

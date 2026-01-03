@@ -3,6 +3,7 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 import { formatPercent } from "@/utils/format";
 
 export default {
@@ -13,25 +14,25 @@ export default {
     ],
     stats: {
       sands: [
-        { name: "Сила атаки %", notes: [formatPercent(0.525)] },
-        { name: "Восст. энергии", notes: [formatPercent(0.410)] },
-        { name: "HP %", notes: [formatPercent(0.030)] },
+        { name: Stats.ATK_PERCENTAGE, notes: [formatPercent(0.525)] },
+        { name: Stats.ENERGY_RECHARGE, notes: [formatPercent(0.410)] },
+        { name: Stats.HP_PERCENTAGE, notes: [formatPercent(0.030)] },
       ],
       goblet: [
         { name: "Бонус Гидро урона", notes: [formatPercent(0.844)] },
-        { name: "Сила атаки %", notes: [formatPercent(0.108)] },
-        { name: "HP %", notes: [formatPercent(0.025)] },
+        { name: Stats.ATK_PERCENTAGE, notes: [formatPercent(0.108)] },
+        { name: Stats.HP_PERCENTAGE, notes: [formatPercent(0.025)] },
       ],
       circlet: [
-        { name: "Шанс крит. попадания", notes: [formatPercent(0.650)] },
-        { name: "Крит. урон", notes: [formatPercent(0.258)] },
-        { name: "Сила атаки %", notes: [formatPercent(0.055)] },
+        { name: Stats.CRIT_RATE, notes: [formatPercent(0.650)] },
+        { name: Stats.CRIT_DMG, notes: [formatPercent(0.258)] },
+        { name: Stats.ATK_PERCENTAGE, notes: [formatPercent(0.055)] },
       ],
       additional: [
-        { name: "Шанс крит. попадания", notes: ["Приоритетно", "от 60%"] },
-        { name: "Крит. урон", notes: ["Приоритетно", "от 120%"] },
-        { name: "Сила атаки %", notes: ["от 1400"] },
-        { name: "Восст. энергии", notes: ["от 220%"] },
+        { name: Stats.CRIT_RATE, notes: ["Приоритетно", "от 60%"] },
+        { name: Stats.CRIT_DMG, notes: ["Приоритетно", "от 120%"] },
+        { name: Stats.ATK_PERCENTAGE, notes: ["от 1400"] },
+        { name: Stats.ENERGY_RECHARGE, notes: ["от 220%"] },
       ],
     },
   },

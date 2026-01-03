@@ -6,7 +6,7 @@ import type { VideoSourceId } from "../video-sources";
 import type { WeaponName } from "../weapons";
 
 interface CharacterArtifactSetRecommendationTemplate {
-  best?: boolean;
+  best?: boolean | string;
   percent?: number;
   notes?: string[];
 }

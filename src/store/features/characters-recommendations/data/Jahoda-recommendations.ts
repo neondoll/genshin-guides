@@ -3,6 +3,7 @@ import { ArtifactSetNames } from "../../artifact-sets";
 import { CharacterRoleIds } from "../../character-roles";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -12,13 +13,13 @@ export default {
       { type: "complete", name: ArtifactSetNames.DEEPWOOD_MEMORIES, notes: ["если играем c Нефер"] },
     ],
     stats: {
-      sands: [{ name: "Восст. энергии" }],
-      goblet: [{ name: "Сила атаки %" }],
-      circlet: [{ name: "Сила атаки %" }, { name: "Шанс крит. попадания" }],
+      sands: [{ name: Stats.ENERGY_RECHARGE }],
+      goblet: [{ name: Stats.ATK_PERCENTAGE }],
+      circlet: [{ name: Stats.ATK_PERCENTAGE }, { name: Stats.CRIT_RATE }],
       additional: [
-        { name: "Восст. энергии", notes: ["180%-200%"] },
-        { name: "Сила атаки %" },
-        { name: "Шанс крит. попадания" },
+        { name: Stats.ENERGY_RECHARGE, notes: ["180%-200%"] },
+        { name: Stats.ATK_PERCENTAGE },
+        { name: Stats.CRIT_RATE },
       ],
     },
   },

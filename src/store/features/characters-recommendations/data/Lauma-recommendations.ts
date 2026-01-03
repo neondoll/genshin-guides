@@ -5,6 +5,7 @@ import { CharacterNames } from "../../characters";
 import { ElementNames } from "../../elements";
 import { VideoSourceIds } from "../../video-sources";
 import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
 
 export default {
   artifacts: {
@@ -15,18 +16,18 @@ export default {
       { type: "combined", names: [ArtifactSetNames.GILDED_DREAMS, ArtifactSetNames.WANDERERS_TROUPE] },
     ],
     stats: {
-      sands: [{ name: "Мастерство стихий" }, { name: "Восст. энергии" }],
-      goblet: [{ name: "Мастерство стихий" }],
+      sands: [{ name: Stats.ELEMENTAL_MASTERY }, { name: Stats.ENERGY_RECHARGE }],
+      goblet: [{ name: Stats.ELEMENTAL_MASTERY }],
       circlet: [
-        { name: "Мастерство стихий", notes: ["Лучше"] },
-        { name: "Шанс крит. попадания" },
-        { name: "Крит. урон" },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["Лучше"] },
+        { name: Stats.CRIT_RATE },
+        { name: Stats.CRIT_DMG },
       ],
       additional: [
-        { name: "Мастерство стихий", notes: ["~ 1100"] },
-        { name: "Восст. энергии", notes: ["~ 160%-200%"] },
-        { name: "Шанс крит. попадания" },
-        { name: "Крит. урон" },
+        { name: Stats.ELEMENTAL_MASTERY, notes: ["~ 1100"] },
+        { name: Stats.ENERGY_RECHARGE, notes: ["~ 160%-200%"] },
+        { name: Stats.CRIT_RATE },
+        { name: Stats.CRIT_DMG },
       ],
     },
   },
