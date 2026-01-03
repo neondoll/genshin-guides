@@ -10,7 +10,7 @@ export default {
     sets: [{ type: "complete", name: ArtifactSetNames.MARECHAUSSEE_HUNTER }],
     stats: {
       sands: [{ name: Stats.HP_PERCENTAGE }],
-      goblet: [{ name: Stats.HP_PERCENTAGE, notes: ["Если в команде Фурина"] }, { name: "Бонус Гидро урона" }],
+      goblet: [{ name: Stats.HP_PERCENTAGE, notes: ["Если в команде Фурина"] }, { name: Stats.HYDRO_DMG_BONUS }],
       circlet: [
         { name: Stats.CRIT_RATE },
         { name: Stats.CRIT_DMG, notes: ["Чаще всего"] },

@@ -13,7 +13,7 @@ export default {
     ],
     stats: {
       sands: [{ name: Stats.ATK_PERCENTAGE }],
-      goblet: [{ name: "Бонус Анемо урона" }],
+      goblet: [{ name: Stats.ANEMO_DMG_BONUS }],
       circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }],
       additional: [
         { name: Stats.CRIT_RATE },

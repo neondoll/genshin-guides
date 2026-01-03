@@ -3,6 +3,7 @@ import type { Artifact as ArtifactDB } from "genshin-db";
 export const ArtifactSetNames = {
   ARCHAIC_PETRA: "Архаичный камень",
   BLIZZARD_STRAYER: "Заблудший в метели",
+  BLOODSTAINED_CHIVALRY: "Рыцарь крови",
   CRIMSON_WITCH_OF_FLAMES: "Горящая алая ведьма",
   DEEPWOOD_MEMORIES: "Воспоминания дремучего леса",
   DESERT_PAVILION_CHRONICLE: "Хроники Чертогов в пустыне",
@@ -24,6 +25,7 @@ export const ArtifactSetNames = {
   SCROLL_OF_THE_HERO_OF_CINDER_CITY: "Свиток героя сожжённого города",
   SHIMENAWAS_REMINISCENCE: "Воспоминания Симэнавы",
   SILKEN_MOONS_SERENADE: "Серенада шёлковой луны",
+  SONG_OF_DAYS_PAST: "Песнь былых времён",
   TENACITY_OF_THE_MILLELITH: "Стойкость Миллелита",
   THUNDERING_FURY: "Громогласный рёв ярости",
   VIRIDESCENT_VENERER: "Изумрудная тень",

@@ -13,6 +13,14 @@ export const videoSourcesAdapter = createEntityAdapter<VideoSource>({
 });
 
 const initialState = videoSourcesAdapter.getInitialState(undefined, {
+  [VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS]: {
+    id: VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS,
+    author: "Miron MinMax",
+    title: "ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin",
+    date: "2023-12-31",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239083",
+    youtube: "https://youtu.be/kCu0ux0hUCg",
+  },
   [VideoSourceIds.ALL_ABOUT_ALL_TALENTS]: {
     id: VideoSourceIds.ALL_ABOUT_ALL_TALENTS,
     author: "Miron MinMax",
@@ -45,6 +53,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239191",
     youtube: "https://youtu.be/VY0Kt2AaMGY",
   },
+  [VideoSourceIds.GUIDE_TO_CHASCA_IN_5_8]: {
+    id: VideoSourceIds.GUIDE_TO_CHASCA_IN_5_8,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Часку в 5.8",
+    date: "2025-08-22",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239250",
+    youtube: "https://youtu.be/OmSwenN-e8s",
+  },
   [VideoSourceIds.GUIDE_TO_CITLALI_IN_5_8]: {
     id: VideoSourceIds.GUIDE_TO_CITLALI_IN_5_8,
     author: "Miron MinMax",
@@ -76,6 +92,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     date: "2025-12-29",
     vkvideo: "https://vkvideo.ru/video-227044935_456239285",
     youtube: "https://youtu.be/Pwe3zimTI0o",
+  },
+  [VideoSourceIds.GUIDE_TO_FURINA_IN_5_4]: {
+    id: VideoSourceIds.GUIDE_TO_FURINA_IN_5_4,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Фурину в 5.4",
+    date: "2025-03-02",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239203",
+    youtube: "https://youtu.be/rxTakZUxk0U",
   },
   [VideoSourceIds.GUIDE_TO_INEFFA_IN_5_8]: {
     id: VideoSourceIds.GUIDE_TO_INEFFA_IN_5_8,

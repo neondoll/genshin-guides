@@ -1,0 +1,115 @@
+import type { CharacterRecommendations } from "../types";
+import { ArtifactSetNames } from "../../artifact-sets";
+import { CharacterRoleIds } from "../../character-roles";
+import { VideoSourceIds } from "../../video-sources";
+import { WeaponNames } from "../../weapons";
+import { Stats } from "@/types/base.types";
+
+export default {
+  artifacts: {
+    sets: [{ type: "complete", name: ArtifactSetNames.GOLDEN_TROUPE }],
+    stats: {
+      sands: [{ name: Stats.ENERGY_RECHARGE }, { name: Stats.HP_PERCENTAGE }],
+      goblet: [
+        { name: Stats.HYDRO_DMG_BONUS },
+        { name: Stats.HP_PERCENTAGE, notes: ["Лучше в подавляющем числе ситуаций"] },
+      ],
+      circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }],
+      additional: [
+        {
+          name: Stats.ENERGY_RECHARGE,
+          notes: [
+            "В отрядах без доп. подкачки - 200% - 220% ВЭ",
+            "В отрядах с доп. подкачкой - 160% - 180% ВЭ",
+            "В отрядах с Е Лань или Син Цю - 130% - 140% ВЭ",
+            "В отрядах с 3 Гидро и более - 100% ВЭ",
+          ],
+        },
+        { name: Stats.HP_PERCENTAGE },
+        { name: Stats.CRIT_RATE },
+        { name: Stats.CRIT_DMG },
+      ],
+    },
+  },
+  constellationOrSignatureWeapon: "C1",
+  roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SUPPORT, CharacterRoleIds.SURVIVABILITY],
+  signatureWeaponNames: [WeaponNames.SPLENDOR_OF_TRANQUIL_WATERS],
+  talents: [
+    { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
+    { type: "combat2", priority: "В первую очередь", referenceLevel: 10 },
+    { type: "combat3", priority: "Во вторую очередь", referenceLevel: 10 },
+  ],
+  videoSourceIds: [
+    VideoSourceIds.ALL_ABOUT_ALL_TALENTS,
+    VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON,
+    VideoSourceIds.GUIDE_TO_FURINA_IN_5_4,
+    VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
+    VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
+  ],
+  weapons: {
+    "Без реакций - 120% ВЭ+": [
+      { name: WeaponNames.SPLENDOR_OF_TRANQUIL_WATERS, best: "Лучшее оружие", percent: 1.3648 },
+      { name: WeaponNames.URAKU_MISUGIRI, postfix: "с гео", percent: 1.3306 },
+      { name: WeaponNames.URAKU_MISUGIRI, postfix: "без гео", percent: 1.2265 },
+      { name: WeaponNames.PRIMORDIAL_JADE_CUTTER, percent: 1.2139 },
+      { name: WeaponNames.HARBINGER_OF_DAWN, postfix: "работает", r: 5, percent: 1.1795 },
+      { name: WeaponNames.LIGHT_OF_FOLIAR_INCISION, percent: 1.1536 },
+      { name: WeaponNames.KEY_OF_KHAJ_NISUT, percent: 1.1298 },
+      { name: WeaponNames.WOLF_FANG, r: 5, percent: 1.1268 },
+      { name: WeaponNames.FESTERING_DESIRE, best: "Лучшее эвентовое оружие", percent: 1.0924 },
+      { name: WeaponNames.WOLF_FANG, r: 1, percent: 1.0648 },
+      { name: WeaponNames.FLEUVE_CENDRE_FERRYMAN, best: "Лучшее доступное оружие", r: 5, percent: 1.0000 },
+      { name: WeaponNames.HARBINGER_OF_DAWN, postfix: "не работает", r: 5, percent: 0.9745 },
+      { name: WeaponNames.THE_DOCKHANDS_ASSISTANT, r: 5, percent: 0.9637 },
+      { name: WeaponNames.FAVONIUS_SWORD, r: 5, percent: 0.8936 },
+    ],
+    "Без реакций - 170% ВЭ+": [
+      { name: WeaponNames.SPLENDOR_OF_TRANQUIL_WATERS, best: "Лучшее оружие", percent: 1.1296 },
+      { name: WeaponNames.URAKU_MISUGIRI, postfix: "с гео", percent: 1.0842 },
+      { name: WeaponNames.FLEUVE_CENDRE_FERRYMAN, best: "Лучшее доступное оружие", r: 5, percent: 1.0000 },
+      { name: WeaponNames.URAKU_MISUGIRI, postfix: "без гео", percent: 0.9999 },
+      { name: WeaponNames.PRIMORDIAL_JADE_CUTTER, percent: 0.9964 },
+      { name: WeaponNames.FESTERING_DESIRE, best: "Лучшее эвентовое оружие", percent: 0.9878 },
+      { name: WeaponNames.HARBINGER_OF_DAWN, postfix: "работает", r: 5, percent: 0.9627 },
+      { name: WeaponNames.KEY_OF_KHAJ_NISUT, percent: 0.9578 },
+      { name: WeaponNames.LIGHT_OF_FOLIAR_INCISION, percent: 0.9402 },
+      { name: WeaponNames.WOLF_FANG, r: 5, percent: 0.9153 },
+      { name: WeaponNames.FAVONIUS_SWORD, r: 5, percent: 0.8936 },
+      { name: WeaponNames.WOLF_FANG, r: 1, percent: 0.8648 },
+      { name: WeaponNames.THE_DOCKHANDS_ASSISTANT, r: 5, percent: 0.8080 },
+      { name: WeaponNames.HARBINGER_OF_DAWN, postfix: "не работает", r: 5, percent: 0.7894 },
+    ],
+    "Без реакций - 220% ВЭ+": [
+      { name: WeaponNames.SPLENDOR_OF_TRANQUIL_WATERS, best: "Лучшее оружие", percent: 1.0893 },
+      { name: WeaponNames.URAKU_MISUGIRI, postfix: "с гео", percent: 1.0421 },
+      { name: WeaponNames.FLEUVE_CENDRE_FERRYMAN, best: "Лучшее доступное оружие", r: 5, percent: 1.0000 },
+      { name: WeaponNames.URAKU_MISUGIRI, postfix: "без гео", percent: 0.9604 },
+      { name: WeaponNames.PRIMORDIAL_JADE_CUTTER, percent: 0.9597 },
+      { name: WeaponNames.FESTERING_DESIRE, best: "Лучшее эвентовое оружие", percent: 0.9498 },
+      { name: WeaponNames.KEY_OF_KHAJ_NISUT, percent: 0.9254 },
+      { name: WeaponNames.HARBINGER_OF_DAWN, postfix: "работает", r: 5, percent: 0.9232 },
+      { name: WeaponNames.LIGHT_OF_FOLIAR_INCISION, percent: 0.9048 },
+      { name: WeaponNames.WOLF_FANG, r: 5, percent: 0.8798 },
+      { name: WeaponNames.FAVONIUS_SWORD, r: 5, percent: 0.8725 },
+      { name: WeaponNames.WOLF_FANG, r: 1, percent: 0.8314 },
+      { name: WeaponNames.THE_DOCKHANDS_ASSISTANT, r: 5, percent: 0.7762 },
+      { name: WeaponNames.HARBINGER_OF_DAWN, postfix: "не работает", r: 5, percent: 0.7608 },
+    ],
+    "Фурина вейпит - 180% ВЭ+": [
+      { name: WeaponNames.SPLENDOR_OF_TRANQUIL_WATERS, best: "Лучшее оружие", percent: 1.2547 },
+      { name: WeaponNames.URAKU_MISUGIRI, postfix: "с гео", percent: 1.1969 },
+      { name: WeaponNames.KEY_OF_KHAJ_NISUT, percent: 1.1464 },
+      { name: WeaponNames.PRIMORDIAL_JADE_CUTTER, percent: 1.1087 },
+      { name: WeaponNames.URAKU_MISUGIRI, postfix: "без гео", percent: 1.1043 },
+      { name: WeaponNames.FESTERING_DESIRE, best: "Лучшее эвентовое оружие", percent: 1.0906 },
+      { name: WeaponNames.HARBINGER_OF_DAWN, postfix: "работает", r: 5, percent: 1.0652 },
+      { name: WeaponNames.LIGHT_OF_FOLIAR_INCISION, percent: 1.0406 },
+      { name: WeaponNames.WOLF_FANG, r: 5, percent: 1.0101 },
+      { name: WeaponNames.FLEUVE_CENDRE_FERRYMAN, best: "Лучшее доступное оружие", r: 5, percent: 1.0000 },
+      { name: WeaponNames.FAVONIUS_SWORD, r: 5, percent: 0.9592 },
+      { name: WeaponNames.WOLF_FANG, r: 1, percent: 0.9552 },
+      { name: WeaponNames.THE_DOCKHANDS_ASSISTANT, r: 5, percent: 0.9425 },
+      { name: WeaponNames.HARBINGER_OF_DAWN, postfix: "не работает", r: 5, percent: 0.8743 },
+    ],
+  },
+} as CharacterRecommendations;

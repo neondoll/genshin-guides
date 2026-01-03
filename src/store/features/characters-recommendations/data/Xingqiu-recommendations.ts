@@ -19,7 +19,7 @@ export default {
         { name: Stats.HP_PERCENTAGE, notes: [formatPercent(0.030)] },
       ],
       goblet: [
-        { name: "Бонус Гидро урона", notes: [formatPercent(0.844)] },
+        { name: Stats.HYDRO_DMG_BONUS, notes: [formatPercent(0.844)] },
         { name: Stats.ATK_PERCENTAGE, notes: [formatPercent(0.108)] },
         { name: Stats.HP_PERCENTAGE, notes: [formatPercent(0.025)] },
       ],

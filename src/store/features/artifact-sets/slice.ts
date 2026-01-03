@@ -26,7 +26,7 @@ export const fetchArtifactSetByName = createAsyncThunk("artifactSets/fetchByName
   return getArtifactSet(artifactSetName);
 });
 export const fetchArtifactSetsName = createAsyncThunk("artifactSets/fetchNames", async () => {
-  console.log(`Загрузка имен наборов артефактов с сервера`);
+  // console.log(`Загрузка имен наборов артефактов с сервера`);
 
   return getArtifactSetsNames();
 });

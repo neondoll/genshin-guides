@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 
 import { artifactSetsReducer } from "./features/artifact-sets";
+import { artifactSetsRecommendationsReducer } from "./features/artifact-sets-recommendations";
 import { characterRolesReducer } from "./features/character-roles";
 import { charactersReducer } from "./features/characters";
 import { charactersRecommendationsReducer } from "./features/characters-recommendations";
@@ -13,6 +14,7 @@ import { weaponsReducer } from "./features/weapons";
 const store = configureStore({
   reducer: {
     artifactSets: artifactSetsReducer,
+    artifactSetsRecommendations: artifactSetsRecommendationsReducer,
     characterRoles: characterRolesReducer,
     characters: charactersReducer,
     charactersRecommendations: charactersRecommendationsReducer,

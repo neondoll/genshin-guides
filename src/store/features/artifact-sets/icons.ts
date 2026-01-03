@@ -64,4 +64,11 @@ export const ArtifactSetIcons = {
     goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/520482a32f80b5538d6d2e6dc8cc194a_3357590716156202832.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/cf017c10098946f6d3d19a6b2c49bd53_7064122714444153592.png?x-oss-process=image%2Fformat%2Cwebp",
   },
+  [ArtifactSetNames.SONG_OF_DAYS_PAST]: {
+    flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/7789fb5e684cf95a7011657d0fa8a971_3593386749714639563.png?x-oss-process=image%2Fformat%2Cwebp",
+    plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/cbc1ed71c7c29bdf0c32a1c4eee4ff70_5183052284424305252.png?x-oss-process=image%2Fformat%2Cwebp",
+    sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/6e9a0be1b44bfdc612da88a1c187148d_7586835624555299825.png?x-oss-process=image%2Fformat%2Cwebp",
+    goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/cb19bd226823287c1019b7734aa59dfd_4454345269102091303.png?x-oss-process=image%2Fformat%2Cwebp",
+    circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/111d739805a42b2d74bf4bb677939b70_7956380336849105046.png?x-oss-process=image%2Fformat%2Cwebp",
+  },
 } as { [P in ArtifactSetName]?: Record<"flower" | "plume" | "sands" | "goblet" | "circlet", string> };

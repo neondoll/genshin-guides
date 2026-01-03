@@ -4,6 +4,7 @@ import type { CharacterName } from "../characters";
 import type { ElementName } from "../elements";
 import type { VideoSourceId } from "../video-sources";
 import type { WeaponName } from "../weapons";
+import type { Stat } from "@/types/base.types";
 
 interface CharacterArtifactSetRecommendationTemplate {
   best?: boolean | string;
@@ -39,7 +40,7 @@ interface CharacterDetachmentOtherRecommendation {
 export interface CharacterRecommendations {
   artifacts?: {
     sets: CharacterArtifactSetRecommendations | Record<string, CharacterArtifactSetRecommendations>;
-    stats: Record<"sands" | "goblet" | "circlet" | "additional", Array<{ name: string; notes?: string[] }>>;
+    stats: Record<"sands" | "goblet" | "circlet" | "additional", Array<{ name: Stat; notes?: string[] }>>;
   };
   attackCombinations?: string[] | Record<string, string[]>;
   constellationOrSignatureWeapon?: string;

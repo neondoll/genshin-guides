@@ -12,10 +12,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Home, SquarePlay } from "@/components/ui/icons";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Home } from "@/components/ui/icons";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { useAppSelector } from "@/store";
@@ -32,7 +31,7 @@ import {
 } from "@/store/features/characters-recommendations";
 import { ElementImage } from "@/store/features/elements";
 import { useTalent } from "@/store/features/talents";
-import { selectVideoSourcesByIds } from "@/store/features/video-sources";
+import { VideoSourcesTable } from "@/store/features/video-sources";
 import { WeaponImage } from "@/store/features/weapons";
 import { formatPercent } from "@/utils/format";
 
@@ -42,6 +41,7 @@ const CharacterPage: FC = () => {
   const characterName = useMemo(() => JSON.parse(characterId as string), [characterId]);
 
   const { character, error, loading } = useCharacter(characterName);
+
   const characteristics = useMemo(() => [
     { label: "Имя", value: character?.name },
     { label: "День рождения", value: character?.birthday },
@@ -133,13 +133,6 @@ const CharacterPage: FC = () => {
         </CardContent>
       </Card>
       <CharacterRecommendations name={characterName} />
-      <img alt="card" src={character?.images.card} />
-      <img alt="portrait" src={character?.images.portrait} />
-      <img alt="mihoyo_icon" src={character?.images.mihoyo_icon} />
-      <img alt="mihoyo_sideIcon" src={character?.images.mihoyo_sideIcon} />
-      <img alt="cover1" src={character?.images.cover1} />
-      <img alt="cover2" src={character?.images.cover2} />
-      <img alt="hoyolab-avatar" src={character?.images["hoyolab-avatar"]} />
     </>
   );
 };
@@ -391,7 +384,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
           </TabsContent>
           <TabsContent value={RecommendationTabs.VIDEO_SOURCES.value}>
             {characterRecommendations.videoSourceIds && (
-              <CharacterVideoSources videoSourceIds={characterRecommendations.videoSourceIds} />
+              <VideoSourcesTable videoSourceIds={characterRecommendations.videoSourceIds} />
             )}
           </TabsContent>
         </Tabs>
@@ -702,78 +695,6 @@ const CharacterTalentRecommendationsTable: FC<{
             <TableCell className="text-center text-pretty whitespace-normal">{recommendation.priority}</TableCell>
             {hasReferenceLevel && (
               <TableCell className="text-center text-pretty whitespace-normal">{recommendation.referenceLevel}</TableCell>
-            )}
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-};
-const CharacterVideoSources: FC<{
-  videoSourceIds: NonNullable<Recommendations["videoSourceIds"]>;
-}> = ({ videoSourceIds }) => {
-  const videoSources = useAppSelector(state => selectVideoSourcesByIds(state, videoSourceIds));
-
-  const hasRutube = useMemo(() => {
-    return videoSources.some(videoSource => Boolean(videoSource.rutube));
-  }, [videoSources]);
-  const hasVkvideo = useMemo(() => {
-    return videoSources.some(videoSource => Boolean(videoSource.vkvideo));
-  }, [videoSources]);
-  const hasYoutube = useMemo(() => {
-    return videoSources.some(videoSource => Boolean(videoSource.vkvideo));
-  }, [videoSources]);
-
-  return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="text-center">Автор</TableHead>
-          <TableHead className="text-center">Название</TableHead>
-          <TableHead className="text-center">Дата выхода</TableHead>
-          {hasRutube && <TableHead className="text-center">RUYUBE</TableHead>}
-          {hasVkvideo && <TableHead className="text-center">VK Видео</TableHead>}
-          {hasYoutube && <TableHead className="text-center">YouTube</TableHead>}
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {videoSources.map(videoSource => (
-          <TableRow key={videoSource.id}>
-            <TableCell className="text-center">{videoSource.author}</TableCell>
-            <TableCell className="text-pretty whitespace-normal">{videoSource.title}</TableCell>
-            <TableCell className="text-center">{videoSource.date}</TableCell>
-            {hasRutube && (
-              <TableCell className="text-center">
-                {videoSource.rutube && (
-                  <Button asChild size="icon-sm">
-                    <a href={videoSource.rutube} target="_blank">
-                      <SquarePlay />
-                    </a>
-                  </Button>
-                )}
-              </TableCell>
-            )}
-            {hasVkvideo && (
-              <TableCell className="text-center">
-                {videoSource.vkvideo && (
-                  <Button asChild size="icon-sm">
-                    <a href={videoSource.vkvideo} target="_blank">
-                      <SquarePlay />
-                    </a>
-                  </Button>
-                )}
-              </TableCell>
-            )}
-            {hasYoutube && (
-              <TableCell className="text-center">
-                {videoSource.youtube && (
-                  <Button asChild size="icon-sm">
-                    <a href={videoSource.youtube} target="_blank">
-                      <SquarePlay />
-                    </a>
-                  </Button>
-                )}
-              </TableCell>
             )}
           </TableRow>
         ))}

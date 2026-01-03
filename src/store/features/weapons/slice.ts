@@ -26,7 +26,7 @@ export const fetchWeaponByName = createAsyncThunk("weapons/fetchByName", async (
   return getWeapon(weaponName);
 });
 export const fetchWeaponsName = createAsyncThunk("weapons/fetchNames", async () => {
-  console.log(`Загрузка имен оружий с сервера`);
+  // console.log(`Загрузка имен оружий с сервера`);
 
   return getWeaponsNames();
 });

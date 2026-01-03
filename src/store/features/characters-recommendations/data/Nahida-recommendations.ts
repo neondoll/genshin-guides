@@ -15,7 +15,7 @@ export default {
     ],
     stats: {
       sands: [{ name: Stats.ELEMENTAL_MASTERY }],
-      goblet: [{ name: Stats.ELEMENTAL_MASTERY }, { name: "Бонус Дендро урона" }],
+      goblet: [{ name: Stats.ELEMENTAL_MASTERY }, { name: Stats.DENDRO_DMG_BONUS }],
       circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }, { name: Stats.ELEMENTAL_MASTERY }],
       additional: [
         { name: Stats.CRIT_RATE },
