@@ -23,6 +23,7 @@ export default {
   [CharacterNames.CLORINDE]: () => import("./Clorinde-recommendations"),
   [CharacterNames.COLLEI]: () => import("./Collei-recommendations"),
   [CharacterNames.CYNO]: () => import("./Cyno-recommendations"),
+  [CharacterNames.DAHLIA]: () => import("./Dahlia-recommendations"),
   [CharacterNames.DEHYA]: () => import("./Dehya-recommendations"),
   [CharacterNames.DILUC]: () => import("./Diluc-recommendations"),
   [CharacterNames.DIONA]: () => import("./Diona-recommendations"),

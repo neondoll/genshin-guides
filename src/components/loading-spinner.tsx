@@ -1,6 +1,6 @@
-import React from "react";
+import type { FC } from "react";
 
-const LoadingSpinner: React.FC = () => {
+const LoadingSpinner: FC = () => {
   return (
     <div className="flex justify-center items-center min-h-[200px]">
       <div className="relative">

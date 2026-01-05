@@ -4,8 +4,8 @@ import { useWeapon } from "./hooks";
 import { WeaponIcons } from "./icons";
 import type { WeaponName } from "./types";
 import ImageWithFallback from "@/components/image-with-fallback";
-import { RARITY_GRADIENTS } from "@/lib/rarity";
 import { cn } from "@/lib/utils";
+import { RARITY_GRADIENTS } from "@/types/base.types";
 
 export const WeaponImage: FC<{ className?: string; name: WeaponName }> = ({ className, name }) => {
   const { weapon } = useWeapon(name);

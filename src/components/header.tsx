@@ -1,7 +1,7 @@
 import type { FC } from "react";
 
-import { cn } from "@/lib/utils";
 import { ModeToggle } from "./mode-toggle";
+import { cn } from "@/lib/utils";
 
 const Header: FC = () => {
   return (

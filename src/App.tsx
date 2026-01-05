@@ -1,19 +1,10 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
 
-import { cn } from "@/lib/utils";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import LoadingSpinner from "@/components/LoadingSpinner";
-
-// Ленивая загрузка для оптимизации
-const HomePage = lazy(() => import("@/pages/home-page"));
-const ArtifactSetsPage = lazy(() => import("@/pages/artifact-sets-page"));
-const ArtifactSetPage = lazy(() => import("@/pages/artifact-set-page"));
-const CharactersPage = lazy(() => import("@/pages/characters-page"));
-const CharacterPage = lazy(() => import("@/pages/character-page"));
-const WeaponsPage = lazy(() => import("@/pages/weapons-page"));
-const WeaponPage = lazy(() => import("@/pages/weapon-page"));
+import LoadingSpinner from "@/components/loading-spinner";
+import { cn } from "@/lib/utils";
 
 function App() {
   return (
@@ -28,13 +19,13 @@ function App() {
       <main className="px-4 py-8 mx-auto container">
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
-            <Route index element={<HomePage />} />
-            <Route path="/artifact-sets" element={<ArtifactSetsPage />} />
-            <Route path="/artifact-sets/:artifactSetId" element={<ArtifactSetPage />} />
-            <Route path="/characters" element={<CharactersPage />} />
-            <Route path="/characters/:characterId" element={<CharacterPage />} />
-            <Route path="/weapons" element={<WeaponsPage />} />
-            <Route path="/weapons/:weaponId" element={<WeaponPage />} />
+            <Route index Component={lazy(() => import("@/pages/home-page"))} />
+            <Route path="/artifact-sets" Component={lazy(() => import("@/pages/artifact-sets-page"))} />
+            <Route path="/artifact-sets/:artifactSetId" Component={lazy(() => import("@/pages/artifact-set-page"))} />
+            <Route path="/characters" Component={lazy(() => import("@/pages/characters-page"))} />
+            <Route path="/characters/:characterId" Component={lazy(() => import("@/pages/character-page"))} />
+            <Route path="/weapons" Component={lazy(() => import("@/pages/weapons-page"))} />
+            <Route path="/weapons/:weaponId" Component={lazy(() => import("@/pages/weapon-page"))} />
           </Routes>
         </Suspense>
       </main>

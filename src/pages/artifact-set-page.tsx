@@ -2,7 +2,6 @@ import { type FC, useMemo } from "react";
 import { Link, useParams } from "react-router";
 
 import BestTooltip from "@/components/best-tooltip";
-import ImageWithFallback from "@/components/image-with-fallback";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
@@ -16,18 +15,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { RARITY_GRADIENTS } from "@/lib/rarity";
 import { cn } from "@/lib/utils";
 import {
-  ArtifactSetIcons,
+  ArtifactSetCircletImage,
+  ArtifactSetFlowerImage,
+  ArtifactSetGobletImage,
   ArtifactSetImage,
   type ArtifactSetName,
+  ArtifactSetPlumeImage,
+  ArtifactSetSandsImage,
   useArtifactSet,
 } from "@/store/features/artifact-sets";
 import { useArtifactSetRecommendations } from "@/store/features/artifact-sets-recommendations";
 import { CharacterImage } from "@/store/features/characters";
 import { VideoSourcesTable } from "@/store/features/video-sources";
-import type { Rarity } from "@/types/base.types";
 
 const ArtifactSetPage: FC = () => {
   const { artifactSetId } = useParams();
@@ -44,13 +45,6 @@ const ArtifactSetPage: FC = () => {
       { label: "4 предмет(а)", value: artifactSet?.effect4Pc, className: "col-span-full" },
       { label: "Версия выхода", value: artifactSet?.version },
     ];
-  }, [artifactSet]);
-  const rarityGradient = useMemo(() => {
-    if (!artifactSet) {
-      return "";
-    }
-
-    return RARITY_GRADIENTS[Math.max(...artifactSet.rarityList) as Rarity || 0];
   }, [artifactSet]);
 
   if (loading) {
@@ -133,13 +127,7 @@ const ArtifactSetPage: FC = () => {
         <CardContent className="grid grid-cols-1 grid-flow-row-dense gap-x-6 gap-y-2 md:grid-cols-2">
           {artifactSet?.flower && (
             <div className="flex gap-x-2.25 items-center">
-              <ImageWithFallback
-                alt={artifactSet.flower.name}
-                className={cn("size-12 rounded-md rounded-br-2xl", rarityGradient)}
-                draggable={false}
-                fallbackSrc={ArtifactSetIcons[artifactSet.name]?.flower}
-                src={artifactSet.images.mihoyo_flower}
-              />
+              <ArtifactSetFlowerImage className="size-12 rounded-md rounded-br-2xl" name={artifactSet.name} />
               <div>
                 <p className="text-base">{artifactSet.flower.name}</p>
                 <p className="text-sm text-slate-700 dark:text-slate-300">{artifactSet.flower.relicText}</p>
@@ -148,13 +136,7 @@ const ArtifactSetPage: FC = () => {
           )}
           {artifactSet?.plume && (
             <div className="flex gap-x-2.25 items-center">
-              <ImageWithFallback
-                alt={artifactSet.plume.name}
-                className={cn("size-12 rounded-md rounded-br-2xl", rarityGradient)}
-                draggable={false}
-                fallbackSrc={ArtifactSetIcons[artifactSet.name]?.plume}
-                src={artifactSet.images.mihoyo_plume}
-              />
+              <ArtifactSetPlumeImage className="size-12 rounded-md rounded-br-2xl" name={artifactSet.name} />
               <div>
                 <p className="text-base">{artifactSet.plume.name}</p>
                 <p className="text-sm text-slate-700 dark:text-slate-300">{artifactSet.plume.relicText}</p>
@@ -163,13 +145,7 @@ const ArtifactSetPage: FC = () => {
           )}
           {artifactSet?.sands && (
             <div className="flex gap-x-2.25 items-center">
-              <ImageWithFallback
-                alt={artifactSet.sands.name}
-                className={cn("size-12 rounded-md rounded-br-2xl", rarityGradient)}
-                draggable={false}
-                fallbackSrc={ArtifactSetIcons[artifactSet.name]?.sands}
-                src={artifactSet.images.mihoyo_sands}
-              />
+              <ArtifactSetSandsImage className="size-12 rounded-md rounded-br-2xl" name={artifactSet.name} />
               <div>
                 <p className="text-base">{artifactSet.sands.name}</p>
                 <p className="text-sm text-slate-700 dark:text-slate-300">{artifactSet.sands.relicText}</p>
@@ -178,13 +154,7 @@ const ArtifactSetPage: FC = () => {
           )}
           {artifactSet?.goblet && (
             <div className="flex gap-x-2.25 items-center">
-              <ImageWithFallback
-                alt={artifactSet.goblet.name}
-                className={cn("size-12 rounded-md rounded-br-2xl", rarityGradient)}
-                draggable={false}
-                fallbackSrc={ArtifactSetIcons[artifactSet.name]?.goblet}
-                src={artifactSet.images.mihoyo_goblet}
-              />
+              <ArtifactSetGobletImage className="size-12 rounded-md rounded-br-2xl" name={artifactSet.name} />
               <div>
                 <p className="text-base">{artifactSet.goblet.name}</p>
                 <p className="text-sm text-slate-700 dark:text-slate-300">{artifactSet.goblet.relicText}</p>
@@ -193,13 +163,7 @@ const ArtifactSetPage: FC = () => {
           )}
           {artifactSet?.circlet && (
             <div className="flex gap-x-2.25 items-center">
-              <ImageWithFallback
-                alt={artifactSet.circlet.name}
-                className={cn("size-12 rounded-md rounded-br-2xl", rarityGradient)}
-                draggable={false}
-                fallbackSrc={ArtifactSetIcons[artifactSet.name]?.circlet}
-                src={artifactSet.images.mihoyo_circlet}
-              />
+              <ArtifactSetCircletImage className="size-12 rounded-md rounded-br-2xl" name={artifactSet.name} />
               <div>
                 <p className="text-base">{artifactSet.circlet.name}</p>
                 <p className="text-sm text-slate-700 dark:text-slate-300">{artifactSet.circlet.relicText}</p>
