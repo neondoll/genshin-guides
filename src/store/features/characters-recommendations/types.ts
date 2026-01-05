@@ -22,12 +22,12 @@ interface CharacterCompleteArtifactSetRecommendation extends CharacterArtifactSe
   name: ArtifactSetName;
 }
 
-interface CharacterDetachmentCharacterRecommendations {
+interface CharacterDetachmentCharacterRecommendation {
   type: "character";
   name: CharacterName;
 }
 
-interface CharacterDetachmentElementRecommendations {
+interface CharacterDetachmentElementRecommendation {
   type: "element";
   name: ElementName;
 }
@@ -47,7 +47,7 @@ export interface CharacterRecommendations {
   detachments?: Array<{
     description?: string;
     template: Array<CharacterDetachmentItemRecommendation>;
-    variants?: Array<Array<CharacterDetachmentCharacterRecommendations>>;
+    variants?: Array<Array<CharacterDetachmentCharacterRecommendation>>;
     best?: boolean;
   }>;
   keyConstellations?: Array<1 | 2 | 3 | 4 | 5 | 6>;
@@ -75,9 +75,6 @@ interface CharacterWeaponRecommendation {
 }
 
 export type CharacterArtifactSetRecommendations = Array<CharacterCompleteArtifactSetRecommendation | CharacterCombinedArtifactSetRecommendation>;
-export type CharacterDetachmentItemRecommendation
-  = CharacterDetachmentCharacterRecommendations
-    | CharacterDetachmentElementRecommendations
-    | CharacterDetachmentOtherRecommendation;
+export type CharacterDetachmentItemRecommendation = CharacterDetachmentCharacterRecommendation | CharacterDetachmentElementRecommendation | CharacterDetachmentOtherRecommendation;
 export type CharacterTalentRecommendations = Array<CharacterTalentRecommendation>;
 export type CharacterWeaponRecommendations = Array<CharacterWeaponRecommendation>;

@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import {
@@ -26,7 +26,10 @@ import {
   ArtifactSetSandsImage,
   useArtifactSet,
 } from "@/store/features/artifact-sets";
-import { useArtifactSetRecommendations } from "@/store/features/artifact-sets-recommendations";
+import {
+  type ArtifactSetRecommendations as Recommendations,
+  useArtifactSetRecommendations,
+} from "@/store/features/artifact-sets-recommendations";
 import { CharacterImage } from "@/store/features/characters";
 import { VideoSourcesTable } from "@/store/features/video-sources";
 
@@ -178,7 +181,7 @@ const ArtifactSetPage: FC = () => {
 };
 
 const RecommendationTabs = {
-  CHARACTERS: { label: "Персонажи", value: "characters" },
+  CARRIERS: { label: "Носители", value: "carriers" },
   PREFERRED_STATS: { label: "Предпочитаемые характеристики", value: "preferred-stats" },
   VIDEO_SOURCES: { label: "Видео-источники", value: "video-sources" },
 } as const;
@@ -189,7 +192,7 @@ const ArtifactSetRecommendations: FC<{ name: ArtifactSetName }> = ({ name }) => 
   const tabs = useMemo(() => {
     const items = [];
 
-    items.push(RecommendationTabs.CHARACTERS);
+    items.push(RecommendationTabs.CARRIERS);
     items.push(RecommendationTabs.PREFERRED_STATS);
     items.push(RecommendationTabs.VIDEO_SOURCES);
 
@@ -199,7 +202,7 @@ const ArtifactSetRecommendations: FC<{ name: ArtifactSetName }> = ({ name }) => 
   return artifactSetRecommendations && (
     <Card className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
       <CardHeader>
-        <CardTitle className="text-xl font-bold">Рекомендации по персонажам и характеристикам</CardTitle>
+        <CardTitle className="text-xl font-bold">Рекомендации по носителям и характеристикам</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <Tabs className="gap-4" defaultValue={tabs[0].value}>
@@ -222,80 +225,11 @@ const ArtifactSetRecommendations: FC<{ name: ArtifactSetName }> = ({ name }) => 
               </TabsTrigger>
             ))}
           </TabsList>
-          <TabsContent value={RecommendationTabs.CHARACTERS.value}>
-            <Table>
-              <TableBody>
-                {artifactSetRecommendations.characters.map(recommendation => (
-                  <TableRow key={recommendation.name}>
-                    <TableCell className="w-16">
-                      <BestTooltip className="size-12" value={recommendation.best} />
-                    </TableCell>
-                    <TableCell className="w-20">
-                      <CharacterImage className="size-16 rounded-md rounded-br-2xl" name={recommendation.name} />
-                    </TableCell>
-                    <TableCell className="text-pretty whitespace-normal">{recommendation.name}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+          <TabsContent value={RecommendationTabs.CARRIERS.value}>
+            <ArtifactSetCarrierRecommendations recommendations={artifactSetRecommendations.carriers} />
           </TabsContent>
           <TabsContent value={RecommendationTabs.PREFERRED_STATS.value}>
-            <Table>
-              <TableBody>
-                {artifactSetRecommendations.preferredStats.sands.map((recommendation, index) => (
-                  <TableRow key={recommendation}>
-                    {index === 0 && (
-                      <TableCell
-                        className="text-base text-slate-700 dark:text-slate-300"
-                        rowSpan={artifactSetRecommendations.preferredStats.sands.length}
-                      >
-                        Часы
-                      </TableCell>
-                    )}
-                    <TableCell className="text-pretty">{recommendation}</TableCell>
-                  </TableRow>
-                ))}
-                {artifactSetRecommendations.preferredStats.goblet.map((recommendation, index) => (
-                  <TableRow key={recommendation}>
-                    {index === 0 && (
-                      <TableCell
-                        className="text-base text-slate-700 dark:text-slate-300"
-                        rowSpan={artifactSetRecommendations.preferredStats.goblet.length}
-                      >
-                        Кубок
-                      </TableCell>
-                    )}
-                    <TableCell className="text-pretty">{recommendation}</TableCell>
-                  </TableRow>
-                ))}
-                {artifactSetRecommendations.preferredStats.circlet.map((recommendation, index) => (
-                  <TableRow key={recommendation}>
-                    {index === 0 && (
-                      <TableCell
-                        className="text-base text-slate-700 dark:text-slate-300"
-                        rowSpan={artifactSetRecommendations.preferredStats.circlet.length}
-                      >
-                        Корона
-                      </TableCell>
-                    )}
-                    <TableCell className="text-pretty">{recommendation}</TableCell>
-                  </TableRow>
-                ))}
-                {artifactSetRecommendations.preferredStats.additional.map((recommendation, index) => (
-                  <TableRow key={recommendation}>
-                    {index === 0 && (
-                      <TableCell
-                        className="text-base text-slate-700 dark:text-slate-300"
-                        rowSpan={artifactSetRecommendations.preferredStats.additional.length}
-                      >
-                        Доп.
-                      </TableCell>
-                    )}
-                    <TableCell className="text-pretty">{recommendation}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+            <ArtifactSetPreferredStatRecommendations recommendations={artifactSetRecommendations.preferredStats} />
           </TabsContent>
           <TabsContent value={RecommendationTabs.VIDEO_SOURCES.value}>
             <VideoSourcesTable videoSourceIds={artifactSetRecommendations.videoSourceIds} />
@@ -303,6 +237,85 @@ const ArtifactSetRecommendations: FC<{ name: ArtifactSetName }> = ({ name }) => 
         </Tabs>
       </CardContent>
     </Card>
+  );
+};
+const ArtifactSetCarrierRecommendations: FC<{
+  recommendations: Recommendations["carriers"];
+}> = ({ recommendations }) => {
+  const hasBest = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.best));
+  }, [recommendations]);
+
+  return (
+    <Table>
+      <TableBody>
+        {recommendations.map((recommendation) => {
+          switch (recommendation.type) {
+            case "character":
+              return (
+                <TableRow key={"character-" + recommendation.name}>
+                  {hasBest && (
+                    <TableCell className="w-16">
+                      <BestTooltip className="size-12" value={recommendation.best} />
+                    </TableCell>
+                  )}
+                  <TableCell className="w-20">
+                    <CharacterImage className="size-16 rounded-md rounded-br-2xl" name={recommendation.name} />
+                  </TableCell>
+                  <TableCell className="text-pretty whitespace-normal">{recommendation.name}</TableCell>
+                </TableRow>
+              );
+            case "other":
+              return (
+                <TableRow key={"other-" + recommendation.title}>
+                  {hasBest && (
+                    <TableCell className="w-16">
+                      <BestTooltip className="size-12" value={recommendation.best} />
+                    </TableCell>
+                  )}
+                  <TableCell className="text-pretty whitespace-normal" colSpan={2}>{recommendation.title}</TableCell>
+                </TableRow>
+              );
+          }
+        })}
+      </TableBody>
+    </Table>
+  );
+};
+const ArtifactSetPreferredStatRecommendations: FC<{
+  recommendations: Recommendations["preferredStats"];
+}> = ({ recommendations }) => {
+  const recommendationsKeys = useMemo(() => {
+    return Object.keys(recommendations) as Array<keyof typeof recommendations>;
+  }, [recommendations]);
+  const rowsCount = useMemo(() => {
+    return Math.max(...recommendationsKeys.map(key => recommendations[key].length));
+  }, [recommendations, recommendationsKeys]);
+
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          {recommendationsKeys.map(key => (
+            <TableHead className="text-base text-center text-slate-700 dark:text-slate-300" key={key}>
+              {key === "sands" && "Часы"}
+              {key === "goblet" && "Кубок"}
+              {key === "circlet" && "Корона"}
+              {key === "additional" && "Доп."}
+            </TableHead>
+          ))}
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {Array.from({ length: rowsCount }).map((_, index) => (
+          <TableRow className="text-center" key={index}>
+            {recommendationsKeys.map(key => (
+              <TableCell key={index + "-" + key}>{recommendations[key][index]}</TableCell>
+            ))}
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   );
 };
 

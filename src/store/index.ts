@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { artifactSetsReducer } from "./features/artifact-sets";
 import { artifactSetsRecommendationsReducer } from "./features/artifact-sets-recommendations";
+import { artifactSetsTierListReducer } from "./features/artifact-sets-tier-list";
 import { characterRolesReducer } from "./features/character-roles";
 import { charactersReducer } from "./features/characters";
 import { charactersRecommendationsReducer } from "./features/characters-recommendations";
@@ -15,6 +16,7 @@ const store = configureStore({
   reducer: {
     artifactSets: artifactSetsReducer,
     artifactSetsRecommendations: artifactSetsRecommendationsReducer,
+    artifactSetsTierList: artifactSetsTierListReducer,
     characterRoles: characterRolesReducer,
     characters: charactersReducer,
     charactersRecommendations: charactersRecommendationsReducer,

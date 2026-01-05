@@ -13,6 +13,7 @@ export const Stats = {
   HEALING_BONUS: "Бонус лечения",
   HP_PERCENTAGE: "HP %",
   HYDRO_DMG_BONUS: "Бонус Гидро урона",
+  PHYSICAL_DMG_BONUS: "Бонус физ. урона",
   PYRO_DMG_BONUS: "Бонус Пиро урона",
 } as const;
 export const STATS_CRIT = [Stats.CRIT_DMG, Stats.CRIT_RATE] as const;

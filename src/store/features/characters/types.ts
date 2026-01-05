@@ -24,6 +24,7 @@ export const CharacterNames = {
   CITLALI: "Ситлали",
   CLORINDE: "Клоринда",
   COLLEI: "Коллеи",
+  COLUMBINA_HYPOSELENIA: "Коломбина Гипоселениа",
   CYNO: "Сайно",
   DAHLIA: "Далия",
   DEHYA: "Дэхья",
@@ -44,6 +45,7 @@ export const CharacterNames = {
   HU_TAO: "Ху Тао",
   IANSAN: "Иансан",
   IFA: "Ифа",
+  ILLUGA: "Иллуги",
   INEFFA: "Инеффа",
   JAHODA: "Ягода",
   JEAN: "Джинн",
@@ -113,6 +115,7 @@ export const CharacterNames = {
   YOIMIYA: "Ёимия",
   YUMEMIZUKI_MIZUKI: "Мидзуки",
   YUN_JIN: "Юнь Цзинь",
+  ZIBAI: "Цзы Бай",
   ZHONGLI: "Чжун Ли",
 } as const;
 

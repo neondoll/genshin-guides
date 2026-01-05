@@ -1,5 +1,6 @@
 export const VideoSourceIds = {
-  ALL_ABOUT_ALL_ARTIFACT_SETS: "all_about_all_artifact_sets",
+  ALL_ABOUT_ALL_ARTIFACT_SETS_2023: "all_about_all_artifact_sets_2023",
+  ALL_ABOUT_ALL_ARTIFACT_SETS_2025: "all_about_all_artifact_sets_2025",
   ALL_ABOUT_ALL_TALENTS: "all_about_all_talents",
   FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON: "first_constellation_or_signature_weapon",
   GUIDE_TO_AINO_IN_6_0: "guide_to_Aino_in_6.0",

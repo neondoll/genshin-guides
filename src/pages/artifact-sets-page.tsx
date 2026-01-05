@@ -13,6 +13,7 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { ArtifactSetImage, type ArtifactSetName, useArtifactSetsNames } from "@/store/features/artifact-sets";
+import { Button } from "@/components/ui/button.tsx";
 
 const ArtifactSetsPage: FC = () => {
   const { artifactSetsNames, error, loading } = useArtifactSetsNames();
@@ -36,21 +37,26 @@ const ArtifactSetsPage: FC = () => {
 
   return (
     <>
-      <Breadcrumb className="mb-8">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link to="/">
-                <Home className="size-5" />
-              </Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Артефакты</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <div className="flex justify-between items-start mb-8">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to="/">
+                  <Home className="size-5" />
+                </Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>Артефакты</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+        <Button asChild>
+          <Link to="/artifact-sets/tier-list">Тир-лист</Link>
+        </Button>
+      </div>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-6 justify-center items-stretch">
         {artifactSetsNames.map(artifactSetName => (
           <ArtifactSetCard key={artifactSetName} name={artifactSetName} />

@@ -4,11 +4,11 @@ import { VideoSourceIds } from "../../video-sources";
 import { Stats, STATS_CRIT, STATS_ELEMENT_DMG_BONUS } from "@/types/base.types";
 
 export default {
-  characters: [
-    { name: CharacterNames.BAIZHU, best: true },
-    { name: CharacterNames.NAHIDA, best: true },
-    { name: CharacterNames.YAOYAO, best: true },
-    { name: CharacterNames.ZHONGLI, best: true },
+  carriers: [
+    { type: "character", name: CharacterNames.BAIZHU, best: true },
+    { type: "character", name: CharacterNames.NAHIDA, best: true },
+    { type: "character", name: CharacterNames.YAOYAO, best: true },
+    { type: "character", name: CharacterNames.ZHONGLI, best: true },
   ],
   preferredStats: {
     sands: [Stats.ELEMENTAL_MASTERY, Stats.ENERGY_RECHARGE, Stats.HP_PERCENTAGE],
@@ -16,5 +16,5 @@ export default {
     circlet: [...STATS_CRIT, Stats.ELEMENTAL_MASTERY],
     additional: [...STATS_CRIT, Stats.ELEMENTAL_MASTERY, Stats.ENERGY_RECHARGE, Stats.HP_PERCENTAGE],
   },
-  videoSourceIds: [VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS],
+  videoSourceIds: [VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS_2023],
 } as ArtifactSetRecommendations;

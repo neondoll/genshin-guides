@@ -13,13 +13,21 @@ export const videoSourcesAdapter = createEntityAdapter<VideoSource>({
 });
 
 const initialState = videoSourcesAdapter.getInitialState(undefined, {
-  [VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS]: {
-    id: VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS,
+  [VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS_2023]: {
+    id: VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS_2023,
     author: "Miron MinMax",
     title: "ВСЁ про ВСЕ сеты АРТЕФАКТОВ! ft. @AnimeCool_Genshin",
     date: "2023-12-31",
     vkvideo: "https://vkvideo.ru/video-227044935_456239083",
     youtube: "https://youtu.be/kCu0ux0hUCg",
+  },
+  [VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS_2025]: {
+    id: VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS_2025,
+    author: "Miron MinMax",
+    title: "ВСЁ про ВСЕ Сеты Артефактов | Тирлист | 2025",
+    date: "2025-11-30",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239276",
+    youtube: "https://youtu.be/TaDugsj9U5c",
   },
   [VideoSourceIds.ALL_ABOUT_ALL_TALENTS]: {
     id: VideoSourceIds.ALL_ABOUT_ALL_TALENTS,

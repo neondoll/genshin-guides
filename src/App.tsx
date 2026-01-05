@@ -21,6 +21,10 @@ function App() {
           <Routes>
             <Route index Component={lazy(() => import("@/pages/home-page"))} />
             <Route path="/artifact-sets" Component={lazy(() => import("@/pages/artifact-sets-page"))} />
+            <Route
+              path="/artifact-sets/tier-list"
+              Component={lazy(() => import("@/pages/artifact-sets-tier-list-page"))}
+            />
             <Route path="/artifact-sets/:artifactSetId" Component={lazy(() => import("@/pages/artifact-set-page"))} />
             <Route path="/characters" Component={lazy(() => import("@/pages/characters-page"))} />
             <Route path="/characters/:characterId" Component={lazy(() => import("@/pages/character-page"))} />
