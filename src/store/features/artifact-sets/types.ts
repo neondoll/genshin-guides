@@ -17,6 +17,7 @@ export const ArtifactSetNames = {
   GOLDEN_TROUPE: "Золотая труппа",
   HEART_OF_DEPTH: "Сердце глубин",
   INSTRUCTOR: "Инструктор",
+  LAVAWALKER: "Ступающий по лаве",
   LONG_NIGHTS_OATH: "Клятва долгой ночи",
   MAIDEN_BELOVED: "Возлюбленная юная дева",
   MARECHAUSSEE_HUNTER: "Охотник Сумеречного двора",

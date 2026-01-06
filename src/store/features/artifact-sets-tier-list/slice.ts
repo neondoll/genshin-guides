@@ -14,15 +14,18 @@ const initialState: ArtifactSetsTierList = {
     {
       tier: "Нужен ситуативно",
       tierClassName: "text-lime-500",
-      artifactSetNames: [ArtifactSetNames.INSTRUCTOR, ArtifactSetNames.TENACITY_OF_THE_MILLELITH],
+      artifactSetNames: [
+        ArtifactSetNames.ARCHAIC_PETRA, ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.INSTRUCTOR,
+        ArtifactSetNames.TENACITY_OF_THE_MILLELITH,
+      ],
     },
     {
       tier: "Нет смысла фармить",
       tierClassName: "text-yellow-500",
       artifactSetNames: [
         ArtifactSetNames.BLIZZARD_STRAYER, ArtifactSetNames.GLADIATORS_FINALE, ArtifactSetNames.HEART_OF_DEPTH,
-        ArtifactSetNames.PALE_FLAME, ArtifactSetNames.RETRACING_BOLIDE, ArtifactSetNames.THE_EXILE,
-        ArtifactSetNames.THUNDERING_FURY, ArtifactSetNames.WANDERERS_TROUPE,
+        ArtifactSetNames.LAVAWALKER, ArtifactSetNames.PALE_FLAME, ArtifactSetNames.RETRACING_BOLIDE,
+        ArtifactSetNames.THE_EXILE, ArtifactSetNames.THUNDERING_FURY, ArtifactSetNames.WANDERERS_TROUPE,
       ],
     },
     {

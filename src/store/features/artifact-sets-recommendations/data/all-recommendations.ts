@@ -10,6 +10,7 @@ export default {
   [ArtifactSetNames.GLADIATORS_FINALE]: () => import("./GladiatorsFinale-recommendations"),
   [ArtifactSetNames.HEART_OF_DEPTH]: () => import("./HeartOfDepth-recommendations"),
   [ArtifactSetNames.INSTRUCTOR]: () => import("./Instructor-recommendations"),
+  [ArtifactSetNames.LAVAWALKER]: () => import("./Lavawalker-recommendations"),
   [ArtifactSetNames.MAIDEN_BELOVED]: () => import("./MaidenBeloved-recommendations"),
   [ArtifactSetNames.PALE_FLAME]: () => import("./PaleFlame-recommendations"),
   [ArtifactSetNames.RETRACING_BOLIDE]: () => import("./RetracingBolide-recommendations"),
