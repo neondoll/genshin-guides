@@ -9,7 +9,7 @@ const initialState: ArtifactSetsTierList = {
     {
       tier: "Нужен почти всегда",
       tierClassName: "text-green-500",
-      artifactSetNames: [ArtifactSetNames.VIRIDESCENT_VENERER],
+      artifactSetNames: [ArtifactSetNames.NOBLESSE_OBLIGE, ArtifactSetNames.VIRIDESCENT_VENERER],
     },
     {
       tier: "Нужен ситуативно",
@@ -25,13 +25,16 @@ const initialState: ArtifactSetsTierList = {
       artifactSetNames: [
         ArtifactSetNames.BLIZZARD_STRAYER, ArtifactSetNames.GLADIATORS_FINALE, ArtifactSetNames.HEART_OF_DEPTH,
         ArtifactSetNames.LAVAWALKER, ArtifactSetNames.PALE_FLAME, ArtifactSetNames.RETRACING_BOLIDE,
-        ArtifactSetNames.THE_EXILE, ArtifactSetNames.THUNDERING_FURY, ArtifactSetNames.WANDERERS_TROUPE,
+        ArtifactSetNames.THE_EXILE, ArtifactSetNames.THUNDERING_FURY, ArtifactSetNames.VERMILLION_HEREAFTER,
+        ArtifactSetNames.WANDERERS_TROUPE,
       ],
     },
     {
       tier: "Хуже Изгнанника",
       tierClassName: "text-red-500",
-      artifactSetNames: [ArtifactSetNames.MAIDEN_BELOVED, ArtifactSetNames.THUNDERSOOTHER],
+      artifactSetNames: [
+        ArtifactSetNames.BLOODSTAINED_CHIVALRY, ArtifactSetNames.MAIDEN_BELOVED, ArtifactSetNames.THUNDERSOOTHER,
+      ],
     },
   ],
   videoSourceId: VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS_2025,

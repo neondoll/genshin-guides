@@ -34,6 +34,7 @@ export const ArtifactSetNames = {
   THE_EXILE: "Изгнанник",
   THUNDERING_FURY: "Громогласный рёв ярости",
   THUNDERSOOTHER: "Усмиряющий гром",
+  VERMILLION_HEREAFTER: "Киноварное загробье",
   VIRIDESCENT_VENERER: "Изумрудная тень",
   WANDERERS_TROUPE: "Странствующий ансамбль",
 } as const;
