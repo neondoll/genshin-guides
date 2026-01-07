@@ -43,6 +43,13 @@ export const ArtifactSetIcons = {
     goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/04dfdf0deae5f0fc58529dc89ee94d6f_3380820828725566086.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/7ce20dbf2ffc87b6b942c0f42d0b43d4_6363911804608985715.png?x-oss-process=image%2Fformat%2Cwebp",
   },
+  [ArtifactSetNames.NIGHTTIME_WHISPERS_IN_THE_ECHOING_WOODS]: {
+    flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/d9d39d9f046d5d23c3d497574be55a82_6317992377184248900.png?x-oss-process=image%2Fformat%2Cwebp",
+    plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/b14fd20a3b0aadd16b52e7ea72596745_6260291915349257028.png?x-oss-process=image%2Fformat%2Cwebp",
+    sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/81147a28166df7fec906ce279a2a5c7f_4517624846804955487.png?x-oss-process=image%2Fformat%2Cwebp",
+    goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/f319dfcbe0c561fc66f06def271298ed_6639241662628415817.png?x-oss-process=image%2Fformat%2Cwebp",
+    circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/55b397257c1f688f6ab611cf1b6567e1_9132590603349411342.png?x-oss-process=image%2Fformat%2Cwebp",
+  },
   [ArtifactSetNames.OBSIDIAN_CODEX]: {
     flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/27/237301566/cd11df3be5420d2c53c2da0d3298eb92_5780698217766604061.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/7d671f861ea037febc1e4d2a15cbfb73_5145216481466413723.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -70,5 +77,12 @@ export const ArtifactSetIcons = {
     sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/6e9a0be1b44bfdc612da88a1c187148d_7586835624555299825.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/cb19bd226823287c1019b7734aa59dfd_4454345269102091303.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/111d739805a42b2d74bf4bb677939b70_7956380336849105046.png?x-oss-process=image%2Fformat%2Cwebp",
+  },
+  [ArtifactSetNames.UNFINISHED_REVERIE]: {
+    flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/356c6b0e1be129282f759d8844872c7d_781505622496301751.png?x-oss-process=image%2Fformat%2Cwebp",
+    plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/2715fda27d0c7648a18d86e63c0acde6_2035628477797426051.png?x-oss-process=image%2Fformat%2Cwebp",
+    sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/925dc4dabaecad2b23d09b55aab1ddfa_643072900693091222.png?x-oss-process=image%2Fformat%2Cwebp",
+    goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/961efd0280cfadc4952d4c6712779ae0_7692529221256139490.png?x-oss-process=image%2Fformat%2Cwebp",
+    circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/be0eae1774ad7d59a3eeeb5c6620ff04_388356664510470564.png?x-oss-process=image%2Fformat%2Cwebp",
   },
 } as { [P in ArtifactSetName]?: Record<"flower" | "plume" | "sands" | "goblet" | "circlet", string> };

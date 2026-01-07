@@ -30,7 +30,7 @@ import {
   type ArtifactSetRecommendations as Recommendations,
   useArtifactSetRecommendations,
 } from "@/store/features/artifact-sets-recommendations";
-import { CharacterImage } from "@/store/features/characters";
+import { CharacterImage, CharacterNames } from "@/store/features/characters";
 import { VideoSourcesTable } from "@/store/features/video-sources";
 
 const ArtifactSetPage: FC = () => {
@@ -274,6 +274,24 @@ const ArtifactSetCarrierRecommendations: FC<{
                     </TableCell>
                   )}
                   <TableCell className="text-pretty whitespace-normal" colSpan={2}>{recommendation.title}</TableCell>
+                </TableRow>
+              );
+            case "traveler":
+              return (
+                <TableRow key={"traveler-" + recommendation.elementName}>
+                  {hasBest && (
+                    <TableCell className="w-16">
+                      <BestTooltip className="size-12" value={recommendation.best} />
+                    </TableCell>
+                  )}
+                  <TableCell className="w-20">
+                    <CharacterImage className="size-16 rounded-md rounded-br-2xl" name={CharacterNames.LUMINE} />
+                  </TableCell>
+                  <TableCell className="text-pretty whitespace-normal">
+                    Путешественник (
+                    {recommendation.elementName}
+                    )
+                  </TableCell>
                 </TableRow>
               );
           }
