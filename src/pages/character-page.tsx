@@ -43,14 +43,14 @@ const CharacterPage: FC = () => {
   const { character, error, loading } = useCharacter(characterName);
 
   const characteristics = useMemo(() => [
-    { label: "Имя", value: character?.name },
+    { label: "Имя", value: characterName },
     { label: "День рождения", value: character?.birthday },
     { label: "Созвездие", value: character?.constellation },
     { label: "Титул", value: character?.title },
     { label: "Глаз Бога", value: character?.elementText },
     { label: "Группа", value: character?.affiliation },
     { label: "Версия выхода", value: character?.version },
-  ], [character]);
+  ], [character, characterName]);
 
   if (loading) {
     return (
@@ -96,7 +96,7 @@ const CharacterPage: FC = () => {
         <CharacterImage className="shrink-0 size-27 rounded-2xl rounded-br-4xl" name={characterName} />
         <div>
           <div className="flex gap-1 items-center mb-1 text-[2rem]/10.5">
-            <h1>{character?.name}</h1>
+            <h1>{characterName}</h1>
             {character?.elementText && character.elementText !== "Нет" && (
               <ElementImage className="shrink-0 size-7" name={character.elementText} />
             )}
@@ -117,7 +117,9 @@ const CharacterPage: FC = () => {
           </div>
         </div>
       </div>
-      <Card className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
+      <Card
+        className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
+      >
         <CardHeader>
           <CardTitle className="text-xl font-bold">Характеристики</CardTitle>
         </CardHeader>
@@ -186,7 +188,9 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
   }, [characterRecommendations]);
 
   return characterRecommendations && (
-    <Card className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
+    <Card
+      className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
+    >
       <CardHeader>
         <CardTitle className="text-xl font-bold">Рекомендации по оружию, артефактам и отрядам</CardTitle>
       </CardHeader>
@@ -219,7 +223,11 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                     <TableCell className="text-base text-slate-700 dark:text-slate-300">
                       Рекомендованный уровень
                     </TableCell>
-                    <TableCell className="text-pretty whitespace-normal">{characterRecommendations.recommendedLevel}</TableCell>
+                    <TableCell
+                      className="text-pretty whitespace-normal"
+                    >
+                      {characterRecommendations.recommendedLevel}
+                    </TableCell>
                   </TableRow>
                 )}
                 {characterRecommendations.keyConstellations && (
@@ -691,10 +699,18 @@ const CharacterTalentRecommendationsTable: FC<{
       <TableBody>
         {recommendations.map(recommendation => (
           <TableRow key={recommendation.type}>
-            <TableCell className="text-center text-pretty whitespace-normal">{talent[recommendation.type].name}</TableCell>
+            <TableCell
+              className="text-center text-pretty whitespace-normal"
+            >
+              {talent[recommendation.type].name}
+            </TableCell>
             <TableCell className="text-center text-pretty whitespace-normal">{recommendation.priority}</TableCell>
             {hasReferenceLevel && (
-              <TableCell className="text-center text-pretty whitespace-normal">{recommendation.referenceLevel}</TableCell>
+              <TableCell
+                className="text-center text-pretty whitespace-normal"
+              >
+                {recommendation.referenceLevel}
+              </TableCell>
             )}
           </TableRow>
         ))}

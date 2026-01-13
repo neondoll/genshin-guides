@@ -15,30 +15,6 @@ import { cn } from "@/lib/utils";
 import { CharacterImage, type CharacterName, useCharacter, useCharactersNames } from "@/store/features/characters";
 import { ElementImage } from "@/store/features/elements";
 
-/* const useCharacters = () => {
-  const [characters, setCharacters] = useState<string[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  const fetchCharacters = useCallback(async () => {
-    try {
-      setLoading(true);
-      const characters = getAllCharacters();
-      setCharacters(characters);
-      setError(null);
-    }
-    catch (err) {
-      setError("Ошибка загрузки данных из genshin-db");
-      console.error("Genshin DB Error:", err);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, []);
-
-  return { characters, error, fetchCharacters, loading };
-}; */
-
 const CharactersPage: FC = () => {
   const { charactersNames, error, loading } = useCharactersNames();
 
@@ -76,7 +52,7 @@ const CharactersPage: FC = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-6 justify-center items-stretch">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(192px,1fr))] gap-6 justify-center items-stretch">
         {charactersNames.map(characterName => (
           <CharacterCard key={characterName} name={characterName} />
         ))}
