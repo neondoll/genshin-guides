@@ -7,6 +7,7 @@ export const VideoSourceIds = {
   GUIDE_TO_ARLECCHINO_IN_5_3: "guide_to_Arlecchino_in_5.3",
   GUIDE_TO_CHASCA_IN_5_8: "guide_to_Chasca_in_5.8",
   GUIDE_TO_CITLALI_IN_5_8: "guide_to_Citlali_in_5.8",
+  GUIDE_TO_COLUMBINA_HYPOSELENIA_IN_6_3_AnimeCool: "guide_to_Columbina_Hyposelenia_in_6.3_AnimeCool",
   GUIDE_TO_DURIN_IN_6_2_AnimeCool: "guide_to_Durin_in_6.2_AnimeCool",
   GUIDE_TO_DURIN_IN_6_2_MironMinMax: "guide_to_Durin_in_6.2_MironMinMax",
   GUIDE_TO_FISCHL_IN_6_2: "guide_to_Fischl_in_6.2",

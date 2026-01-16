@@ -77,6 +77,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239245",
     youtube: "https://youtu.be/GzR7Yx8UDSM?si=vX0FObdIigNnTZkg",
   },
+  [VideoSourceIds.GUIDE_TO_COLUMBINA_HYPOSELENIA_IN_6_3_AnimeCool]: {
+    id: VideoSourceIds.GUIDE_TO_COLUMBINA_HYPOSELENIA_IN_6_3_AnimeCool,
+    author: "Анимекул",
+    title: "Коломбина - ИМБА Нод-Края? | Подробный гайд на Коломбину",
+    date: "2026-01-14",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239111",
+    youtube: "https://youtu.be/7_3-yO9GoOc",
+  },
   [VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_AnimeCool]: {
     id: VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_AnimeCool,
     author: "Анимекул",

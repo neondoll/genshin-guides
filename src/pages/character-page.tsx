@@ -162,7 +162,9 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
       items.push(RecommendationTabs.BASE);
     }
 
-    items.push(RecommendationTabs.ROLES);
+    if (characterRecommendations?.roleIds) {
+      items.push(RecommendationTabs.ROLES);
+    }
 
     if (characterRecommendations?.talents) {
       items.push(RecommendationTabs.TALENTS);
@@ -268,7 +270,9 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
             </Table>
           </TabsContent>
           <TabsContent value={RecommendationTabs.ROLES.value}>
-            <CharacterRoleRecommendations recommendations={characterRecommendations.roleIds} />
+            {characterRecommendations.roleIds && (
+              <CharacterRoleRecommendations recommendations={characterRecommendations.roleIds} />
+            )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.TALENTS.value}>
             {characterRecommendations.talents && (
@@ -554,14 +558,14 @@ const CharacterDetachmentItemRecommendation: FC<{ item: DetachmentItemRecommenda
     case "character":
       return (
         <Card className="flex flex-col gap-1 justify-start items-center p-2">
-          <CharacterImage className="shrink-0 size-16 rounded-md rounded-br-2xl" name={item.name} />
+          <CharacterImage className="shrink-0 size-21.5 rounded-md rounded-br-2xl" name={item.name} />
           <p className="my-auto text-center">{item.name}</p>
         </Card>
       );
     case "element":
       return (
         <Card className="flex flex-col gap-1 justify-start items-center p-2">
-          <ElementImage className="shrink-0 p-2 size-16 rounded-md rounded-br-2xl" name={item.name} />
+          <ElementImage className="shrink-0 p-2 size-21.5 rounded-md rounded-br-2xl" name={item.name} />
           <p className="my-auto text-center">
             {item.name}
             {" "}
@@ -601,10 +605,10 @@ const CharacterDetachmentRecommendations: FC<{
               </TableCell>
             )}
             {hasDescription && (
-              <TableCell className="text-pretty whitespace-normal">{recommendation.description}</TableCell>
+              <TableCell className="text-center text-pretty whitespace-normal">{recommendation.description}</TableCell>
             )}
             <TableCell className="text-pretty whitespace-normal">
-              <div className="grid grid-cols-[repeat(4,calc(var(--spacing)*24.5))] gap-2">
+              <div className="grid grid-cols-[repeat(4,calc(var(--spacing)*26))] gap-2">
                 {recommendation.template.map((item, index) => (
                   <CharacterDetachmentItemRecommendation item={item} key={index} />
                 ))}
@@ -613,7 +617,7 @@ const CharacterDetachmentRecommendations: FC<{
             {hasVariants && (
               <TableCell className="space-y-2 text-pretty whitespace-normal">
                 {recommendation.variants?.map((variant, index) => (
-                  <div className="grid grid-cols-[repeat(4,calc(var(--spacing)*24.5))] gap-2" key={index}>
+                  <div className="grid grid-cols-[repeat(4,calc(var(--spacing)*26))] gap-2" key={index}>
                     {variant.map((item, index) => (
                       <CharacterDetachmentItemRecommendation item={item} key={index} />
                     ))}
@@ -627,7 +631,9 @@ const CharacterDetachmentRecommendations: FC<{
     </Table>
   );
 };
-const CharacterRoleRecommendations: FC<{ recommendations: Recommendations["roleIds"] }> = ({ recommendations }) => {
+const CharacterRoleRecommendations: FC<{
+  recommendations: NonNullable<Recommendations["roleIds"]>;
+}> = ({ recommendations }) => {
   const characterRoles = useAppSelector(state => selectCharacterRolesByIds(state, recommendations));
 
   return (

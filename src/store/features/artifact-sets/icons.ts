@@ -1,6 +1,20 @@
 import { type ArtifactSetName, ArtifactSetNames } from "./types";
 
 export const ArtifactSetIcons = {
+  [ArtifactSetNames.A_DAY_CARVED_FROM_RISING_WINDS]: {
+    flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/12/7c4a7aca9f8325c6663239bbfa452ded_4271064323680356779.png?x-oss-process=image%2Fformat%2Cwebp",
+    plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/1a94746531a931ca6745c9fa4f011aed_8628578092752145043.png?x-oss-process=image%2Fformat%2Cwebp",
+    sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/8683a419d705e1fa6afe561017471bb7_7087180814848883426.png?x-oss-process=image%2Fformat%2Cwebp",
+    goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/1aae7ed000fa89733c1e87117664f999_7258511288141911706.png?x-oss-process=image%2Fformat%2Cwebp",
+    circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/0a7dc60bbf7ab92f1ca0e5b9f9243d1c_1102425851459233733.png?x-oss-process=image%2Fformat%2Cwebp",
+  },
+  [ArtifactSetNames.AUBADE_OF_MORNINGSTAR_AND_MOON]: {
+    flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/12/ef58ecfcb8906792c3a9b07c92586934_3343384077195352394.png?x-oss-process=image%2Fformat%2Cwebp",
+    plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/a9e1ce52df7c5bfef9c8cbd5dfa84f7b_3811177403927809444.png?x-oss-process=image%2Fformat%2Cwebp",
+    sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/a5234f105846c8169e8eed65a1d96043_9085545042989565788.png?x-oss-process=image%2Fformat%2Cwebp",
+    goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/c7d1810c3806c2b48610e279dece177f_6800424281444155660.png?x-oss-process=image%2Fformat%2Cwebp",
+    circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/38f65c1a90f86c32fd7aae63e71a28f3_6153485391569346318.png?x-oss-process=image%2Fformat%2Cwebp",
+  },
   [ArtifactSetNames.FINALE_OF_THE_DEEP_GALLERIES]: {
     flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/bf39402f87db1168263c7c0898c8ab0c_4434336707917443666.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/c498b33d2359b12603471fd65bd22261_7001131486318823058.png?x-oss-process=image%2Fformat%2Cwebp",

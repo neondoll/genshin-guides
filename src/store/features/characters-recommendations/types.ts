@@ -52,7 +52,7 @@ export interface CharacterRecommendations {
   }>;
   keyConstellations?: Array<1 | 2 | 3 | 4 | 5 | 6>;
   recommendedLevel?: string;
-  roleIds: CharacterRoleId[];
+  roleIds?: CharacterRoleId[];
   signatureWeaponNames?: WeaponName[];
   talents?: CharacterTalentRecommendations | Record<string, CharacterTalentRecommendations>;
   videoSourceIds?: VideoSourceId[];

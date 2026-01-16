@@ -22,6 +22,7 @@ export default {
   [CharacterNames.CITLALI]: () => import("./Citlali-recommendations"),
   [CharacterNames.CLORINDE]: () => import("./Clorinde-recommendations"),
   [CharacterNames.COLLEI]: () => import("./Collei-recommendations"),
+  [CharacterNames.COLUMBINA_HYPOSELENIA]: () => import("./ColumbinaHyposelenia-recommendations"),
   [CharacterNames.CYNO]: () => import("./Cyno-recommendations"),
   [CharacterNames.DAHLIA]: () => import("./Dahlia-recommendations"),
   [CharacterNames.DEHYA]: () => import("./Dehya-recommendations"),

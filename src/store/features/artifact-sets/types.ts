@@ -1,7 +1,9 @@
 import type { Artifact as ArtifactDB } from "genshin-db";
 
 export const ArtifactSetNames = {
+  A_DAY_CARVED_FROM_RISING_WINDS: "День восходящих ветров",
   ARCHAIC_PETRA: "Архаичный камень",
+  AUBADE_OF_MORNINGSTAR_AND_MOON: "Рассветная песнь звезды и луны",
   BLIZZARD_STRAYER: "Заблудший в метели",
   BLOODSTAINED_CHIVALRY: "Рыцарь крови",
   CRIMSON_WITCH_OF_FLAMES: "Горящая алая ведьма",

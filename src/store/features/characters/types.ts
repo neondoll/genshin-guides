@@ -24,7 +24,7 @@ export const CharacterNames = {
   CITLALI: "Ситлали",
   CLORINDE: "Клоринда",
   COLLEI: "Коллеи",
-  COLUMBINA_HYPOSELENIA: "Коломбина Гипоселениа",
+  COLUMBINA_HYPOSELENIA: "Коломбина",
   CYNO: "Сайно",
   DAHLIA: "Далия",
   DEHYA: "Дэхья",

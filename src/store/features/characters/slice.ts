@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import type { Character, CharacterName } from "./types";
-import { CharacterNames } from "./types";
 import type { RootState } from "@/store";
 import { getCharacter, getCharactersNames } from "@/utils/genshinDbAdapter";
 
@@ -10,10 +9,7 @@ interface CharactersState {
   names: CharacterName[];
 }
 
-const initialState: CharactersState = {
-  entities: {},
-  names: [CharacterNames.COLUMBINA_HYPOSELENIA, CharacterNames.ILLUGA, CharacterNames.ZIBAI],
-};
+const initialState: CharactersState = { entities: {}, names: [] };
 
 export const fetchCharacterByName = createAsyncThunk("characters/fetchByName", async (characterName: CharacterName, { getState }) => {
   const state = getState() as RootState;
