@@ -85,6 +85,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-231668223_456239111",
     youtube: "https://youtu.be/7_3-yO9GoOc",
   },
+  [VideoSourceIds.GUIDE_TO_COLUMBINA_HYPOSELENIA_IN_6_3_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_COLUMBINA_HYPOSELENIA_IN_6_3_MironMinMax,
+    author: "Miron MinMax",
+    title: "Коломбина - То, Чего Все Ждали? | Гайд на Коломбину в 6.3 [Genshin Impact]",
+    date: "2026-01-14",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239288",
+    youtube: "https://youtu.be/OviJLfwfER4",
+  },
   [VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_AnimeCool]: {
     id: VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_AnimeCool,
     author: "Анимекул",
