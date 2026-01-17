@@ -193,11 +193,15 @@ const ArtifactSetRecommendations: FC<{ name: ArtifactSetName }> = ({ name }) => 
     const items = [];
 
     items.push(RecommendationTabs.CARRIERS);
-    items.push(RecommendationTabs.PREFERRED_STATS);
+
+    if (artifactSetRecommendations?.preferredStats) {
+      items.push(RecommendationTabs.PREFERRED_STATS);
+    }
+
     items.push(RecommendationTabs.VIDEO_SOURCES);
 
     return items;
-  }, []);
+  }, [artifactSetRecommendations]);
 
   return artifactSetRecommendations && (
     <Card className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
@@ -229,7 +233,9 @@ const ArtifactSetRecommendations: FC<{ name: ArtifactSetName }> = ({ name }) => 
             <ArtifactSetCarrierRecommendations recommendations={artifactSetRecommendations.carriers} />
           </TabsContent>
           <TabsContent value={RecommendationTabs.PREFERRED_STATS.value}>
-            <ArtifactSetPreferredStatRecommendations recommendations={artifactSetRecommendations.preferredStats} />
+            {artifactSetRecommendations.preferredStats && (
+              <ArtifactSetPreferredStatRecommendations recommendations={artifactSetRecommendations.preferredStats} />
+            )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.VIDEO_SOURCES.value}>
             <VideoSourcesTable videoSourceIds={artifactSetRecommendations.videoSourceIds} />
@@ -301,7 +307,7 @@ const ArtifactSetCarrierRecommendations: FC<{
   );
 };
 const ArtifactSetPreferredStatRecommendations: FC<{
-  recommendations: Recommendations["preferredStats"];
+  recommendations: NonNullable<Recommendations["preferredStats"]>;
 }> = ({ recommendations }) => {
   const recommendationsKeys = useMemo(() => {
     return Object.keys(recommendations) as Array<keyof typeof recommendations>;

@@ -45,6 +45,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239189",
     youtube: "https://youtu.be/NfgsESKwsdk",
   },
+  [VideoSourceIds.GUIDE_TO_A_DAY_CARVED_FROM_RISING_WINDS_AND_AUBADE_OF_MORNINGSTAR_AND_MOON_IN_6_3]: {
+    id: VideoSourceIds.GUIDE_TO_A_DAY_CARVED_FROM_RISING_WINDS_AND_AUBADE_OF_MORNINGSTAR_AND_MOON_IN_6_3,
+    author: "Miron MinMax",
+    title: "Нужны ли Новые Сеты? | Сравнение на Всех Носителях [Genshin Impact 6.3]",
+    date: "2026-01-10",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239286",
+    youtube: "https://youtu.be/wV4ECCI6Oso",
+  },
   [VideoSourceIds.GUIDE_TO_AINO_IN_6_0]: {
     id: VideoSourceIds.GUIDE_TO_AINO_IN_6_0,
     author: "Анимекул",

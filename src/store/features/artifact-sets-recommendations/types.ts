@@ -25,6 +25,6 @@ interface ArtifactSetCarrierRecommendationTemplate {
 
 export interface ArtifactSetRecommendations {
   carriers: Array<ArtifactSetCarrierCharacterRecommendation | ArtifactSetCarrierOtherRecommendation | ArtifactSetCarrierTravelerRecommendation>;
-  preferredStats: Record<"sands" | "goblet" | "circlet" | "additional", Stat[]>;
+  preferredStats?: Record<"sands" | "goblet" | "circlet" | "additional", Stat[]>;
   videoSourceIds: VideoSourceId[];
 }

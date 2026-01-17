@@ -2,7 +2,9 @@ import type { ArtifactSetRecommendations } from "../types";
 import { type ArtifactSetName, ArtifactSetNames } from "../../artifact-sets";
 
 export default {
+  [ArtifactSetNames.A_DAY_CARVED_FROM_RISING_WINDS]: () => import("./ADayCarvedFromRisingWinds-recommendations"),
   [ArtifactSetNames.ARCHAIC_PETRA]: () => import("./ArchaicPetra-recommendations"),
+  [ArtifactSetNames.AUBADE_OF_MORNINGSTAR_AND_MOON]: () => import("./AubadeOfMorningstarAndMoon-recommendations"),
   [ArtifactSetNames.BLIZZARD_STRAYER]: () => import("./BlizzardStrayer-recommendations"),
   [ArtifactSetNames.BLOODSTAINED_CHIVALRY]: () => import("./BloodstainedChivalry-recommendations"),
   [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES]: () => import("./CrimsonWitchOfFlames-recommendations"),

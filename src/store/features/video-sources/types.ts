@@ -3,6 +3,7 @@ export const VideoSourceIds = {
   ALL_ABOUT_ALL_ARTIFACT_SETS_2025: "all_about_all_artifact_sets_2025",
   ALL_ABOUT_ALL_TALENTS: "all_about_all_talents",
   FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON: "first_constellation_or_signature_weapon",
+  GUIDE_TO_A_DAY_CARVED_FROM_RISING_WINDS_AND_AUBADE_OF_MORNINGSTAR_AND_MOON_IN_6_3: "guide_to_A_Day_Carved_From_Rising_Winds_and_Aubade_of_Morningstar_and_Moon_in_6.3",
   GUIDE_TO_AINO_IN_6_0: "guide_to_Aino_in_6.0",
   GUIDE_TO_ARLECCHINO_IN_5_3: "guide_to_Arlecchino_in_5.3",
   GUIDE_TO_CHASCA_IN_5_8: "guide_to_Chasca_in_5.8",
