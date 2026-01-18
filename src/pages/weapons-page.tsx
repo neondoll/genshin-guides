@@ -16,6 +16,29 @@ import { useWeaponsNames, WeaponImage, type WeaponName } from "@/store/features/
 
 const WeaponsPage: FC = () => {
   const { weaponsNames, error, loading } = useWeaponsNames();
+  // const weaponsList = createRef<HTMLDivElement>();
+
+  // useEffect(() => {
+  //   if (weaponsList.current) {
+  //     let maxWidth = 0;
+  //
+  //     for (let i = 0; i < weaponsList.current.children.length; i++) {
+  //       const item = weaponsList.current.children.item(i);
+  //
+  //       if (item) {
+  //         const width = Number(getComputedStyle(item).width.replace("px", ""));
+  //
+  //         console.log(width);
+  //
+  //         if (width > maxWidth) {
+  //           maxWidth = width;
+  //         }
+  //       }
+  //     }
+  //
+  //     console.log("Max width:", maxWidth);
+  //   }
+  // }, [weaponsList]);
 
   if (loading) {
     return (
@@ -51,7 +74,7 @@ const WeaponsPage: FC = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-6 justify-center items-stretch">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(242px,1fr))] gap-6 justify-center items-stretch">
         {weaponsNames.map(weaponName => (
           <WeaponCard key={weaponName} name={weaponName} />
         ))}

@@ -17,6 +17,29 @@ import { ElementImage } from "@/store/features/elements";
 
 const CharactersPage: FC = () => {
   const { charactersNames, error, loading } = useCharactersNames();
+  // const charactersList = createRef<HTMLDivElement>();
+
+  // useEffect(() => {
+  //   if (charactersList.current) {
+  //     let maxWidth = 0;
+  //
+  //     for (let i = 0; i < charactersList.current.children.length; i++) {
+  //       const item = charactersList.current.children.item(i);
+  //
+  //       if (item) {
+  //         const width = Number(getComputedStyle(item).width.replace("px", ""));
+  //
+  //         console.log(width);
+  //
+  //         if (width > maxWidth) {
+  //           maxWidth = width;
+  //         }
+  //       }
+  //     }
+  //
+  //     console.log("Max width:", maxWidth);
+  //   }
+  // }, [charactersList]);
 
   if (loading) {
     return (
@@ -52,7 +75,7 @@ const CharactersPage: FC = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(192px,1fr))] gap-6 justify-center items-stretch">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-6 justify-center items-stretch">
         {charactersNames.map(characterName => (
           <CharacterCard key={characterName} name={characterName} />
         ))}

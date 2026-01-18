@@ -145,8 +145,6 @@ const WeaponPage: FC = () => {
           })}
         </CardContent>
       </Card>
-      <img alt="mihoyo_awakenIcon" src={weapon?.images.mihoyo_awakenIcon} />
-      <img alt="mihoyo_icon" src={weapon?.images.mihoyo_icon} />
     </>
   );
 };

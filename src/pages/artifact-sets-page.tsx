@@ -9,14 +9,37 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
 import { ArtifactSetImage, type ArtifactSetName, useArtifactSetsNames } from "@/store/features/artifact-sets";
-import { Button } from "@/components/ui/button.tsx";
 
 const ArtifactSetsPage: FC = () => {
   const { artifactSetsNames, error, loading } = useArtifactSetsNames();
+  // const artifactSetsList = createRef<HTMLDivElement>();
+
+  // useEffect(() => {
+  //   if (artifactSetsList.current) {
+  //     let maxWidth = 0;
+  //
+  //     for (let i = 0; i < artifactSetsList.current.children.length; i++) {
+  //       const item = artifactSetsList.current.children.item(i);
+  //
+  //       if (item) {
+  //         const width = Number(getComputedStyle(item).width.replace("px", ""));
+  //
+  //         console.log(width);
+  //
+  //         if (width > maxWidth) {
+  //           maxWidth = width;
+  //         }
+  //       }
+  //     }
+  //
+  //     console.log("Max width:", maxWidth);
+  //   }
+  // }, [artifactSetsList]);
 
   if (loading) {
     return (
@@ -57,7 +80,7 @@ const ArtifactSetsPage: FC = () => {
           <Link to="/artifact-sets/tier-list">Тир-лист</Link>
         </Button>
       </div>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-6 justify-center items-stretch">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(232px,1fr))] gap-6 justify-center items-stretch">
         {artifactSetsNames.map(artifactSetName => (
           <ArtifactSetCard key={artifactSetName} name={artifactSetName} />
         ))}
