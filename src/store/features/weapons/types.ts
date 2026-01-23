@@ -106,6 +106,7 @@ export const WeaponNames = {
   RIGHTFUL_REWARD: "Справедливая награда",
   RING_OF_YAXCHE: "Кольцо Яшче",
   RUST: "Ржавый лук",
+  SACRIFICERS_STAFF: "Посох жертвующей",
   SACRIFICIAL_BOW: "Церемониальный лук",
   SACRIFICIAL_FRAGMENTS: "Церемониальные мемуары",
   SACRIFICIAL_GREATSWORD: "Церемониальный двуручный меч",

@@ -15,6 +15,7 @@ export const VideoSourceIds = {
   GUIDE_TO_FISCHL_IN_6_2: "guide_to_Fischl_in_6.2",
   GUIDE_TO_FURINA_IN_5_4: "guide_to_Furina_in_5.4",
   GUIDE_TO_INEFFA_IN_5_8: "guide_to_Ineffa_in_5.8",
+  GUIDE_TO_INEFFA_IN_6_3: "guide_to_Ineffa_in_6.3",
   GUIDE_TO_JAHODA_IN_6_2: "guide_to_Jahoda_in_6.2",
   GUIDE_TO_LAUMA_IN_6_0_AnimeCool: "guide_to_Lauma_in_6.0_AnimeCool",
   GUIDE_TO_LAUMA_IN_6_0_MironMinMax: "guide_to_Lauma_in_6.0_MironMinMax",

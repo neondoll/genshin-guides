@@ -141,6 +141,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239244",
     youtube: "https://youtu.be/b5lSX3PQOuw",
   },
+  [VideoSourceIds.GUIDE_TO_INEFFA_IN_6_3]: {
+    id: VideoSourceIds.GUIDE_TO_INEFFA_IN_6_3,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Инеффу в 6.3",
+    date: "2026-01-23",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239290",
+    youtube: "https://youtu.be/ZqOnh55kZJc",
+  },
   [VideoSourceIds.GUIDE_TO_JAHODA_IN_6_2]: {
     id: VideoSourceIds.GUIDE_TO_JAHODA_IN_6_2,
     author: "Анимекул",

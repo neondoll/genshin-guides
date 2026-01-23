@@ -42,6 +42,7 @@ export const WeaponIcons = {
   [WeaponNames.RELIQUARY_OF_TRUTH]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/10/20/a81d9e6d6b35935cfa6027c1d74d70c8_5519387986125030469.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.RIGHTFUL_REWARD]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/19/51635400/9bb154ad1759bf2d9015b060cad1ca9c_5611701563956047763.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.RING_OF_YAXCHE]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/9ab70898644274ce31f91faea8216bd8_5924884446177979679.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.SACRIFICERS_STAFF]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/10/20/42b605f34cfce0b70d437d0673c847fd_3003547681809154152.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SACRIFICIAL_JADE]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/18/51635400/58d2970c1997ad52dfbb43017dac3ce8_2114572788886202769.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SCION_OF_THE_BLAZING_SUN]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/18/51635400/b10e2c320e65f991f0e829879761af72_7924883850603523957.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SEQUENCE_OF_SOLITUDE]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/04/24/351cd2de062f0cd7e0bef038fb63f6ae_5924354425808403276.png?x-oss-process=image%2Fformat%2Cwebp",
