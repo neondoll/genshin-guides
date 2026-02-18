@@ -16,22 +16,22 @@ import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import Paths from "@/paths";
 import {
   ArtifactSetCircletImage,
   ArtifactSetFlowerImage,
   ArtifactSetGobletImage,
   ArtifactSetImage,
-  type ArtifactSetName,
   ArtifactSetPlumeImage,
   ArtifactSetSandsImage,
   useArtifactSet,
 } from "@/store/features/artifact-sets";
-import {
-  type ArtifactSetRecommendations as Recommendations,
-  useArtifactSetRecommendations,
-} from "@/store/features/artifact-sets-recommendations";
-import { CharacterImage, CharacterNames } from "@/store/features/characters";
+import { useArtifactSetRecommendations } from "@/store/features/artifact-sets-recommendations";
+import { CharacterImage } from "@/store/features/characters";
 import { VideoSourcesTable } from "@/store/features/video-sources";
+import { type ArtifactSetName } from "@/types/artifact-sets.types";
+import { type ArtifactSetRecommendations as Recommendations } from "@/types/artifact-sets-recommendations.types";
+import { CharacterNames } from "@/types/characters.types";
 
 const ArtifactSetPage: FC = () => {
   const { artifactSetId } = useParams();
@@ -73,7 +73,7 @@ const ArtifactSetPage: FC = () => {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/">
+              <Link to={Paths.HOME}>
                 <Home className="size-5" />
               </Link>
             </BreadcrumbLink>
@@ -81,7 +81,7 @@ const ArtifactSetPage: FC = () => {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/artifact-sets">Артефакты</Link>
+              <Link to={Paths.ARTIFACT_SETS}>Артефакты</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />

@@ -1,11 +1,11 @@
-import type { CharacterRecommendations } from "../types";
-import { ArtifactSetNames } from "../../artifact-sets";
-import { CharacterRoleIds } from "../../character-roles";
-import { CharacterNames } from "../../characters";
-import { ElementNames } from "../../elements";
-import { VideoSourceIds } from "../../video-sources";
-import { WeaponNames } from "../../weapons";
-import { Stats } from "@/types/base.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { CharacterRoleIds } from "@/types/character-roles.types";
+import { CharacterNames } from "@/types/characters.types";
+import { ElementNames } from "@/types/elements.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
+import { WeaponNames } from "@/types/weapons.types";
+import { Stats } from "@/types/stats.types";
 
 const GameVariants = {
   WHEN_PLAYING_THROUGH_ELEMENTAL_BURST: "При игре через взрыв стихий Хаос: Разрушение",

@@ -1,7 +1,7 @@
-import type { ArtifactSetRecommendations } from "../types";
-import { CharacterNames } from "../../characters";
-import { VideoSourceIds } from "../../video-sources";
-import { Stats, STATS_ELEMENT_DMG_BONUS } from "@/types/base.types";
+import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
+import { CharacterNames } from "@/types/characters.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
+import { Stats, StatsElementDmgBonus } from "@/types/stats.types";
 
 export default {
   carriers: [
@@ -12,7 +12,7 @@ export default {
   ],
   preferredStats: {
     sands: [Stats.ENERGY_RECHARGE, Stats.HP_PERCENTAGE],
-    goblet: [Stats.HP_PERCENTAGE, ...STATS_ELEMENT_DMG_BONUS],
+    goblet: [Stats.HP_PERCENTAGE, ...StatsElementDmgBonus],
     circlet: [Stats.CRIT_RATE, Stats.HP_PERCENTAGE],
     additional: [Stats.ATK_PERCENTAGE, Stats.CRIT_RATE, Stats.ENERGY_RECHARGE, Stats.HP_PERCENTAGE],
   },

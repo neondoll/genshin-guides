@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 
-import { type CharacterRole, type CharacterRoleId, CharacterRoleIds } from "./types";
-import type { RootState } from "@/store";
+import { type RootState } from "@/store";
+import { type CharacterRole, type CharacterRoleId, CharacterRoleIds } from "@/types/character-roles.types";
 
 export const characterRolesAdapter = createEntityAdapter<CharacterRole>();
 

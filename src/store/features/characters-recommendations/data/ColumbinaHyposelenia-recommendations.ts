@@ -1,9 +1,9 @@
-import type { CharacterRecommendations } from "../types";
-import { ArtifactSetNames } from "../../artifact-sets";
-import { CharacterNames } from "../../characters";
-import { VideoSourceIds } from "../../video-sources";
-import { WeaponNames } from "../../weapons";
-import { Stats } from "@/types/base.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { CharacterNames } from "@/types/characters.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
+import { WeaponNames } from "@/types/weapons.types";
+import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {

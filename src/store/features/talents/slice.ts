@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import type { Talent } from "./types";
-import type { CharacterName } from "../characters";
+import { type CharacterName } from "@/types/characters.types";
+import { type Talent } from "@/types/talents.types";
 import { getTalent } from "@/utils/genshinDbAdapter";
 
 interface TalentsState {

@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import allRecommendations from "./data/all-recommendations";
-import type { ArtifactSetRecommendations } from "./types";
-import type { ArtifactSetName } from "../artifact-sets";
+import { type ArtifactSetName } from "@/types/artifact-sets.types";
+import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
 
 interface ArtifactSetsRecommendationsState {
   entities: { [P in ArtifactSetName]?: ArtifactSetRecommendations | null };

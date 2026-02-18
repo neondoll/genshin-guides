@@ -1,4 +1,4 @@
-import { type ArtifactSetName, ArtifactSetNames } from "./types";
+import { type ArtifactSetName, ArtifactSetNames } from "@/types/artifact-sets.types";
 
 export const ArtifactSetIcons = {
   [ArtifactSetNames.A_DAY_CARVED_FROM_RISING_WINDS]: {

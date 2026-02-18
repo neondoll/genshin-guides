@@ -1,4 +1,4 @@
-import { type WeaponName, WeaponNames } from "./types";
+import { type WeaponName, WeaponNames } from "@/types/weapons.types";
 
 export const WeaponIcons = {
   [WeaponNames.A_THOUSAND_BLAZING_SUNS]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/26/da1910fbe0e825e1e3704c126720ab24_2121228058184091562.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -29,9 +29,11 @@ export const WeaponIcons = {
   [WeaponNames.FOOTPRINT_OF_THE_RAINBOW]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/9d5294dc8b165585f51ec126543a5208_1314604610170565721.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.FRACTURED_HALO]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/21/6f0271a3d35033b8ec7260faa56b8cc1_2090404062568539078.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.IBIS_PIERCER]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/25/51635400/3c33fbd1aeadf27dc00617c3f4d31c55_2918362787867635712.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.LIGHTBEARING_MOONSHARD]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/07/5df9a7e1f45c7967eb263a37362c76d9_5509634125074303398.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.LUMIDOUCE_ELEGY]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/31/3dff07a4b024917cb63c933d2078ccc8_8401589850337226556.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.MASTER_KEY]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/9fca47d88e241f45ae1568ca386c9e6f_3876291412959841816.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.MOONWEAVERS_DAWN]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/02686441b09dcc1d5029ff21a6d04ef8_297003927757836842.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.MOUNTAIN_BRACING_BOLT]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/27/201424fa6a98ffb190ae82c8ad7d0cc3_6084387639848528037.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.NIGHTWEAVERS_LOOKING_GLASS]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/d28b849e0abef976114ea7ecef92960e_4616051474368823347.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.NOCTURNES_CURTAIN_CALL]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/07/670440ccb460f5f58e014c68ad569d78_7754520756837248808.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.PEAK_PATROL_SONG]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/27/862200e1c8e0ee60c2396d8f4fbe7fb8_4291183729855777874.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -52,6 +54,7 @@ export const WeaponIcons = {
   [WeaponNames.SONG_OF_STILLNESS]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/19/51635400/2cec558b676eefaafe23b64d42f2067e_4006968745169489513.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SPLENDOR_OF_TRANQUIL_WATERS]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/11/06/51635400/9807aa25f336daae391a6f6d4995af3d_7437929925449985095.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.STARCALLERS_WATCH]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/26/de225a286996965268c32027a6c484d9_2367767765928118667.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.STURDY_BONE]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/27/9fbe8cf3da1d476d4c5a228017656cd1_114889972255186755.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SUNNY_MORNING_SLEEP_IN]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/02/07/de8bcaf9142a27cc3aefe8a77f5b4c4c_6111963220065472522.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SURFS_UP]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/6ce2e0da75fbdc19fc4b6f9e7bae9049_5151463723015160354.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.SYMPHONIST_OF_SCENTS]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/04/24/f1928d012621b1f03577efc4f619894a_6810995251642628479.png?x-oss-process=image%2Fformat%2Cwebp",

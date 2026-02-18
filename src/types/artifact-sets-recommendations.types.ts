@@ -1,7 +1,12 @@
-import type { CharacterName } from "../characters";
-import type { ElementName } from "../elements";
-import type { VideoSourceId } from "../video-sources";
-import type { Stat } from "@/types/base.types";
+import type { CharacterName } from "./characters.types";
+import type { ElementName } from "./elements.types";
+import type { Stat } from "./stats.types";
+import type { VideoSourceId } from "./video-sources.types";
+
+interface ArtifactSetCarrierRecommendationTemplate {
+  best?: boolean;
+  notes?: string[];
+}
 
 interface ArtifactSetCarrierCharacterRecommendation extends ArtifactSetCarrierRecommendationTemplate {
   type: "character";
@@ -16,11 +21,6 @@ interface ArtifactSetCarrierOtherRecommendation extends ArtifactSetCarrierRecomm
 interface ArtifactSetCarrierTravelerRecommendation extends ArtifactSetCarrierRecommendationTemplate {
   type: "traveler";
   elementName: ElementName;
-}
-
-interface ArtifactSetCarrierRecommendationTemplate {
-  best?: boolean;
-  notes?: string[];
 }
 
 export interface ArtifactSetRecommendations {

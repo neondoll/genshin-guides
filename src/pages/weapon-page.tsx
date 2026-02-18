@@ -13,6 +13,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
+import Paths from "@/paths";
 import { useWeapon, WeaponImage } from "@/store/features/weapons";
 
 function extractValues(str: string): [string, number][] {
@@ -95,7 +96,7 @@ const WeaponPage: FC = () => {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/">
+              <Link to={Paths.HOME}>
                 <Home className="size-5" />
               </Link>
             </BreadcrumbLink>
@@ -103,7 +104,7 @@ const WeaponPage: FC = () => {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/weapons">Оружие</Link>
+              <Link to={Paths.WEAPONS}>Оружие</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />

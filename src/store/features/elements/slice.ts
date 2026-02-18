@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import type { Element, ElementName } from "./types";
+import { type Element, type ElementName } from "@/types/elements.types";
 import { getElement } from "@/utils/genshinDbAdapter";
 
 interface ElementsState {

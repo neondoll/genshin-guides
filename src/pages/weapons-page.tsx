@@ -12,7 +12,9 @@ import {
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
-import { useWeaponsNames, WeaponImage, type WeaponName } from "@/store/features/weapons";
+import Paths from "@/paths";
+import { useWeaponsNames, WeaponImage } from "@/store/features/weapons";
+import { type WeaponName } from "@/types/weapons.types";
 
 const WeaponsPage: FC = () => {
   const { weaponsNames, error, loading } = useWeaponsNames();
@@ -63,7 +65,7 @@ const WeaponsPage: FC = () => {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/">
+              <Link to={Paths.HOME}>
                 <Home className="size-5" />
               </Link>
             </BreadcrumbLink>
@@ -101,7 +103,7 @@ const WeaponCard: FC<{ name: WeaponName }> = ({ name }) => {
             "dark:group-has-[a:hover]:text-amber-300",
           ])}
         >
-          <Link className="before:absolute before:inset-0" to={`/weapons/${JSON.stringify(name)}`}>{name}</Link>
+          <Link className="before:absolute before:inset-0" to={Paths.WEAPON(JSON.stringify(name))}>{name}</Link>
         </CardTitle>
       </CardContent>
     </Card>

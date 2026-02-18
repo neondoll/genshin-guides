@@ -1,6 +1,7 @@
 import type { FC } from "react";
 
 import { ModeToggle } from "./mode-toggle";
+import NewsDropdown from "./news-dropdown";
 import { cn } from "@/lib/utils";
 
 const Header: FC = () => {
@@ -21,7 +22,10 @@ const Header: FC = () => {
         >
           Genshin Impact Guides
         </h1>
-        <ModeToggle />
+        <div className="inline-flex gap-x-4">
+          <NewsDropdown />
+          <ModeToggle />
+        </div>
       </div>
     </header>
   );

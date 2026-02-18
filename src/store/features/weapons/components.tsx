@@ -1,22 +1,29 @@
-import type { FC } from "react";
+import { type FC, useMemo } from "react";
 
 import { useWeapon } from "./hooks";
 import { WeaponIcons } from "./icons";
-import type { WeaponName } from "./types";
 import ImageWithFallback from "@/components/image-with-fallback";
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
-import { RARITY_GRADIENTS } from "@/types/base.types";
+import { RarityGradients } from "@/types/rarities.types";
+import { type WeaponName } from "@/types/weapons.types";
 
 export const WeaponImage: FC<{ className?: string; name: WeaponName }> = ({ className, name }) => {
-  const { weapon } = useWeapon(name);
+  const { loading, weapon } = useWeapon(name);
 
-  return weapon && (
+  const fallbackSrc = useMemo(() => WeaponIcons[name], [name]);
+
+  if (loading) {
+    return <Skeleton className={cn(RarityGradients[0], className)} />;
+  }
+
+  return (
     <ImageWithFallback
-      alt={weapon.name}
-      className={cn(RARITY_GRADIENTS[weapon.rarity || 0], className)}
+      alt={name}
+      className={cn(RarityGradients[weapon?.rarity ?? 0], className)}
       draggable={false}
-      fallbackSrc={WeaponIcons[name]}
-      src={weapon.images.mihoyo_icon}
+      fallbackSrc={fallbackSrc}
+      src={weapon?.images.mihoyo_icon ?? fallbackSrc}
     />
   );
 };

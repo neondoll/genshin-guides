@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import type { ArtifactSet, ArtifactSetName } from "./types";
+import { type ArtifactSet, type ArtifactSetName } from "@/types/artifact-sets.types";
 import { getArtifactSet, getArtifactSetsNames } from "@/utils/genshinDbAdapter";
 
 interface ArtifactSetsState {

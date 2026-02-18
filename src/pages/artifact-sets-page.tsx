@@ -13,7 +13,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
-import { ArtifactSetImage, type ArtifactSetName, useArtifactSetsNames } from "@/store/features/artifact-sets";
+import Paths from "@/paths";
+import { ArtifactSetImage, useArtifactSetsNames } from "@/store/features/artifact-sets";
+import { type ArtifactSetName } from "@/types/artifact-sets.types";
 
 const ArtifactSetsPage: FC = () => {
   const { artifactSetsNames, error, loading } = useArtifactSetsNames();
@@ -65,7 +67,7 @@ const ArtifactSetsPage: FC = () => {
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to="/">
+                <Link to={Paths.HOME}>
                   <Home className="size-5" />
                 </Link>
               </BreadcrumbLink>
@@ -77,7 +79,7 @@ const ArtifactSetsPage: FC = () => {
           </BreadcrumbList>
         </Breadcrumb>
         <Button asChild>
-          <Link to="/artifact-sets/tier-list">Тир-лист</Link>
+          <Link to={Paths.ARTIFACT_SETS_TIER_LIST}>Тир-лист</Link>
         </Button>
       </div>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(232px,1fr))] gap-6 justify-center items-stretch">
@@ -107,7 +109,7 @@ const ArtifactSetCard: FC<{ name: ArtifactSetName }> = ({ name }) => {
             "dark:group-has-[a:hover]:text-amber-300",
           ])}
         >
-          <Link className="before:absolute before:inset-0" to={`/artifact-sets/${JSON.stringify(name)}`}>{name}</Link>
+          <Link className="before:absolute before:inset-0" to={Paths.ARTIFACT_SET(JSON.stringify(name))}>{name}</Link>
         </CardTitle>
       </CardContent>
     </Card>

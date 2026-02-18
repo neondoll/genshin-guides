@@ -1,5 +1,5 @@
-import type { ArtifactSetRecommendations } from "../types";
-import { VideoSourceIds } from "../../video-sources";
+import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [{ type: "other", title: ":(" }],

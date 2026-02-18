@@ -1,7 +1,7 @@
-import type { CharacterRecommendations } from "../types";
-import { CharacterRoleIds } from "../../character-roles";
-import { VideoSourceIds } from "../../video-sources";
-import { WeaponNames } from "../../weapons";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { CharacterRoleIds } from "@/types/character-roles.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
+import { WeaponNames } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "Сигна",

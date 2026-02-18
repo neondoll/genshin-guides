@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import type { ArtifactSetsTierList } from "./types";
-import { ArtifactSetNames } from "../artifact-sets";
-import { VideoSourceIds } from "../video-sources";
+import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { type ArtifactSetsTierList } from "@/types/artifact-sets-tier-list.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 const initialState: ArtifactSetsTierList = {
   list: [

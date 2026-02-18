@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchElementByName } from "./slice";
-import type { ElementName } from "./types";
 import { useAppDispatch, useAppSelector } from "@/store";
+import { type ElementName } from "@/types/elements.types";
 
 export const useElement = (name: ElementName) => {
   const dispatch = useAppDispatch();

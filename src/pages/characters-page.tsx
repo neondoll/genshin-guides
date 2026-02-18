@@ -12,8 +12,10 @@ import {
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { cn } from "@/lib/utils";
-import { CharacterImage, type CharacterName, useCharacter, useCharactersNames } from "@/store/features/characters";
+import Paths from "@/paths";
+import { CharacterImage, useCharacter, useCharactersNames } from "@/store/features/characters";
 import { ElementImage } from "@/store/features/elements";
+import { type CharacterName } from "@/types/characters.types";
 
 const CharactersPage: FC = () => {
   const { charactersNames, error, loading } = useCharactersNames();
@@ -64,7 +66,7 @@ const CharactersPage: FC = () => {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/">
+              <Link to={Paths.HOME}>
                 <Home className="size-5" />
               </Link>
             </BreadcrumbLink>
@@ -113,7 +115,7 @@ const CharacterCard: FC<{ name: CharacterName }> = ({ name }) => {
             "dark:group-has-[a:hover]:text-amber-300",
           ])}
         >
-          <Link className="before:absolute before:inset-0" to={`/characters/${JSON.stringify(name)}`}>{name}</Link>
+          <Link className="before:absolute before:inset-0" to={Paths.CHARACTER(JSON.stringify(name))}>{name}</Link>
         </CardTitle>
       </CardContent>
     </Card>

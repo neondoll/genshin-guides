@@ -2,52 +2,71 @@ import { type FC, useMemo } from "react";
 
 import { useArtifactSet } from "./hooks";
 import { ArtifactSetIcons } from "./icons";
-import type { ArtifactSetName } from "./types";
 import ImageWithFallback from "@/components/image-with-fallback";
+import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
-import { type Rarity, RARITY_GRADIENTS } from "@/types/base.types";
+import { type ArtifactSetName } from "@/types/artifact-sets.types";
+import { type Rarity, RarityGradients } from "@/types/rarities.types";
 
 export const ArtifactSetCircletImage: FC<{ className?: string; name: ArtifactSetName }> = ({ className, name }) => {
-  const { artifactSet } = useArtifactSet(name);
+  const { artifactSet, loading } = useArtifactSet(name);
 
-  return artifactSet?.circlet && (
+  const fallbackSrc = useMemo(() => ArtifactSetIcons[name]?.circlet, [name]);
+
+  if (loading) {
+    return <Skeleton className={cn(RarityGradients[0], className)} />;
+  }
+
+  return (
     <ImageWithFallback
-      alt={artifactSet.circlet.name}
-      className={cn(RARITY_GRADIENTS[Math.max(...artifactSet.rarityList) as Rarity || 0], className)}
+      alt={artifactSet?.circlet?.name ?? `${name} (circlet)`}
+      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
       draggable={false}
-      fallbackSrc={ArtifactSetIcons[name]?.circlet}
-      src={artifactSet.images.mihoyo_circlet}
+      fallbackSrc={fallbackSrc}
+      src={artifactSet?.images.mihoyo_circlet ?? fallbackSrc}
     />
   );
 };
 export const ArtifactSetFlowerImage: FC<{ className?: string; name: ArtifactSetName }> = ({ className, name }) => {
-  const { artifactSet } = useArtifactSet(name);
+  const { artifactSet, loading } = useArtifactSet(name);
 
-  return artifactSet?.flower && (
+  const fallbackSrc = useMemo(() => ArtifactSetIcons[name]?.flower, [name]);
+
+  if (loading) {
+    return <Skeleton className={cn(RarityGradients[0], className)} />;
+  }
+
+  return (
     <ImageWithFallback
-      alt={artifactSet.flower.name}
-      className={cn(RARITY_GRADIENTS[Math.max(...artifactSet.rarityList) as Rarity || 0], className)}
+      alt={artifactSet?.flower?.name ?? `${name} (flower)`}
+      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
       draggable={false}
-      fallbackSrc={ArtifactSetIcons[name]?.flower}
-      src={artifactSet.images.mihoyo_flower}
+      fallbackSrc={fallbackSrc}
+      src={artifactSet?.images.mihoyo_flower ?? fallbackSrc}
     />
   );
 };
 export const ArtifactSetGobletImage: FC<{ className?: string; name: ArtifactSetName }> = ({ className, name }) => {
-  const { artifactSet } = useArtifactSet(name);
+  const { artifactSet, loading } = useArtifactSet(name);
 
-  return artifactSet?.goblet && (
+  const fallbackSrc = useMemo(() => ArtifactSetIcons[name]?.goblet, [name]);
+
+  if (loading) {
+    return <Skeleton className={cn(RarityGradients[0], className)} />;
+  }
+
+  return (
     <ImageWithFallback
-      alt={artifactSet.goblet.name}
-      className={cn(RARITY_GRADIENTS[Math.max(...artifactSet.rarityList) as Rarity || 0], className)}
+      alt={artifactSet?.goblet?.name ?? `${name} (goblet)`}
+      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
       draggable={false}
-      fallbackSrc={ArtifactSetIcons[name]?.goblet}
-      src={artifactSet.images.mihoyo_goblet}
+      fallbackSrc={fallbackSrc}
+      src={artifactSet?.images.mihoyo_goblet ?? fallbackSrc}
     />
   );
 };
 export const ArtifactSetImage: FC<{ className?: string; name: ArtifactSetName }> = ({ className, name }) => {
-  const { artifactSet } = useArtifactSet(name);
+  const { artifactSet, loading } = useArtifactSet(name);
 
   const fallbackSrc = useMemo(() => {
     const images = ArtifactSetIcons[name];
@@ -70,39 +89,55 @@ export const ArtifactSetImage: FC<{ className?: string; name: ArtifactSetName }>
       || artifactSet.images.mihoyo_circlet;
   }, [artifactSet]);
 
-  return artifactSet && (
+  if (loading) {
+    return <Skeleton className={cn(RarityGradients[0], className)} />;
+  }
+
+  return (
     <ImageWithFallback
-      alt={artifactSet.name}
-      className={cn(RARITY_GRADIENTS[Math.max(...artifactSet.rarityList) as Rarity || 0], className)}
+      alt={name}
+      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
       draggable={false}
       fallbackSrc={fallbackSrc}
-      src={src}
+      src={src ?? fallbackSrc}
     />
   );
 };
 export const ArtifactSetPlumeImage: FC<{ className?: string; name: ArtifactSetName }> = ({ className, name }) => {
-  const { artifactSet } = useArtifactSet(name);
+  const { artifactSet, loading } = useArtifactSet(name);
 
-  return artifactSet?.plume && (
+  const fallbackSrc = useMemo(() => ArtifactSetIcons[name]?.plume, [name]);
+
+  if (loading) {
+    return <Skeleton className={cn(RarityGradients[0], className)} />;
+  }
+
+  return (
     <ImageWithFallback
-      alt={artifactSet.plume.name}
-      className={cn(RARITY_GRADIENTS[Math.max(...artifactSet.rarityList) as Rarity || 0], className)}
+      alt={artifactSet?.plume?.name ?? `${name} (plume)`}
+      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
       draggable={false}
-      fallbackSrc={ArtifactSetIcons[name]?.plume}
-      src={artifactSet.images.mihoyo_plume}
+      fallbackSrc={fallbackSrc}
+      src={artifactSet?.images.mihoyo_plume ?? fallbackSrc}
     />
   );
 };
 export const ArtifactSetSandsImage: FC<{ className?: string; name: ArtifactSetName }> = ({ className, name }) => {
-  const { artifactSet } = useArtifactSet(name);
+  const { artifactSet, loading } = useArtifactSet(name);
 
-  return artifactSet?.sands && (
+  const fallbackSrc = useMemo(() => ArtifactSetIcons[name]?.sands, [name]);
+
+  if (loading) {
+    return <Skeleton className={cn(RarityGradients[0], className)} />;
+  }
+
+  return (
     <ImageWithFallback
-      alt={artifactSet.sands.name}
-      className={cn(RARITY_GRADIENTS[Math.max(...artifactSet.rarityList) as Rarity || 0], className)}
+      alt={artifactSet?.sands?.name ?? `${name} (sands)`}
+      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
       draggable={false}
-      fallbackSrc={ArtifactSetIcons[name]?.sands}
-      src={artifactSet.images.mihoyo_sands}
+      fallbackSrc={fallbackSrc}
+      src={artifactSet?.images.mihoyo_sands ?? fallbackSrc}
     />
   );
 };

@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import allRecommendations from "./data/all-recommendations";
-import type { CharacterRecommendations } from "./types";
-import type { CharacterName } from "../characters";
+import { type CharacterName } from "@/types/characters.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 
 interface CharactersRecommendationsState {
   entities: { [P in CharacterName]?: CharacterRecommendations | null };

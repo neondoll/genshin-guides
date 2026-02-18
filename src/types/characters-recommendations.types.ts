@@ -1,10 +1,10 @@
-import type { ArtifactSetName } from "../artifact-sets";
-import type { CharacterRoleId } from "../character-roles";
-import type { CharacterName } from "../characters";
-import type { ElementName } from "../elements";
-import type { VideoSourceId } from "../video-sources";
-import type { WeaponName } from "../weapons";
-import type { Stat } from "@/types/base.types";
+import type { ArtifactSetName } from "./artifact-sets.types";
+import type { CharacterRoleId } from "./character-roles.types";
+import type { CharacterName } from "./characters.types";
+import type { ElementName } from "./elements.types";
+import type { Stat } from "./stats.types";
+import type { VideoSourceId } from "./video-sources.types";
+import type { WeaponName } from "./weapons.types";
 
 interface CharacterArtifactSetRecommendationTemplate {
   best?: boolean | string;
@@ -37,6 +37,26 @@ interface CharacterDetachmentOtherRecommendation {
   title: string;
 }
 
+interface CharacterTalentRecommendation {
+  type: "combat1" | "combat2" | "combat3";
+  priority: string;
+  referenceLevel?: string | number;
+}
+
+interface CharacterWeaponRecommendation {
+  name: WeaponName;
+  best?: boolean | string;
+  postfix?: string;
+  r?: 1 | 2 | 3 | 4 | 5;
+  percent?: number;
+  notes?: string[];
+}
+
+export type CharacterArtifactSetRecommendations = Array<CharacterCompleteArtifactSetRecommendation | CharacterCombinedArtifactSetRecommendation>;
+export type CharacterDetachmentItemRecommendation = CharacterDetachmentCharacterRecommendation | CharacterDetachmentElementRecommendation | CharacterDetachmentOtherRecommendation;
+export type CharacterTalentRecommendations = Array<CharacterTalentRecommendation>;
+export type CharacterWeaponRecommendations = Array<CharacterWeaponRecommendation>;
+
 export interface CharacterRecommendations {
   artifacts?: {
     sets: CharacterArtifactSetRecommendations | Record<string, CharacterArtifactSetRecommendations>;
@@ -58,23 +78,3 @@ export interface CharacterRecommendations {
   videoSourceIds?: VideoSourceId[];
   weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
 }
-
-interface CharacterTalentRecommendation {
-  type: "combat1" | "combat2" | "combat3";
-  priority: string;
-  referenceLevel?: string | number;
-}
-
-interface CharacterWeaponRecommendation {
-  name: WeaponName;
-  best?: boolean | string;
-  postfix?: string;
-  r?: 1 | 2 | 3 | 4 | 5;
-  percent?: number;
-  notes?: string[];
-}
-
-export type CharacterArtifactSetRecommendations = Array<CharacterCompleteArtifactSetRecommendation | CharacterCombinedArtifactSetRecommendation>;
-export type CharacterDetachmentItemRecommendation = CharacterDetachmentCharacterRecommendation | CharacterDetachmentElementRecommendation | CharacterDetachmentOtherRecommendation;
-export type CharacterTalentRecommendations = Array<CharacterTalentRecommendation>;
-export type CharacterWeaponRecommendations = Array<CharacterWeaponRecommendation>;

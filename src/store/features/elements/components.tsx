@@ -1,12 +1,15 @@
 import type { FC } from "react";
 
 import { useElement } from "./hooks";
-import type { ElementName } from "./types";
+import { Skeleton } from "@/components/ui/skeleton";
+import { type ElementName } from "@/types/elements.types";
 
 export const ElementImage: FC<{ className?: string; name: ElementName }> = ({ className, name }) => {
-  const { element } = useElement(name);
+  const { element, loading } = useElement(name);
 
-  return element && (
-    <img alt={element.name} className={className} draggable={false} src={element.images.wikia} />
-  );
+  if (loading) {
+    return <Skeleton className={className} />;
+  }
+
+  return <img alt={name} className={className} draggable={false} src={element?.images.wikia} />;
 };

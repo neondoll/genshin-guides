@@ -1,4 +1,4 @@
-import { type CharacterName, CharacterNames } from "./types";
+import { type CharacterName, CharacterNames } from "@/types/characters.types";
 
 export const CharacterIcons = {
   [CharacterNames.AINO]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/09/09/70239714/8de27885f9ecab5db5e6a2bc69fda15d_6967953783443502732.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -19,7 +19,7 @@ export const CharacterIcons = {
   [CharacterNames.GAMING]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/29/70239714/b041ad23a9d6245efac952a9379c5114_276821710480263658.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.IANSAN]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/26/70239714/ddafd4c71a8e0d0cefd5ee7e9deff6d6_4477498942125188633.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.IFA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/05/04/70239714/118809bff067dcfffca5b52dbcfafa85_4788136769261586703.png?x-oss-process=image%2Fformat%2Cwebp",
-  [CharacterNames.ILLUGA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/12/13/70239714/454db03abec9048accfd951697435052_3518403521120219084.png?x-oss-process=image%2Fformat%2Cwebp",
+  [CharacterNames.ILLUGA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/30/70239714/92c6915211642ab2e169765a2293b81d_8532425604296397718.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.INEFFA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/07/29/70239714/bffbb9b2d064472393f75084b4428a5e_689708039142215456.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.JAHODA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/12/02/70239714/290a8010e15d6a75729c3f5bfcbda3ca_5594969066848104165.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.KACHINA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/28/70239714/26925adb1092d29c8afdf46d92fad8bd_1057222640632167323.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -42,9 +42,10 @@ export const CharacterIcons = {
   [CharacterNames.SIGEWINNE]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/06/25/70239714/2d607aa4d729030ea04f79919257e311_6438381243111168759.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.SKIRK]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/06/17/70239714/4eaa3f0af91fa75f0e12f71502caf340_1950459078191348896.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.VARESA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/26/70239714/8e069d8d2ebf92fa2e78a0507f0c749a_6935232209907120535.png?x-oss-process=image%2Fformat%2Cwebp",
+  [CharacterNames.VARKA]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/24/70239714/dc89947ae27b11418847d1317a9e762b_4608068989970942200.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.WRIOTHESLEY]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/10/14/70239714/31a0eb2dec5d69ca8dd7616572136b8b_8557241678097856239.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.XIANYUN]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/01/29/70239714/2c2be27f8876e9435ab8c8b933b8408c_1039880044178545202.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.XILONEN]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/10/07/70239714/b663e62a652cfea13b60cbb756f88f84_7030055574710067357.png?x-oss-process=image%2Fformat%2Cwebp",
   [CharacterNames.YUMEMIZUKI_MIZUKI]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/02/10/70239714/5533a38558ecfda3eff0f7cbf066e63c_2165909000156774632.png?x-oss-process=image%2Fformat%2Cwebp",
-  [CharacterNames.ZIBAI]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/12/13/70239714/ad09ef9f33a8cb847d9afe851bdfc33a_1215057408362044908.png?x-oss-process=image%2Fformat%2Cwebp",
+  [CharacterNames.ZIBAI]: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/30/70239714/1b6c91b884d5c4fb337104b6a272dc5b_1302288497446334377.png?x-oss-process=image%2Fformat%2Cwebp",
 } as { [P in CharacterName]?: string };

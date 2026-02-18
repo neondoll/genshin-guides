@@ -1,6 +1,6 @@
-import type { ArtifactSetRecommendations } from "../types";
-import { CharacterNames } from "../../characters";
-import { VideoSourceIds } from "../../video-sources";
+import { VideoSourceIds } from "@/types/video-sources.types";
+import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
+import { CharacterNames } from "@/types/characters.types";
 
 export default {
   carriers: [

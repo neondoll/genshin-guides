@@ -3,6 +3,7 @@ import { Link } from "react-router";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import Paths from "@/paths";
 
 const HomePage: FC = () => {
   return (
@@ -16,7 +17,7 @@ const HomePage: FC = () => {
         </CardContent>
         <CardFooter>
           <Button asChild>
-            <Link to="/characters">Смотреть</Link>
+            <Link to={Paths.CHARACTERS}>Смотреть</Link>
           </Button>
         </CardFooter>
       </Card>
@@ -30,7 +31,7 @@ const HomePage: FC = () => {
         </CardContent>
         <CardFooter>
           <Button asChild>
-            <Link to="/weapons">Смотреть</Link>
+            <Link to={Paths.WEAPONS}>Смотреть</Link>
           </Button>
         </CardFooter>
       </Card>
@@ -44,7 +45,7 @@ const HomePage: FC = () => {
         </CardContent>
         <CardFooter>
           <Button asChild>
-            <Link to="/artifact-sets">Смотреть</Link>
+            <Link to={Paths.ARTIFACT_SETS}>Смотреть</Link>
           </Button>
         </CardFooter>
       </Card>

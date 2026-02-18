@@ -1,6 +1,6 @@
 import type { Character as CharacterDB } from "genshin-db";
 
-import type { ElementName } from "../elements";
+import type { ElementName } from "./elements.types";
 
 export const CharacterNames = {
   AETHER: "Итэр",
@@ -99,6 +99,7 @@ export const CharacterNames = {
   THOMA: "Тома",
   TIGHNARI: "Тигнари",
   VARESA: "Вареса",
+  VARKA: "Варка",
   VENTI: "Венти",
   WANDERER: "Странник",
   WRIOTHESLEY: "Ризли",

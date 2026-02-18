@@ -1,10 +1,10 @@
 import genshindb, { Language } from "genshin-db";
 
-import type { ArtifactSet, ArtifactSetName } from "@/store/features/artifact-sets";
-import type { Character, CharacterName } from "@/store/features/characters";
-import type { Element, ElementName } from "@/store/features/elements";
-import type { Talent } from "@/store/features/talents";
-import type { Weapon, WeaponName } from "@/store/features/weapons";
+import { type ArtifactSet, type ArtifactSetName } from "@/types/artifact-sets.types";
+import { type Character, type CharacterName } from "@/types/characters.types";
+import { type Element, type ElementName } from "@/types/elements.types";
+import { type Talent } from "@/types/talents.types";
+import { type Weapon, type WeaponName } from "@/types/weapons.types";
 
 // Конфигурация для русского языка
 const DB_NAMES_OPTIONS = { matchCategories: true, resultLanguage: Language.Russian } as const;
@@ -29,7 +29,9 @@ export function getArtifactSet(artifactSetName: ArtifactSetName) {
 }
 
 export function getArtifactSetsNames() {
-  return genshindb.artifacts("names", DB_NAMES_OPTIONS) as ArtifactSetName[];
+  const artifactSetsNames = genshindb.artifacts("names", DB_NAMES_OPTIONS);
+
+  return artifactSetsNames as ArtifactSetName[];
 }
 
 export function getCharacter(characterName: CharacterName) {
@@ -43,7 +45,9 @@ export function getCharacter(characterName: CharacterName) {
 }
 
 export function getCharactersNames() {
-  return genshindb.characters("names", DB_NAMES_OPTIONS) as CharacterName[];
+  const charactersNames = genshindb.characters("names", DB_NAMES_OPTIONS);
+
+  return charactersNames as CharacterName[];
 }
 
 export function getElement(elementName: ElementName) {
@@ -56,9 +60,9 @@ export function getElement(elementName: ElementName) {
   return elementData as Element;
 }
 
-export function getElementsNames() {
-  return genshindb.elements("names", DB_NAMES_OPTIONS) as ElementName[];
-}
+// export function getElementsNames() {
+//   return genshindb.elements("names", DB_NAMES_OPTIONS) as ElementName[];
+// }
 
 export function getTalent(characterName: CharacterName) {
   const talentsData = genshindb.talents(characterName, DB_OPTIONS);
@@ -70,9 +74,9 @@ export function getTalent(characterName: CharacterName) {
   return talentsData as Talent;
 }
 
-export function getTalentsNames() {
-  return genshindb.talents("names", DB_NAMES_OPTIONS) as CharacterName[];
-}
+// export function getTalentsNames() {
+//   return genshindb.talents("names", DB_NAMES_OPTIONS) as CharacterName[];
+// }
 
 export function getWeapon(weaponName: WeaponName) {
   const weaponData = genshindb.weapons(weaponName, DB_OPTIONS);
@@ -85,5 +89,17 @@ export function getWeapon(weaponName: WeaponName) {
 }
 
 export function getWeaponsNames() {
-  return genshindb.weapons("names", DB_NAMES_OPTIONS) as WeaponName[];
+  const weaponsNames = Array.from(new Set(genshindb.weapons("names", DB_NAMES_OPTIONS)));
+
+  const deleteNames = ["Легендарный клинок Иссин"];
+
+  deleteNames.forEach((deleteName) => {
+    const deleteIndex = weaponsNames.indexOf(deleteName);
+
+    if (deleteIndex !== -1) {
+      console.log("delete", weaponsNames.splice(deleteIndex, 1));
+    }
+  });
+
+  return weaponsNames as WeaponName[];
 }

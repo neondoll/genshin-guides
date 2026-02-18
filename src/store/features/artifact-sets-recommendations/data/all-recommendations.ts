@@ -1,5 +1,5 @@
-import type { ArtifactSetRecommendations } from "../types";
-import { type ArtifactSetName, ArtifactSetNames } from "../../artifact-sets";
+import { type ArtifactSetName, ArtifactSetNames } from "@/types/artifact-sets.types";
+import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
 
 export default {
   [ArtifactSetNames.A_DAY_CARVED_FROM_RISING_WINDS]: () => import("./ADayCarvedFromRisingWinds-recommendations"),

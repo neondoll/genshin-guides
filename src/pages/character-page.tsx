@@ -17,23 +17,25 @@ import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import Paths from "@/paths";
 import { useAppSelector } from "@/store";
 import { ArtifactSetImage } from "@/store/features/artifact-sets";
 import { selectCharacterRolesByIds } from "@/store/features/character-roles";
-import { CharacterImage, type CharacterName, useCharacter } from "@/store/features/characters";
+import { CharacterImage, useCharacter } from "@/store/features/characters";
+import { useCharacterRecommendations } from "@/store/features/characters-recommendations";
+import { ElementImage } from "@/store/features/elements";
+import { useTalent } from "@/store/features/talents";
+import { VideoSourcesTable } from "@/store/features/video-sources";
+import { WeaponImage } from "@/store/features/weapons";
+import { formatPercent } from "@/utils/format";
+import { type CharacterName } from "@/types/characters.types";
 import {
   type CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
   type CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
   type CharacterRecommendations as Recommendations,
   type CharacterTalentRecommendations as TalentRecommendations,
   type CharacterWeaponRecommendations as WeaponRecommendations,
-  useCharacterRecommendations,
-} from "@/store/features/characters-recommendations";
-import { ElementImage } from "@/store/features/elements";
-import { useTalent } from "@/store/features/talents";
-import { VideoSourcesTable } from "@/store/features/video-sources";
-import { WeaponImage } from "@/store/features/weapons";
-import { formatPercent } from "@/utils/format";
+} from "@/types/characters-recommendations.types";
 
 const CharacterPage: FC = () => {
   const { characterId } = useParams();
@@ -75,7 +77,7 @@ const CharacterPage: FC = () => {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/">
+              <Link to={Paths.HOME}>
                 <Home className="size-5" />
               </Link>
             </BreadcrumbLink>
@@ -83,7 +85,7 @@ const CharacterPage: FC = () => {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/characters">Персонажи</Link>
+              <Link to={Paths.CHARACTERS}>Персонажи</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />

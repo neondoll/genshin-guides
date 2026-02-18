@@ -1,11 +1,11 @@
 import { type FC, useMemo } from "react";
 
 import { selectVideoSourcesByIds } from "./slice";
-import type { VideoSourceId } from "./types";
 import { Button } from "@/components/ui/button";
 import { SquarePlay } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useAppSelector } from "@/store";
+import { type VideoSourceId } from "@/types/video-sources.types";
 
 export const VideoSourcesTable: FC<{ videoSourceIds: VideoSourceId[] }> = ({ videoSourceIds }) => {
   const videoSources = useAppSelector(state => selectVideoSourcesByIds(state, videoSourceIds));

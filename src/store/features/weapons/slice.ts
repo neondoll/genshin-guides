@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import type { Weapon, WeaponName } from "./types";
+import { type Weapon, type WeaponName } from "@/types/weapons.types";
 import { getWeapon, getWeaponsNames } from "@/utils/genshinDbAdapter";
 
 interface WeaponsState {

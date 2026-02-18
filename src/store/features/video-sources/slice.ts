@@ -1,7 +1,7 @@
 import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 
-import { type VideoSource, type VideoSourceId, VideoSourceIds } from "./types";
-import type { RootState } from "@/store";
+import { type RootState } from "@/store";
+import { type VideoSource, type VideoSourceId, VideoSourceIds } from "@/types/video-sources.types";
 
 export const videoSourcesAdapter = createEntityAdapter<VideoSource>({
   sortComparer: (a, b) => {
@@ -24,7 +24,7 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
   [VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS_2025]: {
     id: VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS_2025,
     author: "Miron MinMax",
-    title: "ВСЁ про ВСЕ Сеты Артефактов | Тирлист | 2025",
+    title: "ВСЁ про ВСЕ Сеты Артефактов | Тир-лист | 2025",
     date: "2025-11-30",
     vkvideo: "https://vkvideo.ru/video-227044935_456239276",
     youtube: "https://youtu.be/TaDugsj9U5c",
@@ -83,7 +83,7 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     title: "Подробный и Актуальный | Гайд на Ситлали в 5.8",
     date: "2025-08-03",
     vkvideo: "https://vkvideo.ru/video-227044935_456239245",
-    youtube: "https://youtu.be/GzR7Yx8UDSM?si=vX0FObdIigNnTZkg",
+    youtube: "https://youtu.be/GzR7Yx8UDSM",
   },
   [VideoSourceIds.GUIDE_TO_COLUMBINA_HYPOSELENIA_IN_6_3_AnimeCool]: {
     id: VideoSourceIds.GUIDE_TO_COLUMBINA_HYPOSELENIA_IN_6_3_AnimeCool,
@@ -112,7 +112,7 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
   [VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_MironMinMax]: {
     id: VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_MironMinMax,
     author: "Miron MinMax",
-    title: "Дурин - Паверкрип Сян Лин? Гайд на Дурина",
+    title: "Ты Пожалеешь, что Скипнул Его | Гайд на Дурина",
     date: "2025-12-03",
     vkvideo: "https://vkvideo.ru/video-227044935_456239277",
     youtube: "https://youtu.be/s7cCUf-tQ_E",
@@ -132,6 +132,13 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     date: "2025-03-02",
     vkvideo: "https://vkvideo.ru/video-227044935_456239203",
     youtube: "https://youtu.be/rxTakZUxk0U",
+  },
+  [VideoSourceIds.GUIDE_TO_ILLUGA_IN_6_3]: {
+    id: VideoSourceIds.GUIDE_TO_ILLUGA_IN_6_3,
+    author: "Анимекул",
+    title: "Зачем нужен Иллуги? Тесты урона с Цзы Бай | Гайд на Иллуги",
+    date: "2026-02-13",
+    youtube: "https://youtu.be/iDOk41xI2B4",
   },
   [VideoSourceIds.GUIDE_TO_INEFFA_IN_5_8]: {
     id: VideoSourceIds.GUIDE_TO_INEFFA_IN_5_8,
@@ -162,6 +169,7 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     author: "Анимекул",
     title: "Зачем нужна Лаума? | Подробный гайд на Лауму [Genshin Impact 6.0]",
     date: "2025-09-09",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239063",
     youtube: "https://youtu.be/Y2XmxQHkY6g",
   },
   [VideoSourceIds.GUIDE_TO_LAUMA_IN_6_0_MironMinMax]: {
@@ -177,12 +185,13 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     author: "Анимекул",
     title: "Кирилл Флинс - ИМБА? | Подробный гайд на Флинса [Genshin Impact]",
     date: "2025-09-30",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239067",
     youtube: "https://youtu.be/WstroDNl-Ps",
   },
   [VideoSourceIds.GUIDE_TO_KYRYLL_CHUDOMIROVICH_FLINS_IN_6_0_MironMinMax]: {
     id: VideoSourceIds.GUIDE_TO_KYRYLL_CHUDOMIROVICH_FLINS_IN_6_0_MironMinMax,
     author: "Miron MinMax",
-    title: "Кирилл Флинс Чудомирович | Гайд",
+    title: "Кирилл - Имба, Слабый или просто ОК? Гайд на Флинса",
     date: "2025-09-30",
     vkvideo: "https://vkvideo.ru/video-227044935_456239259",
     youtube: "https://youtu.be/ip1jJz-a4Fc",
@@ -193,13 +202,12 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     title: "Кирилл Чудомирович Флинс | Крутки/Гайд | Flins Гайд Геншин Импакт Луна I",
     date: "2025-09-30",
     vkvideo: "https://vkvideo.ru/video-226836627_456239504",
-    youtube: "https://www.youtube.com/watch?v=tLrzuZ-I4EM",
   },
   [VideoSourceIds.GUIDE_TO_MAVUIKA]: {
     id: VideoSourceIds.GUIDE_TO_MAVUIKA,
     author: "Miron MinMax",
     title: "Подробный и Актуальный | Гайд на Мавуику",
-    date: "2025-06-08",
+    date: "2025-07-08",
     vkvideo: "https://vkvideo.ru/video-227044935_456239238",
     youtube: "https://youtu.be/bGkCi_aBNrI",
   },
@@ -243,6 +251,22 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239180",
     youtube: "https://youtu.be/IoGwHEPCnYs",
   },
+  [VideoSourceIds.GUIDE_TO_NEUVILLETTE_IN_6_3_AnimeCool]: {
+    id: VideoSourceIds.GUIDE_TO_NEUVILLETTE_IN_6_3_AnimeCool,
+    author: "Анимекул",
+    title: "Актуален ли Нёвиллет? Урон Нёвиллета | Обновлённый гайд (6.3)",
+    date: "2026-02-07",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239118",
+    youtube: "https://youtu.be/FS8kKRglFbI",
+  },
+  [VideoSourceIds.GUIDE_TO_NEUVILLETTE_IN_6_3_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_NEUVILLETTE_IN_6_3_MironMinMax,
+    author: "Miron MinMax",
+    title: "Нёвиллет ещё Актуален? Дополнение к Гайду [Genshin Impact 6.3]",
+    date: "2026-02-10",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239296",
+    youtube: "https://youtu.be/YUsnkh4oGKU",
+  },
   [VideoSourceIds.GUIDE_TO_RAIDEN_SHOGUN_IN_5_0]: {
     id: VideoSourceIds.GUIDE_TO_RAIDEN_SHOGUN_IN_5_0,
     author: "Miron MinMax",
@@ -256,6 +280,7 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     author: "Анимекул",
     title: "Скирк – заложник Эскофье или имба? | Подробный гайд на Скирк",
     date: "2025-06-17",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239022",
     youtube: "https://youtu.be/5ZoCR8bsSYM",
   },
   [VideoSourceIds.GUIDE_TO_SKIRK_IN_5_7_MironMinMax]: {
@@ -271,14 +296,13 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     author: "xPandaChannelx",
     title: "Скирк Гайд | Ротации/Шмотки/Группы/F2P | Skirk Как Играть Геншин Импакт 5.7",
     date: "2025-06-19",
-    rutube: "https://rutube.ru/channel/25793190/",
     vkvideo: "https://vkvideo.ru/video-226836627_456239384",
     youtube: "https://www.youtube.com/watch?v=Rr26SHvbmXE",
   },
   [VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_AnimeCool]: {
     id: VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_AnimeCool,
     author: "Анимекул",
-    title: "Гайд на Варесу 6.2. [Геншин импакт 6.2]",
+    title: "Актуальна ли Вареса? | Обновлённый гайд на Варесу",
     date: "2025-12-21",
     vkvideo: "https://vkvideo.ru/video-231668223_456239107",
     youtube: "https://youtu.be/j2UJtlB2f3I",
@@ -307,6 +331,22 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239260",
     youtube: "https://youtu.be/FhKKE0H9K8o",
   },
+  [VideoSourceIds.GUIDE_TO_ZIBAI_IN_6_3_AnimeCool]: {
+    id: VideoSourceIds.GUIDE_TO_ZIBAI_IN_6_3_AnimeCool,
+    author: "Анимекул",
+    title: "Цзы Бай - Новая Гео ИМБА? | Подробный гайд на Цзы Бай",
+    date: "2026-02-01",
+    vkvideo: "https://vkvideo.ru/video-231668223_456239117",
+    youtube: "https://youtu.be/6fe2FBppLRc",
+  },
+  [VideoSourceIds.GUIDE_TO_ZIBAI_IN_6_3_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_ZIBAI_IN_6_3_MironMinMax,
+    author: "Miron MinMax",
+    title: "Цзы Бай - Очередная Имба Нод Края? Гайд на Цзы Бай в 6.3 [Genshin Impact]",
+    date: "2026-02-03",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239295",
+    youtube: "https://youtu.be/9jAJnci_-HM",
+  },
   [VideoSourceIds.HOW_GOOD_IS_RAIDEN_SHOGUN_CONSTELLATIONS]: {
     id: VideoSourceIds.HOW_GOOD_IS_RAIDEN_SHOGUN_CONSTELLATIONS,
     author: "Miron MinMax",
@@ -318,7 +358,7 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
   [VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER]: {
     id: VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
     author: "Miron MinMax",
-    title: "Лучшее Доступное Оружия для Каждого Персонажа",
+    title: "Лучшее Доступное Оружие для Каждого Персонажа",
     date: "2024-11-10",
     vkvideo: "https://vk.com/video-227044935_456239169",
     youtube: "https://youtu.be/zVspDJZPa4Y",
@@ -337,7 +377,7 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     title: "КОМУ КАЧАТЬ УРОВЕНЬ? ВСЕ ПЕРСОНАЖИ Ч.1 feat.@AnimeCool_Genshin",
     date: "2023-09-23",
     vkvideo: "https://vkvideo.ru/video-227044935_456239108",
-    youtube: "https://youtu.be/lhEME9s3HO0?si=qq9FUJwH0JLSTC-H",
+    youtube: "https://youtu.be/lhEME9s3HO0",
   },
   [VideoSourceIds.WHO_NEEDS_LEVELING_PART_2]: {
     id: VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,

@@ -1,7 +1,7 @@
-import type { CharacterRecommendations } from "../types";
-import { CharacterRoleIds } from "../../character-roles";
-import { VideoSourceIds } from "../../video-sources";
-import { WeaponNames } from "../../weapons";
+import { WeaponNames } from "@/types/weapons.types";
+import { CharacterRoleIds } from "@/types/character-roles.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   recommendedLevel: "80/90",

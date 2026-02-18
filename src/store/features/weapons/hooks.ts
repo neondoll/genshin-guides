@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchWeaponByName, fetchWeaponsName } from "./slice";
-import type { WeaponName } from "./types";
 import { useAppDispatch, useAppSelector } from "@/store";
+import { type WeaponName } from "@/types/weapons.types";
 
 export const useWeapon = (name: WeaponName) => {
   const dispatch = useAppDispatch();

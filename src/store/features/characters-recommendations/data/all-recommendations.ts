@@ -1,5 +1,5 @@
-import type { CharacterRecommendations } from "../types";
-import { type CharacterName, CharacterNames } from "../../characters";
+import { type CharacterName, CharacterNames } from "@/types/characters.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 
 export default {
   [CharacterNames.AINO]: () => import("./Aino-recommendations"),
@@ -43,6 +43,7 @@ export default {
   [CharacterNames.HU_TAO]: () => import("./HuTao-recommendations"),
   [CharacterNames.IANSAN]: () => import("./Iansan-recommendations"),
   [CharacterNames.IFA]: () => import("./Ifa-recommendations"),
+  [CharacterNames.ILLUGA]: () => import("./Illuga-recommendations"),
   [CharacterNames.INEFFA]: () => import("./Ineffa-recommendations"),
   [CharacterNames.JAHODA]: () => import("./Jahoda-recommendations"),
   [CharacterNames.JEAN]: () => import("./Jean-recommendations"),
@@ -110,4 +111,5 @@ export default {
   [CharacterNames.YUMEMIZUKI_MIZUKI]: () => import("./YumemizukiMizuki-recommendations"),
   [CharacterNames.YUN_JIN]: () => import("./YunJin-recommendations"),
   [CharacterNames.ZHONGLI]: () => import("./Zhongli-recommendations"),
+  [CharacterNames.ZIBAI]: () => import("./Zibai-recommendations"),
 } as Record<CharacterName, () => Promise<{ default: CharacterRecommendations }>>;

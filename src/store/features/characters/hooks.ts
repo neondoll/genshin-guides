@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchCharacterByName, fetchCharactersName } from "./slice";
-import type { CharacterName } from "./types";
 import { useAppDispatch, useAppSelector } from "@/store";
+import { type CharacterName } from "@/types/characters.types";
 
 export const useCharacter = (name: CharacterName) => {
   const dispatch = useAppDispatch();

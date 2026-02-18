@@ -13,6 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
+import Paths from "@/paths";
 import { useAppSelector } from "@/store";
 import { ArtifactSetImage } from "@/store/features/artifact-sets";
 
@@ -25,7 +26,7 @@ const ArtifactSetsTierListPage: FC = () => {
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/">
+              <Link to={Paths.HOME}>
                 <Home className="size-5" />
               </Link>
             </BreadcrumbLink>
@@ -33,7 +34,7 @@ const ArtifactSetsTierListPage: FC = () => {
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to="/artifact-sets">Артефакты</Link>
+              <Link to={Paths.ARTIFACT_SETS}>Артефакты</Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
