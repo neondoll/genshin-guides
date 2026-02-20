@@ -21,7 +21,7 @@ const CharacterImage = lazy(() => import("@/store/features/characters").then(mod
 const WeaponImage = lazy(() => import("@/store/features/weapons").then(mod => ({ default: mod.WeaponImage })));
 
 const artifactSetNames: ArtifactSetName[] = [];
-const characterNames: CharacterName[] = [CharacterNames.ILLUGA, CharacterNames.NEUVILLETTE, CharacterNames.ZIBAI];
+const characterNames: CharacterName[] = [CharacterNames.ILLUGA, CharacterNames.NEUVILLETTE, CharacterNames.ZIBAI, CharacterNames.VARKA];
 const weaponNames: WeaponName[] = [WeaponNames.LIGHTBEARING_MOONSHARD];
 
 const NewsDropdown: FC = () => {

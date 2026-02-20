@@ -315,6 +315,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239283",
     youtube: "https://youtu.be/mZE4e2S_S0g",
   },
+  [VideoSourceIds.GUIDE_TO_VARKA_IN_6_4_xPandaChannelx]: {
+    id: VideoSourceIds.GUIDE_TO_VARKA_IN_6_4_xPandaChannelx,
+    author: "xPandaChannelx",
+    title: "Варка - Бесполезный Персонаж? | Объедки IWinToLose Gaming | Varka Гайд Геншин Импакт 6.4",
+    date: "2026-02-19",
+    vkvideo: "https://vkvideo.ru/video-226836627_456239658",
+    youtube: "https://www.youtube.com/watch?v=NFkA8f5FA-8",
+  },
   [VideoSourceIds.GUIDE_TO_VENTI_IN_6_2]: {
     id: VideoSourceIds.GUIDE_TO_VENTI_IN_6_2,
     author: "Анимекул",

@@ -94,6 +94,7 @@ export default {
   [CharacterNames.THOMA]: () => import("./Thoma-recommendations"),
   [CharacterNames.TIGHNARI]: () => import("./Tighnari-recommendations"),
   [CharacterNames.VARESA]: () => import("./Varesa-recommendations"),
+  [CharacterNames.VARKA]: () => import("./Varka-recommendations"),
   [CharacterNames.VENTI]: () => import("./Venti-recommendations"),
   [CharacterNames.WANDERER]: () => import("./Wanderer-recommendations"),
   [CharacterNames.WRIOTHESLEY]: () => import("./Wriothesley-recommendations"),

@@ -37,6 +37,7 @@ export const VideoSourceIds = {
   GUIDE_TO_SKIRK_IN_5_7_xPandaChannelx: "guide_to_Skirk_in_5.7_xPandaChannelx",
   GUIDE_TO_VARESA_IN_6_2_AnimeCool: "guide_to_Varesa_in_6.2_AnimeCool",
   GUIDE_TO_VARESA_IN_6_2_MironMinMax: "guide_to_Varesa_in_6.2_MironMinMax",
+  GUIDE_TO_VARKA_IN_6_4_xPandaChannelx: "guide_to_Varka_in_6.4_xPandaChannelx",
   GUIDE_TO_VENTI_IN_6_2: "guide_to_Venti_in_6.2",
   GUIDE_TO_XIANGLING_IN_6_0: "guide_to_Xiangling_in_6.0",
   GUIDE_TO_ZIBAI_IN_6_3_AnimeCool: "guide_to_Zibai_in_6.3_AnimeCool",
