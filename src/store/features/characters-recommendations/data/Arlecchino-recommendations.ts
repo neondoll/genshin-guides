@@ -1,9 +1,9 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ArtifactSetNames } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
@@ -75,13 +75,14 @@ export default {
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
   signatureWeaponNames: [WeaponNames.CRIMSON_MOONS_SEMBLANCE],
   talents: [
-    { type: "combat1", priority: "В первую очередь", referenceLevel: 10 },
-    { type: "combat2", priority: "По необходимости", referenceLevel: "6 | 8" },
-    { type: "combat3", priority: "Во вторую очередь", referenceLevel: "6 | 8" },
+    { type: "combat1", priority: "В первую очередь", recommendedLevel: "9 - 10", overallLevel: 10 },
+    { type: "combat2", priority: "По необходимости", recommendedLevel: "1 - 8", overallLevel: 6 },
+    { type: "combat3", priority: "Во вторую очередь", recommendedLevel: "1 - 8", overallLevel: 6 },
   ],
   videoSourceIds: [
     VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON,
     VideoSourceIds.GUIDE_TO_ARLECCHINO_IN_5_3,
+    VideoSourceIds.TALENT_GAINS_PYRO,
     VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],

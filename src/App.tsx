@@ -1,11 +1,11 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
 
-import Footer from "@/components/footer";
-import Header from "@/components/header";
-import LoadingSpinner from "@/components/loading-spinner";
-import { cn } from "@/lib/utils";
-import Paths from "@/paths";
+import Footer from "./components/footer";
+import Header from "./components/header";
+import LoadingSpinner from "./components/loading-spinner";
+import { cn } from "./lib/utils";
+import Paths from "./paths";
 
 function App() {
   return (

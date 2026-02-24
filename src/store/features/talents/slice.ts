@@ -1,38 +1,37 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
-import { type CharacterName } from "@/types/characters.types";
-import { type Talent } from "@/types/talents.types";
+import { type Talent, type TalentName } from "@/types/talents.types";
 import { getTalent } from "@/utils/genshinDbAdapter";
 
-interface TalentsState {
-  entities: { [P in CharacterName]?: Talent | null };
-  names: CharacterName[];
+export interface TalentsState {
+  entities: { [P in TalentName]?: Talent | null };
+  names: TalentName[];
 }
 
 const initialState: TalentsState = { entities: {}, names: [] };
 
-export const fetchTalentByCharacterName = createAsyncThunk("talents/fetchByCharacterName", async (characterName: CharacterName, { getState }) => {
+export const fetchTalentByName = createAsyncThunk<Talent | null, TalentName>("talents/fetchByName", async (name, { getState }) => {
   const state = getState() as { talents: TalentsState };
 
-  const stateTalent = state.talents.entities[characterName];
+  const stateTalent = state.talents.entities[name];
 
   if (stateTalent) {
-    // console.log(`Таланты для "${characterName}" найдены в хранилище`);
+    // console.log(`Таланты для "${name}" найдены в хранилище`);
 
     return stateTalent;
   }
 
-  // console.log(`Загрузка талантов для "${characterName}" с сервера`);
+  // console.log(`Загрузка талантов для "${name}" с сервера`);
 
-  return getTalent(characterName);
+  return getTalent(name);
 });
 
-export const talentsSlice = createSlice({
+export const talentsSlice = createSlice<TalentsState, SliceCaseReducers<TalentsState>, string, SliceSelectors<TalentsState>, string>({
   name: "talents",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchTalentByCharacterName.fulfilled, (state, action) => {
+    builder.addCase(fetchTalentByName.fulfilled, (state, action) => {
       if (action.payload) {
         state.entities[action.payload.name] = action.payload;
 

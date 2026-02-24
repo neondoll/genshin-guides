@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchWeaponByName, fetchWeaponsName } from "./slice";
-import { useAppDispatch, useAppSelector } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { type WeaponName } from "@/types/weapons.types";
 
 export const useWeapon = (name: WeaponName) => {

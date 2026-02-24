@@ -1,14 +1,13 @@
 import { type FC, useMemo } from "react";
 
-import { useCharacter } from "./hooks";
-import { CharacterIcons } from "./icons";
-import ImageWithFallback from "@/components/image-with-fallback";
-import { Skeleton } from "@/components/ui/skeleton";
+import ImageWithFallback from "../image-with-fallback";
+import { Skeleton } from "../ui/skeleton";
 import { cn } from "@/lib/utils";
+import { CharacterIcons, useCharacter } from "@/store/features/characters";
 import { type CharacterName } from "@/types/characters.types";
 import { RarityGradients } from "@/types/rarities.types";
 
-export const CharacterImage: FC<{ className?: string; name: CharacterName }> = ({ className, name }) => {
+const CharacterImage: FC<{ className?: string; name: CharacterName }> = ({ className, name }) => {
   const { character, loading } = useCharacter(name);
 
   const fallbackSrc = useMemo(() => CharacterIcons[name], [name]);
@@ -27,3 +26,5 @@ export const CharacterImage: FC<{ className?: string; name: CharacterName }> = (
     />
   );
 };
+
+export default CharacterImage;

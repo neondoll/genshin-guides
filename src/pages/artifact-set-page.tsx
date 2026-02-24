@@ -15,20 +15,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ArtifactSetCircletImage from "@/components/v1/artifact-set-circlet-image";
+import ArtifactSetFlowerImage from "@/components/v1/artifact-set-flower-image";
+import ArtifactSetGobletImage from "@/components/v1/artifact-set-goblet-image";
+import ArtifactSetImage from "@/components/v1/artifact-set-image";
+import ArtifactSetPlumeImage from "@/components/v1/artifact-set-plume-image";
+import ArtifactSetSandsImage from "@/components/v1/artifact-set-sands-image";
+import CharacterImage from "@/components/v1/character-image";
+import VideoSourcesTable from "@/components/v1/video-sources-table";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
-import {
-  ArtifactSetCircletImage,
-  ArtifactSetFlowerImage,
-  ArtifactSetGobletImage,
-  ArtifactSetImage,
-  ArtifactSetPlumeImage,
-  ArtifactSetSandsImage,
-  useArtifactSet,
-} from "@/store/features/artifact-sets";
+import { useArtifactSet } from "@/store/features/artifact-sets";
 import { useArtifactSetRecommendations } from "@/store/features/artifact-sets-recommendations";
-import { CharacterImage } from "@/store/features/characters";
-import { VideoSourcesTable } from "@/store/features/video-sources";
 import { type ArtifactSetName } from "@/types/artifact-sets.types";
 import { type ArtifactSetRecommendations as Recommendations } from "@/types/artifact-sets-recommendations.types";
 import { CharacterNames } from "@/types/characters.types";
@@ -108,7 +106,9 @@ const ArtifactSetPage: FC = () => {
           </div>
         </div>
       </div>
-      <Card className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
+      <Card
+        className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
+      >
         <CardHeader>
           <CardTitle className="text-xl font-bold">Характеристики</CardTitle>
         </CardHeader>
@@ -123,7 +123,9 @@ const ArtifactSetPage: FC = () => {
           })}
         </CardContent>
       </Card>
-      <Card className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
+      <Card
+        className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
+      >
         <CardHeader>
           <CardTitle className="text-xl font-bold">Комплект</CardTitle>
         </CardHeader>
@@ -204,7 +206,9 @@ const ArtifactSetRecommendations: FC<{ name: ArtifactSetName }> = ({ name }) => 
   }, [artifactSetRecommendations]);
 
   return artifactSetRecommendations && (
-    <Card className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
+    <Card
+      className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
+    >
       <CardHeader>
         <CardTitle className="text-xl font-bold">Рекомендации по носителям и характеристикам</CardTitle>
       </CardHeader>

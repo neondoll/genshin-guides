@@ -1,14 +1,13 @@
 import { type FC, useMemo } from "react";
 
-import { useWeapon } from "./hooks";
-import { WeaponIcons } from "./icons";
-import ImageWithFallback from "@/components/image-with-fallback";
-import { Skeleton } from "@/components/ui/skeleton";
+import ImageWithFallback from "../image-with-fallback";
+import { Skeleton } from "../ui/skeleton";
 import { cn } from "@/lib/utils";
+import { useWeapon, WeaponIcons } from "@/store/features/weapons";
 import { RarityGradients } from "@/types/rarities.types";
 import { type WeaponName } from "@/types/weapons.types";
 
-export const WeaponImage: FC<{ className?: string; name: WeaponName }> = ({ className, name }) => {
+const WeaponImage: FC<{ className?: string; name: WeaponName }> = ({ className, name }) => {
   const { loading, weapon } = useWeapon(name);
 
   const fallbackSrc = useMemo(() => WeaponIcons[name], [name]);
@@ -27,3 +26,5 @@ export const WeaponImage: FC<{ className?: string; name: WeaponName }> = ({ clas
     />
   );
 };
+
+export default WeaponImage;

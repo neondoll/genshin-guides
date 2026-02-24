@@ -1,6 +1,11 @@
-import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
+import {
+  createEntityAdapter,
+  createSelector,
+  createSlice,
+  type SliceCaseReducers,
+  type SliceSelectors,
+} from "@reduxjs/toolkit";
 
-import { type RootState } from "@/store";
 import { type VideoSource, type VideoSourceId, VideoSourceIds } from "@/types/video-sources.types";
 
 export const videoSourcesAdapter = createEntityAdapter<VideoSource>({
@@ -363,6 +368,38 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239227",
     youtube: "https://youtu.be/dzI9MhNl5Ic",
   },
+  [VideoSourceIds.TALENT_GAINS_ANEMO]: {
+    id: VideoSourceIds.TALENT_GAINS_ANEMO,
+    author: "Miron MinMax",
+    title: "Приросты от Талантов | Анемо [Genshin Impact]",
+    date: "2025-11-24",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239274",
+    youtube: "https://youtu.be/aKZUsonvv4E",
+  },
+  [VideoSourceIds.TALENT_GAINS_GEO]: {
+    id: VideoSourceIds.TALENT_GAINS_GEO,
+    author: "Miron MinMax",
+    title: "Приросты от Талантов | Гео [Genshin Impact]",
+    date: "2026-01-31",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239294",
+    youtube: "https://youtu.be/B5cKoaBaYrg",
+  },
+  [VideoSourceIds.TALENT_GAINS_HYDRO]: {
+    id: VideoSourceIds.TALENT_GAINS_HYDRO,
+    author: "Miron MinMax",
+    title: "Приросты от Талантов | Гидро [Genshin Impact]",
+    date: "2025-12-14",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239280",
+    youtube: "https://youtu.be/iT7NTPfNlwk",
+  },
+  [VideoSourceIds.TALENT_GAINS_PYRO]: {
+    id: VideoSourceIds.TALENT_GAINS_PYRO,
+    author: "Miron MinMax",
+    title: "Приросты от Талантов | Пиро [Genshin Impact]",
+    date: "2026-02-22",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239299",
+    youtube: "https://youtu.be/FtKtaJNTYkw",
+  },
   [VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER]: {
     id: VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
     author: "Miron MinMax",
@@ -404,7 +441,9 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
   },
 });
 
-export const videoSourcesSlice = createSlice({
+export type VideoSourcesState = typeof initialState;
+
+export const videoSourcesSlice = createSlice<VideoSourcesState, SliceCaseReducers<VideoSourcesState>, string, SliceSelectors<VideoSourcesState>, string>({
   name: "videoSources",
   initialState,
   reducers: {},
@@ -412,7 +451,9 @@ export const videoSourcesSlice = createSlice({
 
 export default videoSourcesSlice.reducer;
 
-export const { selectAll: selectAllVideoSources } = videoSourcesAdapter.getSelectors((state: RootState) => state.videoSources);
+export const { selectAll: selectAllVideoSources } = videoSourcesAdapter.getSelectors((state: {
+  videoSources: VideoSourcesState;
+}) => state.videoSources);
 
 export const selectVideoSourcesByIds = createSelector(
   [selectAllVideoSources, (_, ids: VideoSourceId[]) => ids],

@@ -1,16 +1,16 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
 import { type ArtifactSet, type ArtifactSetName } from "@/types/artifact-sets.types";
 import { getArtifactSet, getArtifactSetsNames } from "@/utils/genshinDbAdapter";
 
-interface ArtifactSetsState {
+export interface ArtifactSetsState {
   entities: { [P in ArtifactSetName]?: ArtifactSet | null };
   names: ArtifactSetName[];
 }
 
 const initialState: ArtifactSetsState = { entities: {}, names: [] };
 
-export const fetchArtifactSetByName = createAsyncThunk("artifactSets/fetchByName", async (artifactSetName: ArtifactSetName, { getState }) => {
+export const fetchArtifactSetByName = createAsyncThunk<ArtifactSet | null, ArtifactSetName>("artifactSets/fetchByName", async (artifactSetName, { getState }) => {
   const state = getState() as { artifactSets: ArtifactSetsState };
 
   const stateArtifactSet = state.artifactSets.entities[artifactSetName];
@@ -25,13 +25,13 @@ export const fetchArtifactSetByName = createAsyncThunk("artifactSets/fetchByName
 
   return getArtifactSet(artifactSetName);
 });
-export const fetchArtifactSetsName = createAsyncThunk("artifactSets/fetchNames", async () => {
+export const fetchArtifactSetsName = createAsyncThunk<ArtifactSetName[]>("artifactSets/fetchNames", async () => {
   // console.log(`Загрузка имен наборов артефактов с сервера`);
 
   return getArtifactSetsNames();
 });
 
-export const artifactSetsSlice = createSlice({
+export const artifactSetsSlice = createSlice<ArtifactSetsState, SliceCaseReducers<ArtifactSetsState>, string, SliceSelectors<ArtifactSetsState>, string>({
   name: "artifactSets",
   initialState,
   reducers: {},

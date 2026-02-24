@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchArtifactSetByName, fetchArtifactSetsName } from "./slice";
-import { useAppDispatch, useAppSelector } from "@/store";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { type ArtifactSetName } from "@/types/artifact-sets.types";
 
 export const useArtifactSet = (name: ArtifactSetName) => {

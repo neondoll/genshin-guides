@@ -1,2 +1,5 @@
-export { VideoSourcesTable } from "./components";
-export { default as videoSourcesReducer } from "./slice";
+export {
+  default as videoSourcesReducer,
+  selectVideoSourcesByIds as selectVideoSourcesByIds,
+  type VideoSourcesState as VideoSourcesState,
+} from "./slice";

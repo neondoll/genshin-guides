@@ -1,10 +1,10 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ArtifactSetNames } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { CharacterNames } from "@/types/characters.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 const GameVariants = { DPS: "Основной урон", SUPPORT: "Поддержка" } as const;
 
@@ -55,11 +55,15 @@ export default {
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SUPPORT],
   signatureWeaponNames: [WeaponNames.A_THOUSAND_BLAZING_SUNS],
   talents: [
-    { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
-    { type: "combat2", priority: "Во вторую очередь", referenceLevel: 10 },
-    { type: "combat3", priority: "В первую очередь", referenceLevel: 10 },
+    { type: "combat1", priority: "Не качаем", recommendedLevel: 1, overallLevel: 1 },
+    { type: "combat2", priority: "Во вторую очередь", recommendedLevel: "6 - 10", overallLevel: 10 },
+    { type: "combat3", priority: "В первую очередь", recommendedLevel: "9 - 10", overallLevel: 10 },
   ],
-  videoSourceIds: [VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON, VideoSourceIds.GUIDE_TO_MAVUIKA],
+  videoSourceIds: [
+    VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON,
+    VideoSourceIds.GUIDE_TO_MAVUIKA,
+    VideoSourceIds.TALENT_GAINS_PYRO,
+  ],
   weapons: {
     "Пар | Таяние": [
       { name: WeaponNames.A_THOUSAND_BLAZING_SUNS, best: "Лучшее оружие", r: 1, percent: 1.3504 },

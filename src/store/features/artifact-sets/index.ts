@@ -1,11 +1,9 @@
 export {
-  ArtifactSetCircletImage,
-  ArtifactSetFlowerImage,
-  ArtifactSetGobletImage,
-  ArtifactSetImage,
-  ArtifactSetPlumeImage,
-  ArtifactSetSandsImage,
-} from "./components";
-export { useArtifactSet, useArtifactSetsNames } from "./hooks";
-export { ArtifactSetIcons } from "./icons";
-export { default as artifactSetsReducer } from "./slice";
+  useArtifactSet as useArtifactSet,
+  useArtifactSetsNames as useArtifactSetsNames,
+} from "./hooks";
+export { ArtifactSetIcons as ArtifactSetIcons } from "./icons";
+export {
+  default as artifactSetsReducer,
+  type ArtifactSetsState as ArtifactSetsState,
+} from "./slice";
