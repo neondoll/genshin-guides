@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { type FC } from "react";
 import { Link } from "react-router";
 
 import {
@@ -11,9 +11,10 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
+import WeaponImage from "@/components/v1/weapon-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
-import { useWeaponsNames, WeaponImage } from "@/store/features/weapons";
+import { useWeaponsNames } from "@/store/features/weapons";
 import { type WeaponName } from "@/types/weapons.types";
 
 const WeaponsPage: FC = () => {

@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { type FC } from "react";
 import { Link } from "react-router";
 
 import {
@@ -9,12 +9,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
+import { Card, CardContent, CardTitle } from "@/components/v1/card";
+import CharacterImage from "@/components/v1/character-image";
+import ElementImage from "@/components/v1/element-image";
+import { Loading, LoadingError } from "@/components/v1/loading";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
-import { CharacterImage, useCharacter, useCharactersNames } from "@/store/features/characters";
-import { ElementImage } from "@/store/features/elements";
+import { useCharacter, useCharactersNames } from "@/store/features/characters";
 import { type CharacterName } from "@/types/characters.types";
 
 const CharactersPage: FC = () => {
@@ -44,20 +46,11 @@ const CharactersPage: FC = () => {
   // }, [charactersList]);
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <div className="text-xl text-amber-300">Загрузка данных...</div>
-      </div>
-    );
+    return <Loading />;
   }
 
   if (error) {
-    return (
-      <div className="bg-red-900/30 border border-red-700 rounded-2xl p-6 text-center">
-        <div className="text-red-300 text-lg mb-2">Ошибка загрузки</div>
-        <div className="text-slate-300">{error}</div>
-      </div>
-    );
+    return <LoadingError error={error} />;
   }
 
   return (
@@ -90,11 +83,7 @@ const CharacterCard: FC<{ name: CharacterName }> = ({ name }) => {
 
   return (
     <Card
-      className={cn([
-        "relative bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl",
-        "transition-all duration-300 has-[a:hover]:border-amber-500/30 has-[a:hover]:shadow-2xl group",
-        "dark:from-slate-800 dark:to-slate-900 dark:border-slate-700",
-      ])}
+      className="relative transition-all duration-300 has-[a:hover]:border-amber-500/30 has-[a:hover]:shadow-2xl group"
     >
       <CardContent className="flex flex-col gap-6 items-center">
         <div className="relative shrink-0 size-24.5">
@@ -111,8 +100,7 @@ const CharacterCard: FC<{ name: CharacterName }> = ({ name }) => {
         </div>
         <CardTitle
           className={cn([
-            "text-xl font-bold text-center transition-colors group-has-[a:hover]:text-amber-700",
-            "dark:group-has-[a:hover]:text-amber-300",
+            "text-center transition-colors group-has-[a:hover]:text-amber-700 dark:group-has-[a:hover]:text-amber-300",
           ])}
         >
           <Link className="before:absolute before:inset-0" to={Paths.CHARACTER(JSON.stringify(name))}>{name}</Link>

@@ -1,13 +1,13 @@
 import { type FC, useMemo } from "react";
 
-import { selectVideoSourcesByIds } from "./slice";
-import { Button } from "@/components/ui/button";
-import { SquarePlay } from "@/components/ui/icons";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Button } from "../ui/button";
+import { SquarePlay } from "../ui/icons";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
 import { useAppSelector } from "@/store";
+import { selectVideoSourcesByIds } from "@/store/features/video-sources";
 import { type VideoSourceId } from "@/types/video-sources.types";
 
-export const VideoSourcesTable: FC<{ videoSourceIds: VideoSourceId[] }> = ({ videoSourceIds }) => {
+const VideoSourcesTable: FC<{ videoSourceIds: VideoSourceId[] }> = ({ videoSourceIds }) => {
   const videoSources = useAppSelector(state => selectVideoSourcesByIds(state, videoSourceIds));
 
   const hasRutube = useMemo(() => {
@@ -77,3 +77,5 @@ export const VideoSourcesTable: FC<{ videoSourceIds: VideoSourceId[] }> = ({ vid
     </Table>
   );
 };
+
+export default VideoSourcesTable;

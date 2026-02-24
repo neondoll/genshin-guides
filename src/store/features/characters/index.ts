@@ -1,3 +1,9 @@
-export { CharacterImage } from "./components";
-export { useCharacter, useCharactersNames } from "./hooks";
-export { default as charactersReducer } from "./slice";
+export {
+  useCharacter as useCharacter,
+  useCharactersNames as useCharactersNames,
+} from "./hooks";
+export { CharacterIcons as CharacterIcons } from "./icons";
+export {
+  default as charactersReducer,
+  type CharactersState as CharactersState,
+} from "./slice";

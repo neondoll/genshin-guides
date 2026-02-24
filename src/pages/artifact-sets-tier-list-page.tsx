@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { type FC } from "react";
 import { Link } from "react-router";
 
 import {
@@ -12,10 +12,10 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import ArtifactSetImage from "@/components/v1/artifact-set-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
-import { useAppSelector } from "@/store";
-import { ArtifactSetImage } from "@/store/features/artifact-sets";
+import { useAppSelector } from "@/store/hooks";
 
 const ArtifactSetsTierListPage: FC = () => {
   const artifactSetsTierList = useAppSelector(state => state.artifactSetsTierList);
@@ -43,7 +43,9 @@ const ArtifactSetsTierListPage: FC = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <Card className="bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
+      <Card
+        className="bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
+      >
         <CardContent>
           <Table>
             <TableBody>

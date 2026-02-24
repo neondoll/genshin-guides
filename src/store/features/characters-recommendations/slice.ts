@@ -1,17 +1,22 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
 import allRecommendations from "./data/all-recommendations";
-import { type CharacterName } from "@/types/characters.types";
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import {
+  type CharacterRecommendations,
+  type CharacterRecommendationsName,
+} from "@/types/characters-recommendations.types";
 
-interface CharactersRecommendationsState {
-  entities: { [P in CharacterName]?: CharacterRecommendations | null };
-  names: CharacterName[];
+export interface CharactersRecommendationsState {
+  entities: { [P in CharacterRecommendationsName]?: CharacterRecommendations | null };
+  names: CharacterRecommendationsName[];
 }
 
 const initialState: CharactersRecommendationsState = { entities: {}, names: [] };
 
-export const fetchCharacterRecommendationsByName = createAsyncThunk("charactersRecommendations/fetchByName", async (characterName: CharacterName, { getState }) => {
+export const fetchCharacterRecommendationsByName = createAsyncThunk<{
+  data: CharacterRecommendations | null;
+  name: CharacterRecommendationsName;
+}, CharacterRecommendationsName>("charactersRecommendations/fetchByName", async (characterName, { getState }) => {
   const state = getState() as { charactersRecommendations: CharactersRecommendationsState };
 
   const stateCharacterRecommendations = state.charactersRecommendations.entities[characterName];
@@ -27,6 +32,7 @@ export const fetchCharacterRecommendationsByName = createAsyncThunk("charactersR
   try {
     if (characterName in allRecommendations) {
       const module = await allRecommendations[characterName]();
+
       return { data: module.default, name: characterName };
     }
 
@@ -38,7 +44,7 @@ export const fetchCharacterRecommendationsByName = createAsyncThunk("charactersR
   }
 });
 
-export const charactersRecommendationsSlice = createSlice({
+export const charactersRecommendationsSlice = createSlice<CharactersRecommendationsState, SliceCaseReducers<CharactersRecommendationsState>, string, SliceSelectors<CharactersRecommendationsState>, string>({
   name: "charactersRecommendations",
   initialState,
   reducers: {},

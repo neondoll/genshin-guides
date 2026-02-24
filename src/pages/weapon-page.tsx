@@ -12,9 +12,10 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
+import WeaponImage from "@/components/v1/weapon-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
-import { useWeapon, WeaponImage } from "@/store/features/weapons";
+import { useWeapon } from "@/store/features/weapons";
 
 function extractValues(str: string): [string, number][] {
   const regex = /<color=#([A-Fa-f0-9]+)>\{(\d+(?:\.\d+)?)}<\/color>/g;
@@ -131,7 +132,9 @@ const WeaponPage: FC = () => {
           </div>
         </div>
       </div>
-      <Card className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700">
+      <Card
+        className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
+      >
         <CardHeader>
           <CardTitle className="text-xl font-bold">Характеристики</CardTitle>
         </CardHeader>

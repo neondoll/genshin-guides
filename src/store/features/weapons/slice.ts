@@ -1,16 +1,16 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
 import { type Weapon, type WeaponName } from "@/types/weapons.types";
 import { getWeapon, getWeaponsNames } from "@/utils/genshinDbAdapter";
 
-interface WeaponsState {
+export interface WeaponsState {
   entities: { [P in WeaponName]?: Weapon | null };
   names: WeaponName[];
 }
 
 const initialState: WeaponsState = { entities: {}, names: [] };
 
-export const fetchWeaponByName = createAsyncThunk("weapons/fetchByName", async (weaponName: WeaponName, { getState }) => {
+export const fetchWeaponByName = createAsyncThunk<Weapon | null, WeaponName>("weapons/fetchByName", async (weaponName, { getState }) => {
   const state = getState() as { weapons: WeaponsState };
 
   const stateWeapon = state.weapons.entities[weaponName];
@@ -25,13 +25,13 @@ export const fetchWeaponByName = createAsyncThunk("weapons/fetchByName", async (
 
   return getWeapon(weaponName);
 });
-export const fetchWeaponsName = createAsyncThunk("weapons/fetchNames", async () => {
+export const fetchWeaponsName = createAsyncThunk<WeaponName[]>("weapons/fetchNames", async () => {
   // console.log(`Загрузка имен оружий с сервера`);
 
   return getWeaponsNames();
 });
 
-export const weaponsSlice = createSlice({
+export const weaponsSlice = createSlice<WeaponsState, SliceCaseReducers<WeaponsState>, string, SliceSelectors<WeaponsState>, string>({
   name: "weapons",
   initialState,
   reducers: {},

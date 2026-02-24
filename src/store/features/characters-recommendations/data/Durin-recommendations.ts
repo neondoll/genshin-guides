@@ -1,9 +1,9 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ArtifactSetNames } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
@@ -33,11 +33,15 @@ export default {
   roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SUPPORT],
   signatureWeaponNames: [WeaponNames.ATHAME_ARTIS],
   talents: [
-    { type: "combat1", priority: "По необходимости", referenceLevel: 1 },
-    { type: "combat2", priority: "Во вторую очередь", referenceLevel: 9 },
-    { type: "combat3", priority: "В первую очередь", referenceLevel: 10 },
+    { type: "combat1", priority: "Не качаем", recommendedLevel: 1, overallLevel: 1 },
+    { type: "combat2", priority: "Во вторую очередь", recommendedLevel: "6 - 10", overallLevel: 9 },
+    { type: "combat3", priority: "В первую очередь", recommendedLevel: "9 - 10", overallLevel: 10 },
   ],
-  videoSourceIds: [VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_AnimeCool, VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_MironMinMax],
+  videoSourceIds: [
+    VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_AnimeCool,
+    VideoSourceIds.GUIDE_TO_DURIN_IN_6_2_MironMinMax,
+    VideoSourceIds.TALENT_GAINS_PYRO,
+  ],
   weapons: [
     { name: WeaponNames.ATHAME_ARTIS, best: "Лучшее оружие", percent: 1.24 },
     { name: WeaponNames.PRIMORDIAL_JADE_CUTTER, percent: 1.17 },

@@ -1,3 +1,9 @@
-export { WeaponImage } from "./components";
-export { useWeapon, useWeaponsNames } from "./hooks";
-export { default as weaponsReducer } from "./slice";
+export {
+  useWeapon as useWeapon,
+  useWeaponsNames as useWeaponsNames,
+} from "./hooks";
+export { WeaponIcons as WeaponIcons } from "./icons";
+export {
+  default as weaponsReducer,
+  type WeaponsState as WeaponsState,
+} from "./slice";

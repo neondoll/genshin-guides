@@ -16,9 +16,9 @@ import { type ArtifactSetName } from "@/types/artifact-sets.types";
 import { type CharacterName, CharacterNames } from "@/types/characters.types";
 import { type WeaponName, WeaponNames } from "@/types/weapons.types";
 
-const ArtifactSetImage = lazy(() => import("@/store/features/artifact-sets").then(mod => ({ default: mod.ArtifactSetImage })));
-const CharacterImage = lazy(() => import("@/store/features/characters").then(mod => ({ default: mod.CharacterImage })));
-const WeaponImage = lazy(() => import("@/store/features/weapons").then(mod => ({ default: mod.WeaponImage })));
+const ArtifactSetImage = lazy(() => import("@/components/v1/artifact-set-image"));
+const CharacterImage = lazy(() => import("@/components/v1/character-image"));
+const WeaponImage = lazy(() => import("@/components/v1/weapon-image"));
 
 const artifactSetNames: ArtifactSetName[] = [];
 const characterNames: CharacterName[] = [CharacterNames.ILLUGA, CharacterNames.NEUVILLETTE, CharacterNames.ZIBAI, CharacterNames.VARKA];

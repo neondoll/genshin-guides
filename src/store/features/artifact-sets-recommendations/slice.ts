@@ -1,17 +1,20 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
 import allRecommendations from "./data/all-recommendations";
 import { type ArtifactSetName } from "@/types/artifact-sets.types";
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
 
-interface ArtifactSetsRecommendationsState {
+export interface ArtifactSetsRecommendationsState {
   entities: { [P in ArtifactSetName]?: ArtifactSetRecommendations | null };
   names: ArtifactSetName[];
 }
 
 const initialState: ArtifactSetsRecommendationsState = { entities: {}, names: [] };
 
-export const fetchArtifactSetRecommendationsByName = createAsyncThunk("artifactSetsRecommendations/fetchByName", async (artifactSetName: ArtifactSetName, { getState }) => {
+export const fetchArtifactSetRecommendationsByName = createAsyncThunk<{
+  data: ArtifactSetRecommendations | null;
+  name: ArtifactSetName;
+}, ArtifactSetName>("artifactSetsRecommendations/fetchByName", async (artifactSetName, { getState }) => {
   const state = getState() as { artifactSetsRecommendations: ArtifactSetsRecommendationsState };
 
   const stateArtifactSetRecommendations = state.artifactSetsRecommendations.entities[artifactSetName];
@@ -27,6 +30,7 @@ export const fetchArtifactSetRecommendationsByName = createAsyncThunk("artifactS
   try {
     if (artifactSetName in allRecommendations) {
       const module = await allRecommendations[artifactSetName]();
+
       return { data: module.default, name: artifactSetName };
     }
 
@@ -38,7 +42,7 @@ export const fetchArtifactSetRecommendationsByName = createAsyncThunk("artifactS
   }
 });
 
-export const artifactSetsRecommendationsSlice = createSlice({
+export const artifactSetsRecommendationsSlice = createSlice<ArtifactSetsRecommendationsState, SliceCaseReducers<ArtifactSetsRecommendationsState>, string, SliceSelectors<ArtifactSetsRecommendationsState>, string>({
   name: "artifactSetsRecommendations",
   initialState,
   reducers: {},

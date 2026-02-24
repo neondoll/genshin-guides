@@ -1,9 +1,9 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ArtifactSetNames } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
@@ -42,9 +42,9 @@ export default {
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
   signatureWeaponNames: [WeaponNames.TOME_OF_THE_ETERNAL_FLOW],
   talents: [
-    { type: "combat1", priority: "В первую очередь", referenceLevel: 10 },
-    { type: "combat2", priority: "Во вторую очередь", referenceLevel: "6-8" },
-    { type: "combat3", priority: "По необходимости", referenceLevel: "6-8" },
+    { type: "combat1", priority: "В первую очередь", recommendedLevel: "8 - 10", overallLevel: 10 },
+    { type: "combat2", priority: "Во вторую очередь", recommendedLevel: "1 - 9", overallLevel: "6 - 8" },
+    { type: "combat3", priority: "По необходимости", recommendedLevel: "1 - 9", overallLevel: "6 - 8" },
   ],
   videoSourceIds: [
     VideoSourceIds.ALL_ABOUT_ALL_TALENTS,
@@ -52,6 +52,7 @@ export default {
     VideoSourceIds.GUIDE_TO_NEUVILLETTE_IN_5_2,
     VideoSourceIds.GUIDE_TO_NEUVILLETTE_IN_6_3_AnimeCool,
     VideoSourceIds.GUIDE_TO_NEUVILLETTE_IN_6_3_MironMinMax,
+    VideoSourceIds.TALENT_GAINS_HYDRO,
     VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],

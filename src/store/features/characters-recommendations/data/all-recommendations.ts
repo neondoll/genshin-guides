@@ -1,5 +1,9 @@
-import { type CharacterName, CharacterNames } from "@/types/characters.types";
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { CharacterNames } from "@/types/characters.types";
+import {
+  type CharacterRecommendations,
+  type CharacterRecommendationsName,
+} from "@/types/characters-recommendations.types";
+import { ElementNames } from "@/types/elements.types";
 
 export default {
   [CharacterNames.AINO]: () => import("./Aino-recommendations"),
@@ -113,4 +117,8 @@ export default {
   [CharacterNames.YUN_JIN]: () => import("./YunJin-recommendations"),
   [CharacterNames.ZHONGLI]: () => import("./Zhongli-recommendations"),
   [CharacterNames.ZIBAI]: () => import("./Zibai-recommendations"),
-} as Record<CharacterName, () => Promise<{ default: CharacterRecommendations }>>;
+  [`Путешественница (${ElementNames.ANEMO})`]: () => import("./Traveler-recommendations").then(res => ({ default: res.default[ElementNames.ANEMO] })),
+  [`Путешественница (${ElementNames.GEO})`]: () => import("./Traveler-recommendations").then(res => ({ default: res.default[ElementNames.GEO] })),
+  [`Путешественница (${ElementNames.HYDRO})`]: () => import("./Traveler-recommendations").then(res => ({ default: res.default[ElementNames.HYDRO] })),
+  [`Путешественница (${ElementNames.PYRO})`]: () => import("./Traveler-recommendations").then(res => ({ default: res.default[ElementNames.PYRO] })),
+} as Record<CharacterRecommendationsName, () => Promise<{ default: CharacterRecommendations }>>;

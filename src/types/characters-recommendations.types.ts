@@ -1,6 +1,6 @@
 import type { ArtifactSetName } from "./artifact-sets.types";
 import type { CharacterRoleId } from "./character-roles.types";
-import type { CharacterName } from "./characters.types";
+import type { CharacterName, TravelerName } from "./characters.types";
 import type { ElementName } from "./elements.types";
 import type { Stat } from "./stats.types";
 import type { VideoSourceId } from "./video-sources.types";
@@ -41,6 +41,8 @@ interface CharacterTalentRecommendation {
   type: "combat1" | "combat2" | "combat3";
   priority: string;
   referenceLevel?: string | number;
+  recommendedLevel?: string | number;
+  overallLevel?: string | number;
 }
 
 interface CharacterWeaponRecommendation {
@@ -53,6 +55,7 @@ interface CharacterWeaponRecommendation {
 }
 
 export type CharacterArtifactSetRecommendations = Array<CharacterCompleteArtifactSetRecommendation | CharacterCombinedArtifactSetRecommendation>;
+export type CharacterArtifactStatRecommendation = { name: Stat; notes?: string[] };
 export type CharacterDetachmentItemRecommendation = CharacterDetachmentCharacterRecommendation | CharacterDetachmentElementRecommendation | CharacterDetachmentOtherRecommendation;
 export type CharacterTalentRecommendations = Array<CharacterTalentRecommendation>;
 export type CharacterWeaponRecommendations = Array<CharacterWeaponRecommendation>;
@@ -60,7 +63,7 @@ export type CharacterWeaponRecommendations = Array<CharacterWeaponRecommendation
 export interface CharacterRecommendations {
   artifacts?: {
     sets: CharacterArtifactSetRecommendations | Record<string, CharacterArtifactSetRecommendations>;
-    stats: Record<"sands" | "goblet" | "circlet" | "additional", Array<{ name: Stat; notes?: string[] }>>;
+    stats: Record<"sands" | "goblet" | "circlet" | "additional", Array<CharacterArtifactStatRecommendation>>;
   };
   attackCombinations?: string[] | Record<string, string[]>;
   constellationOrSignatureWeapon?: string;
@@ -78,3 +81,5 @@ export interface CharacterRecommendations {
   videoSourceIds?: VideoSourceId[];
   weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
 }
+
+export type CharacterRecommendationsName = Exclude<CharacterName, TravelerName> | `Путешественница (${ElementName})`;

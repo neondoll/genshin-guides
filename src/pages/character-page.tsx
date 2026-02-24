@@ -1,4 +1,3 @@
-import type { Talent } from "genshin-db";
 import { type FC, useMemo } from "react";
 import { Link, useParams } from "react-router";
 
@@ -12,30 +11,38 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card as UiCard } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ArtifactSetImage from "@/components/v1/artifact-set-image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/v1/card";
+import CharacterImage from "@/components/v1/character-image";
+import ElementImage from "@/components/v1/element-image";
+import { Loading, LoadingError } from "@/components/v1/loading";
+import VideoSourcesTable from "@/components/v1/video-sources-table";
+import WeaponImage from "@/components/v1/weapon-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
-import { useAppSelector } from "@/store";
-import { ArtifactSetImage } from "@/store/features/artifact-sets";
+import { useAppSelector } from "@/store/hooks";
 import { selectCharacterRolesByIds } from "@/store/features/character-roles";
-import { CharacterImage, useCharacter } from "@/store/features/characters";
+import { useCharacter } from "@/store/features/characters";
 import { useCharacterRecommendations } from "@/store/features/characters-recommendations";
-import { ElementImage } from "@/store/features/elements";
+import { useElementsNames } from "@/store/features/elements";
 import { useTalent } from "@/store/features/talents";
-import { VideoSourcesTable } from "@/store/features/video-sources";
-import { WeaponImage } from "@/store/features/weapons";
-import { formatPercent } from "@/utils/format";
-import { type CharacterName } from "@/types/characters.types";
+import { type CharacterName, type TravelerName, Travelers } from "@/types/characters.types";
 import {
   type CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
+  type CharacterArtifactStatRecommendation as ArtifactStatRecommendation,
   type CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
   type CharacterRecommendations as Recommendations,
+  type CharacterRecommendationsName,
   type CharacterTalentRecommendations as TalentRecommendations,
   type CharacterWeaponRecommendations as WeaponRecommendations,
 } from "@/types/characters-recommendations.types";
+import { type Talent, type TalentName } from "@/types/talents.types";
+import { type WeaponName } from "@/types/weapons.types";
+import { formatPercent } from "@/utils/format";
 
 const CharacterPage: FC = () => {
   const { characterId } = useParams();
@@ -55,20 +62,11 @@ const CharacterPage: FC = () => {
   ], [character, characterName]);
 
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <div className="text-xl text-amber-300">Загрузка данных...</div>
-      </div>
-    );
+    return <Loading />;
   }
 
   if (error) {
-    return (
-      <div className="bg-red-900/30 border border-red-700 rounded-2xl p-6 text-center">
-        <div className="text-red-300 text-lg mb-2">Ошибка загрузки</div>
-        <div className="text-slate-300">{error}</div>
-      </div>
-    );
+    return <LoadingError error={error} />;
   }
 
   return (
@@ -119,11 +117,9 @@ const CharacterPage: FC = () => {
           </div>
         </div>
       </div>
-      <Card
-        className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
-      >
+      <Card className="mb-6">
         <CardHeader>
-          <CardTitle className="text-xl font-bold">Характеристики</CardTitle>
+          <CardTitle>Характеристики</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 grid-flow-row-dense gap-x-6 gap-y-2 md:grid-cols-2">
           {characteristics.map(({ label, value }) => {
@@ -136,8 +132,40 @@ const CharacterPage: FC = () => {
           })}
         </CardContent>
       </Card>
-      <CharacterRecommendations name={characterName} />
+      {Travelers.includes(characterName)
+        ? <TravelerRecommendations name={characterName} />
+        : <CharacterRecommendations name={characterName} />}
     </>
+  );
+};
+
+const TravelerRecommendations: FC<{ name: TravelerName }> = ({ name }) => {
+  const { elementsNames, loading } = useElementsNames();
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-11">
+        <div className="text-xl text-amber-300">Загрузка элементов...</div>
+      </div>
+    );
+  }
+
+  return (
+    <Tabs defaultValue={elementsNames[0]}>
+      <TabsList className="flex w-full h-auto">
+        {elementsNames.map(elementName => (
+          <TabsTrigger className="" key={elementName} value={elementName}>
+            <ElementImage className="shrink-0 size-7" name={elementName} />
+            {elementName}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+      {elementsNames.map(elementName => (
+        <TabsContent key={elementName} value={elementName}>
+          <CharacterRecommendations name={`Путешественница (${elementName})`} characterName={name} />
+        </TabsContent>
+      ))}
+    </Tabs>
   );
 };
 
@@ -151,7 +179,10 @@ const RecommendationTabs = {
   WEAPONS: { label: "Оружие", value: "weapons" },
 } as const;
 
-const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
+const CharacterRecommendations: FC<{
+  characterName?: CharacterName;
+  name: CharacterRecommendationsName;
+}> = ({ name }) => {
   const { characterRecommendations } = useCharacterRecommendations(name);
 
   const tabs = useMemo(() => {
@@ -192,11 +223,9 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
   }, [characterRecommendations]);
 
   return characterRecommendations && (
-    <Card
-      className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
-    >
+    <Card className="mb-6">
       <CardHeader>
-        <CardTitle className="text-xl font-bold">Рекомендации по оружию, артефактам и отрядам</CardTitle>
+        <CardTitle>Рекомендации по оружию, артефактам и отрядам</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <Tabs className="gap-4" defaultValue={tabs[0].value}>
@@ -242,7 +271,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                     </TableCell>
                   </TableRow>
                 )}
-                {characterRecommendations.signatureWeaponNames && characterRecommendations.signatureWeaponNames.map((signatureWeaponName, index) => (
+                {characterRecommendations.signatureWeaponNames && characterRecommendations.signatureWeaponNames.map((signatureWeaponName: WeaponName, index: number) => (
                   <TableRow key={signatureWeaponName}>
                     {index === 0 && (
                       <TableCell
@@ -297,7 +326,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                   <p className="text-lg font-medium text-slate-700 dark:text-slate-300">Характеристики</p>
                   <Table>
                     <TableBody>
-                      {characterRecommendations.artifacts.stats.sands.map((recommendation, index) => (
+                      {characterRecommendations.artifacts.stats.sands.map((recommendation: ArtifactStatRecommendation, index: number) => (
                         <TableRow key={recommendation.name}>
                           {index === 0 && (
                             <TableCell
@@ -319,7 +348,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                           </TableCell>
                         </TableRow>
                       ))}
-                      {characterRecommendations.artifacts.stats.goblet.map((recommendation, index) => (
+                      {characterRecommendations.artifacts.stats.goblet.map((recommendation: ArtifactStatRecommendation, index: number) => (
                         <TableRow key={recommendation.name}>
                           {index === 0 && (
                             <TableCell
@@ -341,7 +370,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                           </TableCell>
                         </TableRow>
                       ))}
-                      {characterRecommendations.artifacts.stats.circlet.map((recommendation, index) => (
+                      {characterRecommendations.artifacts.stats.circlet.map((recommendation: ArtifactStatRecommendation, index: number) => (
                         <TableRow key={recommendation.name}>
                           {index === 0 && (
                             <TableCell
@@ -363,7 +392,7 @@ const CharacterRecommendations: FC<{ name: CharacterName }> = ({ name }) => {
                           </TableCell>
                         </TableRow>
                       ))}
-                      {characterRecommendations.artifacts.stats.additional.map((recommendation, index) => (
+                      {characterRecommendations.artifacts.stats.additional.map((recommendation: ArtifactStatRecommendation, index: number) => (
                         <TableRow key={recommendation.name}>
                           {index === 0 && (
                             <TableCell
@@ -559,27 +588,27 @@ const CharacterDetachmentItemRecommendation: FC<{ item: DetachmentItemRecommenda
   switch (item.type) {
     case "character":
       return (
-        <Card className="flex flex-col gap-1 justify-start items-center p-2">
+        <UiCard className="flex flex-col gap-1 justify-start items-center p-2">
           <CharacterImage className="shrink-0 size-21.5 rounded-md rounded-br-2xl" name={item.name} />
           <p className="my-auto text-center">{item.name}</p>
-        </Card>
+        </UiCard>
       );
     case "element":
       return (
-        <Card className="flex flex-col gap-1 justify-start items-center p-2">
+        <UiCard className="flex flex-col gap-1 justify-start items-center p-2">
           <ElementImage className="shrink-0 p-2 size-21.5 rounded-md rounded-br-2xl" name={item.name} />
           <p className="my-auto text-center">
             {item.name}
             {" "}
             персонаж
           </p>
-        </Card>
+        </UiCard>
       );
     case "other":
       return (
-        <Card className="flex flex-col gap-1 justify-start items-center p-2">
+        <UiCard className="flex flex-col gap-1 justify-start items-center p-2">
           <p className="my-auto text-center">{item.title}</p>
-        </Card>
+        </UiCard>
       );
   }
 };
@@ -654,13 +683,15 @@ const CharacterRoleRecommendations: FC<{
   );
 };
 const CharacterTalentRecommendations: FC<{
-  name: CharacterName;
+  name: TalentName;
   recommendations: NonNullable<Recommendations["talents"]>;
 }> = ({ name, recommendations }) => {
   const { talent } = useTalent(name);
 
   if (Array.isArray(recommendations)) {
-    return talent && <CharacterTalentRecommendationsTable recommendations={recommendations} talent={talent} />;
+    return talent && (
+      <CharacterTalentRecommendationsTable recommendations={recommendations} talent={talent} />
+    );
   }
 
   const recommendationsEntries = Object.entries(recommendations);
@@ -698,27 +729,54 @@ const CharacterTalentRecommendationsTable: FC<{
   recommendations: TalentRecommendations;
   talent: Talent;
 }> = ({ recommendations, talent }) => {
+  const hasOverallLevel = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.overallLevel));
+  }, [recommendations]);
+  const hasRecommendedLevel = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.recommendedLevel));
+  }, [recommendations]);
   const hasReferenceLevel = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.referenceLevel));
   }, [recommendations]);
 
   return (
     <Table className="table-fixed">
+      {(hasOverallLevel || hasRecommendedLevel) && (
+        <TableHeader>
+          <TableRow>
+            <TableHead className="text-base text-center text-slate-700 dark:text-slate-300" />
+            <TableHead className="text-base text-center text-slate-700 dark:text-slate-300">Приоритет</TableHead>
+            {hasReferenceLevel && <TableHead className="text-base text-center text-slate-700 dark:text-slate-300" />}
+            {hasRecommendedLevel && (
+              <TableHead className="text-base text-center text-slate-700 dark:text-slate-300">Рекомендация</TableHead>
+            )}
+            {hasOverallLevel && (
+              <TableHead className="text-base text-center text-slate-700 dark:text-slate-300">
+                В целом по игре
+              </TableHead>
+            )}
+          </TableRow>
+        </TableHeader>
+      )}
       <TableBody>
         {recommendations.map(recommendation => (
           <TableRow key={recommendation.type}>
-            <TableCell
-              className="text-center text-pretty whitespace-normal"
-            >
+            <TableCell className="text-center text-pretty whitespace-normal">
               {talent[recommendation.type].name}
             </TableCell>
             <TableCell className="text-center text-pretty whitespace-normal">{recommendation.priority}</TableCell>
             {hasReferenceLevel && (
-              <TableCell
-                className="text-center text-pretty whitespace-normal"
-              >
+              <TableCell className="text-center text-pretty whitespace-normal">
                 {recommendation.referenceLevel}
               </TableCell>
+            )}
+            {hasRecommendedLevel && (
+              <TableCell className="text-center text-pretty whitespace-normal">
+                {recommendation.recommendedLevel}
+              </TableCell>
+            )}
+            {hasOverallLevel && (
+              <TableCell className="text-center text-pretty whitespace-normal">{recommendation.overallLevel}</TableCell>
             )}
           </TableRow>
         ))}

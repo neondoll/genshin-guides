@@ -1,1 +1,5 @@
-export { default as characterRolesReducer, selectCharacterRolesByIds } from "./slice";
+export {
+  default as characterRolesReducer,
+  type CharacterRolesState as CharacterRolesState,
+  selectCharacterRolesByIds as selectCharacterRolesByIds,
+} from "./slice";

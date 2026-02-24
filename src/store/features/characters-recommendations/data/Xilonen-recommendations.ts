@@ -1,9 +1,9 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ArtifactSetNames } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
@@ -22,12 +22,13 @@ export default {
   roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.SUPPORT, CharacterRoleIds.SURVIVABILITY],
   signatureWeaponNames: [WeaponNames.PEAK_PATROL_SONG],
   talents: [
-    { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
-    { type: "combat2", priority: "В первую очередь", referenceLevel: 10 },
-    { type: "combat3", priority: "Во вторую очередь", referenceLevel: 8 },
+    { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
+    { type: "combat2", priority: "В первую очередь", recommendedLevel: "9 - 10" },
+    { type: "combat3", priority: "Во вторую очередь", recommendedLevel: "1 - 8" },
   ],
   videoSourceIds: [
     VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON,
+    VideoSourceIds.TALENT_GAINS_GEO,
     VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],

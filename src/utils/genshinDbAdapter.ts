@@ -3,7 +3,7 @@ import genshindb, { Language } from "genshin-db";
 import { type ArtifactSet, type ArtifactSetName } from "@/types/artifact-sets.types";
 import { type Character, type CharacterName } from "@/types/characters.types";
 import { type Element, type ElementName } from "@/types/elements.types";
-import { type Talent } from "@/types/talents.types";
+import { type Talent, type TalentName } from "@/types/talents.types";
 import { type Weapon, type WeaponName } from "@/types/weapons.types";
 
 // Конфигурация для русского языка
@@ -60,12 +60,14 @@ export function getElement(elementName: ElementName) {
   return elementData as Element;
 }
 
-// export function getElementsNames() {
-//   return genshindb.elements("names", DB_NAMES_OPTIONS) as ElementName[];
-// }
+export function getElementsNames() {
+  const elementsNames = genshindb.elements("names", DB_NAMES_OPTIONS);
 
-export function getTalent(characterName: CharacterName) {
-  const talentsData = genshindb.talents(characterName, DB_OPTIONS);
+  return elementsNames as ElementName[];
+}
+
+export function getTalent(talentName: TalentName) {
+  const talentsData = genshindb.talents(talentName, DB_OPTIONS);
 
   if (!talentsData) {
     return null;
@@ -75,7 +77,7 @@ export function getTalent(characterName: CharacterName) {
 }
 
 // export function getTalentsNames() {
-//   return genshindb.talents("names", DB_NAMES_OPTIONS) as CharacterName[];
+//   return genshindb.talents("names", DB_NAMES_OPTIONS) as TalentName[];
 // }
 
 export function getWeapon(weaponName: WeaponName) {

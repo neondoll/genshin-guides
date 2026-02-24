@@ -1,12 +1,11 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
 import { CharacterIcons } from "./icons";
-import { type RootState } from "@/store";
 import { type Character, type CharacterName, CharacterNames } from "@/types/characters.types";
 import { ElementNames } from "@/types/elements.types";
 import { getCharacter, getCharactersNames } from "@/utils/genshinDbAdapter";
 
-interface CharactersState {
+export interface CharactersState {
   entities: { [P in CharacterName]?: Character | null };
   names: CharacterName[];
 }
@@ -26,8 +25,8 @@ const initialState: CharactersState = {
   names: [CharacterNames.VARKA],
 };
 
-export const fetchCharacterByName = createAsyncThunk("characters/fetchByName", async (characterName: CharacterName, { getState }) => {
-  const state = getState() as RootState;
+export const fetchCharacterByName = createAsyncThunk<Character | null, CharacterName>("characters/fetchByName", async (characterName: CharacterName, { getState }) => {
+  const state = getState() as { characters: CharactersState };
 
   const stateCharacter = state.characters.entities[characterName];
 
@@ -41,13 +40,13 @@ export const fetchCharacterByName = createAsyncThunk("characters/fetchByName", a
 
   return getCharacter(characterName);
 });
-export const fetchCharactersName = createAsyncThunk("characters/fetchNames", async () => {
+export const fetchCharactersName = createAsyncThunk<CharacterName[]>("characters/fetchNames", async () => {
   // console.log(`Загрузка имен персонажей с сервера`);
 
   return getCharactersNames();
 });
 
-export const charactersSlice = createSlice({
+export const charactersSlice = createSlice<CharactersState, SliceCaseReducers<CharactersState>, string, SliceSelectors<CharactersState>, string>({
   name: "characters",
   initialState,
   reducers: {},

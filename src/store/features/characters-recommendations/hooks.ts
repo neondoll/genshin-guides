@@ -1,16 +1,16 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchCharacterRecommendationsByName } from "./slice";
-import { useAppDispatch, useAppSelector } from "@/store";
-import { type CharacterName } from "@/types/characters.types";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { type CharacterRecommendationsName } from "@/types/characters-recommendations.types";
 
-export const useCharacterRecommendations = (name: CharacterName) => {
+export const useCharacterRecommendations = (name: CharacterRecommendationsName) => {
   const dispatch = useAppDispatch();
   const charactersRecommendations = useAppSelector(state => state.charactersRecommendations.entities);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getCharacterRecommendations = useCallback(async (name: CharacterName) => {
+  const getCharacterRecommendations = useCallback(async (name: CharacterRecommendationsName) => {
     try {
       setLoading(true);
       await dispatch(fetchCharacterRecommendationsByName(name));
@@ -24,8 +24,8 @@ export const useCharacterRecommendations = (name: CharacterName) => {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((name: CharacterName) => !!charactersRecommendations[name], [charactersRecommendations]);
-  const preloadCharacterRecommendations = useCallback((name: CharacterName) => {
+  const isStored = useCallback((name: CharacterRecommendationsName) => !!charactersRecommendations[name], [charactersRecommendations]);
+  const preloadCharacterRecommendations = useCallback((name: CharacterRecommendationsName) => {
     if (!isStored(name)) {
       getCharacterRecommendations(name);
     }

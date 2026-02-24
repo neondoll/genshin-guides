@@ -25,11 +25,11 @@ export default {
   },
   roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS],
   talents: [
-    { type: "combat1", priority: "При необходимости" },
-    { type: "combat2", priority: "Во вторую очередь" },
-    { type: "combat3", priority: "В первую очередь" },
+    { type: "combat1", priority: "Не качаем", recommendedLevel: 1, overallLevel: 1 },
+    { type: "combat2", priority: "Во вторую очередь", recommendedLevel: "1 - 6", overallLevel: 1 },
+    { type: "combat3", priority: "В первую очередь", recommendedLevel: "1 - 6", overallLevel: 1 },
   ],
-  videoSourceIds: [VideoSourceIds.GUIDE_TO_AINO_IN_6_0],
+  videoSourceIds: [VideoSourceIds.GUIDE_TO_AINO_IN_6_0, VideoSourceIds.TALENT_GAINS_HYDRO],
   weapons: [
     { name: WeaponNames.FLAME_FORGED_INSIGHT },
     { name: WeaponNames.MASTER_KEY },

@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { type FC } from "react";
 import { Link } from "react-router";
 
 import {
@@ -12,9 +12,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
+import ArtifactSetImage from "@/components/v1/artifact-set-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
-import { ArtifactSetImage, useArtifactSetsNames } from "@/store/features/artifact-sets";
+import { useArtifactSetsNames } from "@/store/features/artifact-sets";
 import { type ArtifactSetName } from "@/types/artifact-sets.types";
 
 const ArtifactSetsPage: FC = () => {

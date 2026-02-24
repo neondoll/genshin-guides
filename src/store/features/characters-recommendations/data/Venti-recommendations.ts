@@ -28,14 +28,15 @@ export default {
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SUPPORT],
   signatureWeaponNames: [WeaponNames.ELEGY_FOR_THE_END, WeaponNames.SKYWARD_HARP, WeaponNames.THE_DAYBREAK_CHRONICLES],
   talents: [
-    { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
-    { type: "combat2", priority: "Во вторую очередь", referenceLevel: 8 },
-    { type: "combat3", priority: "В первую очередь", referenceLevel: 8 },
+    { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
+    { type: "combat2", priority: "Во вторую очередь", recommendedLevel: "6 - 8" },
+    { type: "combat3", priority: "В первую очередь", recommendedLevel: 8 },
   ],
   videoSourceIds: [
     VideoSourceIds.ALL_ABOUT_ALL_TALENTS,
     VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON,
     VideoSourceIds.GUIDE_TO_VENTI_IN_6_2,
+    VideoSourceIds.TALENT_GAINS_ANEMO,
     VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
