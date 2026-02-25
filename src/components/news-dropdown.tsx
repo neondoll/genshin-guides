@@ -21,8 +21,8 @@ const CharacterImage = lazy(() => import("@/components/v1/character-image"));
 const WeaponImage = lazy(() => import("@/components/v1/weapon-image"));
 
 const artifactSetNames: ArtifactSetName[] = [];
-const characterNames: CharacterName[] = [CharacterNames.ILLUGA, CharacterNames.NEUVILLETTE, CharacterNames.ZIBAI, CharacterNames.VARKA];
-const weaponNames: WeaponName[] = [WeaponNames.LIGHTBEARING_MOONSHARD];
+const characterNames: CharacterName[] = [CharacterNames.VARKA];
+const weaponNames: WeaponName[] = [WeaponNames.GEST_OF_THE_MIGHTY_WOLF];
 
 const NewsDropdown: FC = () => {
   const artifactSetsShow = useMemo(() => artifactSetNames.length > 0, []);
