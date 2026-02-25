@@ -25,6 +25,10 @@ interface CharacterCompleteArtifactSetRecommendation extends CharacterArtifactSe
 interface CharacterDetachmentCharacterRecommendation {
   type: "character";
   name: CharacterName;
+  c?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  weapon?: WeaponName;
+  weaponR?: 1 | 2 | 3 | 4 | 5;
+  artifacts?: [ArtifactSetName] | [ArtifactSetName, ArtifactSetName];
 }
 
 interface CharacterDetachmentElementRecommendation {

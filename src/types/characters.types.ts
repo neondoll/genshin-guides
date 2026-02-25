@@ -119,10 +119,10 @@ export const CharacterNames = {
   ZIBAI: "Цзы Бай",
   ZHONGLI: "Чжун Ли",
 } as const;
-export const Travelers = [CharacterNames.AETHER, CharacterNames.LUMINE] as const;
-
 export type CharacterName = typeof CharacterNames[keyof typeof CharacterNames];
-export type TravelerName = typeof CharacterNames.AETHER | typeof CharacterNames.LUMINE;
+
+export const Travelers = [CharacterNames.AETHER, CharacterNames.LUMINE] as const;
+export type TravelerName = typeof Travelers[number];
 
 export interface Character extends Omit<CharacterDB, "stats"> {
   elementText: ElementName | "Нет";

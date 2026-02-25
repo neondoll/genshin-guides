@@ -588,9 +588,52 @@ const CharacterDetachmentItemRecommendation: FC<{ item: DetachmentItemRecommenda
   switch (item.type) {
     case "character":
       return (
-        <UiCard className="flex flex-col gap-1 justify-start items-center p-2">
+        <UiCard className="flex relative flex-col gap-1 justify-start items-center p-2">
           <CharacterImage className="shrink-0 size-21.5 rounded-md rounded-br-2xl" name={item.name} />
           <p className="my-auto text-center">{item.name}</p>
+          {item.c !== undefined && (
+            <span className="absolute top-2 left-2 p-1 text-sm/none text-center bg-card/60 rounded-tl-md rounded-br-md">
+              {`С${item.c}`}
+            </span>
+          )}
+          {(item.weapon || item.artifacts) && (
+            <div className="grid grid-cols-2 gap-1 items-center my-auto">
+              {item.weapon
+                ? (
+                    <div className="aspect-square relative">
+                      <WeaponImage className="rounded-sm" name={item.weapon} />
+                      {item.weaponR !== undefined && (
+                        <span className="absolute top-0 left-0 p-0.75 text-xs/none text-center bg-card/60 rounded-tl-sm rounded-br-sm">
+                          {`Р${item.weaponR}`}
+                        </span>
+                      )}
+                    </div>
+                  )
+                : <span />}
+              {item.artifacts
+                ? (
+                    <div
+                      className="grid"
+                      style={{ gridTemplateColumns: `repeat(${item.artifacts.length},minmax(0,1fr))` }}
+                    >
+                      {item.artifacts.map((artifact, index) => (
+                        <ArtifactSetImage
+                          className="aspect-square rounded-sm"
+                          key={artifact}
+                          name={artifact}
+                          style={{
+                            gridColumnEnd: index + 2,
+                            gridColumnStart: index + 1,
+                            gridRowEnd: index + 2,
+                            gridRowStart: index + 1,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )
+                : <span />}
+            </div>
+          )}
         </UiCard>
       );
     case "element":
@@ -599,8 +642,7 @@ const CharacterDetachmentItemRecommendation: FC<{ item: DetachmentItemRecommenda
           <ElementImage className="shrink-0 p-2 size-21.5 rounded-md rounded-br-2xl" name={item.name} />
           <p className="my-auto text-center">
             {item.name}
-            {" "}
-            персонаж
+            {" персонаж"}
           </p>
         </UiCard>
       );

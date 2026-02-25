@@ -1,4 +1,4 @@
-import { type FC, useMemo } from "react";
+import { type CSSProperties, type FC, useMemo } from "react";
 
 import ImageWithFallback from "../image-with-fallback";
 import { Skeleton } from "../ui/skeleton";
@@ -7,7 +7,11 @@ import { ArtifactSetIcons, useArtifactSet } from "@/store/features/artifact-sets
 import { type ArtifactSetName } from "@/types/artifact-sets.types";
 import { type Rarity, RarityGradients } from "@/types/rarities.types";
 
-const ArtifactSetImage: FC<{ className?: string; name: ArtifactSetName }> = ({ className, name }) => {
+const ArtifactSetImage: FC<{
+  className?: string;
+  name: ArtifactSetName;
+  style?: CSSProperties;
+}> = ({ className, name, style }) => {
   const { artifactSet, loading } = useArtifactSet(name);
 
   const fallbackSrc = useMemo(() => {
@@ -32,7 +36,7 @@ const ArtifactSetImage: FC<{ className?: string; name: ArtifactSetName }> = ({ c
   }, [artifactSet]);
 
   if (loading) {
-    return <Skeleton className={cn(RarityGradients[0], className)} />;
+    return <Skeleton className={cn(RarityGradients[0], className)} style={style} />;
   }
 
   return (
@@ -42,6 +46,7 @@ const ArtifactSetImage: FC<{ className?: string; name: ArtifactSetName }> = ({ c
       draggable={false}
       fallbackSrc={fallbackSrc}
       src={src ?? fallbackSrc}
+      style={style}
     />
   );
 };

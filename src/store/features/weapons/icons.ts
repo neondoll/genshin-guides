@@ -28,6 +28,7 @@ export const WeaponIcons = {
   [WeaponNames.FLUTE_OF_EZPITZAL]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/bdd740ad879d22a1fc4e3770cc9c73bd_5479414831341401728.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.FOOTPRINT_OF_THE_RAINBOW]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/9d5294dc8b165585f51ec126543a5208_1314604610170565721.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.FRACTURED_HALO]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/21/6f0271a3d35033b8ec7260faa56b8cc1_2090404062568539078.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponNames.GEST_OF_THE_MIGHTY_WOLF]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/02/09/69a9c4711061f96f155bbe236d1ac188_2915183031167827788.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.IBIS_PIERCER]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/25/51635400/3c33fbd1aeadf27dc00617c3f4d31c55_2918362787867635712.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.LIGHTBEARING_MOONSHARD]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/07/5df9a7e1f45c7967eb263a37362c76d9_5509634125074303398.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponNames.LUMIDOUCE_ELEGY]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/31/3dff07a4b024917cb63c933d2078ccc8_8401589850337226556.png?x-oss-process=image%2Fformat%2Cwebp",

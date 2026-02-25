@@ -320,6 +320,22 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239283",
     youtube: "https://youtu.be/mZE4e2S_S0g",
   },
+  [VideoSourceIds.GUIDE_TO_VARKA_IN_6_4_AnimeCool]: {
+    id: VideoSourceIds.GUIDE_TO_VARKA_IN_6_4_AnimeCool,
+    author: "Анимекул",
+    title: "Варка - Очередной Анемо ДД? | Подробный гайд на Варку",
+    date: "2026-02-24",
+    // vkvideo: "",
+    youtube: "https://youtu.be/T2e3ep_pfEI",
+  },
+  [VideoSourceIds.GUIDE_TO_VARKA_IN_6_4_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_VARKA_IN_6_4_MironMinMax,
+    author: "Miron MinMax",
+    title: "Неужели Все Настолько Плохо | Гайд на Варку",
+    date: "2026-02-25",
+    // vkvideo: "",
+    youtube: "https://youtu.be/tnxVEGNyJJ4",
+  },
   [VideoSourceIds.GUIDE_TO_VARKA_IN_6_4_xPandaChannelx]: {
     id: VideoSourceIds.GUIDE_TO_VARKA_IN_6_4_xPandaChannelx,
     author: "xPandaChannelx",

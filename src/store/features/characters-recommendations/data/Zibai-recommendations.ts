@@ -1,11 +1,11 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ArtifactSetNames } from "@/types/artifact-sets.types";
-import { CharacterNames } from "@/types/characters.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
+import { CharacterNames } from "@/types/characters.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ElementNames } from "@/types/elements.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
@@ -45,28 +45,113 @@ export default {
       ],
       variants: [
         [
-          { type: "character", name: CharacterNames.ZIBAI },
-          { type: "character", name: CharacterNames.COLUMBINA_HYPOSELENIA },
-          { type: "character", name: CharacterNames.ILLUGA },
-          { type: "character", name: CharacterNames.INEFFA },
+          {
+            type: "character",
+            name: CharacterNames.ZIBAI,
+            c: 0,
+            weapon: WeaponNames.HARBINGER_OF_DAWN,
+            weaponR: 5,
+            artifacts: [ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING],
+          },
+          {
+            type: "character",
+            name: CharacterNames.COLUMBINA_HYPOSELENIA,
+            c: 0,
+            weapon: WeaponNames.SACRIFICIAL_JADE,
+            weaponR: 1,
+            artifacts: [ArtifactSetNames.AUBADE_OF_MORNINGSTAR_AND_MOON],
+          },
+          {
+            type: "character",
+            name: CharacterNames.ILLUGA,
+            c: 6,
+            weapon: WeaponNames.DRAGONS_BANE,
+            weaponR: 5,
+            artifacts: [ArtifactSetNames.SILKEN_MOONS_SERENADE],
+          },
+          {
+            type: "character",
+            name: CharacterNames.INEFFA,
+            c: 0,
+            weapon: WeaponNames.DEATHMATCH,
+            weaponR: 1,
+            artifacts: [ArtifactSetNames.AUBADE_OF_MORNINGSTAR_AND_MOON],
+          },
         ], // Лучший отряд, Инеффа даёт щит
         [
-          { type: "character", name: CharacterNames.ZIBAI },
-          { type: "character", name: CharacterNames.COLUMBINA_HYPOSELENIA },
-          { type: "character", name: CharacterNames.ILLUGA },
-          { type: "character", name: CharacterNames.GOROU },
+          {
+            type: "character",
+            name: CharacterNames.ZIBAI,
+            c: 0,
+            weapon: WeaponNames.FLUTE_OF_EZPITZAL,
+            weaponR: 5,
+            artifacts: [ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING],
+          },
+          {
+            type: "character",
+            name: CharacterNames.COLUMBINA_HYPOSELENIA,
+            c: 0,
+            weapon: WeaponNames.SACRIFICIAL_JADE,
+            weaponR: 1,
+            artifacts: [ArtifactSetNames.AUBADE_OF_MORNINGSTAR_AND_MOON],
+          },
+          {
+            type: "character",
+            name: CharacterNames.ILLUGA,
+            c: 6,
+            weapon: WeaponNames.DRAGONS_BANE,
+            weaponR: 5,
+            artifacts: [ArtifactSetNames.SILKEN_MOONS_SERENADE],
+          },
+          {
+            type: "character",
+            name: CharacterNames.GOROU,
+            c: 6,
+            weapon: WeaponNames.FAVONIUS_WARBOW,
+            weaponR: 5,
+            artifacts: [ArtifactSetNames.INSTRUCTOR],
+          },
         ], // На Коломбину можно поставить Янтарь для выживаемости (лечение)
+        [
+          {
+            type: "character",
+            name: CharacterNames.ZIBAI,
+            c: 0,
+            weapon: WeaponNames.FLUTE_OF_EZPITZAL,
+            weaponR: 5,
+            artifacts: [ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING],
+          },
+          {
+            type: "character",
+            name: CharacterNames.AINO,
+            c: 6,
+            weapon: WeaponNames.FAVONIUS_GREATSWORD,
+            weaponR: 5,
+            artifacts: [ArtifactSetNames.SILKEN_MOONS_SERENADE],
+          },
+          {
+            type: "character",
+            name: CharacterNames.ILLUGA,
+            c: 6,
+            weapon: WeaponNames.DRAGONS_BANE,
+            weaponR: 5,
+            artifacts: [ArtifactSetNames.WANDERERS_TROUPE, ArtifactSetNames.GILDED_DREAMS],
+          },
+          {
+            type: "character",
+            name: CharacterNames.GOROU,
+            c: 6,
+            weapon: WeaponNames.FAVONIUS_WARBOW,
+            weaponR: 5,
+            artifacts: [ArtifactSetNames.INSTRUCTOR],
+          },
+        ], // Если нет Коломбины, Айно будет достойной альтернативой
         [
           { type: "character", name: CharacterNames.ZIBAI },
           { type: "character", name: CharacterNames.COLUMBINA_HYPOSELENIA },
           { type: "character", name: CharacterNames.ILLUGA },
           { type: "character", name: CharacterNames.ZHONGLI },
         ], // Чжун Ли добавит отряду выживаемости
-        [
-          { type: "character", name: CharacterNames.ZIBAI },
-          { type: "character", name: CharacterNames.AINO },
-          { type: "character", name: CharacterNames.ILLUGA },
-        ], // Если нет Коломбины, Айно будет достойной альтернативой
         [
           { type: "character", name: CharacterNames.ZIBAI },
           { type: "element", name: ElementNames.HYDRO },
@@ -99,9 +184,9 @@ export default {
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
   signatureWeaponNames: [WeaponNames.LIGHTBEARING_MOONSHARD],
   talents: [
-    { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
-    { type: "combat2", priority: "В первую очередь", referenceLevel: "9-10" },
-    { type: "combat3", priority: "Во вторую очередь", referenceLevel: "6-10" },
+    { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
+    { type: "combat2", priority: "В первую очередь", recommendedLevel: "9-10" },
+    { type: "combat3", priority: "Во вторую очередь", recommendedLevel: "6-10" },
   ],
   videoSourceIds: [VideoSourceIds.GUIDE_TO_ZIBAI_IN_6_3_AnimeCool, VideoSourceIds.GUIDE_TO_ZIBAI_IN_6_3_MironMinMax],
   weapons: [
