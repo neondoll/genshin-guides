@@ -7,7 +7,7 @@ import { useAppSelector } from "@/store";
 import { selectVideoSourcesByIds } from "@/store/features/video-sources";
 import { type VideoSourceId } from "@/types/video-sources.types";
 
-const VideoSourcesTable: FC<{ videoSourceIds: VideoSourceId[] }> = ({ videoSourceIds }) => {
+export const VideoSourcesTable: FC<{ videoSourceIds: VideoSourceId[] }> = ({ videoSourceIds }) => {
   const videoSources = useAppSelector(state => selectVideoSourcesByIds(state, videoSourceIds));
 
   const hasRutube = useMemo(() => {
@@ -77,5 +77,3 @@ const VideoSourcesTable: FC<{ videoSourceIds: VideoSourceId[] }> = ({ videoSourc
     </Table>
   );
 };
-
-export default VideoSourcesTable;

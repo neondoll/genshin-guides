@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Home } from "@/components/ui/icons";
 import { Card, CardContent, CardTitle } from "@/components/v1/card";
-import CharacterImage from "@/components/v1/character-image";
-import ElementImage from "@/components/v1/element-image";
+import { CharacterImage } from "@/components/v1/character-image";
+import { ElementImage } from "@/components/v1/element-image";
 import { Loading, LoadingError } from "@/components/v1/loading";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";

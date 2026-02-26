@@ -1,9 +1,9 @@
-import type { FC } from "react";
+import { type FC } from "react";
 
-import { Spotlight } from "./ui/icons";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Spotlight } from "../ui/icons";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
-const BestTooltip: FC<{ className?: string; value?: boolean | string }> = ({ className, value }) => {
+export const BestTooltip: FC<{ className?: string; value?: boolean | string }> = ({ className, value }) => {
   return value && (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -15,5 +15,3 @@ const BestTooltip: FC<{ className?: string; value?: boolean | string }> = ({ cla
     </Tooltip>
   );
 };
-
-export default BestTooltip;

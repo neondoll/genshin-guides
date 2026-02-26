@@ -1,9 +1,9 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router";
 
-import Footer from "./components/footer";
-import Header from "./components/header";
-import LoadingSpinner from "./components/loading-spinner";
+import { Footer } from "./components/footer";
+import { Header } from "./components/header";
+import { LoadingSpinner } from "./components/loading-spinner";
 import { cn } from "./lib/utils";
 import Paths from "./paths";
 
@@ -11,13 +11,13 @@ function App() {
   return (
     <div
       className={cn([
-        "min-h-screen bg-gradient-to-b from-slate-100 via-slate-200 to-slate-100 dark:from-slate-900",
+        "flex flex-col min-h-screen bg-gradient-to-b from-slate-100 via-slate-200 to-slate-100 dark:from-slate-900",
         "dark:via-slate-800 dark:to-slate-900",
       ])}
     >
-      <Header />
+      <Header className="flex-none" />
 
-      <main className="px-4 py-8 mx-auto container">
+      <main className="flex-1 px-4 py-8 mx-auto container">
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
             <Route index path={Paths.HOME} Component={lazy(() => import("@/pages/home-page"))} />
@@ -38,7 +38,7 @@ function App() {
         </Suspense>
       </main>
 
-      <Footer />
+      <Footer className="flex-none" />
     </div>
   );
 }

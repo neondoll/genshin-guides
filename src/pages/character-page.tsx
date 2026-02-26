@@ -1,7 +1,6 @@
 import { type FC, useMemo } from "react";
 import { Link, useParams } from "react-router";
 
-import BestTooltip from "@/components/best-tooltip";
 import { Badge } from "@/components/ui/badge";
 import {
   Breadcrumb,
@@ -14,14 +13,15 @@ import {
 import { Card as UiCard } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import ArtifactSetImage from "@/components/v1/artifact-set-image";
+import { ArtifactSetImage } from "@/components/v1/artifact-set-image";
+import { BestTooltip } from "@/components/v1/best-tooltip";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/v1/card";
-import CharacterImage from "@/components/v1/character-image";
-import ElementImage from "@/components/v1/element-image";
+import { CharacterImage } from "@/components/v1/character-image";
+import { ElementImage } from "@/components/v1/element-image";
 import { Loading, LoadingError } from "@/components/v1/loading";
-import VideoSourcesTable from "@/components/v1/video-sources-table";
-import WeaponImage from "@/components/v1/weapon-image";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/v1/tabs";
+import { VideoSourcesTable } from "@/components/v1/video-sources-table";
+import { WeaponImage } from "@/components/v1/weapon-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useAppSelector } from "@/store/hooks";
@@ -151,10 +151,10 @@ const TravelerRecommendations: FC<{ name: TravelerName }> = ({ name }) => {
   }
 
   return (
-    <Tabs defaultValue={elementsNames[0]}>
-      <TabsList className="flex w-full h-auto">
+    <Tabs className="gap-6" defaultValue={elementsNames[0]}>
+      <TabsList className="flex w-full">
         {elementsNames.map(elementName => (
-          <TabsTrigger className="" key={elementName} value={elementName}>
+          <TabsTrigger className="font-bold" key={elementName} value={elementName}>
             <ElementImage className="shrink-0 size-7" name={elementName} />
             {elementName}
           </TabsTrigger>
@@ -229,23 +229,9 @@ const CharacterRecommendations: FC<{
       </CardHeader>
       <CardContent className="space-y-6">
         <Tabs className="gap-4" defaultValue={tabs[0].value}>
-          <TabsList className="flex flex-wrap gap-2 p-1 w-full h-auto bg-muted/50 rounded-2xl backdrop-blur-sm">
+          <TabsList className="flex flex-wrap w-full">
             {tabs.map(({ label, value }) => (
-              <TabsTrigger
-                className={cn([
-                  "px-6 py-3 text-lg font-semibold text-muted-foreground rounded-xl border-0 transition-all",
-                  "hover:text-foreground hover:bg-slate-200/70 data-[state=active]:text-foreground",
-                  "data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-400",
-                  "data-[state=active]:to-amber-200 data-[state=active]:shadow-lg dark:hover:text-foreground",
-                  "dark:hover:bg-slate-700/70 dark:data-[state=active]:text-foreground",
-                  "dark:data-[state=active]:bg-gradient-to-r dark:data-[state=active]:from-amber-600",
-                  "dark:data-[state=active]:to-amber-800",
-                ])}
-                key={value}
-                value={value}
-              >
-                {label}
-              </TabsTrigger>
+              <TabsTrigger className="font-semibold" key={value} value={value}>{label}</TabsTrigger>
             ))}
           </TabsList>
           <TabsContent value={RecommendationTabs.BASE.value}>
@@ -446,23 +432,9 @@ const CharacterArtifactSetRecommendations: FC<{
 
   return (
     <Tabs defaultValue={recommendationsEntries[0][0]}>
-      <TabsList className="flex flex-wrap gap-2 p-1 w-full h-auto bg-muted/50 rounded-2xl backdrop-blur-sm">
+      <TabsList className="flex flex-wrap w-full">
         {recommendationsEntries.map(([key]) => (
-          <TabsTrigger
-            className={cn([
-              "px-6 py-3 text-lg font-medium text-muted-foreground rounded-xl border-0 transition-all",
-              "hover:text-foreground hover:bg-slate-200/70 data-[state=active]:text-foreground",
-              "data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-400",
-              "data-[state=active]:to-amber-200 data-[state=active]:shadow-lg dark:hover:text-foreground",
-              "dark:hover:bg-slate-700/70 dark:data-[state=active]:text-foreground",
-              "dark:data-[state=active]:bg-gradient-to-r dark:data-[state=active]:from-amber-600",
-              "dark:data-[state=active]:to-amber-800",
-            ])}
-            key={key}
-            value={key}
-          >
-            {key}
-          </TabsTrigger>
+          <TabsTrigger key={key} value={key}>{key}</TabsTrigger>
         ))}
       </TabsList>
       {recommendationsEntries.map(([key, recommendations]) => (
@@ -499,7 +471,27 @@ const CharacterArtifactSetRecommendationsTable: FC<{
                       <BestTooltip className="size-12" value={recommendation.best} />
                     </TableCell>
                   )}
-                  <TableCell className="w-38">
+                  <TableCell className="w-20">
+                    <div
+                      className="grid size-16"
+                      style={{ gridTemplateColumns: `repeat(${recommendation.names.length},minmax(0,1fr))` }}
+                    >
+                      {recommendation.names.map((name, index) => (
+                        <ArtifactSetImage
+                          className="aspect-square rounded-sm rounded-br-lg"
+                          key={name}
+                          name={name}
+                          style={{
+                            gridColumnEnd: index + 2,
+                            gridColumnStart: index + 1,
+                            gridRowEnd: index + 2,
+                            gridRowStart: index + 1,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </TableCell>
+                  {/* <TableCell className="w-38">
                     <div className="flex gap-4 justify-center items-center">
                       {recommendation.names.map(name => (
                         <ArtifactSetImage
@@ -509,7 +501,7 @@ const CharacterArtifactSetRecommendationsTable: FC<{
                         />
                       ))}
                     </div>
-                  </TableCell>
+                  </TableCell> */}
                   <TableCell className="text-pretty whitespace-normal">{recommendation.names.join(" + ")}</TableCell>
                   {hasPercent && (
                     <TableCell
@@ -603,7 +595,12 @@ const CharacterDetachmentItemRecommendation: FC<{ item: DetachmentItemRecommenda
                     <div className="aspect-square relative">
                       <WeaponImage className="rounded-sm" name={item.weapon} />
                       {item.weaponR !== undefined && (
-                        <span className="absolute top-0 left-0 p-0.75 text-xs/none text-center bg-card/60 rounded-tl-sm rounded-br-sm">
+                        <span
+                          className={cn([
+                            "absolute top-0 left-0 p-0.75 text-xs/none text-center bg-card/60 rounded-tl-sm",
+                            "rounded-br-sm",
+                          ])}
+                        >
                           {`Р${item.weaponR}`}
                         </span>
                       )}
@@ -740,23 +737,9 @@ const CharacterTalentRecommendations: FC<{
 
   return talent && (
     <Tabs defaultValue={recommendationsEntries[0][0]}>
-      <TabsList className="flex flex-wrap gap-2 p-1 w-full h-auto bg-muted/50 rounded-2xl backdrop-blur-sm">
+      <TabsList className="flex flex-wrap w-full">
         {recommendationsEntries.map(([key]) => (
-          <TabsTrigger
-            className={cn([
-              "px-6 py-3 text-lg font-medium text-muted-foreground rounded-xl border-0 transition-all",
-              "hover:text-foreground hover:bg-slate-200/70 data-[state=active]:text-foreground",
-              "data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-400",
-              "data-[state=active]:to-amber-200 data-[state=active]:shadow-lg dark:hover:text-foreground",
-              "dark:hover:bg-slate-700/70 dark:data-[state=active]:text-foreground",
-              "dark:data-[state=active]:bg-gradient-to-r dark:data-[state=active]:from-amber-600",
-              "dark:data-[state=active]:to-amber-800",
-            ])}
-            key={key}
-            value={key}
-          >
-            {key}
-          </TabsTrigger>
+          <TabsTrigger key={key} value={key}>{key}</TabsTrigger>
         ))}
       </TabsList>
       {recommendationsEntries.map(([key, recommendations]) => (
@@ -837,23 +820,9 @@ const CharacterWeaponRecommendations: FC<{
 
   return (
     <Tabs defaultValue={recommendationsEntries[0][0]}>
-      <TabsList className="flex flex-wrap gap-2 p-1 w-full h-auto bg-muted/50 rounded-2xl backdrop-blur-sm">
+      <TabsList className="flex flex-wrap w-full">
         {recommendationsEntries.map(([key]) => (
-          <TabsTrigger
-            className={cn([
-              "px-6 py-3 text-lg font-medium text-muted-foreground rounded-xl border-0 transition-all",
-              "hover:text-foreground hover:bg-slate-200/70 data-[state=active]:text-foreground",
-              "data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-400",
-              "data-[state=active]:to-amber-200 data-[state=active]:shadow-lg dark:hover:text-foreground",
-              "dark:hover:bg-slate-700/70 dark:data-[state=active]:text-foreground",
-              "dark:data-[state=active]:bg-gradient-to-r dark:data-[state=active]:from-amber-600",
-              "dark:data-[state=active]:to-amber-800",
-            ])}
-            key={key}
-            value={key}
-          >
-            {key}
-          </TabsTrigger>
+          <TabsTrigger key={key} value={key}>{key}</TabsTrigger>
         ))}
       </TabsList>
       {recommendationsEntries.map(([key, recommendations]) => (
