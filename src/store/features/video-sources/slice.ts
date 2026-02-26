@@ -304,6 +304,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-226836627_456239384",
     youtube: "https://www.youtube.com/watch?v=Rr26SHvbmXE",
   },
+  [VideoSourceIds.GUIDE_TO_TRAVELER_PYRO]: {
+    id: VideoSourceIds.GUIDE_TO_TRAVELER_PYRO,
+    author: "Анимекул",
+    title: "Зачем нужен Пиро Путешественник? | Подробный гайд на Пиро ГГ",
+    date: "2025-01-08",
+    vkvideo: "https://vkvideo.ru/video-229156089_456239059",
+    youtube: "https://youtu.be/L3Eg506_w7M",
+  },
   [VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_AnimeCool]: {
     id: VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_AnimeCool,
     author: "Анимекул",

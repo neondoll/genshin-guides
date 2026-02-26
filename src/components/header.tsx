@@ -1,16 +1,16 @@
-import type { FC } from "react";
+import { type FC } from "react";
 
 import { ModeToggle } from "./mode-toggle";
-import NewsDropdown from "./news-dropdown";
+import { NewsDropdown } from "./news-dropdown";
 import { cn } from "@/lib/utils";
 
-const Header: FC = () => {
+export const Header: FC<{ className?: string }> = ({ className }) => {
   return (
     <header
       className={cn([
         "bg-gradient-to-r from-amber-100/30 to-blue-100/30 border-b border-slate-300/50 dark:from-amber-900/30",
         "dark:to-blue-900/30 dark:border-slate-700/50",
-      ])}
+      ], className)}
     >
       <div className="flex gap-x-4 justify-between items-center px-4 py-6 mx-auto container">
         <h1
@@ -30,5 +30,3 @@ const Header: FC = () => {
     </header>
   );
 };
-
-export default Header;

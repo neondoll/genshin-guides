@@ -4,7 +4,7 @@ interface ImageWithFallbackProps extends ComponentProps<"img"> {
   fallbackSrc?: string;
 }
 
-const ImageWithFallback: FC<ImageWithFallbackProps> = ({ alt, fallbackSrc, src, ...props }) => {
+export const ImageWithFallback: FC<ImageWithFallbackProps> = ({ alt, fallbackSrc, src, ...props }) => {
   const [imgSrc, setImgSrc] = useState(src);
 
   const handleError = () => {
@@ -24,5 +24,3 @@ const ImageWithFallback: FC<ImageWithFallbackProps> = ({ alt, fallbackSrc, src, 
     />
   );
 };
-
-export default ImageWithFallback;

@@ -9,10 +9,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Card, CardContent } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import ArtifactSetImage from "@/components/v1/artifact-set-image";
+import { ArtifactSetImage } from "@/components/v1/artifact-set-image";
+import { Card, CardContent } from "@/components/v1/card";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useAppSelector } from "@/store/hooks";
@@ -43,9 +43,7 @@ const ArtifactSetsTierListPage: FC = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <Card
-        className="bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
-      >
+      <Card>
         <CardContent>
           <Table>
             <TableBody>

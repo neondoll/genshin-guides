@@ -35,6 +35,7 @@ export const VideoSourceIds = {
   GUIDE_TO_SKIRK_IN_5_7_AnimeCool: "guide_to_Skirk_in_5.7_AnimeCool",
   GUIDE_TO_SKIRK_IN_5_7_MironMinMax: "guide_to_Skirk_in_5.7_MironMinMax",
   GUIDE_TO_SKIRK_IN_5_7_xPandaChannelx: "guide_to_Skirk_in_5.7_xPandaChannelx",
+  GUIDE_TO_TRAVELER_PYRO: "guide_to_Traveler_Pyro",
   GUIDE_TO_VARESA_IN_6_2_AnimeCool: "guide_to_Varesa_in_6.2_AnimeCool",
   GUIDE_TO_VARESA_IN_6_2_MironMinMax: "guide_to_Varesa_in_6.2_MironMinMax",
   GUIDE_TO_VARKA_IN_6_4_AnimeCool: "guide_to_Varka_in_6.4_AnimeCool",

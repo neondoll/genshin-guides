@@ -1,4 +1,4 @@
-import { type FC, lazy, useMemo } from "react";
+import { type FC, useMemo } from "react";
 import { Link } from "react-router";
 
 import { Button } from "./ui/button";
@@ -11,20 +11,19 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Newspaper } from "./ui/icons";
+import { ArtifactSetImage } from "./v1/artifact-set-image";
+import { CharacterImage } from "./v1/character-image";
+import { WeaponImage } from "./v1/weapon-image";
 import Paths from "@/paths";
 import { type ArtifactSetName } from "@/types/artifact-sets.types";
 import { type CharacterName, CharacterNames } from "@/types/characters.types";
 import { type WeaponName, WeaponNames } from "@/types/weapons.types";
 
-const ArtifactSetImage = lazy(() => import("@/components/v1/artifact-set-image"));
-const CharacterImage = lazy(() => import("@/components/v1/character-image"));
-const WeaponImage = lazy(() => import("@/components/v1/weapon-image"));
-
 const artifactSetNames: ArtifactSetName[] = [];
 const characterNames: CharacterName[] = [CharacterNames.VARKA];
 const weaponNames: WeaponName[] = [WeaponNames.GEST_OF_THE_MIGHTY_WOLF];
 
-const NewsDropdown: FC = () => {
+export const NewsDropdown: FC = () => {
   const artifactSetsShow = useMemo(() => artifactSetNames.length > 0, []);
   const charactersShow = useMemo(() => characterNames.length > 0, []);
   const weaponsShow = useMemo(() => weaponNames.length > 0, []);
@@ -80,5 +79,3 @@ const NewsDropdown: FC = () => {
     </DropdownMenu>
   );
 };
-
-export default NewsDropdown;

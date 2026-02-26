@@ -10,9 +10,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
-import WeaponImage from "@/components/v1/weapon-image";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/v1/card";
+import { Loading, LoadingError } from "@/components/v1/loading";
+import { WeaponImage } from "@/components/v1/weapon-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useWeapon } from "@/store/features/weapons";
@@ -48,11 +49,11 @@ const WeaponPage: FC = () => {
     variants.forEach(([color, value]) => {
       const searchValue = `<color=#${color}>{${value}}</color>`;
       const replaceValue = [
-        `<span style="color:var(--${color})">${weapon?.r1?.values[value]}</span>`,
-        `<span style="color:var(--${color})">${weapon?.r2?.values[value]}</span>`,
-        `<span style="color:var(--${color})">${weapon?.r3?.values[value]}</span>`,
-        `<span style="color:var(--${color})">${weapon?.r4?.values[value]}</span>`,
-        `<span style="color:var(--${color})">${weapon?.r5?.values[value]}</span>`,
+        `<span style="color:var(--${color},#${color})">${weapon?.r1?.values[value]}</span>`,
+        `<span style="color:var(--${color},#${color})">${weapon?.r2?.values[value]}</span>`,
+        `<span style="color:var(--${color},#${color})">${weapon?.r3?.values[value]}</span>`,
+        `<span style="color:var(--${color},#${color})">${weapon?.r4?.values[value]}</span>`,
+        `<span style="color:var(--${color},#${color})">${weapon?.r5?.values[value]}</span>`,
       ].join("/");
 
       result = result.replace(searchValue, replaceValue);
@@ -70,25 +71,12 @@ const WeaponPage: FC = () => {
     ];
   }, [weapon, weaponEffect]);
 
-  useMemo(() => {
-    console.log(weapon);
-  }, [weapon]);
-
   if (loading) {
-    return (
-      <div className="flex justify-center items-center h-64">
-        <div className="text-xl text-amber-300">Загрузка данных...</div>
-      </div>
-    );
+    return <Loading />;
   }
 
   if (error) {
-    return (
-      <div className="bg-red-900/30 border border-red-700 rounded-2xl p-6 text-center">
-        <div className="text-red-300 text-lg mb-2">Ошибка загрузки</div>
-        <div className="text-slate-300">{error}</div>
-      </div>
-    );
+    return <LoadingError error={error} />;
   }
 
   return (
@@ -132,11 +120,9 @@ const WeaponPage: FC = () => {
           </div>
         </div>
       </div>
-      <Card
-        className="mb-6 bg-gradient-to-br from-slate-200 to-slate-100 rounded-2xl border-slate-300 shadow-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700"
-      >
+      <Card className="mb-6">
         <CardHeader>
-          <CardTitle className="text-xl font-bold">Характеристики</CardTitle>
+          <CardTitle>Характеристики</CardTitle>
         </CardHeader>
         <CardContent className="grid grid-cols-1 grid-flow-row-dense gap-x-6 gap-y-2 md:grid-cols-2">
           {characteristics.map(({ label, value, className }) => {

@@ -118,6 +118,8 @@ export default {
   [CharacterNames.ZHONGLI]: () => import("./Zhongli-recommendations"),
   [CharacterNames.ZIBAI]: () => import("./Zibai-recommendations"),
   [`Путешественница (${ElementNames.ANEMO})`]: () => import("./Traveler-recommendations").then(res => ({ default: res.default[ElementNames.ANEMO] })),
+  [`Путешественница (${ElementNames.DENDRO})`]: () => import("./Traveler-recommendations").then(res => ({ default: res.default[ElementNames.DENDRO] })),
+  [`Путешественница (${ElementNames.ELECTRO})`]: () => import("./Traveler-recommendations").then(res => ({ default: res.default[ElementNames.ELECTRO] })),
   [`Путешественница (${ElementNames.GEO})`]: () => import("./Traveler-recommendations").then(res => ({ default: res.default[ElementNames.GEO] })),
   [`Путешественница (${ElementNames.HYDRO})`]: () => import("./Traveler-recommendations").then(res => ({ default: res.default[ElementNames.HYDRO] })),
   [`Путешественница (${ElementNames.PYRO})`]: () => import("./Traveler-recommendations").then(res => ({ default: res.default[ElementNames.PYRO] })),
