@@ -1,6 +1,124 @@
-import type { Character as CharacterDB } from "genshin-db";
-
 import type { ElementName } from "./elements.types";
+import type { Rarity } from "./rarities.types";
+
+export const CharacterIds = {
+  AETHER: 10000005,
+  AINO: 10000121,
+  ALBEDO: 10000038,
+  ALHAITHAM: 10000078,
+  ALOY: 10000062,
+  AMBER: 10000021,
+  ARATAKI_ITTO: 10000057,
+  ARLECCHINO: 10000096,
+  BAIZHU: 10000082,
+  BARBARA: 10000014,
+  BEIDOU: 10000024,
+  BENNETT: 10000032,
+  CANDACE: 10000072,
+  CHARLOTTE: 10000088,
+  CHASCA: 10000104,
+  CHEVREUSE: 10000090,
+  CHIORI: 10000094,
+  CHONGYUN: 10000036,
+  CITLALI: 10000107,
+  CLORINDE: 10000098,
+  COLLEI: 10000067,
+  COLUMBINA_HYPOSELENIA: 10000125,
+  CYNO: 10000071,
+  DAHLIA: 10000115,
+  DEHYA: 10000079,
+  DILUC: 10000016,
+  DIONA: 10000039,
+  DORI: 10000068,
+  DURIN: 10000123,
+  EMILIE: 10000099,
+  ESCOFFIER: 10000112,
+  EULA: 10000051,
+  FARUZAN: 10000076,
+  FISCHL: 10000031,
+  FREMINET: 10000085,
+  FURINA: 10000089,
+  GAMING: 10000092,
+  GANYU: 10000037,
+  GOROU: 10000055,
+  HU_TAO: 10000046,
+  IANSAN: 10000110,
+  IFA: 10000113,
+  ILLUGA: 10000127,
+  INEFFA: 10000116,
+  JAHODA: 10000124,
+  JEAN: 10000003,
+  KACHINA: 10000100,
+  KAEDEHARA_KAZUHA: 10000047,
+  KAEYA: 10000015,
+  KAMISATO_AYAKA: 10000002,
+  KAMISATO_AYATO: 10000066,
+  KAVEH: 10000081,
+  KEQING: 10000042,
+  KINICH: 10000101,
+  KIRARA: 10000061,
+  KLEE: 10000029,
+  KUJOU_SARA: 10000056,
+  KUKI_SHINOBU: 10000065,
+  KYRYLL_CHUDOMIROVICH_FLINS: 10000120,
+  LAN_YAN: 10000108,
+  LAUMA: 10000119,
+  LAYLA: 10000074,
+  LISA: 10000006,
+  LUMINE: 10000007,
+  LYNETTE: 10000083,
+  LYNEY: 10000084,
+  MANEKIN: 10000117,
+  MANEKINA: 10000118,
+  MAVUIKA: 10000106,
+  MIKA: 10000080,
+  MONA: 10000041,
+  MUALANI: 10000102,
+  NAHIDA: 10000073,
+  NAVIA: 10000091,
+  NEFER: 10000122,
+  NEUVILLETTE: 10000087,
+  NILOU: 10000070,
+  NINGGUANG: 10000027,
+  NOELLE: 10000034,
+  ORORON: 10000105,
+  QIQI: 10000035,
+  RAIDEN_SHOGUN: 10000052,
+  RAZOR: 10000020,
+  ROSARIA: 10000045,
+  SANGONOMIYA_KOKOMI: 10000054,
+  SAYU: 10000053,
+  SETHOS: 10000097,
+  SHENHE: 10000063,
+  SHIKANOIN_HEIZOU: 10000059,
+  SIGEWINNE: 10000095,
+  SKIRK: 10000114,
+  SUCROSE: 10000043,
+  TARTAGLIA: 10000033,
+  THOMA: 10000050,
+  TIGHNARI: 10000069,
+  VARESA: 10000111,
+  VARKA: 10000128,
+  VENTI: 10000022,
+  WANDERER: 10000075,
+  WRIOTHESLEY: 10000086,
+  XIANGLING: 10000023,
+  XIANYUN: 10000093,
+  XIAO: 10000026,
+  XILONEN: 10000103,
+  XINGQIU: 10000025,
+  XINYAN: 10000044,
+  YAE_MIKO: 10000058,
+  YANFEI: 10000048,
+  YAOYAO: 10000077,
+  YELAN: 10000060,
+  YOIMIYA: 10000049,
+  YUMEMIZUKI_MIZUKI: 10000109,
+  YUN_JIN: 10000064,
+  ZIBAI: 10000126,
+  ZHONGLI: 10000030,
+} as const;
+export type CharacterId = typeof CharacterIds[keyof typeof CharacterIds];
 
 export const CharacterNames = {
   AETHER: "Итэр",
@@ -121,10 +239,25 @@ export const CharacterNames = {
 } as const;
 export type CharacterName = typeof CharacterNames[keyof typeof CharacterNames];
 
-export const Travelers = [CharacterNames.AETHER, CharacterNames.LUMINE] as const;
-export type TravelerName = typeof Travelers[number];
+export const TravelerNameArray = [CharacterNames.AETHER, CharacterNames.LUMINE] as const;
+export type TravelerName = typeof TravelerNameArray[number];
 
-export interface Character extends Omit<CharacterDB, "stats"> {
-  elementText: ElementName | "Нет";
+export interface Character {
+  id: CharacterId;
   name: CharacterName;
+  fullName?: string;
+  title: string;
+  weaponText: string;
+  rarity: Extract<Rarity, 4 | 5>;
+  birthday: string;
+  elementType: "ELEMENT_ANEMO" | "ELEMENT_CRYO" | "ELEMENT_DENDRO" | "ELEMENT_ELECTRO" | "ELEMENT_GEO" | "ELEMENT_HYDRO" | "ELEMENT_NONE" | "ELEMENT_PYRO";
+  elementText: ElementName | "Нет";
+  affiliation: string;
+  region: string;
+  substatText: string;
+  constellation: string;
+  image: string;
+  version: string;
 }
+
+export type CharacterListItem = Pick<Character, "id" | "name" | "rarity" | "elementType" | "elementText" | "image">;

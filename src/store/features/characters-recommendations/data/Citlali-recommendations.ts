@@ -1,22 +1,22 @@
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
+import { WeaponNames } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY, best: true },
-      { type: "complete", name: ArtifactSetNames.TENACITY_OF_THE_MILLELITH },
-      { type: "complete", name: ArtifactSetNames.NOBLESSE_OBLIGE },
-      { type: "complete", name: ArtifactSetNames.INSTRUCTOR },
+      { type: "complete", id: ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY, best: true },
+      { type: "complete", id: ArtifactSetIds.TENACITY_OF_THE_MILLELITH },
+      { type: "complete", id: ArtifactSetIds.NOBLESSE_OBLIGE },
+      { type: "complete", id: ArtifactSetIds.INSTRUCTOR },
       {
         type: "complete",
-        name: ArtifactSetNames.ARCHAIC_PETRA,
-        notes: [`Если в отряде есть ${CharacterNames.XILONEN}`, "Носитель должен подбирать осколок"],
+        id: ArtifactSetIds.ARCHAIC_PETRA,
+        notes: [`Если в отряде есть ${CharacterIds.XILONEN}`, "Носитель должен подбирать осколок"],
       },
     ],
     stats: {

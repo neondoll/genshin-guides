@@ -1,15 +1,15 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.GOLDEN_TROUPE, best: true },
-      { type: "complete", name: ArtifactSetNames.TENACITY_OF_THE_MILLELITH },
+      { type: "complete", id: ArtifactSetIds.GOLDEN_TROUPE, best: true },
+      { type: "complete", id: ArtifactSetIds.TENACITY_OF_THE_MILLELITH },
     ],
     stats: {
       sands: [

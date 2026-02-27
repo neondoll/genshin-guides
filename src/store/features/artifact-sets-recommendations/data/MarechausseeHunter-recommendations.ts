@@ -1,15 +1,15 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.GAMING, best: true },
-    { type: "character", name: CharacterNames.LYNEY, best: true },
-    { type: "character", name: CharacterNames.NEUVILLETTE, best: true },
-    { type: "character", name: CharacterNames.WRIOTHESLEY, best: true },
-    { type: "other", title: `Любые дамагеры с ${CharacterNames.FURINA}` },
+    { type: "character", id: CharacterIds.GAMING, best: true },
+    { type: "character", id: CharacterIds.LYNEY, best: true },
+    { type: "character", id: CharacterIds.NEUVILLETTE, best: true },
+    { type: "character", id: CharacterIds.WRIOTHESLEY, best: true },
+    { type: "other", title: `Любые дамагеры с ${CharacterIds.FURINA}` },
   ],
   preferredStats: {
     sands: [Stats.ATK_PERCENTAGE, Stats.ELEMENTAL_MASTERY, Stats.HP_PERCENTAGE],

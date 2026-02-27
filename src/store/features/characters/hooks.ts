@@ -1,62 +1,62 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { fetchCharacterByName, fetchCharactersName } from "./slice";
+import { fetchCharacter, fetchCharacterList } from "./slice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { type CharacterName } from "@/types/characters.types";
+import { type CharacterId } from "@/types/characters.types";
 
-export const useCharacter = (name: CharacterName) => {
+export const useCharacter = (id: CharacterId) => {
   const dispatch = useAppDispatch();
-  const characters = useAppSelector(state => state.characters.entities);
+  const characters = useAppSelector(state => state.characters.details);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getCharacter = useCallback(async (name: CharacterName) => {
+  const getCharacter = useCallback(async (id: CharacterId) => {
     try {
       setLoading(true);
-      await dispatch(fetchCharacterByName(name));
+      await dispatch(fetchCharacter(id));
       setError(null);
     }
     catch (error) {
-      setError("Ошибка загрузки данных из genshin-db");
-      console.error(`Ошибка при получении персонажа "${name}":`, error);
+      setError("Ошибка загрузки данных с сервера");
+      console.error(`Ошибка при получении персонажа с ID "${id}":`, error);
     }
     finally {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((name: CharacterName) => !!characters[name], [characters]);
-  const preloadCharacter = useCallback((name: CharacterName) => {
-    if (!isStored(name)) {
-      getCharacter(name);
+  const isStored = useCallback((id: CharacterId) => !!characters[id], [characters]);
+  const preloadCharacter = useCallback((id: CharacterId) => {
+    if (!isStored(id)) {
+      getCharacter(id);
     }
     else {
       setLoading(false);
     }
   }, [getCharacter, isStored]);
 
-  const character = useMemo(() => characters[name], [characters, name]);
+  const character = useMemo(() => characters[id], [characters, id]);
 
   useEffect(() => {
-    preloadCharacter(name);
-  }, [name, preloadCharacter]);
+    preloadCharacter(id);
+  }, [id, preloadCharacter]);
 
   return { character, error, loading };
 };
-export const useCharactersNames = () => {
+export const useCharactersList = () => {
   const dispatch = useAppDispatch();
-  const charactersNames = useAppSelector(state => state.characters.names);
+  const characters = useAppSelector(state => state.characters.list);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getCharactersNames = useCallback(async () => {
+  const getCharacters = useCallback(async () => {
     try {
       setLoading(true);
-      await dispatch(fetchCharactersName());
+      await dispatch(fetchCharacterList());
       setError(null);
     }
     catch (error) {
-      setError("Ошибка загрузки данных из genshin-db");
-      console.error("Ошибка при получении имен персонажей:", error);
+      setError("Ошибка загрузки данных с сервера");
+      console.error("Ошибка при получении списка персонажей:", error);
     }
     finally {
       setLoading(false);
@@ -64,8 +64,8 @@ export const useCharactersNames = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    getCharactersNames();
-  }, [getCharactersNames]);
+    getCharacters();
+  }, [getCharacters]);
 
-  return { charactersNames, error, loading };
+  return { characters, error, loading };
 };

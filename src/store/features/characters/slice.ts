@@ -1,34 +1,46 @@
 import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
-import { type Character, type CharacterName } from "@/types/characters.types";
-import { getCharacter, getCharactersNames } from "@/utils/genshinDbAdapter";
+import { type Character, type CharacterListItem } from "@/types/characters.types";
+import { getCharacter, getCharacterList } from "@/utils/genshinDbAdapter";
 
 export interface CharactersState {
-  entities: { [P in CharacterName]?: Character | null };
-  names: CharacterName[];
+  details: { [P in Character["id"]]?: Character };
+  list: CharacterListItem[];
 }
 
-const initialState: CharactersState = { entities: {}, names: [] };
+const initialState: CharactersState = { details: {}, list: [] };
 
-export const fetchCharacterByName = createAsyncThunk<Character | null, CharacterName>("characters/fetchByName", async (characterName: CharacterName, { getState }) => {
+export const fetchCharacter = createAsyncThunk<Character, Character["id"]>("characters/fetch", async (characterId, { getState }) => {
   const state = getState() as { characters: CharactersState };
 
-  const stateCharacter = state.characters.entities[characterName];
+  const stateCharacter = state.characters.details[characterId];
 
   if (stateCharacter) {
-    // console.log(`Персонаж "${characterName}" найден в хранилище`);
+    console.log(`Персонаж c ID "${characterId}" найден в хранилище`);
 
     return stateCharacter;
   }
 
-  // console.log(`Загрузка персонажа "${characterName}" с сервера`);
+  console.log(`Загрузка персонажа c ID "${characterId}" с сервера`);
 
-  return getCharacter(characterName);
+  return await getCharacter(characterId);
 });
-export const fetchCharactersName = createAsyncThunk<CharacterName[]>("characters/fetchNames", async () => {
-  // console.log(`Загрузка имен персонажей с сервера`);
+export const fetchCharacterList = createAsyncThunk<CharacterListItem[]>("characters/fetchList", async (_, { getState }) => {
+  const state = getState() as { characters: CharactersState };
 
-  return getCharactersNames();
+  const stateList = state.characters.list;
+
+  if (stateList.length) {
+    console.log("Список персонажей найден в хранилище");
+
+    return stateList;
+  }
+
+  console.log("Загрузка списка персонажей с сервера");
+
+  const list = await getCharacterList();
+
+  return list.sort((a, b) => a.name.localeCompare(b.name));
 });
 
 export const charactersSlice = createSlice<CharactersState, SliceCaseReducers<CharactersState>, string, SliceSelectors<CharactersState>, string>({
@@ -36,21 +48,11 @@ export const charactersSlice = createSlice<CharactersState, SliceCaseReducers<Ch
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchCharacterByName.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.entities[action.payload.name] = action.payload;
-
-        if (!state.names.includes(action.payload.name)) {
-          state.names = [...state.names, action.payload.name].sort((a, b) => a.localeCompare(b));
-        }
-      }
+    builder.addCase(fetchCharacter.fulfilled, (state, action) => {
+      state.details[action.payload.id] = action.payload;
     });
-    builder.addCase(fetchCharactersName.fulfilled, (state, action) => {
-      action.payload.forEach((name) => {
-        if (!state.names.includes(name)) {
-          state.names = [...state.names, name].sort((a, b) => a.localeCompare(b));
-        }
-      });
+    builder.addCase(fetchCharacterList.fulfilled, (state, action) => {
+      state.list = action.payload;
     });
   },
 });

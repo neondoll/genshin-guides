@@ -1,10 +1,10 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
-  carriers: [{ type: "character", name: CharacterNames.SKIRK, best: true }],
+  carriers: [{ type: "character", id: CharacterIds.SKIRK, best: true }],
   preferredStats: {
     sands: [Stats.ATK_PERCENTAGE],
     goblet: [Stats.ATK_PERCENTAGE, Stats.CRYO_DMG_BONUS],

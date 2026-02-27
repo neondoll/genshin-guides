@@ -1,4 +1,4 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
@@ -8,8 +8,8 @@ import { WeaponNames } from "@/types/weapons.types";
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.MARECHAUSSEE_HUNTER, best: "Лучше с Фуриной" },
-      { type: "complete", name: ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING, best: "Лучше в лунных отрядах" },
+      { type: "complete", id: ArtifactSetIds.MARECHAUSSEE_HUNTER, best: "Лучше с Фуриной" },
+      { type: "complete", id: ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING, best: "Лучше в лунных отрядах" },
     ],
     stats: {
       sands: [{ name: Stats.HP_PERCENTAGE }],

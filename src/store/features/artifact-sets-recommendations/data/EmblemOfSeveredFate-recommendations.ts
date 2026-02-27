@@ -1,15 +1,15 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.BEIDOU, best: true },
-    { type: "character", name: CharacterNames.RAIDEN_SHOGUN, best: true },
-    { type: "character", name: CharacterNames.YELAN, best: true },
-    { type: "character", name: CharacterNames.XIANGLING, best: true },
-    { type: "character", name: CharacterNames.XINGQIU, best: true },
+    { type: "character", id: CharacterIds.BEIDOU, best: true },
+    { type: "character", id: CharacterIds.RAIDEN_SHOGUN, best: true },
+    { type: "character", id: CharacterIds.YELAN, best: true },
+    { type: "character", id: CharacterIds.XIANGLING, best: true },
+    { type: "character", id: CharacterIds.XINGQIU, best: true },
     { type: "other", title: "..." },
   ],
   preferredStats: {

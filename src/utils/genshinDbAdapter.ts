@@ -1,10 +1,24 @@
 import genshindb, { Language } from "genshin-db";
 
-import { type ArtifactSet, type ArtifactSetName } from "@/types/artifact-sets.types";
-import { type Character, type CharacterName } from "@/types/characters.types";
+import { type ArtifactSet, type ArtifactSetListItem } from "@/types/artifact-sets.types";
+import { type Character, type CharacterListItem } from "@/types/characters.types";
 import { type Element, type ElementName } from "@/types/elements.types";
 import { type Talent, type TalentName } from "@/types/talents.types";
 import { type Weapon, type WeaponName } from "@/types/weapons.types";
+
+// Базовый URL для статических данных (папка public/data)
+const BASE_URL = import.meta.env.BASE_URL + "data";
+
+// Вспомогательная функция для загрузки JSON
+async function fetchJson<T>(url: string): Promise<T> {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Failed to load ${url}: ${response.statusText}`);
+  }
+
+  return await response.json();
+}
 
 // Конфигурация для русского языка
 const DB_NAMES_OPTIONS = { matchCategories: true, resultLanguage: Language.Russian } as const;
@@ -18,36 +32,24 @@ const DB_OPTIONS = {
   verboseCategories: false,
 };
 
-export function getArtifactSet(artifactSetName: ArtifactSetName) {
-  const artifactData = genshindb.artifacts(artifactSetName, DB_OPTIONS);
+// --- Наборы артефактов ---
 
-  if (!artifactData) {
-    return null;
-  }
-
-  return artifactData as ArtifactSet;
+export async function getArtifactSet(artifactSetId: ArtifactSet["id"]) {
+  return fetchJson<ArtifactSet>(`${BASE_URL}/artifact-sets/details/${artifactSetId}.json`);
 }
 
-export function getArtifactSetsNames() {
-  const artifactSetsNames = genshindb.artifacts("names", DB_NAMES_OPTIONS);
-
-  return artifactSetsNames as ArtifactSetName[];
+export async function getArtifactSetList() {
+  return fetchJson<ArtifactSetListItem[]>(`${BASE_URL}/artifact-sets/index.json`);
 }
 
-export function getCharacter(characterName: CharacterName) {
-  const characterData = genshindb.characters(characterName, DB_OPTIONS);
+// --- Персонажи ---
 
-  if (!characterData) {
-    return null;
-  }
-
-  return { ...characterData, stats: undefined } as Character;
+export async function getCharacter(characterId: Character["id"]) {
+  return fetchJson<Character>(`${BASE_URL}/characters/details/${characterId}.json`);
 }
 
-export function getCharactersNames() {
-  const charactersNames = genshindb.characters("names", DB_NAMES_OPTIONS);
-
-  return charactersNames as CharacterName[];
+export async function getCharacterList() {
+  return fetchJson<CharacterListItem[]>(`${BASE_URL}/characters/index.json`);
 }
 
 export function getElement(elementName: ElementName) {

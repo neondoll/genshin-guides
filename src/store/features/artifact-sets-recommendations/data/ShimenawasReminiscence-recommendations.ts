@@ -1,14 +1,14 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.GANYU, best: true },
-    { type: "character", name: CharacterNames.HU_TAO, best: true },
-    { type: "character", name: CharacterNames.WRIOTHESLEY, best: true },
-    { type: "character", name: CharacterNames.YOIMIYA, best: true },
+    { type: "character", id: CharacterIds.GANYU, best: true },
+    { type: "character", id: CharacterIds.HU_TAO, best: true },
+    { type: "character", id: CharacterIds.WRIOTHESLEY, best: true },
+    { type: "character", id: CharacterIds.YOIMIYA, best: true },
     { type: "other", title: "..." },
   ],
   preferredStats: {

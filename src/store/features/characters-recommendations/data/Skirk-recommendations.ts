@@ -1,11 +1,11 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ElementNames } from "@/types/elements.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 const GameVariants = {
   WHEN_PLAYING_THROUGH_ELEMENTAL_BURST: "При игре через взрыв стихий Хаос: Разрушение",
@@ -15,18 +15,14 @@ const GameVariants = {
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.MARECHAUSSEE_HUNTER, best: "Лучше при игре от обычных атак" },
-      {
-        type: "complete",
-        name: ArtifactSetNames.FINALE_OF_THE_DEEP_GALLERIES,
-        best: "Лучше при игре от взрыва стихий",
-      },
+      { type: "complete", id: ArtifactSetIds.MARECHAUSSEE_HUNTER, best: "Лучше при игре от обычных атак" },
+      { type: "complete", id: ArtifactSetIds.FINALE_OF_THE_DEEP_GALLERIES, best: "Лучше при игре от взрыва стихий" },
     ],
     stats: {
       sands: [{ name: Stats.ATK_PERCENTAGE }],
       goblet: [
         { name: Stats.CRYO_DMG_BONUS, notes: ["Лучше"] },
-        { name: Stats.ATK_PERCENTAGE, notes: [`Можно поставить, если в отряде ${CharacterNames.FURINA}`] },
+        { name: Stats.ATK_PERCENTAGE, notes: [`Можно поставить, если в отряде ${CharacterIds.FURINA}`] },
       ],
       circlet: [{ name: Stats.CRIT_RATE }, { name: Stats.CRIT_DMG }],
       additional: [
@@ -34,7 +30,7 @@ export default {
           name: Stats.CRIT_RATE,
           notes: [
             "В обычной ситуации от 65% до 85%",
-            `При использовании полного комплекта ${ArtifactSetNames.MARECHAUSSEE_HUNTER} не должно быть больше 64%, но так как Скирк играет минимум с 2 крио персонажами, то не должно быть больше 39%`,
+            `При использовании полного комплекта ${ArtifactSetIds.MARECHAUSSEE_HUNTER} не должно быть больше 64%, но так как Скирк играет минимум с 2 крио персонажами, то не должно быть больше 39%`,
           ],
         },
         { name: Stats.CRIT_DMG, notes: ["от 160%"] },
@@ -50,16 +46,16 @@ export default {
   detachments: [
     {
       template: [
-        { type: "character", name: CharacterNames.SKIRK },
+        { type: "character", id: CharacterIds.SKIRK },
         { type: "element", name: ElementNames.HYDRO },
         { type: "element", name: ElementNames.CRYO },
         { type: "other", title: `${ElementNames.HYDRO}/${ElementNames.CRYO} персонаж` },
       ],
       variants: [
         [
-          { type: "character", name: CharacterNames.SKIRK },
-          { type: "character", name: CharacterNames.FURINA },
-          { type: "character", name: CharacterNames.ESCOFFIER },
+          { type: "character", id: CharacterIds.SKIRK },
+          { type: "character", id: CharacterIds.FURINA },
+          { type: "character", id: CharacterIds.ESCOFFIER },
           { type: "other", title: `${ElementNames.HYDRO}/${ElementNames.CRYO} персонаж` },
         ],
       ],

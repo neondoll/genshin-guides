@@ -1,4 +1,4 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds, ArtifactSetNames } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
@@ -8,20 +8,20 @@ import { WeaponNames } from "@/types/weapons.types";
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.NOBLESSE_OBLIGE },
+      { type: "complete", id: ArtifactSetIds.NOBLESSE_OBLIGE },
       {
         type: "complete",
-        name: ArtifactSetNames.SONG_OF_DAYS_PAST,
+        id: ArtifactSetIds.SONG_OF_DAYS_PAST,
         notes: ["Не рекомендуется, слишком нестабильна и требует овер хил"],
       },
       {
         type: "complete",
-        name: ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY,
+        id: ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY,
         notes: [`Если ${ArtifactSetNames.NOBLESSE_OBLIGE} занята`],
       },
       {
         type: "complete",
-        name: ArtifactSetNames.EMBLEM_OF_SEVERED_FATE,
+        id: ArtifactSetIds.EMBLEM_OF_SEVERED_FATE,
         notes: [`Если ${ArtifactSetNames.NOBLESSE_OBLIGE} и ${ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY} заняты`],
       },
     ],

@@ -1,13 +1,13 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.JEAN, best: true },
-    { type: "character", name: CharacterNames.KAEDEHARA_KAZUHA, best: true },
-    { type: "character", name: CharacterNames.SUCROSE, best: true },
+    { type: "character", id: CharacterIds.JEAN, best: true },
+    { type: "character", id: CharacterIds.KAEDEHARA_KAZUHA, best: true },
+    { type: "character", id: CharacterIds.SUCROSE, best: true },
     { type: "other", title: "Любой Анемо" },
   ],
   preferredStats: {

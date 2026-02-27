@@ -1,12 +1,12 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.LYNEY, best: true },
-    { type: "character", name: CharacterNames.KLEE, best: true },
+    { type: "character", id: CharacterIds.LYNEY, best: true },
+    { type: "character", id: CharacterIds.KLEE, best: true },
     { type: "other", title: "Пиро дд в прожарке" },
   ],
   preferredStats: {

@@ -1,4 +1,4 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
@@ -9,50 +9,42 @@ export default {
   artifacts: {
     sets: {
       "Прожарка | Перегрузка": [
-        { type: "complete", name: ArtifactSetNames.FRAGMENT_OF_HARMONIC_WHIMSY, best: true, percent: 1.051 },
-        { type: "complete", name: ArtifactSetNames.GLADIATORS_FINALE, percent: 1.000 },
-        { type: "complete", name: ArtifactSetNames.DESERT_PAVILION_CHRONICLE, percent: 0.973 },
-        { type: "complete", name: ArtifactSetNames.ECHOES_OF_AN_OFFERING, percent: 0.971 },
+        { type: "complete", id: ArtifactSetIds.FRAGMENT_OF_HARMONIC_WHIMSY, best: true, percent: 1.051 },
+        { type: "complete", id: ArtifactSetIds.GLADIATORS_FINALE, percent: 1.000 },
+        { type: "complete", id: ArtifactSetIds.DESERT_PAVILION_CHRONICLE, percent: 0.973 },
+        { type: "complete", id: ArtifactSetIds.ECHOES_OF_AN_OFFERING, percent: 0.971 },
         {
           type: "combined",
-          names: [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.MARECHAUSSEE_HUNTER],
+          ids: [ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES, ArtifactSetIds.MARECHAUSSEE_HUNTER],
           percent: 0.952,
         },
         {
           type: "combined",
-          names: [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.GLADIATORS_FINALE],
+          ids: [ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES, ArtifactSetIds.GLADIATORS_FINALE],
           percent: 0.946,
         },
         {
           type: "combined",
-          names: [ArtifactSetNames.SHIMENAWAS_REMINISCENCE, ArtifactSetNames.GLADIATORS_FINALE],
+          ids: [ArtifactSetIds.SHIMENAWAS_REMINISCENCE, ArtifactSetIds.GLADIATORS_FINALE],
           percent: 0.933,
         },
       ],
       "Пар | Таяние": [
-        { type: "complete", name: ArtifactSetNames.FRAGMENT_OF_HARMONIC_WHIMSY, best: true, percent: 1.042 },
-        { type: "complete", name: ArtifactSetNames.GLADIATORS_FINALE, percent: 1.000 },
-        { type: "complete", name: ArtifactSetNames.GILDED_DREAMS, percent: 0.983 },
-        { type: "complete", name: ArtifactSetNames.DESERT_PAVILION_CHRONICLE, percent: 0.968 },
-        { type: "complete", name: ArtifactSetNames.ECHOES_OF_AN_OFFERING, percent: 0.956 },
+        { type: "complete", id: ArtifactSetIds.FRAGMENT_OF_HARMONIC_WHIMSY, best: true, percent: 1.042 },
+        { type: "complete", id: ArtifactSetIds.GLADIATORS_FINALE, percent: 1.000 },
+        { type: "complete", id: ArtifactSetIds.GILDED_DREAMS, percent: 0.983 },
+        { type: "complete", id: ArtifactSetIds.DESERT_PAVILION_CHRONICLE, percent: 0.968 },
+        { type: "complete", id: ArtifactSetIds.ECHOES_OF_AN_OFFERING, percent: 0.956 },
+        { type: "combined", ids: [ArtifactSetIds.WANDERERS_TROUPE, ArtifactSetIds.GILDED_DREAMS], percent: 0.953 },
         {
           type: "combined",
-          names: [ArtifactSetNames.WANDERERS_TROUPE, ArtifactSetNames.GILDED_DREAMS],
-          percent: 0.953,
-        },
-        {
-          type: "combined",
-          names: [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.GILDED_DREAMS],
+          ids: [ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES, ArtifactSetIds.GILDED_DREAMS],
           percent: 0.952,
         },
+        { type: "combined", ids: [ArtifactSetIds.GLADIATORS_FINALE, ArtifactSetIds.GILDED_DREAMS], percent: 0.949 },
         {
           type: "combined",
-          names: [ArtifactSetNames.GLADIATORS_FINALE, ArtifactSetNames.GILDED_DREAMS],
-          percent: 0.949,
-        },
-        {
-          type: "combined",
-          names: [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.MARECHAUSSEE_HUNTER],
+          ids: [ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES, ArtifactSetIds.MARECHAUSSEE_HUNTER],
           percent: 0.945,
         },
       ],

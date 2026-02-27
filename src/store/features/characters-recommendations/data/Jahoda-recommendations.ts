@@ -1,16 +1,16 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.VIRIDESCENT_VENERER, notes: ["если играем c Флинсом"] },
-      { type: "complete", name: ArtifactSetNames.SILKEN_MOONS_SERENADE, notes: ["если играем c Нефер"] },
-      { type: "complete", name: ArtifactSetNames.DEEPWOOD_MEMORIES, notes: ["если играем c Нефер"] },
+      { type: "complete", id: ArtifactSetIds.VIRIDESCENT_VENERER, notes: ["если играем c Флинсом"] },
+      { type: "complete", id: ArtifactSetIds.SILKEN_MOONS_SERENADE, notes: ["если играем c Нефер"] },
+      { type: "complete", id: ArtifactSetIds.DEEPWOOD_MEMORIES, notes: ["если играем c Нефер"] },
     ],
     stats: {
       sands: [{ name: Stats.ENERGY_RECHARGE }],

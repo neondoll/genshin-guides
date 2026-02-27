@@ -3,20 +3,49 @@ import { type CSSProperties, type FC, useMemo } from "react";
 import { ImageWithFallback } from "./image-with-fallback";
 import { Skeleton } from "../ui/skeleton";
 import { cn } from "@/lib/utils";
-import { CharacterIcons, useCharacter } from "@/store/features/characters";
-import { type CharacterName } from "@/types/characters.types";
+import { CharacterImages, useCharacter } from "@/store/features/characters";
+import { type Character } from "@/types/characters.types";
 import { RarityGradients } from "@/types/rarities.types";
 
-interface CharacterImageProps {
+interface CharacterImagePropsTemplate {
+  characterId: Character["id"];
   className?: string;
-  name: CharacterName;
   style?: CSSProperties;
 }
 
-export const CharacterImage: FC<CharacterImageProps> = ({ className, name, style }) => {
-  const { character, loading } = useCharacter(name);
+interface CharacterImageProps extends CharacterImagePropsTemplate {
+  characterImage: Character["image"];
+  characterName: Character["name"];
+  characterRarity: Character["rarity"];
+}
 
-  const fallbackSrc = useMemo(() => CharacterIcons[name], [name]);
+type CharacterImageLoadingProps = CharacterImagePropsTemplate;
+
+export const CharacterImage: FC<CharacterImageProps> = ({
+  characterId,
+  characterImage,
+  characterName,
+  characterRarity,
+  className,
+  style,
+}) => {
+  const fallbackSrc = useMemo(() => CharacterImages[characterId], [characterId]);
+
+  return (
+    <ImageWithFallback
+      alt={characterName}
+      className={cn(RarityGradients[characterRarity], className)}
+      draggable={false}
+      fallbackSrc={fallbackSrc}
+      src={characterImage ?? fallbackSrc}
+      style={style}
+    />
+  );
+};
+export const CharacterImageLoading: FC<CharacterImageLoadingProps> = ({ characterId, className, style }) => {
+  const { character, loading } = useCharacter(characterId);
+
+  const fallbackSrc = useMemo(() => CharacterImages[characterId], [characterId]);
 
   if (loading) {
     return <Skeleton className={cn(RarityGradients[0], className)} style={style} />;
@@ -24,11 +53,11 @@ export const CharacterImage: FC<CharacterImageProps> = ({ className, name, style
 
   return (
     <ImageWithFallback
-      alt={name}
+      alt={character?.name ?? `character-${characterId}`}
       className={cn(RarityGradients[character?.rarity ?? 0], className)}
       draggable={false}
       fallbackSrc={fallbackSrc}
-      src={character?.images.mihoyo_icon ?? fallbackSrc}
+      src={character?.image ?? fallbackSrc}
       style={style}
     />
   );

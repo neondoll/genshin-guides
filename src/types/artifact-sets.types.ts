@@ -1,4 +1,52 @@
-import type { Artifact as ArtifactDB } from "genshin-db";
+import type { Rarity } from "./rarities.types";
+
+export const ArtifactSetIds = {
+  A_DAY_CARVED_FROM_RISING_WINDS: 15044,
+  ARCHAIC_PETRA: 15014,
+  AUBADE_OF_MORNINGSTAR_AND_MOON: 15043,
+  BLIZZARD_STRAYER: 14001,
+  BLOODSTAINED_CHIVALRY: 15008,
+  CRIMSON_WITCH_OF_FLAMES: 15006,
+  DEEPWOOD_MEMORIES: 15025,
+  DESERT_PAVILION_CHRONICLE: 15027,
+  ECHOES_OF_AN_OFFERING: 15024,
+  EMBLEM_OF_SEVERED_FATE: 15020,
+  FINALE_OF_THE_DEEP_GALLERIES: 15040,
+  FLOWER_OF_PARADISE_LOST: 15028,
+  FRAGMENT_OF_HARMONIC_WHIMSY: 15035,
+  GILDED_DREAMS: 15026,
+  GLADIATORS_FINALE: 15001,
+  GOLDEN_TROUPE: 15032,
+  HEART_OF_DEPTH: 15016,
+  HUSK_OF_OPULENT_DREAMS: 15021,
+  INSTRUCTOR: 10007,
+  LAVAWALKER: 14003,
+  LONG_NIGHTS_OATH: 15039,
+  MAIDEN_BELOVED: 14004,
+  MARECHAUSSEE_HUNTER: 15031,
+  NIGHT_OF_THE_SKYS_UNVEILING: 15041,
+  NIGHTTIME_WHISPERS_IN_THE_ECHOING_WOODS: 15034,
+  NOBLESSE_OBLIGE: 15007,
+  NYMPHS_DREAM: 15029,
+  OBSIDIAN_CODEX: 15038,
+  OCEAN_HUED_CLAM: 15022,
+  PALE_FLAME: 15018,
+  RETRACING_BOLIDE: 15015,
+  SCROLL_OF_THE_HERO_OF_CINDER_CITY: 15037,
+  SHIMENAWAS_REMINISCENCE: 15019,
+  SILKEN_MOONS_SERENADE: 15042,
+  SONG_OF_DAYS_PAST: 15033,
+  TENACITY_OF_THE_MILLELITH: 15017,
+  THE_EXILE: 10009,
+  THUNDERING_FURY: 15005,
+  THUNDERSOOTHER: 14002,
+  UNFINISHED_REVERIE: 15036,
+  VERMILLION_HEREAFTER: 15023,
+  VIRIDESCENT_VENERER: 15002,
+  VOURUKASHAS_GLOW: 15030,
+  WANDERERS_TROUPE: 15003,
+} as const;
+export type ArtifactSetId = typeof ArtifactSetIds[keyof typeof ArtifactSetIds];
 
 export const ArtifactSetNames = {
   A_DAY_CARVED_FROM_RISING_WINDS: "День восходящих ветров",
@@ -46,9 +94,28 @@ export const ArtifactSetNames = {
   VOURUKASHAS_GLOW: "Сияние Вурукаши",
   WANDERERS_TROUPE: "Странствующий ансамбль",
 } as const;
-
 export type ArtifactSetName = typeof ArtifactSetNames[keyof typeof ArtifactSetNames];
 
-export interface ArtifactSet extends ArtifactDB {
-  name: ArtifactSetName;
+export interface ArtifactSetDetail {
+  name: string;
+  relicText: string;
+  image: string;
 }
+
+export interface ArtifactSet {
+  id: ArtifactSetId;
+  name: ArtifactSetName;
+  rarityList: Rarity[];
+  effect1Pc?: string;
+  effect2Pc?: string;
+  effect4Pc?: string;
+  image: string;
+  version: string;
+  flower?: ArtifactSetDetail;
+  plume?: ArtifactSetDetail;
+  sands?: ArtifactSetDetail;
+  goblet?: ArtifactSetDetail;
+  circlet?: ArtifactSetDetail;
+}
+
+export type ArtifactSetListItem = Pick<ArtifactSet, "id" | "name" | "rarityList" | "image">;

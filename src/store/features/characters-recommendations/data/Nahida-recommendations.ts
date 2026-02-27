@@ -1,17 +1,17 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.DEEPWOOD_MEMORIES, best: true },
-      { type: "complete", name: ArtifactSetNames.GOLDEN_TROUPE },
-      { type: "complete", name: ArtifactSetNames.GILDED_DREAMS },
-      { type: "complete", name: ArtifactSetNames.INSTRUCTOR },
+      { type: "complete", id: ArtifactSetIds.DEEPWOOD_MEMORIES, best: true },
+      { type: "complete", id: ArtifactSetIds.GOLDEN_TROUPE },
+      { type: "complete", id: ArtifactSetIds.GILDED_DREAMS },
+      { type: "complete", id: ArtifactSetIds.INSTRUCTOR },
     ],
     stats: {
       sands: [{ name: Stats.ELEMENTAL_MASTERY }],

@@ -1,4 +1,4 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
@@ -7,7 +7,7 @@ import { WeaponNames } from "@/types/weapons.types";
 
 export default {
   artifacts: {
-    sets: [{ type: "complete", name: ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY }],
+    sets: [{ type: "complete", id: ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY }],
     stats: {
       sands: [{ name: Stats.DEF_PERCENTAGE }, { name: Stats.ENERGY_RECHARGE }],
       goblet: [{ name: Stats.DEF_PERCENTAGE }],

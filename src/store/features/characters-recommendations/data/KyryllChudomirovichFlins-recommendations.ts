@@ -1,19 +1,19 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ElementNames } from "@/types/elements.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING, best: true },
-      { type: "complete", name: ArtifactSetNames.MARECHAUSSEE_HUNTER },
-      { type: "complete", name: ArtifactSetNames.THUNDERING_FURY },
-      { type: "complete", name: ArtifactSetNames.GILDED_DREAMS },
+      { type: "complete", id: ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING, best: true },
+      { type: "complete", id: ArtifactSetIds.MARECHAUSSEE_HUNTER },
+      { type: "complete", id: ArtifactSetIds.THUNDERING_FURY },
+      { type: "complete", id: ArtifactSetIds.GILDED_DREAMS },
     ],
     stats: {
       sands: [{ name: Stats.ATK_PERCENTAGE }, { name: Stats.ELEMENTAL_MASTERY }, { name: Stats.ENERGY_RECHARGE }],
@@ -38,17 +38,17 @@ export default {
   detachments: [
     {
       template: [
-        { type: "character", name: CharacterNames.KYRYLL_CHUDOMIROVICH_FLINS },
+        { type: "character", id: CharacterIds.KYRYLL_CHUDOMIROVICH_FLINS },
         { type: "other", title: "Нод-Край персонаж" },
         { type: "element", name: ElementNames.ELECTRO },
         { type: "element", name: ElementNames.HYDRO },
       ],
       variants: [
         [
-          { type: "character", name: CharacterNames.KYRYLL_CHUDOMIROVICH_FLINS },
-          { type: "character", name: CharacterNames.INEFFA },
-          { type: "character", name: CharacterNames.AINO },
-          { type: "character", name: CharacterNames.SUCROSE },
+          { type: "character", id: CharacterIds.KYRYLL_CHUDOMIROVICH_FLINS },
+          { type: "character", id: CharacterIds.INEFFA },
+          { type: "character", id: CharacterIds.AINO },
+          { type: "character", id: CharacterIds.SUCROSE },
         ],
       ],
     },

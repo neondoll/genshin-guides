@@ -1,19 +1,19 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ElementNames } from "@/types/elements.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.GILDED_DREAMS },
-      { type: "complete", name: ArtifactSetNames.DEEPWOOD_MEMORIES },
-      { type: "complete", name: ArtifactSetNames.SILKEN_MOONS_SERENADE },
-      { type: "combined", names: [ArtifactSetNames.GILDED_DREAMS, ArtifactSetNames.WANDERERS_TROUPE] },
+      { type: "complete", id: ArtifactSetIds.GILDED_DREAMS },
+      { type: "complete", id: ArtifactSetIds.DEEPWOOD_MEMORIES },
+      { type: "complete", id: ArtifactSetIds.SILKEN_MOONS_SERENADE },
+      { type: "combined", ids: [ArtifactSetIds.GILDED_DREAMS, ArtifactSetIds.WANDERERS_TROUPE] },
     ],
     stats: {
       sands: [{ name: Stats.ELEMENTAL_MASTERY }, { name: Stats.ENERGY_RECHARGE }],
@@ -41,15 +41,15 @@ export default {
       description: "Бутонизация",
       template: [
         { type: "element", name: ElementNames.HYDRO },
-        { type: "character", name: CharacterNames.NILOU },
-        { type: "character", name: CharacterNames.LAUMA },
+        { type: "character", id: CharacterIds.NILOU },
+        { type: "character", id: CharacterIds.LAUMA },
         { type: "element", name: ElementNames.DENDRO },
       ],
     },
     {
       description: "Цветение",
       template: [
-        { type: "character", name: CharacterNames.LAUMA },
+        { type: "character", id: CharacterIds.LAUMA },
         { type: "element", name: ElementNames.HYDRO },
         { type: "element", name: ElementNames.PYRO },
         { type: "other", title: `${ElementNames.DENDRO}/${ElementNames.HYDRO}/${ElementNames.PYRO} персонаж` },
@@ -58,7 +58,7 @@ export default {
     {
       description: "Вегетация",
       template: [
-        { type: "character", name: CharacterNames.LAUMA },
+        { type: "character", id: CharacterIds.LAUMA },
         { type: "element", name: ElementNames.HYDRO },
         { type: "element", name: ElementNames.ELECTRO },
         { type: "other", title: `${ElementNames.DENDRO}/${ElementNames.HYDRO}/${ElementNames.ELECTRO} персонаж` },

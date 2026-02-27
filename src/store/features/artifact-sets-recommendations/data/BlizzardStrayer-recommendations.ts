@@ -1,13 +1,13 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.GANYU, best: true },
-    { type: "character", name: CharacterNames.KAMISATO_AYAKA, best: true },
-    { type: "character", name: CharacterNames.KAEYA, best: true },
+    { type: "character", id: CharacterIds.GANYU, best: true },
+    { type: "character", id: CharacterIds.KAMISATO_AYAKA, best: true },
+    { type: "character", id: CharacterIds.KAEYA, best: true },
     { type: "other", title: "..." },
   ],
   preferredStats: {

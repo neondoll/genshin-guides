@@ -1,102 +1,102 @@
-import { type ArtifactSetName, ArtifactSetNames } from "@/types/artifact-sets.types";
+import { type ArtifactSetId, ArtifactSetIds } from "@/types/artifact-sets.types";
 
-export const ArtifactSetIcons = {
-  [ArtifactSetNames.A_DAY_CARVED_FROM_RISING_WINDS]: {
+export const ArtifactSetImages = {
+  [ArtifactSetIds.A_DAY_CARVED_FROM_RISING_WINDS]: {
     flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/12/7c4a7aca9f8325c6663239bbfa452ded_4271064323680356779.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/1a94746531a931ca6745c9fa4f011aed_8628578092752145043.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/8683a419d705e1fa6afe561017471bb7_7087180814848883426.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/1aae7ed000fa89733c1e87117664f999_7258511288141911706.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/0a7dc60bbf7ab92f1ca0e5b9f9243d1c_1102425851459233733.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.AUBADE_OF_MORNINGSTAR_AND_MOON]: {
+  [ArtifactSetIds.AUBADE_OF_MORNINGSTAR_AND_MOON]: {
     flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/12/ef58ecfcb8906792c3a9b07c92586934_3343384077195352394.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/a9e1ce52df7c5bfef9c8cbd5dfa84f7b_3811177403927809444.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/a5234f105846c8169e8eed65a1d96043_9085545042989565788.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/c7d1810c3806c2b48610e279dece177f_6800424281444155660.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/38f65c1a90f86c32fd7aae63e71a28f3_6153485391569346318.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.FINALE_OF_THE_DEEP_GALLERIES]: {
+  [ArtifactSetIds.FINALE_OF_THE_DEEP_GALLERIES]: {
     flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/bf39402f87db1168263c7c0898c8ab0c_4434336707917443666.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/c498b33d2359b12603471fd65bd22261_7001131486318823058.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/24/237301566/2a6efc1386ae931f69a7283451487697_7939111578634756094.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/24/237301566/968c157b2ae92b17e2e12f346ed306d3_3851334479611384372.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/24/237301566/0e1f032906e5b4969af48952cd1e9dc8_6167675672511935546.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.FRAGMENT_OF_HARMONIC_WHIMSY]: {
+  [ArtifactSetIds.FRAGMENT_OF_HARMONIC_WHIMSY]: {
     flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/7557f4558ab243d82e8b6b9994fc97ee_7613761242270338701.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/7df24b7057d7243b568a5a1eafa8ca1a_7141285034307751982.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/e68d2442bdc24bbbb13e6a22e4b38693_8387746997874437195.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/8a60b825d5c4ea6a98ca21ae0d1ccc72_6435425467733064919.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/6821618a8429049eb3ccee4e07d2711f_3774681879514856500.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.GOLDEN_TROUPE]: {
+  [ArtifactSetIds.GOLDEN_TROUPE]: {
     flower: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/c32bab10651059ad3c0c8a0e5bbd2e03_6643844847944218874.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/8e44740c21afd286149109475c157ed1_7305575121875500874.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/a8668d27d97594684bb7ff73aad22cdd_4668700861228496884.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/10c41dd09f04615c3ff216fda90bff72_837668656767176865.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/6d62d7a59b21810f30a7e74f21998494_6701615959090957906.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.LONG_NIGHTS_OATH]: {
+  [ArtifactSetIds.LONG_NIGHTS_OATH]: {
     flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/3cf2511dfb1f91696a0ee986e5f1fb22_3371878648281977517.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/16b85e568d3142cb76a402c1f2a2ba3b_6000909972545702054.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/24/237301566/a31853ec22fd57e5d86d57410b9f29ab_6254013672553410186.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/24/237301566/a3e5d377be8f8a8104334ae67f6c9ad4_7361859787259660590.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2025/03/24/237301566/05fda276bef09554c8f211f522d0af40_3781380058496969941.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.MARECHAUSSEE_HUNTER]: {
+  [ArtifactSetIds.MARECHAUSSEE_HUNTER]: {
     flower: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/539b03bed1057707abd643147e18abde_1409380883151258307.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/11a22edcd81c3d43934f3c760cf982ef_435233610779746866.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/11299d1dfa8e57cf0047d2145ba4078d_8341107826694394491.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/77b5fbe7f1897a203e19bdabb8b884f4_4669518943085154437.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/08/12/51635400/26650d6cbdc6b6a48ca5094dfe4582ab_3201644554629248035.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING]: {
+  [ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING]: {
     flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/25c4512875bad223765a5a32c82b09a4_7122872897984003318.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/f474fffae44c4e7a91864113cf5b1f8e_6731765289436648875.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/54a344dc5aca025fbb6cc60a80f7790d_1576492692040107165.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/04dfdf0deae5f0fc58529dc89ee94d6f_3380820828725566086.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/7ce20dbf2ffc87b6b942c0f42d0b43d4_6363911804608985715.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.NIGHTTIME_WHISPERS_IN_THE_ECHOING_WOODS]: {
+  [ArtifactSetIds.NIGHTTIME_WHISPERS_IN_THE_ECHOING_WOODS]: {
     flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/d9d39d9f046d5d23c3d497574be55a82_6317992377184248900.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/b14fd20a3b0aadd16b52e7ea72596745_6260291915349257028.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/81147a28166df7fec906ce279a2a5c7f_4517624846804955487.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/f319dfcbe0c561fc66f06def271298ed_6639241662628415817.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/55b397257c1f688f6ab611cf1b6567e1_9132590603349411342.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.OBSIDIAN_CODEX]: {
+  [ArtifactSetIds.OBSIDIAN_CODEX]: {
     flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/08/27/237301566/cd11df3be5420d2c53c2da0d3298eb92_5780698217766604061.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/7d671f861ea037febc1e4d2a15cbfb73_5145216481466413723.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/7f54914c919ac28a4d45fa1649bf02e2_5641403472427901403.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/c8beccbbaad367c54a75b4967ad97b0e_2180942505065324006.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/f1c9b10136958bf2133db02dfa6b688f_6157722208608787565.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY]: {
+  [ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY]: {
     flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/6ad5095f324c2da829ecaa5e2ed13af9_2791497672459683103.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/4d6b0bc9d58b7422f9a526a07db0121e_5191437028020188740.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/8dd572d52a191ab5eb1be208f13ae321_4880360490369502400.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/a2ae1599bf777b2faaa24dc4e629cf4c_2042174925391819788.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/6055f18fb691b61cef38b7e67460b60d_6490807548223228609.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.SILKEN_MOONS_SERENADE]: {
+  [ArtifactSetIds.SILKEN_MOONS_SERENADE]: {
     flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/b8350998129a66e67c1a7691153da68d_6559589601591776539.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/ee26872f032ed3afb25a542cbd3c93a2_8273369387328992297.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/a07cddd983ad4528ef4e92c399fa4117_1942671869509903838.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/520482a32f80b5538d6d2e6dc8cc194a_3357590716156202832.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/09/01/cf017c10098946f6d3d19a6b2c49bd53_7064122714444153592.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.SONG_OF_DAYS_PAST]: {
+  [ArtifactSetIds.SONG_OF_DAYS_PAST]: {
     flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/7789fb5e684cf95a7011657d0fa8a971_3593386749714639563.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/cbc1ed71c7c29bdf0c32a1c4eee4ff70_5183052284424305252.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/6e9a0be1b44bfdc612da88a1c187148d_7586835624555299825.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/cb19bd226823287c1019b7734aa59dfd_4454345269102091303.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2023/12/16/237301566/111d739805a42b2d74bf4bb677939b70_7956380336849105046.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-  [ArtifactSetNames.UNFINISHED_REVERIE]: {
+  [ArtifactSetIds.UNFINISHED_REVERIE]: {
     flower: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/356c6b0e1be129282f759d8844872c7d_781505622496301751.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/2715fda27d0c7648a18d86e63c0acde6_2035628477797426051.png?x-oss-process=image%2Fformat%2Cwebp",
     sands: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/925dc4dabaecad2b23d09b55aab1ddfa_643072900693091222.png?x-oss-process=image%2Fformat%2Cwebp",
     goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/961efd0280cfadc4952d4c6712779ae0_7692529221256139490.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2024/04/19/237301566/be0eae1774ad7d59a3eeeb5c6620ff04_388356664510470564.png?x-oss-process=image%2Fformat%2Cwebp",
   },
-} as { [P in ArtifactSetName]?: Record<"flower" | "plume" | "sands" | "goblet" | "circlet", string> };
+} as { [P in ArtifactSetId]?: Record<"flower" | "plume" | "sands" | "goblet" | "circlet", string> };

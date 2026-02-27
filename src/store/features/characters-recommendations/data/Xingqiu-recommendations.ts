@@ -1,4 +1,4 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
@@ -9,8 +9,8 @@ import { formatPercent } from "@/utils/format";
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.EMBLEM_OF_SEVERED_FATE, best: true },
-      { type: "complete", name: ArtifactSetNames.NOBLESSE_OBLIGE },
+      { type: "complete", id: ArtifactSetIds.EMBLEM_OF_SEVERED_FATE, best: true },
+      { type: "complete", id: ArtifactSetIds.NOBLESSE_OBLIGE },
     ],
     stats: {
       sands: [

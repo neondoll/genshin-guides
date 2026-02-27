@@ -1,28 +1,20 @@
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ElementNames } from "@/types/elements.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
+import { WeaponNames } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.AUBADE_OF_MORNINGSTAR_AND_MOON, best: true, percent: 1.0827 },
-      { type: "complete", name: ArtifactSetNames.GILDED_DREAMS, percent: 1.000 },
-      { type: "complete", name: ArtifactSetNames.GLADIATORS_FINALE, percent: 0.9640 },
-      {
-        type: "combined",
-        names: [ArtifactSetNames.GLADIATORS_FINALE, ArtifactSetNames.GILDED_DREAMS],
-        percent: 0.9817,
-      },
-      {
-        type: "combined",
-        names: [ArtifactSetNames.WANDERERS_TROUPE, ArtifactSetNames.GILDED_DREAMS],
-        percent: 0.9734,
-      },
+      { type: "complete", id: ArtifactSetIds.AUBADE_OF_MORNINGSTAR_AND_MOON, best: true, percent: 1.0827 },
+      { type: "complete", id: ArtifactSetIds.GILDED_DREAMS, percent: 1.000 },
+      { type: "complete", id: ArtifactSetIds.GLADIATORS_FINALE, percent: 0.9640 },
+      { type: "combined", ids: [ArtifactSetIds.GLADIATORS_FINALE, ArtifactSetIds.GILDED_DREAMS], percent: 0.9817 },
+      { type: "combined", ids: [ArtifactSetIds.WANDERERS_TROUPE, ArtifactSetIds.GILDED_DREAMS], percent: 0.9734 },
     ],
     stats: {
       sands: [{ name: Stats.ATK_PERCENTAGE, notes: ["Лучше"] }, { name: Stats.ELEMENTAL_MASTERY }],
@@ -42,18 +34,18 @@ export default {
     {
       description: "Лучшие",
       template: [
-        { type: "character", name: CharacterNames.KYRYLL_CHUDOMIROVICH_FLINS },
-        { type: "character", name: CharacterNames.INEFFA },
-        { type: "character", name: CharacterNames.COLUMBINA_HYPOSELENIA },
-        { type: "character", name: CharacterNames.SUCROSE },
+        { type: "character", id: CharacterIds.KYRYLL_CHUDOMIROVICH_FLINS },
+        { type: "character", id: CharacterIds.INEFFA },
+        { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+        { type: "character", id: CharacterIds.SUCROSE },
       ],
     },
     {
       description: "Сильные",
       template: [
-        { type: "character", name: CharacterNames.INEFFA },
-        { type: "character", name: CharacterNames.SUCROSE },
-        { type: "character", name: CharacterNames.COLUMBINA_HYPOSELENIA },
+        { type: "character", id: CharacterIds.INEFFA },
+        { type: "character", id: CharacterIds.SUCROSE },
+        { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
         { type: "other", title: "Колясочник" },
       ],
     },
@@ -61,7 +53,7 @@ export default {
       description: "Рабочие",
       template: [
         { type: "other", title: "Мейн-ДД" },
-        { type: "character", name: CharacterNames.INEFFA },
+        { type: "character", id: CharacterIds.INEFFA },
         { type: "element", name: ElementNames.HYDRO },
       ],
     },

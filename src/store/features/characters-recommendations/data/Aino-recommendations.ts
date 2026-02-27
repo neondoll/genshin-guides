@@ -1,4 +1,4 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
@@ -8,10 +8,10 @@ import { WeaponNames } from "@/types/weapons.types";
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.SILKEN_MOONS_SERENADE, best: true },
-      { type: "complete", name: ArtifactSetNames.NOBLESSE_OBLIGE },
-      { type: "complete", name: ArtifactSetNames.INSTRUCTOR },
-      { type: "complete", name: ArtifactSetNames.GILDED_DREAMS },
+      { type: "complete", id: ArtifactSetIds.SILKEN_MOONS_SERENADE, best: true },
+      { type: "complete", id: ArtifactSetIds.NOBLESSE_OBLIGE },
+      { type: "complete", id: ArtifactSetIds.INSTRUCTOR },
+      { type: "complete", id: ArtifactSetIds.GILDED_DREAMS },
     ],
     stats: {
       sands: [{ name: Stats.ENERGY_RECHARGE }, { name: Stats.ELEMENTAL_MASTERY }],

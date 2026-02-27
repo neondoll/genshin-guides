@@ -1,4 +1,4 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { type ElementName, ElementNames } from "@/types/elements.types";
 import { Stats } from "@/types/stats.types";
@@ -80,29 +80,28 @@ export default {
     artifacts: {
       sets: {
         "для игры из кармана": [
-          { type: "complete", name: ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY },
-          { type: "complete", name: ArtifactSetNames.TENACITY_OF_THE_MILLELITH },
-          { type: "complete", name: ArtifactSetNames.INSTRUCTOR },
+          { type: "complete", id: ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY },
+          { type: "complete", id: ArtifactSetIds.TENACITY_OF_THE_MILLELITH },
+          { type: "complete", id: ArtifactSetIds.INSTRUCTOR },
         ],
         "для игры на поле": [
-          { type: "complete", name: ArtifactSetNames.OBSIDIAN_CODEX, percent: 1.000 },
-          { type: "complete", name: ArtifactSetNames.GILDED_DREAMS, percent: 0.884 },
+          { type: "complete", id: ArtifactSetIds.OBSIDIAN_CODEX, percent: 1.000 },
+          { type: "complete", id: ArtifactSetIds.GILDED_DREAMS, percent: 0.884 },
           {
             type: "combined",
-            names: [ArtifactSetNames.GLADIATORS_FINALE, ArtifactSetNames.SHIMENAWAS_REMINISCENCE],
+            ids: [ArtifactSetIds.GLADIATORS_FINALE, ArtifactSetIds.SHIMENAWAS_REMINISCENCE],
             percent: 0.839,
           },
           {
             type: "combined",
-            names: [ArtifactSetNames.GLADIATORS_FINALE, ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES],
+            ids: [ArtifactSetIds.GLADIATORS_FINALE, ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES],
             percent: 0.827,
           },
           {
             type: "combined",
-            names: [ArtifactSetNames.OBSIDIAN_CODEX, ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES],
+            ids: [ArtifactSetIds.OBSIDIAN_CODEX, ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES],
             percent: 0.819,
           },
-
         ],
       },
       stats: {

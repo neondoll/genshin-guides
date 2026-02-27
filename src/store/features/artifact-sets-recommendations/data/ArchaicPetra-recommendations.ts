@@ -1,13 +1,13 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.ALBEDO, best: true },
-    { type: "character", name: CharacterNames.NINGGUANG, best: true },
-    { type: "character", name: CharacterNames.ZHONGLI, best: true },
+    { type: "character", id: CharacterIds.ALBEDO, best: true },
+    { type: "character", id: CharacterIds.NINGGUANG, best: true },
+    { type: "character", id: CharacterIds.ZHONGLI, best: true },
     { type: "other", title: "Любой, если в отряде есть Гео" },
   ],
   preferredStats: {

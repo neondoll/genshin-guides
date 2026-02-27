@@ -1,13 +1,13 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.LAUMA, best: true },
-    { type: "character", name: CharacterNames.KYRYLL_CHUDOMIROVICH_FLINS, best: true },
-    { type: "character", name: CharacterNames.NEFER, best: true },
+    { type: "character", id: CharacterIds.LAUMA, best: true },
+    { type: "character", id: CharacterIds.KYRYLL_CHUDOMIROVICH_FLINS, best: true },
+    { type: "character", id: CharacterIds.NEFER, best: true },
   ],
   preferredStats: {
     sands: [Stats.ATK_PERCENTAGE, Stats.ELEMENTAL_MASTERY],

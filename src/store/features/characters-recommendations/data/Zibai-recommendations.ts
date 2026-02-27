@@ -1,6 +1,6 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ElementNames } from "@/types/elements.types";
 import { Stats } from "@/types/stats.types";
@@ -9,7 +9,7 @@ import { WeaponNames } from "@/types/weapons.types";
 
 export default {
   artifacts: {
-    sets: [{ type: "complete", name: ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING, best: true }],
+    sets: [{ type: "complete", id: ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING, best: true }],
     stats: {
       sands: [{ name: Stats.DEF_PERCENTAGE }],
       goblet: [{ name: Stats.DEF_PERCENTAGE }],
@@ -38,7 +38,7 @@ export default {
   detachments: [
     {
       template: [
-        { type: "character", name: CharacterNames.ZIBAI },
+        { type: "character", id: CharacterIds.ZIBAI },
         { type: "element", name: ElementNames.HYDRO },
         { type: "element", name: ElementNames.GEO },
         { type: "other", title: "Полезный персонаж" },
@@ -47,134 +47,134 @@ export default {
         [
           {
             type: "character",
-            name: CharacterNames.ZIBAI,
+            id: CharacterIds.ZIBAI,
             c: 0,
             weapon: WeaponNames.HARBINGER_OF_DAWN,
             weaponR: 5,
-            artifacts: [ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING],
+            artifacts: [ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING],
           },
           {
             type: "character",
-            name: CharacterNames.COLUMBINA_HYPOSELENIA,
+            id: CharacterIds.COLUMBINA_HYPOSELENIA,
             c: 0,
             weapon: WeaponNames.SACRIFICIAL_JADE,
             weaponR: 1,
-            artifacts: [ArtifactSetNames.AUBADE_OF_MORNINGSTAR_AND_MOON],
+            artifacts: [ArtifactSetIds.AUBADE_OF_MORNINGSTAR_AND_MOON],
           },
           {
             type: "character",
-            name: CharacterNames.ILLUGA,
+            id: CharacterIds.ILLUGA,
             c: 6,
             weapon: WeaponNames.DRAGONS_BANE,
             weaponR: 5,
-            artifacts: [ArtifactSetNames.SILKEN_MOONS_SERENADE],
+            artifacts: [ArtifactSetIds.SILKEN_MOONS_SERENADE],
           },
           {
             type: "character",
-            name: CharacterNames.INEFFA,
+            id: CharacterIds.INEFFA,
             c: 0,
             weapon: WeaponNames.DEATHMATCH,
             weaponR: 1,
-            artifacts: [ArtifactSetNames.AUBADE_OF_MORNINGSTAR_AND_MOON],
+            artifacts: [ArtifactSetIds.AUBADE_OF_MORNINGSTAR_AND_MOON],
           },
         ], // Лучший отряд, Инеффа даёт щит
         [
           {
             type: "character",
-            name: CharacterNames.ZIBAI,
+            id: CharacterIds.ZIBAI,
             c: 0,
             weapon: WeaponNames.FLUTE_OF_EZPITZAL,
             weaponR: 5,
-            artifacts: [ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING],
+            artifacts: [ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING],
           },
           {
             type: "character",
-            name: CharacterNames.COLUMBINA_HYPOSELENIA,
+            id: CharacterIds.COLUMBINA_HYPOSELENIA,
             c: 0,
             weapon: WeaponNames.SACRIFICIAL_JADE,
             weaponR: 1,
-            artifacts: [ArtifactSetNames.AUBADE_OF_MORNINGSTAR_AND_MOON],
+            artifacts: [ArtifactSetIds.AUBADE_OF_MORNINGSTAR_AND_MOON],
           },
           {
             type: "character",
-            name: CharacterNames.ILLUGA,
+            id: CharacterIds.ILLUGA,
             c: 6,
             weapon: WeaponNames.DRAGONS_BANE,
             weaponR: 5,
-            artifacts: [ArtifactSetNames.SILKEN_MOONS_SERENADE],
+            artifacts: [ArtifactSetIds.SILKEN_MOONS_SERENADE],
           },
           {
             type: "character",
-            name: CharacterNames.GOROU,
+            id: CharacterIds.GOROU,
             c: 6,
             weapon: WeaponNames.FAVONIUS_WARBOW,
             weaponR: 5,
-            artifacts: [ArtifactSetNames.INSTRUCTOR],
+            artifacts: [ArtifactSetIds.INSTRUCTOR],
           },
         ], // На Коломбину можно поставить Янтарь для выживаемости (лечение)
         [
           {
             type: "character",
-            name: CharacterNames.ZIBAI,
+            id: CharacterIds.ZIBAI,
             c: 0,
             weapon: WeaponNames.FLUTE_OF_EZPITZAL,
             weaponR: 5,
-            artifacts: [ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING],
+            artifacts: [ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING],
           },
           {
             type: "character",
-            name: CharacterNames.AINO,
+            id: CharacterIds.AINO,
             c: 6,
             weapon: WeaponNames.FAVONIUS_GREATSWORD,
             weaponR: 5,
-            artifacts: [ArtifactSetNames.SILKEN_MOONS_SERENADE],
+            artifacts: [ArtifactSetIds.SILKEN_MOONS_SERENADE],
           },
           {
             type: "character",
-            name: CharacterNames.ILLUGA,
+            id: CharacterIds.ILLUGA,
             c: 6,
             weapon: WeaponNames.DRAGONS_BANE,
             weaponR: 5,
-            artifacts: [ArtifactSetNames.WANDERERS_TROUPE, ArtifactSetNames.GILDED_DREAMS],
+            artifacts: [ArtifactSetIds.WANDERERS_TROUPE, ArtifactSetIds.GILDED_DREAMS],
           },
           {
             type: "character",
-            name: CharacterNames.GOROU,
+            id: CharacterIds.GOROU,
             c: 6,
             weapon: WeaponNames.FAVONIUS_WARBOW,
             weaponR: 5,
-            artifacts: [ArtifactSetNames.INSTRUCTOR],
+            artifacts: [ArtifactSetIds.INSTRUCTOR],
           },
         ], // Если нет Коломбины, Айно будет достойной альтернативой
         [
-          { type: "character", name: CharacterNames.ZIBAI },
-          { type: "character", name: CharacterNames.COLUMBINA_HYPOSELENIA },
-          { type: "character", name: CharacterNames.ILLUGA },
-          { type: "character", name: CharacterNames.ZHONGLI },
+          { type: "character", id: CharacterIds.ZIBAI },
+          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.ILLUGA },
+          { type: "character", id: CharacterIds.ZHONGLI },
         ], // Чжун Ли добавит отряду выживаемости
         [
-          { type: "character", name: CharacterNames.ZIBAI },
+          { type: "character", id: CharacterIds.ZIBAI },
           { type: "element", name: ElementNames.HYDRO },
-          { type: "character", name: CharacterNames.ALBEDO },
-          { type: "character", name: CharacterNames.MONA },
+          { type: "character", id: CharacterIds.ALBEDO },
+          { type: "character", id: CharacterIds.MONA },
         ], // Вариант для игры с Альбедо и Моной (ведьмовство)
         [
-          { type: "character", name: CharacterNames.ZIBAI },
+          { type: "character", id: CharacterIds.ZIBAI },
           { type: "element", name: ElementNames.HYDRO },
-          { type: "character", name: CharacterNames.XILONEN },
-          { type: "character", name: CharacterNames.FURINA },
+          { type: "character", id: CharacterIds.XILONEN },
+          { type: "character", id: CharacterIds.FURINA },
         ], // Отряд с лечением, четвёртый слот не должен быть Гео/Анемо/Дендро для работы Шилонен С0
         [
-          { type: "character", name: CharacterNames.ZIBAI },
+          { type: "character", id: CharacterIds.ZIBAI },
           { type: "element", name: ElementNames.HYDRO },
-          { type: "character", name: CharacterNames.XILONEN },
+          { type: "character", id: CharacterIds.XILONEN },
           { type: "element", name: ElementNames.GEO },
         ], // Шилонен С2 работает даже в отрядах с тремя Гео
         [
-          { type: "character", name: CharacterNames.ZIBAI },
-          { type: "character", name: CharacterNames.AINO },
-          { type: "character", name: CharacterNames.ILLUGA },
-          { type: "character", name: CharacterNames.SUCROSE },
+          { type: "character", id: CharacterIds.ZIBAI },
+          { type: "character", id: CharacterIds.AINO },
+          { type: "character", id: CharacterIds.ILLUGA },
+          { type: "character", id: CharacterIds.SUCROSE },
         ], // Отряды из эпических героев
       ],
     },

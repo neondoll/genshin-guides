@@ -1,12 +1,12 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.NAVIA, best: true },
-    { type: "character", name: CharacterNames.NINGGUANG, best: true },
+    { type: "character", id: CharacterIds.NAVIA, best: true },
+    { type: "character", id: CharacterIds.NINGGUANG, best: true },
   ],
   preferredStats: {
     sands: [Stats.ATK_PERCENTAGE],

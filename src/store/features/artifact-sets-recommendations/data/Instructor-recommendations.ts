@@ -1,13 +1,13 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.CITLALI, best: true },
-    { type: "character", name: CharacterNames.KIRARA, best: true },
-    { type: "character", name: CharacterNames.ZHONGLI, best: true },
+    { type: "character", id: CharacterIds.CITLALI, best: true },
+    { type: "character", id: CharacterIds.KIRARA, best: true },
+    { type: "character", id: CharacterIds.ZHONGLI, best: true },
     { type: "other", title: "Любой персонаж, независящий от своих статов" },
   ],
   preferredStats: {

@@ -1,14 +1,14 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.ALBEDO, best: true },
-    { type: "character", name: CharacterNames.ARATAKI_ITTO, best: true },
-    { type: "character", name: CharacterNames.CHIORI, best: true },
-    { type: "character", name: CharacterNames.NOELLE, best: true },
+    { type: "character", id: CharacterIds.ALBEDO, best: true },
+    { type: "character", id: CharacterIds.ARATAKI_ITTO, best: true },
+    { type: "character", id: CharacterIds.CHIORI, best: true },
+    { type: "character", id: CharacterIds.NOELLE, best: true },
   ],
   preferredStats: {
     sands: [Stats.DEF_PERCENTAGE],

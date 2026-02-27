@@ -1,15 +1,15 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.ARLECCHINO, best: true },
-    { type: "character", name: CharacterNames.CLORINDE, best: true },
-    { type: "character", name: CharacterNames.KAMISATO_AYATO, best: true },
-    { type: "character", name: CharacterNames.NOELLE, best: true },
-    { type: "character", name: CharacterNames.SKIRK, best: true },
+    { type: "character", id: CharacterIds.ARLECCHINO, best: true },
+    { type: "character", id: CharacterIds.CLORINDE, best: true },
+    { type: "character", id: CharacterIds.KAMISATO_AYATO, best: true },
+    { type: "character", id: CharacterIds.NOELLE, best: true },
+    { type: "character", id: CharacterIds.SKIRK, best: true },
     { type: "other", title: "..." },
   ],
   preferredStats: {

@@ -1,6 +1,6 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
@@ -11,8 +11,8 @@ const GameVariants = { DPS: "Основной урон", SUPPORT: "Поддер�
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.OBSIDIAN_CODEX, best: true },
-      { type: "complete", name: ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY },
+      { type: "complete", id: ArtifactSetIds.OBSIDIAN_CODEX, best: true },
+      { type: "complete", id: ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY },
     ],
     stats: {
       sands: [
@@ -20,14 +20,14 @@ export default {
           name: Stats.ATK_PERCENTAGE,
           notes: [
             "Гиперкерри | Перегрузка - Всегда",
-            `Пар | Таяние - Лучше, если в отряде есть инструктор и отсутствует ${CharacterNames.BENNETT} или ${CharacterNames.IANSAN}`,
+            `Пар | Таяние - Лучше, если в отряде есть инструктор и отсутствует ${CharacterIds.BENNETT} или ${CharacterIds.IANSAN}`,
             `${GameVariants.SUPPORT} - Всегда`,
           ],
         },
         {
           name: Stats.ELEMENTAL_MASTERY,
           notes: [
-            `Пар | Таяние - Всегда, если есть в команде ${CharacterNames.BENNETT} или ${CharacterNames.IANSAN} и мало МС в доп. статах`,
+            `Пар | Таяние - Всегда, если есть в команде ${CharacterIds.BENNETT} или ${CharacterIds.IANSAN} и мало МС в доп. статах`,
           ],
         },
       ],

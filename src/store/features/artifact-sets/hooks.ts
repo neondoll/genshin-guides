@@ -1,62 +1,62 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { fetchArtifactSetByName, fetchArtifactSetsName } from "./slice";
+import { fetchArtifactSet, fetchArtifactSetList } from "./slice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { type ArtifactSetName } from "@/types/artifact-sets.types";
+import { type ArtifactSetId } from "@/types/artifact-sets.types";
 
-export const useArtifactSet = (name: ArtifactSetName) => {
+export const useArtifactSet = (id: ArtifactSetId) => {
   const dispatch = useAppDispatch();
-  const artifactSets = useAppSelector(state => state.artifactSets.entities);
+  const artifactSets = useAppSelector(state => state.artifactSets.details);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getArtifactSet = useCallback(async (name: ArtifactSetName) => {
+  const getArtifactSet = useCallback(async (id: ArtifactSetId) => {
     try {
       setLoading(true);
-      await dispatch(fetchArtifactSetByName(name));
+      await dispatch(fetchArtifactSet(id));
       setError(null);
     }
     catch (error) {
-      setError("Ошибка загрузки данных из genshin-db");
-      console.error(`Ошибка при получении набора артефактов "${name}":`, error);
+      setError("Ошибка загрузки данных с сервера");
+      console.error(`Ошибка при получении набора артефактов с ID "${id}":`, error);
     }
     finally {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((name: ArtifactSetName) => !!artifactSets[name], [artifactSets]);
-  const preloadArtifactSet = useCallback((name: ArtifactSetName) => {
-    if (!isStored(name)) {
-      getArtifactSet(name);
+  const isStored = useCallback((id: ArtifactSetId) => !!artifactSets[id], [artifactSets]);
+  const preloadArtifactSet = useCallback((id: ArtifactSetId) => {
+    if (!isStored(id)) {
+      getArtifactSet(id);
     }
     else {
       setLoading(false);
     }
   }, [getArtifactSet, isStored]);
 
-  const artifactSet = useMemo(() => artifactSets[name], [artifactSets, name]);
+  const artifactSet = useMemo(() => artifactSets[id], [artifactSets, id]);
 
   useEffect(() => {
-    preloadArtifactSet(name);
-  }, [name, preloadArtifactSet]);
+    preloadArtifactSet(id);
+  }, [id, preloadArtifactSet]);
 
   return { artifactSet, error, loading };
 };
-export const useArtifactSetsNames = () => {
+export const useArtifactSetList = () => {
   const dispatch = useAppDispatch();
-  const artifactSetsNames = useAppSelector(state => state.artifactSets.names);
+  const artifactSets = useAppSelector(state => state.artifactSets.list);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getArtifactSetsNames = useCallback(async () => {
+  const getArtifactSets = useCallback(async () => {
     try {
       setLoading(true);
-      await dispatch(fetchArtifactSetsName());
+      await dispatch(fetchArtifactSetList());
       setError(null);
     }
     catch (error) {
-      setError("Ошибка загрузки данных из genshin-db");
-      console.error("Ошибка при получении имен наборов артефактов:", error);
+      setError("Ошибка загрузки данных с сервера");
+      console.error("Ошибка при получении списка наборов артефактов:", error);
     }
     finally {
       setLoading(false);
@@ -64,8 +64,8 @@ export const useArtifactSetsNames = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    getArtifactSetsNames();
-  }, [getArtifactSetsNames]);
+    getArtifactSets();
+  }, [getArtifactSets]);
 
-  return { artifactSetsNames, error, loading };
+  return { artifactSets, error, loading };
 };

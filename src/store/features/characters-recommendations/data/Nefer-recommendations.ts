@@ -1,19 +1,19 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ElementNames } from "@/types/elements.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING, best: true },
-      { type: "complete", name: ArtifactSetNames.MARECHAUSSEE_HUNTER },
-      { type: "complete", name: ArtifactSetNames.GILDED_DREAMS },
-      { type: "complete", name: ArtifactSetNames.FLOWER_OF_PARADISE_LOST },
+      { type: "complete", id: ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING, best: true },
+      { type: "complete", id: ArtifactSetIds.MARECHAUSSEE_HUNTER },
+      { type: "complete", id: ArtifactSetIds.GILDED_DREAMS },
+      { type: "complete", id: ArtifactSetIds.FLOWER_OF_PARADISE_LOST },
     ],
     stats: {
       sands: [{ name: Stats.ELEMENTAL_MASTERY }],
@@ -37,7 +37,7 @@ export default {
   detachments: [
     {
       template: [
-        { type: "character", name: CharacterNames.NEFER },
+        { type: "character", id: CharacterIds.NEFER },
         { type: "element", name: ElementNames.DENDRO },
         { type: "element", name: ElementNames.HYDRO },
         { type: "other", title: "Саппорт" },

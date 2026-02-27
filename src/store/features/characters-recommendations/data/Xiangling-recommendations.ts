@@ -1,4 +1,4 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
@@ -9,20 +9,20 @@ export default {
   artifacts: {
     sets: {
       Пар: [
-        { type: "complete", name: ArtifactSetNames.EMBLEM_OF_SEVERED_FATE, best: true, percent: 1.0000 },
-        { type: "complete", name: ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, percent: 0.9954 },
+        { type: "complete", id: ArtifactSetIds.EMBLEM_OF_SEVERED_FATE, best: true, percent: 1.0000 },
+        { type: "complete", id: ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES, percent: 0.9954 },
         {
           type: "combined",
-          names: [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.EMBLEM_OF_SEVERED_FATE],
+          ids: [ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES, ArtifactSetIds.EMBLEM_OF_SEVERED_FATE],
           percent: 0.9277,
         },
       ],
       Перегрузка: [
-        { type: "complete", name: ArtifactSetNames.EMBLEM_OF_SEVERED_FATE, best: true, percent: 1.0000 },
-        { type: "complete", name: ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, percent: 0.9595 },
+        { type: "complete", id: ArtifactSetIds.EMBLEM_OF_SEVERED_FATE, best: true, percent: 1.0000 },
+        { type: "complete", id: ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES, percent: 0.9595 },
         {
           type: "combined",
-          names: [ArtifactSetNames.CRIMSON_WITCH_OF_FLAMES, ArtifactSetNames.EMBLEM_OF_SEVERED_FATE],
+          ids: [ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES, ArtifactSetIds.EMBLEM_OF_SEVERED_FATE],
           percent: 0.9408,
         },
       ],

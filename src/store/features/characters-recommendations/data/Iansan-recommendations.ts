@@ -1,15 +1,15 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
+import { WeaponNames } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
       {
         type: "complete",
-        name: ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY,
+        id: ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY,
         best: true,
         notes: [
           "Лучший набор для Иансан, так как восстановит ей энергию и увеличит элементальный урон основного персонажа.",
@@ -18,7 +18,7 @@ export default {
       },
       {
         type: "complete",
-        name: ArtifactSetNames.NOBLESSE_OBLIGE,
+        id: ArtifactSetIds.NOBLESSE_OBLIGE,
         notes: [
           "Увеличит урон взрыва стихии Иансан и силу атаки отряду.",
           "Рекомендуется использовать, если другие члены отряда не носят данный комплект.",

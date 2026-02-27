@@ -1,4 +1,4 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
@@ -8,8 +8,8 @@ import { WeaponNames } from "@/types/weapons.types";
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.VIRIDESCENT_VENERER, notes: ["если играем из кармана"] },
-      { type: "complete", name: ArtifactSetNames.DESERT_PAVILION_CHRONICLE, notes: ["если играем на поле"] },
+      { type: "complete", id: ArtifactSetIds.VIRIDESCENT_VENERER, notes: ["если играем из кармана"] },
+      { type: "complete", id: ArtifactSetIds.DESERT_PAVILION_CHRONICLE, notes: ["если играем на поле"] },
     ],
     stats: {
       sands: [{ name: Stats.ATK_PERCENTAGE }],

@@ -1,18 +1,18 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 import { WeaponNames } from "@/types/weapons.types";
-import { Stats } from "@/types/stats.types";
 import { formatPercent } from "@/utils/format";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.TENACITY_OF_THE_MILLELITH },
-      { type: "complete", name: ArtifactSetNames.MAIDEN_BELOVED },
-      { type: "complete", name: ArtifactSetNames.FLOWER_OF_PARADISE_LOST },
-      { type: "complete", name: ArtifactSetNames.GILDED_DREAMS },
+      { type: "complete", id: ArtifactSetIds.TENACITY_OF_THE_MILLELITH },
+      { type: "complete", id: ArtifactSetIds.MAIDEN_BELOVED },
+      { type: "complete", id: ArtifactSetIds.FLOWER_OF_PARADISE_LOST },
+      { type: "complete", id: ArtifactSetIds.GILDED_DREAMS },
     ],
     stats: {
       sands: [

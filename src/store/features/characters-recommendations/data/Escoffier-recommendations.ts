@@ -1,22 +1,22 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { CharacterIds } from "@/types/characters.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
+import { WeaponNames } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.GOLDEN_TROUPE, best: true },
-      { type: "complete", name: ArtifactSetNames.BLIZZARD_STRAYER },
+      { type: "complete", id: ArtifactSetIds.GOLDEN_TROUPE, best: true },
+      { type: "complete", id: ArtifactSetIds.BLIZZARD_STRAYER },
     ],
     stats: {
       sands: [
         { name: Stats.ATK_PERCENTAGE, notes: ["Личный урон важнее, чем ульта по откату"] },
         {
           name: Stats.ENERGY_RECHARGE,
-          notes: [`В меньшинстве случаев, когда есть ${CharacterNames.FURINA}, лечение нужно и лечить больше некому`],
+          notes: [`В меньшинстве случаев, когда есть ${CharacterIds.FURINA}, лечение нужно и лечить больше некому`],
         },
       ],
       goblet: [

@@ -1,6 +1,6 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { ElementNames } from "@/types/elements.types";
 import { Stats } from "@/types/stats.types";
@@ -10,15 +10,15 @@ import { WeaponNames } from "@/types/weapons.types";
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.LONG_NIGHTS_OATH, best: true },
-      { type: "complete", name: ArtifactSetNames.OBSIDIAN_CODEX },
+      { type: "complete", id: ArtifactSetIds.LONG_NIGHTS_OATH, best: true },
+      { type: "complete", id: ArtifactSetIds.OBSIDIAN_CODEX },
     ],
     stats: {
       sands: [{ name: Stats.ATK_PERCENTAGE }],
       goblet: [
         {
           name: Stats.ELECTRO_DMG_BONUS,
-          notes: [`Лучше в подавляющем числе случаев (Особенно если стоит ${ArtifactSetNames.OBSIDIAN_CODEX})`],
+          notes: [`Лучше в подавляющем числе случаев (Особенно если стоит ${ArtifactSetIds.OBSIDIAN_CODEX})`],
         },
         { name: Stats.ATK_PERCENTAGE },
       ],
@@ -37,35 +37,35 @@ export default {
     {
       description: "Реакция Перегрузка",
       template: [
-        { type: "character", name: CharacterNames.VARESA },
-        { type: "character", name: CharacterNames.CHEVREUSE },
+        { type: "character", id: CharacterIds.VARESA },
+        { type: "character", id: CharacterIds.CHEVREUSE },
         { type: "element", name: ElementNames.PYRO },
         { type: "other", title: "Полезный персонаж" },
       ],
       variants: [
         [
-          { type: "character", name: CharacterNames.VARESA },
-          { type: "character", name: CharacterNames.DURIN },
-          { type: "character", name: CharacterNames.IANSAN },
-          { type: "character", name: CharacterNames.CHEVREUSE },
+          { type: "character", id: CharacterIds.VARESA },
+          { type: "character", id: CharacterIds.DURIN },
+          { type: "character", id: CharacterIds.IANSAN },
+          { type: "character", id: CharacterIds.CHEVREUSE },
         ],
         [
-          { type: "character", name: CharacterNames.VARESA },
-          { type: "character", name: CharacterNames.MAVUIKA },
-          { type: "character", name: CharacterNames.IANSAN },
-          { type: "character", name: CharacterNames.CHEVREUSE },
+          { type: "character", id: CharacterIds.VARESA },
+          { type: "character", id: CharacterIds.MAVUIKA },
+          { type: "character", id: CharacterIds.IANSAN },
+          { type: "character", id: CharacterIds.CHEVREUSE },
         ],
       ],
       best: true,
     },
     {
-      template: [{ type: "character", name: CharacterNames.VARESA }],
+      template: [{ type: "character", id: CharacterIds.VARESA }],
       variants: [
         [
-          { type: "character", name: CharacterNames.VARESA },
-          { type: "character", name: CharacterNames.FURINA },
-          { type: "character", name: CharacterNames.IANSAN },
-          { type: "character", name: CharacterNames.XIANYUN },
+          { type: "character", id: CharacterIds.VARESA },
+          { type: "character", id: CharacterIds.FURINA },
+          { type: "character", id: CharacterIds.IANSAN },
+          { type: "character", id: CharacterIds.XIANYUN },
         ],
       ],
     },
@@ -80,7 +80,7 @@ export default {
   ],
   videoSourceIds: [VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_AnimeCool, VideoSourceIds.GUIDE_TO_VARESA_IN_6_2_MironMinMax],
   weapons: {
-    [ArtifactSetNames.LONG_NIGHTS_OATH]: [
+    [ArtifactSetIds.LONG_NIGHTS_OATH]: [
       { name: WeaponNames.VIViD_NOTIONS, best: "Лучшее оружие", percent: 1.3014 },
       { name: WeaponNames.KAGURAS_VERITY, percent: 1.0724 },
       { name: WeaponNames.CRANES_ECHOING_CALL, percent: 1.0575 },
@@ -94,7 +94,7 @@ export default {
       { name: WeaponNames.MEMORY_OF_DUST, percent: 0.9569 },
       { name: WeaponNames.THE_WIDSITH, r: 1, percent: 0.9509 },
     ],
-    [ArtifactSetNames.OBSIDIAN_CODEX]: [
+    [ArtifactSetIds.OBSIDIAN_CODEX]: [
       { name: WeaponNames.VIViD_NOTIONS, best: "Лучшее оружие", percent: 1.2568 },
       { name: WeaponNames.CRANES_ECHOING_CALL, percent: 1.0871 },
       { name: WeaponNames.KAGURAS_VERITY, percent: 1.0648 },
