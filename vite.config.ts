@@ -50,6 +50,31 @@ export default defineConfig((env) => {
           },
           chunkFileNames: "chunks/[name]-[hash].js",
           entryFileNames: "js/[name]-[hash].js",
+          advancedChunks: {
+            groups: [
+              {
+                name: (moduleId) => {
+                  if (moduleId.includes("/node_modules/@radix-ui/")) {
+                    return "libs-radix";
+                  }
+
+                  if (
+                    moduleId.includes("/node_modules/@reduxjs/toolkit/")
+                    || moduleId.includes("/node_modules/react/")
+                    || moduleId.includes("/node_modules/react-dom/")
+                    || moduleId.includes("/node_modules/react-redux/")
+                    || moduleId.includes("/node_modules/react-router/")
+                  ) {
+                    return "libs-react";
+                  }
+
+                  if (moduleId.includes("/node_modules/")) {
+                    return "libs-other";
+                  }
+                },
+              },
+            ],
+          },
         },
       },
     },
