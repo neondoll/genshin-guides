@@ -3,13 +3,13 @@ import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", id: ArtifactSetIds.MARECHAUSSEE_HUNTER, best: "Лучше с Фуриной" },
-      { type: "complete", id: ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING, best: "Лучше в лунных отрядах" },
+      { ids: [ArtifactSetIds.MARECHAUSSEE_HUNTER], best: "Лучше с Фуриной" },
+      { ids: [ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING], best: "Лучше в лунных отрядах" },
     ],
     stats: {
       sands: [{ name: Stats.HP_PERCENTAGE }],
@@ -40,7 +40,7 @@ export default {
   keyConstellations: [1],
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.TOME_OF_THE_ETERNAL_FLOW],
+  signatureWeaponIds: [WeaponIds.TOME_OF_THE_ETERNAL_FLOW],
   talents: [
     { type: "combat1", priority: "В первую очередь", recommendedLevel: "8 - 10", overallLevel: 10 },
     { type: "combat2", priority: "Во вторую очередь", recommendedLevel: "1 - 9", overallLevel: "6 - 8" },
@@ -57,26 +57,26 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { name: WeaponNames.TOME_OF_THE_ETERNAL_FLOW, best: "Лучшее оружие", percent: 1.1537 },
-    { name: WeaponNames.SACRIFICIAL_JADE, r: 5, percent: 1.1458 },
-    { name: WeaponNames.SURFS_UP, percent: 1.0764 },
-    { name: WeaponNames.SACRIFICIAL_JADE, r: 1, percent: 1.0690 },
-    { name: WeaponNames.NOCTURNES_CURTAIN_CALL, percent: 1.0544 },
-    { name: WeaponNames.RELIQUARY_OF_TRUTH, percent: 1.0531 },
-    { name: WeaponNames.CASHFLOW_SUPERVISION, percent: 1.0225 },
-    { name: WeaponNames.KAGURAS_VERITY, percent: 1.0186 },
-    { name: WeaponNames.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5, percent: 1.0000 },
-    { name: WeaponNames.LOST_PRAYER_TO_THE_SACRED_WINDS, percent: 0.9932 },
-    { name: WeaponNames.ASH_GRAVEN_DRINKING_HORN, r: 5, percent: 0.9853 },
-    { name: WeaponNames.DAWNING_FROST, percent: 0.9733 },
-    { name: WeaponNames.BLACKCLIFF_AGATE, postfix: "без стаков", percent: 0.9732 },
-    { name: WeaponNames.SOLAR_PEARL, percent: 0.9705 },
-    { name: WeaponNames.JADEFALLS_SPLENDOR, percent: 0.9665 },
-    { name: WeaponNames.EVERLASTING_MOONGLOW, percent: 0.9655 },
-    { name: WeaponNames.PROTOTYPE_AMBER, r: 5, percent: 0.9579 },
-    { name: WeaponNames.VIViD_NOTIONS, percent: 0.9537 },
-    { name: WeaponNames.TULAYTULLAHS_REMEMBRANCE, percent: 0.9522 },
-    { name: WeaponNames.RING_OF_YAXCHE, r: 5, percent: 0.9478 },
-    { name: WeaponNames.FLOWING_PURITY, r: 5, percent: 0.9395 },
+    { id: WeaponIds.TOME_OF_THE_ETERNAL_FLOW, best: "Лучшее оружие", percent: 1.1537 },
+    { id: WeaponIds.SACRIFICIAL_JADE, r: 5, percent: 1.1458 },
+    { id: WeaponIds.SURFS_UP, percent: 1.0764 },
+    { id: WeaponIds.SACRIFICIAL_JADE, r: 1, percent: 1.0690 },
+    { id: WeaponIds.NOCTURNES_CURTAIN_CALL, percent: 1.0544 },
+    { id: WeaponIds.RELIQUARY_OF_TRUTH, percent: 1.0531 },
+    { id: WeaponIds.CASHFLOW_SUPERVISION, percent: 1.0225 },
+    { id: WeaponIds.KAGURAS_VERITY, percent: 1.0186 },
+    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5, percent: 1.0000 },
+    { id: WeaponIds.LOST_PRAYER_TO_THE_SACRED_WINDS, percent: 0.9932 },
+    { id: WeaponIds.ASH_GRAVEN_DRINKING_HORN, r: 5, percent: 0.9853 },
+    { id: WeaponIds.DAWNING_FROST, percent: 0.9733 },
+    { id: WeaponIds.BLACKCLIFF_AGATE, postfix: "без стаков", percent: 0.9732 },
+    { id: WeaponIds.SOLAR_PEARL, percent: 0.9705 },
+    { id: WeaponIds.JADEFALLS_SPLENDOR, percent: 0.9665 },
+    { id: WeaponIds.EVERLASTING_MOONGLOW, percent: 0.9655 },
+    { id: WeaponIds.PROTOTYPE_AMBER, r: 5, percent: 0.9579 },
+    { id: WeaponIds.VIViD_NOTIONS, percent: 0.9537 },
+    { id: WeaponIds.TULAYTULLAHS_REMEMBRANCE, percent: 0.9522 },
+    { id: WeaponIds.RING_OF_YAXCHE, r: 5, percent: 0.9478 },
+    { id: WeaponIds.FLOWING_PURITY, r: 5, percent: 0.9395 },
   ],
 } as CharacterRecommendations;

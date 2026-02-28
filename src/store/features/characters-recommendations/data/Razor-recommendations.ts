@@ -1,7 +1,7 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "90/90",
@@ -18,9 +18,9 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.BLOODTAINTED_GREATSWORD, best: "Лучшее оружие", r: 5 },
-    { name: WeaponNames.RAINSLASHER, best: "Лучшее оружие", r: 5 },
-    { name: WeaponNames.MAKHAIRA_AQUAMARINE, best: "Лучшее оружие", r: 5 },
-    { name: WeaponNames.MAILED_FLOWER, best: "Лучшее эвентовое оружие", r: 5 },
+    { id: WeaponIds.BLOODTAINTED_GREATSWORD, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.RAINSLASHER, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.MAKHAIRA_AQUAMARINE, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.MAILED_FLOWER, best: "Лучшее эвентовое оружие", r: 5 },
   ],
 } as CharacterRecommendations;

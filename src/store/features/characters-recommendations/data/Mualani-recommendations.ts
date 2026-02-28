@@ -1,12 +1,12 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "С1",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.SURFS_UP],
+  signatureWeaponIds: [WeaponIds.SURFS_UP],
   talents: [
     { type: "combat1", priority: "Не качаем", recommendedLevel: 1, overallLevel: 1 },
     { type: "combat2", priority: "В первую очередь", recommendedLevel: "8 - 10", overallLevel: 10 },
@@ -20,7 +20,7 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { name: WeaponNames.SURFS_UP, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.RING_OF_YAXCHE, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.SURFS_UP, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.RING_OF_YAXCHE, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

@@ -1,12 +1,12 @@
 import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { type ElementName, ElementNames } from "@/types/elements.types";
+import { type ElementId, ElementIds } from "@/types/elements.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
-  [ElementNames.ANEMO]: {
+  [ElementIds.ANEMO]: {
     talents: [
       { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
       { type: "combat2", priority: "Не качаем", recommendedLevel: 1 },
@@ -18,11 +18,11 @@ export default {
       VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     ],
     weapons: [
-      { name: WeaponNames.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-      { name: WeaponNames.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
     ],
   },
-  [ElementNames.DENDRO]: {
+  [ElementIds.DENDRO]: {
     recommendedLevel: "90/90",
     videoSourceIds: [
       VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
@@ -30,21 +30,21 @@ export default {
       VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
     ],
     weapons: [
-      { name: WeaponNames.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-      { name: WeaponNames.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
     ],
   },
-  [ElementNames.ELECTRO]: {
+  [ElementIds.ELECTRO]: {
     videoSourceIds: [
       VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
       VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     ],
     weapons: [
-      { name: WeaponNames.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-      { name: WeaponNames.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
     ],
   },
-  [ElementNames.GEO]: {
+  [ElementIds.GEO]: {
     talents: [
       { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
       { type: "combat2", priority: "Не качаем", recommendedLevel: 1 },
@@ -56,11 +56,11 @@ export default {
       VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     ],
     weapons: [
-      { name: WeaponNames.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-      { name: WeaponNames.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
     ],
   },
-  [ElementNames.HYDRO]: {
+  [ElementIds.HYDRO]: {
     talents: [
       { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
       { type: "combat2", priority: "Не качаем", recommendedLevel: 1 },
@@ -72,36 +72,24 @@ export default {
       VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     ],
     weapons: [
-      { name: WeaponNames.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-      { name: WeaponNames.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
     ],
   },
-  [ElementNames.PYRO]: {
+  [ElementIds.PYRO]: {
     artifacts: {
       sets: {
         "для игры из кармана": [
-          { type: "complete", id: ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY },
-          { type: "complete", id: ArtifactSetIds.TENACITY_OF_THE_MILLELITH },
-          { type: "complete", id: ArtifactSetIds.INSTRUCTOR },
+          { ids: [ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY] },
+          { ids: [ArtifactSetIds.TENACITY_OF_THE_MILLELITH] },
+          { ids: [ArtifactSetIds.INSTRUCTOR] },
         ],
         "для игры на поле": [
-          { type: "complete", id: ArtifactSetIds.OBSIDIAN_CODEX, percent: 1.000 },
-          { type: "complete", id: ArtifactSetIds.GILDED_DREAMS, percent: 0.884 },
-          {
-            type: "combined",
-            ids: [ArtifactSetIds.GLADIATORS_FINALE, ArtifactSetIds.SHIMENAWAS_REMINISCENCE],
-            percent: 0.839,
-          },
-          {
-            type: "combined",
-            ids: [ArtifactSetIds.GLADIATORS_FINALE, ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES],
-            percent: 0.827,
-          },
-          {
-            type: "combined",
-            ids: [ArtifactSetIds.OBSIDIAN_CODEX, ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES],
-            percent: 0.819,
-          },
+          { ids: [ArtifactSetIds.OBSIDIAN_CODEX], percent: 1.000 },
+          { ids: [ArtifactSetIds.GILDED_DREAMS], percent: 0.884 },
+          { ids: [ArtifactSetIds.GLADIATORS_FINALE, ArtifactSetIds.SHIMENAWAS_REMINISCENCE], percent: 0.839 },
+          { ids: [ArtifactSetIds.GLADIATORS_FINALE, ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES], percent: 0.827 },
+          { ids: [ArtifactSetIds.OBSIDIAN_CODEX, ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES], percent: 0.819 },
         ],
       },
       stats: {
@@ -125,24 +113,24 @@ export default {
     videoSourceIds: [VideoSourceIds.GUIDE_TO_TRAVELER_PYRO, VideoSourceIds.TALENT_GAINS_PYRO],
     weapons: {
       "для игры из кармана": [
-        { name: WeaponNames.FREEDOM_SWORN },
-        { name: WeaponNames.FAVONIUS_SWORD },
-        { name: WeaponNames.SACRIFICIAL_SWORD },
+        { id: WeaponIds.FREEDOM_SWORN },
+        { id: WeaponIds.FAVONIUS_SWORD },
+        { id: WeaponIds.SACRIFICIAL_SWORD },
       ],
       "для игры на поле": [
-        { name: WeaponNames.MISTSPLITTER_REFORGED, percent: 1.240 },
-        { name: WeaponNames.HARAN_GEPPAKU_FUTSU, percent: 1.172 },
-        { name: WeaponNames.LIGHT_OF_FOLIAR_INCISION, percent: 1.168 },
-        { name: WeaponNames.PRIMORDIAL_JADE_CUTTER, percent: 1.164 },
-        { name: WeaponNames.URAKU_MISUGIRI, percent: 1.126 },
-        { name: WeaponNames.THE_BLACK_SWORD, r: 5, percent: 1.000 },
-        { name: WeaponNames.WOLF_FANG, r: 5, percent: 0.986 },
-        { name: WeaponNames.IRON_STING, r: 5, percent: 0.976 },
-        { name: WeaponNames.KAGOTSURUBE_ISSHIN, r: 1, percent: 0.966 },
-        { name: WeaponNames.THE_BLACK_SWORD, r: 1, percent: 0.954 },
-        { name: WeaponNames.WOLF_FANG, r: 1, percent: 0.950 },
-        { name: WeaponNames.IRON_STING, r: 1, percent: 0.938 },
+        { id: WeaponIds.MISTSPLITTER_REFORGED, percent: 1.240 },
+        { id: WeaponIds.HARAN_GEPPAKU_FUTSU, percent: 1.172 },
+        { id: WeaponIds.LIGHT_OF_FOLIAR_INCISION, percent: 1.168 },
+        { id: WeaponIds.PRIMORDIAL_JADE_CUTTER, percent: 1.164 },
+        { id: WeaponIds.URAKU_MISUGIRI, percent: 1.126 },
+        { id: WeaponIds.THE_BLACK_SWORD, r: 5, percent: 1.000 },
+        { id: WeaponIds.WOLF_FANG, r: 5, percent: 0.986 },
+        { id: WeaponIds.IRON_STING, r: 5, percent: 0.976 },
+        { id: WeaponIds.KAGOTSURUBE_ISSHIN, r: 1, percent: 0.966 },
+        { id: WeaponIds.THE_BLACK_SWORD, r: 1, percent: 0.954 },
+        { id: WeaponIds.WOLF_FANG, r: 1, percent: 0.950 },
+        { id: WeaponIds.IRON_STING, r: 1, percent: 0.938 },
       ],
     },
   },
-} as Record<Exclude<ElementName, typeof ElementNames.CRYO>, CharacterRecommendations>;
+} as Record<Exclude<ElementId, typeof ElementIds.CRYO>, CharacterRecommendations>;

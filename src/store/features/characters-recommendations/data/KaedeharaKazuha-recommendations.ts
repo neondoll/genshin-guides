@@ -1,13 +1,13 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "С1",
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.SUPPORT],
-  signatureWeaponNames: [WeaponNames.FREEDOM_SWORN],
+  signatureWeaponIds: [WeaponIds.FREEDOM_SWORN],
   talents: [
     { type: "combat1", priority: "По необходимости", recommendedLevel: "1 - 6" },
     { type: "combat2", priority: "Во вторую очередь", recommendedLevel: "1 - 6" },
@@ -22,10 +22,10 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.XIPHOS_MOONLIGHT, best: "Лучшее оружие", r: 5 },
-    { name: WeaponNames.FREEDOM_SWORN, r: 1 },
-    { name: WeaponNames.FAVONIUS_SWORD, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.TOUKABOU_SHIGURE, best: "Лучшее эвентовое оружие", r: 5 },
-    { name: WeaponNames.IRON_STING, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.XIPHOS_MOONLIGHT, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.FREEDOM_SWORN, r: 1 },
+    { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.TOUKABOU_SHIGURE, best: "Лучшее эвентовое оружие", r: 5 },
+    { id: WeaponIds.IRON_STING, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

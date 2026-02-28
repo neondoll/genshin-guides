@@ -17,6 +17,7 @@ import { WeaponImage } from "@/components/v1/weapon-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useWeapon } from "@/store/features/weapons";
+import type { WeaponId } from "@/types/weapons.types";
 
 function extractValues(str: string): [string, number][] {
   const regex = /<color=#([A-Fa-f0-9]+)>\{(\d+(?:\.\d+)?)}<\/color>/g;
@@ -33,11 +34,8 @@ function extractValues(str: string): [string, number][] {
 }
 
 const WeaponPage: FC = () => {
-  const { weaponId } = useParams();
-
-  const weaponName = useMemo(() => JSON.parse(weaponId as string), [weaponId]);
-
-  const { weapon, error, loading } = useWeapon(weaponName);
+  const { weaponId } = useParams<{ weaponId: WeaponId }>();
+  const { weapon, error, loading } = useWeapon(weaponId!);
 
   const weaponEffect = useMemo(() => {
     if (!weapon?.effectTemplateRaw) return undefined;
@@ -79,7 +77,7 @@ const WeaponPage: FC = () => {
     return <LoadingError error={error} />;
   }
 
-  return (
+  return weapon && (
     <>
       <Breadcrumb className="mb-8">
         <BreadcrumbList>
@@ -98,15 +96,21 @@ const WeaponPage: FC = () => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{weaponName}</BreadcrumbPage>
+            <BreadcrumbPage>{weapon.name}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
       <div className="flex gap-6 mb-6">
-        <WeaponImage className="shrink-0 size-27 rounded-2xl rounded-br-4xl" name={weaponName} />
+        <WeaponImage
+          className="shrink-0 size-27 rounded-2xl rounded-br-4xl"
+          weaponId={weapon.id}
+          weaponImage={weapon.image}
+          weaponName={weapon.name}
+          weaponRarity={weapon.rarity}
+        />
         <div>
-          <h1 className="text-[2rem]/10.5">{weapon?.name}</h1>
-          {weapon?.rarity && (
+          <h1 className="text-[2rem]/10.5">{weapon.name}</h1>
+          {weapon.rarity && (
             <div className="flex">
               {[...Array(weapon.rarity)].map((_, i) => (
                 <span className="leading-none text-amber-400" key={i}>★</span>
@@ -114,9 +118,9 @@ const WeaponPage: FC = () => {
             </div>
           )}
           <div className="flex flex-wrap gap-x-1 gap-y-2 mt-4">
-            {weapon?.mainStatText && <Badge children={weapon.mainStatText} variant="secondary" />}
-            {weapon?.rarity && <Badge children={`${weapon.rarity}★`} variant="secondary" />}
-            {weapon?.weaponText && <Badge children={weapon.weaponText} variant="secondary" />}
+            {weapon.mainStatText && <Badge children={weapon.mainStatText} variant="secondary" />}
+            {weapon.rarity && <Badge children={`${weapon.rarity}★`} variant="secondary" />}
+            {weapon.weaponText && <Badge children={weapon.weaponText} variant="secondary" />}
           </div>
         </div>
       </div>

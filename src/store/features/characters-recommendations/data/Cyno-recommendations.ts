@@ -1,13 +1,13 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "Сигна",
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.STAFF_OF_THE_SCARLET_SANDS],
+  signatureWeaponIds: [WeaponIds.STAFF_OF_THE_SCARLET_SANDS],
   talents: [
     { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
     { type: "combat2", priority: "Во вторую очередь", referenceLevel: 10 },
@@ -21,8 +21,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { name: WeaponNames.STAFF_OF_THE_SCARLET_SANDS, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.KITAIN_CROSS_SPEAR, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.WHITE_TASSEL, best: "Лучшее доступное оружие (более простой вариант)", r: 5 },
+    { id: WeaponIds.STAFF_OF_THE_SCARLET_SANDS, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.KITAIN_CROSS_SPEAR, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.WHITE_TASSEL, best: "Лучшее доступное оружие (более простой вариант)", r: 5 },
   ],
 } as CharacterRecommendations;

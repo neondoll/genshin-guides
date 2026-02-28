@@ -1,7 +1,7 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "80/80",
@@ -19,7 +19,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { name: WeaponNames.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-    { name: WeaponNames.SACRIFICIAL_SWORD, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

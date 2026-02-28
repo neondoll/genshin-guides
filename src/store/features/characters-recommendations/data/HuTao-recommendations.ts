@@ -1,13 +1,13 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "С1",
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.STAFF_OF_HOMA],
+  signatureWeaponIds: [WeaponIds.STAFF_OF_HOMA],
   talents: [
     { type: "combat1", priority: "В первую очередь", recommendedLevel: "9 - 10", overallLevel: 10 },
     { type: "combat2", priority: "Во вторую очередь", recommendedLevel: "8 - 10", overallLevel: 10 },
@@ -22,8 +22,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.STAFF_OF_THE_SCARLET_SANDS, r: 1 },
-    { name: WeaponNames.DRAGONS_BANE, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.STAFF_OF_THE_SCARLET_SANDS, r: 1 },
+    { id: WeaponIds.DRAGONS_BANE, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

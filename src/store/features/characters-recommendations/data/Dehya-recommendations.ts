@@ -1,13 +1,13 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   keyConstellations: [1],
   recommendedLevel: "80/80",
   roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SURVIVABILITY],
-  signatureWeaponNames: [WeaponNames.BEACON_OF_THE_REED_SEA],
+  signatureWeaponIds: [WeaponIds.BEACON_OF_THE_REED_SEA],
   talents: [
     { type: "combat1", priority: "Не качаем", recommendedLevel: 1, overallLevel: 1 },
     { type: "combat2", priority: "Во вторую очередь", recommendedLevel: "1 - 9", overallLevel: 1 },
@@ -21,7 +21,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { name: WeaponNames.BEACON_OF_THE_REED_SEA, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.FAVONIUS_GREATSWORD, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.BEACON_OF_THE_REED_SEA, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.FAVONIUS_GREATSWORD, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

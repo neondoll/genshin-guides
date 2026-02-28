@@ -1,41 +1,32 @@
 import type { ArtifactSetId } from "./artifact-sets.types";
 import type { CharacterRoleId } from "./character-roles.types";
-import type { CharacterId, CharacterName, TravelerName } from "./characters.types";
-import type { ElementName } from "./elements.types";
+import type { CharacterConstellations, CharacterId, TravelerId } from "./characters.types";
+import type { ElementId } from "./elements.types";
 import type { Stat } from "./stats.types";
 import type { VideoSourceId } from "./video-sources.types";
-import type { WeaponName } from "./weapons.types";
+import type { WeaponId, WeaponR } from "./weapons.types";
 
-interface CharacterArtifactSetRecommendationTemplate {
+interface CharacterArtifactSetRecommendation {
+  ids: [ArtifactSetId] | [ArtifactSetId, ArtifactSetId];
   best?: boolean | string;
   percent?: number;
   notes?: string[];
 }
 
-export interface CharacterCombinedArtifactSetRecommendation extends CharacterArtifactSetRecommendationTemplate {
-  type: "combined";
-  ids: [ArtifactSetId, ArtifactSetId];
-}
-
-export interface CharacterCompleteArtifactSetRecommendation extends CharacterArtifactSetRecommendationTemplate {
-  type: "complete";
-  id: ArtifactSetId;
-}
-
-export type CharacterArtifactSetRecommendations = Array<CharacterCompleteArtifactSetRecommendation | CharacterCombinedArtifactSetRecommendation>;
+export type CharacterArtifactSetRecommendations = Array<CharacterArtifactSetRecommendation>;
 export type CharacterArtifactStatRecommendation = { name: Stat; notes?: string[] };
 
 interface CharacterDetachmentCharacterRecommendation {
   type: "character";
   id: CharacterId;
-  c?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  weapon?: WeaponName;
-  weaponR?: 1 | 2 | 3 | 4 | 5;
-  artifacts?: [ArtifactSetId] | [ArtifactSetId, ArtifactSetId];
+  c?: CharacterConstellations;
+  weaponId?: WeaponId;
+  weaponR?: WeaponR;
+  artifactSetIds?: [ArtifactSetId] | [ArtifactSetId, ArtifactSetId];
 }
 interface CharacterDetachmentElementRecommendation {
   type: "element";
-  name: ElementName;
+  id: ElementId;
 }
 interface CharacterDetachmentOtherRecommendation {
   type: "other";
@@ -55,10 +46,10 @@ interface CharacterTalentRecommendation {
 export type CharacterTalentRecommendations = Array<CharacterTalentRecommendation>;
 
 interface CharacterWeaponRecommendation {
-  name: WeaponName;
+  id: WeaponId;
   best?: boolean | string;
   postfix?: string;
-  r?: 1 | 2 | 3 | 4 | 5;
+  r?: WeaponR;
   percent?: number;
   notes?: string[];
 }
@@ -78,13 +69,13 @@ export interface CharacterRecommendations {
     variants?: Array<Array<CharacterDetachmentCharacterRecommendation>>;
     best?: boolean;
   }>;
-  keyConstellations?: Array<1 | 2 | 3 | 4 | 5 | 6>;
+  keyConstellations?: Array<Exclude<CharacterConstellations, 0>>;
   recommendedLevel?: string;
   roleIds?: CharacterRoleId[];
-  signatureWeaponNames?: WeaponName[];
+  signatureWeaponIds?: WeaponId[];
   talents?: CharacterTalentRecommendations | Record<string, CharacterTalentRecommendations>;
   videoSourceIds?: VideoSourceId[];
   weapons?: CharacterWeaponRecommendations | Record<string, CharacterWeaponRecommendations>;
 }
 
-export type CharacterRecommendationsName = Exclude<CharacterName, TravelerName> | `Путешественница (${ElementName})`;
+export type CharacterRecommendationsId = Exclude<CharacterId, TravelerId> | `traveler_${ElementId}`;

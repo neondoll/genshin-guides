@@ -11,7 +11,7 @@ const initialState: ArtifactSetsTierListState = {
     {
       tier: "Нужен почти всегда",
       tierClassName: "text-green-500",
-      artifactSetIds: [
+      ids: [
         ArtifactSetIds.DEEPWOOD_MEMORIES, ArtifactSetIds.EMBLEM_OF_SEVERED_FATE, ArtifactSetIds.GOLDEN_TROUPE,
         ArtifactSetIds.MARECHAUSSEE_HUNTER, ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING, ArtifactSetIds.NOBLESSE_OBLIGE,
         ArtifactSetIds.OBSIDIAN_CODEX, ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY,
@@ -21,7 +21,7 @@ const initialState: ArtifactSetsTierListState = {
     {
       tier: "Нужен ситуативно",
       tierClassName: "text-lime-500",
-      artifactSetIds: [
+      ids: [
         ArtifactSetIds.ARCHAIC_PETRA, ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES,
         ArtifactSetIds.FINALE_OF_THE_DEEP_GALLERIES, ArtifactSetIds.FLOWER_OF_PARADISE_LOST,
         ArtifactSetIds.FRAGMENT_OF_HARMONIC_WHIMSY, ArtifactSetIds.GILDED_DREAMS, ArtifactSetIds.INSTRUCTOR,
@@ -31,7 +31,7 @@ const initialState: ArtifactSetsTierListState = {
     {
       tier: "Нет смысла фармить",
       tierClassName: "text-yellow-500",
-      artifactSetIds: [
+      ids: [
         ArtifactSetIds.BLIZZARD_STRAYER, ArtifactSetIds.DESERT_PAVILION_CHRONICLE, ArtifactSetIds.ECHOES_OF_AN_OFFERING,
         ArtifactSetIds.GLADIATORS_FINALE, ArtifactSetIds.HEART_OF_DEPTH, ArtifactSetIds.HUSK_OF_OPULENT_DREAMS,
         ArtifactSetIds.LAVAWALKER, ArtifactSetIds.NIGHTTIME_WHISPERS_IN_THE_ECHOING_WOODS, ArtifactSetIds.NYMPHS_DREAM,
@@ -44,7 +44,7 @@ const initialState: ArtifactSetsTierListState = {
     {
       tier: "Хуже Изгнанника",
       tierClassName: "text-red-500",
-      artifactSetIds: [
+      ids: [
         ArtifactSetIds.BLOODSTAINED_CHIVALRY, ArtifactSetIds.MAIDEN_BELOVED, ArtifactSetIds.THUNDERSOOTHER,
         ArtifactSetIds.VOURUKASHAS_GLOW,
       ],

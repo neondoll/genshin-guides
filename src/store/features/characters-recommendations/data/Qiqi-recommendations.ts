@@ -1,7 +1,7 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "80/90",
@@ -18,7 +18,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.AQUILA_FAVONIA, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.AQUILA_FAVONIA, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
   ],
 } as CharacterRecommendations;

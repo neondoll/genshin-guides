@@ -17,10 +17,13 @@ import { Loading, LoadingError } from "@/components/v1/loading";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useCharactersList } from "@/store/features/characters";
+import { useElementList } from "@/store/features/elements";
 import { type CharacterListItem } from "@/types/characters.types";
+import { type ElementListItem } from "@/types/elements.types";
 
 const CharactersPage: FC = () => {
-  const { characters, error, loading } = useCharactersList();
+  const { characters, error, loading: charactersLoading } = useCharactersList();
+  const { elements, loading: elementsLoading } = useElementList();
   // const charactersList = createRef<HTMLDivElement>();
 
   // useEffect(() => {
@@ -63,7 +66,7 @@ const CharactersPage: FC = () => {
   //   }
   // }, [characters]);
 
-  if (loading) {
+  if (charactersLoading || elementsLoading) {
     return <Loading />;
   }
 
@@ -89,27 +92,33 @@ const CharactersPage: FC = () => {
         </BreadcrumbList>
       </Breadcrumb>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-6 justify-center items-stretch">
-        {characters.map(character => (
-          <CharacterCard item={character} key={character.id} />
-        ))}
+        {characters.map((character) => {
+          const element = elements.find(element => element.id === character.elementId);
+
+          return (
+            <CharacterCard element={element} item={character} key={character.id} />
+          );
+        })}
       </div>
     </>
   );
 };
-const CharacterCard: FC<{ item: CharacterListItem }> = ({ item }) => {
+const CharacterCard: FC<{ element?: ElementListItem; item: CharacterListItem }> = ({ element, item }) => {
   return (
     <Card
       className="relative transition-all duration-300 has-[a:hover]:border-amber-500/30 has-[a:hover]:shadow-2xl group"
     >
       <CardContent className="flex flex-col gap-6 items-center">
         <div className="relative shrink-0 size-24.5">
-          {item.elementText !== "Нет" && (
+          {element !== undefined && (
             <ElementImage
               className={cn([
                 "absolute top-0 left-0 p-1 size-8.5 bg-gradient-to-br from-slate-200 to-slate-100 rounded-full border",
                 "border-slate-300 -translate-1/4 dark:from-slate-800 dark:to-slate-900 dark:border-slate-700",
               ])}
-              name={item.elementText}
+              elementId={element.id}
+              elementImage={element.image}
+              elementName={element.name}
             />
           )}
           <CharacterImage

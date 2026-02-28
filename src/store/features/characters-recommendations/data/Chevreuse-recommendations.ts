@@ -3,25 +3,19 @@ import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", id: ArtifactSetIds.NOBLESSE_OBLIGE },
+      { ids: [ArtifactSetIds.NOBLESSE_OBLIGE] },
+      { ids: [ArtifactSetIds.SONG_OF_DAYS_PAST], notes: ["Не рекомендуется, слишком нестабильна и требует овер хил"] },
       {
-        type: "complete",
-        id: ArtifactSetIds.SONG_OF_DAYS_PAST,
-        notes: ["Не рекомендуется, слишком нестабильна и требует овер хил"],
-      },
-      {
-        type: "complete",
-        id: ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY,
+        ids: [ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY],
         notes: [`Если ${ArtifactSetNames.NOBLESSE_OBLIGE} занята`],
       },
       {
-        type: "complete",
-        id: ArtifactSetIds.EMBLEM_OF_SEVERED_FATE,
+        ids: [ArtifactSetIds.EMBLEM_OF_SEVERED_FATE],
         notes: [`Если ${ArtifactSetNames.NOBLESSE_OBLIGE} и ${ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY} заняты`],
       },
     ],
@@ -30,7 +24,7 @@ export default {
       goblet: [{ name: Stats.HP_PERCENTAGE }],
       circlet: [
         { name: Stats.HP_PERCENTAGE },
-        { name: Stats.CRIT_RATE, notes: [`Если в руках ${WeaponNames.FAVONIUS_LANCE}`] },
+        { name: Stats.CRIT_RATE, notes: [`Если в руках ${WeaponIds.FAVONIUS_LANCE}`] },
       ],
       additional: [{ name: Stats.HP_PERCENTAGE }, { name: Stats.ENERGY_RECHARGE }],
     },
@@ -49,9 +43,9 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { name: WeaponNames.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.DIALOGUES_OF_THE_DESERT_SAGES, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.RIGHTFUL_REWARD, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.FAVONIUS_LANCE, r: 5 },
+    { id: WeaponIds.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.DIALOGUES_OF_THE_DESERT_SAGES, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.RIGHTFUL_REWARD, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FAVONIUS_LANCE, r: 5 },
   ],
 } as CharacterRecommendations;

@@ -1,12 +1,12 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.HUNTERS_PATH],
+  signatureWeaponIds: [WeaponIds.HUNTERS_PATH],
   talents: [
     { type: "combat1", priority: "В первую очередь", referenceLevel: 10 },
     { type: "combat2", priority: "По необходимости", referenceLevel: 6 },
@@ -19,7 +19,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { name: WeaponNames.HUNTERS_PATH, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.SLINGSHOT, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.HUNTERS_PATH, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.SLINGSHOT, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

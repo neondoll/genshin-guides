@@ -18,18 +18,19 @@ import { WeaponImage } from "./v1/weapon-image";
 import Paths from "@/paths";
 import { useArtifactSet } from "@/store/features/artifact-sets";
 import { useCharacter } from "@/store/features/characters";
+import { useWeapon } from "@/store/features/weapons";
 import { type ArtifactSetId } from "@/types/artifact-sets.types";
 import { type CharacterId, CharacterIds } from "@/types/characters.types";
-import { type WeaponName, WeaponNames } from "@/types/weapons.types";
+import { type WeaponId, WeaponIds } from "@/types/weapons.types";
 
 const artifactSetIds: ArtifactSetId[] = [];
 const characterIds: CharacterId[] = [CharacterIds.VARKA];
-const weaponNames: WeaponName[] = [WeaponNames.GEST_OF_THE_MIGHTY_WOLF];
+const weaponIds: WeaponId[] = [WeaponIds.GEST_OF_THE_MIGHTY_WOLF];
 
 export const NewsDropdown: FC = () => {
   const artifactSetsShow = useMemo(() => artifactSetIds.length > 0, []);
   const charactersShow = useMemo(() => characterIds.length > 0, []);
-  const weaponsShow = useMemo(() => weaponNames.length > 0, []);
+  const weaponsShow = useMemo(() => weaponIds.length > 0, []);
 
   return (artifactSetsShow || charactersShow || weaponsShow) && (
     <DropdownMenu>
@@ -50,13 +51,8 @@ export const NewsDropdown: FC = () => {
         {weaponsShow && (
           <DropdownMenuGroup>
             {charactersShow && <DropdownMenuSeparator />}
-            {weaponNames.map(weaponName => (
-              <DropdownMenuItem asChild key={weaponName}>
-                <Link to={Paths.WEAPON(JSON.stringify(weaponName))}>
-                  <WeaponImage className="size-8 rounded-sm" name={weaponName} />
-                  {weaponName}
-                </Link>
-              </DropdownMenuItem>
+            {weaponIds.map(weaponId => (
+              <WeaponDropdownMenuItem key={weaponId} weaponId={weaponId} />
             ))}
           </DropdownMenuGroup>
         )}
@@ -121,6 +117,32 @@ const CharacterDropdownMenuItem: FC<{ characterId: CharacterId }> = ({ character
           className="size-8 rounded-sm"
         />
         {character.name}
+      </Link>
+    </DropdownMenuItem>
+  );
+};
+const WeaponDropdownMenuItem: FC<{ weaponId: WeaponId }> = ({ weaponId }) => {
+  const { weapon, loading } = useWeapon(weaponId);
+
+  if (loading) {
+    return (
+      <DropdownMenuItem asChild>
+        <Skeleton className="h-11" />
+      </DropdownMenuItem>
+    );
+  }
+
+  return weapon && (
+    <DropdownMenuItem asChild>
+      <Link to={Paths.WEAPON(weapon.id)}>
+        <WeaponImage
+          className="size-8 rounded-sm"
+          weaponId={weapon.id}
+          weaponImage={weapon.image}
+          weaponRarity={weapon.rarity}
+          weaponName={weapon.name}
+        />
+        {weapon.name}
       </Link>
     </DropdownMenuItem>
   );

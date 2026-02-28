@@ -1,29 +1,46 @@
 import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
-import { type Talent, type TalentName } from "@/types/talents.types";
-import { getTalent } from "@/utils/genshinDbAdapter";
+import { type Talent, type TalentListItem } from "@/types/talents.types";
+import { getTalent, getTalentList } from "@/utils/genshinDbAdapter";
 
 export interface TalentsState {
-  entities: { [P in TalentName]?: Talent | null };
-  names: TalentName[];
+  details: { [P in Talent["id"]]?: Talent };
+  list: TalentListItem[];
 }
 
-const initialState: TalentsState = { entities: {}, names: [] };
+const initialState: TalentsState = { details: {}, list: [] };
 
-export const fetchTalentByName = createAsyncThunk<Talent | null, TalentName>("talents/fetchByName", async (name, { getState }) => {
+export const fetchTalent = createAsyncThunk<Talent, Talent["id"]>("talents/fetch", async (talentId, { getState }) => {
   const state = getState() as { talents: TalentsState };
 
-  const stateTalent = state.talents.entities[name];
+  const stateTalent = state.talents.details[talentId];
 
   if (stateTalent) {
-    // console.log(`Таланты для "${name}" найдены в хранилище`);
+    console.log(`Таланты с ID "${talentId}" найдены в хранилище`);
 
     return stateTalent;
   }
 
-  // console.log(`Загрузка талантов для "${name}" с сервера`);
+  console.log(`Загрузка талантов с ID "${talentId}" с сервера`);
 
-  return getTalent(name);
+  return await getTalent(talentId);
+});
+export const fetchTalentList = createAsyncThunk<TalentListItem[]>("talents/fetchList", async (_, { getState }) => {
+  const state = getState() as { talents: TalentsState };
+
+  const stateList = state.talents.list;
+
+  if (stateList.length) {
+    console.log("Список талантов найден в хранилище");
+
+    return stateList;
+  }
+
+  console.log(`Загрузка списка талантов с сервера`);
+
+  const list = await getTalentList();
+
+  return list.sort((a, b) => a.name.localeCompare(b.name));
 });
 
 export const talentsSlice = createSlice<TalentsState, SliceCaseReducers<TalentsState>, string, SliceSelectors<TalentsState>, string>({
@@ -31,14 +48,11 @@ export const talentsSlice = createSlice<TalentsState, SliceCaseReducers<TalentsS
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchTalentByName.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.entities[action.payload.name] = action.payload;
-
-        if (!state.names.includes(action.payload.name)) {
-          state.names.push(action.payload.name);
-        }
-      }
+    builder.addCase(fetchTalent.fulfilled, (state, action) => {
+      state.details[action.payload.id] = action.payload;
+    });
+    builder.addCase(fetchTalentList.fulfilled, (state, action) => {
+      state.list = action.payload;
     });
   },
 });

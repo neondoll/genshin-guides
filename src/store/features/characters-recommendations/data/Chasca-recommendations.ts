@@ -1,12 +1,12 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "Сигна",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.ASTRAL_VULTURES_CRIMSON_PLUMAGE],
+  signatureWeaponIds: [WeaponIds.ASTRAL_VULTURES_CRIMSON_PLUMAGE],
   talents: [
     { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
     { type: "combat2", priority: "В первую очередь", recommendedLevel: 10 },
@@ -18,7 +18,7 @@ export default {
     VideoSourceIds.TALENT_GAINS_ANEMO,
   ],
   weapons: [
-    { name: WeaponNames.ASTRAL_VULTURES_CRIMSON_PLUMAGE, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.CHAIN_BREAKER, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.ASTRAL_VULTURES_CRIMSON_PLUMAGE, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.CHAIN_BREAKER, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

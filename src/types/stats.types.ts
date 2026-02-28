@@ -19,10 +19,10 @@ export const Stats = {
   PHYSICAL_DMG_BONUS: "Бонус физ. урона",
   PYRO_DMG_BONUS: "Бонус Пиро урона",
 } as const;
+export type Stat = typeof Stats[keyof typeof Stats];
+
 export const StatsCrit = [Stats.CRIT_DMG, Stats.CRIT_RATE] as const;
 export const StatsElementDmgBonus = [
   Stats.ANEMO_DMG_BONUS, Stats.CRYO_DMG_BONUS, Stats.DENDRO_DMG_BONUS, Stats.ELECTRO_DMG_BONUS,
   Stats.GEO_DMG_BONUS, Stats.HYDRO_DMG_BONUS, Stats.PYRO_DMG_BONUS,
 ] as const;
-
-export type Stat = typeof Stats[keyof typeof Stats];

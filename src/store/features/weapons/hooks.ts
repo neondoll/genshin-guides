@@ -1,62 +1,62 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { fetchWeaponByName, fetchWeaponsName } from "./slice";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { type WeaponName } from "@/types/weapons.types";
+import { fetchWeapon, fetchWeaponList } from "./slice";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { type WeaponId } from "@/types/weapons.types";
 
-export const useWeapon = (name: WeaponName) => {
+export const useWeapon = (id: WeaponId) => {
   const dispatch = useAppDispatch();
-  const weapons = useAppSelector(state => state.weapons.entities);
+  const weapons = useAppSelector(state => state.weapons.details);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getWeapon = useCallback(async (name: WeaponName) => {
+  const getWeapon = useCallback(async (id: WeaponId) => {
     try {
       setLoading(true);
-      await dispatch(fetchWeaponByName(name));
+      await dispatch(fetchWeapon(id));
       setError(null);
     }
     catch (error) {
-      setError("Ошибка загрузки данных из genshin-db");
-      console.error(`Ошибка при получении оружия "${name}":`, error);
+      setError("Ошибка загрузки данных с сервера");
+      console.error(`Ошибка при получении оружия с ID "${id}":`, error);
     }
     finally {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((name: WeaponName) => !!weapons[name], [weapons]);
-  const preloadWeapon = useCallback((name: WeaponName) => {
-    if (!isStored(name)) {
-      getWeapon(name);
+  const isStored = useCallback((id: WeaponId) => !!weapons[id], [weapons]);
+  const preloadWeapon = useCallback((id: WeaponId) => {
+    if (!isStored(id)) {
+      getWeapon(id);
     }
     else {
       setLoading(false);
     }
   }, [getWeapon, isStored]);
 
-  const weapon = useMemo(() => weapons[name], [name, weapons]);
+  const weapon = useMemo(() => weapons[id], [id, weapons]);
 
   useEffect(() => {
-    preloadWeapon(name);
-  }, [name, preloadWeapon]);
+    preloadWeapon(id);
+  }, [id, preloadWeapon]);
 
   return { error, loading, weapon };
 };
-export const useWeaponsNames = () => {
+export const useWeaponList = () => {
   const dispatch = useAppDispatch();
-  const weaponsNames = useAppSelector(state => state.weapons.names);
+  const weapons = useAppSelector(state => state.weapons.list);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getWeaponsNames = useCallback(async () => {
+  const getWeapons = useCallback(async () => {
     try {
       setLoading(true);
-      await dispatch(fetchWeaponsName());
+      await dispatch(fetchWeaponList());
       setError(null);
     }
     catch (error) {
-      setError("Ошибка загрузки данных из genshin-db");
-      console.error("Ошибка при получении имен оружий:", error);
+      setError("Ошибка загрузки данных с сервера");
+      console.error("Ошибка при получении списка оружий:", error);
     }
     finally {
       setLoading(false);
@@ -64,8 +64,8 @@ export const useWeaponsNames = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    getWeaponsNames();
-  }, [getWeaponsNames]);
+    getWeapons();
+  }, [getWeapons]);
 
-  return { error, loading, weaponsNames };
+  return { error, loading, weapons };
 };

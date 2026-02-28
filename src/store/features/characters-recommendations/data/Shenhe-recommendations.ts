@@ -1,13 +1,13 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "С1",
   recommendedLevel: "80/90",
   roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.SUPPORT],
-  signatureWeaponNames: [WeaponNames.CALAMITY_QUELLER],
+  signatureWeaponIds: [WeaponIds.CALAMITY_QUELLER],
   talents: [
     { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
     { type: "combat2", priority: "В первую очередь", referenceLevel: 10 },
@@ -21,7 +21,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { name: WeaponNames.CALAMITY_QUELLER, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.FAVONIUS_LANCE, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.CALAMITY_QUELLER, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.FAVONIUS_LANCE, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

@@ -3,44 +3,44 @@ import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelect
 import allRecommendations from "./data/all-recommendations";
 import {
   type CharacterRecommendations,
-  type CharacterRecommendationsName,
+  type CharacterRecommendationsId,
 } from "@/types/characters-recommendations.types";
 
 export interface CharactersRecommendationsState {
-  entities: { [P in CharacterRecommendationsName]?: CharacterRecommendations | null };
-  names: CharacterRecommendationsName[];
+  entities: { [P in CharacterRecommendationsId]?: CharacterRecommendations | null };
+  names: CharacterRecommendationsId[];
 }
 
 const initialState: CharactersRecommendationsState = { entities: {}, names: [] };
 
-export const fetchCharacterRecommendationsByName = createAsyncThunk<{
+export const fetchCharacterRecommendations = createAsyncThunk<{
   data: CharacterRecommendations | null;
-  name: CharacterRecommendationsName;
-}, CharacterRecommendationsName>("charactersRecommendations/fetchByName", async (characterName, { getState }) => {
+  id: CharacterRecommendationsId;
+}, CharacterRecommendationsId>("charactersRecommendations/fetch", async (characterRecommendationsId, { getState }) => {
   const state = getState() as { charactersRecommendations: CharactersRecommendationsState };
 
-  const stateCharacterRecommendations = state.charactersRecommendations.entities[characterName];
+  const stateCharacterRecommendations = state.charactersRecommendations.entities[characterRecommendationsId];
 
   if (stateCharacterRecommendations) {
-    // console.log(`Рекомендации персонажа "${characterName}" найдены в хранилище`);
+    console.log(`Рекомендации персонажа с ID "${characterRecommendationsId}" найдены в хранилище`);
 
-    return { data: stateCharacterRecommendations, name: characterName };
+    return { data: stateCharacterRecommendations, id: characterRecommendationsId };
   }
 
-  // console.log(`Загрузка рекомендаций персонажа "${characterName}" с сервера`);
-
   try {
-    if (characterName in allRecommendations) {
-      const module = await allRecommendations[characterName]();
+    if (characterRecommendationsId in allRecommendations) {
+      console.log(`Загрузка рекомендаций персонажа с ID "${characterRecommendationsId}" с сервера`);
 
-      return { data: module.default, name: characterName };
+      const module = await allRecommendations[characterRecommendationsId]();
+
+      return { data: module.default, id: characterRecommendationsId };
     }
 
-    return { data: null, name: characterName };
+    return { data: null, id: characterRecommendationsId };
   }
   catch (error) {
     console.error(error);
-    throw new Error(`Failed to load recommendations for ${characterName}`);
+    throw new Error(`Failed to load recommendations for ${characterRecommendationsId}`);
   }
 });
 
@@ -49,14 +49,8 @@ export const charactersRecommendationsSlice = createSlice<CharactersRecommendati
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchCharacterRecommendationsByName.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.entities[action.payload.name] = action.payload.data;
-
-        if (!state.names.includes(action.payload.name)) {
-          state.names = [...state.names, action.payload.name].sort((a, b) => a.localeCompare(b));
-        }
-      }
+    builder.addCase(fetchCharacterRecommendations.fulfilled, (state, action) => {
+      state.entities[action.payload.id] = action.payload.data;
     });
   },
 });

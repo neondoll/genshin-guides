@@ -3,14 +3,14 @@ import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 import { formatPercent } from "@/utils/format";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", id: ArtifactSetIds.EMBLEM_OF_SEVERED_FATE, best: true },
-      { type: "complete", id: ArtifactSetIds.NOBLESSE_OBLIGE },
+      { ids: [ArtifactSetIds.EMBLEM_OF_SEVERED_FATE], best: true },
+      { ids: [ArtifactSetIds.NOBLESSE_OBLIGE] },
     ],
     stats: {
       sands: [
@@ -50,5 +50,5 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
-  weapons: [{ name: WeaponNames.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 }],
+  weapons: [{ id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 }],
 } as CharacterRecommendations;

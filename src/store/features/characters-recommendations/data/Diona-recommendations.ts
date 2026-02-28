@@ -1,7 +1,7 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "80/90",
@@ -18,7 +18,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.SACRIFICIAL_BOW, best: "Лучшее оружие", r: 5 },
-    { name: WeaponNames.ELEGY_FOR_THE_END, r: 1 },
+    { id: WeaponIds.SACRIFICIAL_BOW, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.ELEGY_FOR_THE_END, r: 1 },
   ],
 } as CharacterRecommendations;

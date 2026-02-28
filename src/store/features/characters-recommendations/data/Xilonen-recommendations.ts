@@ -3,11 +3,11 @@ import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
-    sets: [{ type: "complete", id: ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY }],
+    sets: [{ ids: [ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY] }],
     stats: {
       sands: [{ name: Stats.DEF_PERCENTAGE }, { name: Stats.ENERGY_RECHARGE }],
       goblet: [{ name: Stats.DEF_PERCENTAGE }],
@@ -20,7 +20,7 @@ export default {
   },
   constellationOrSignatureWeapon: "С1 < Сигна < С2",
   roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.SUPPORT, CharacterRoleIds.SURVIVABILITY],
-  signatureWeaponNames: [WeaponNames.PEAK_PATROL_SONG],
+  signatureWeaponIds: [WeaponIds.PEAK_PATROL_SONG],
   talents: [
     { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
     { type: "combat2", priority: "В первую очередь", recommendedLevel: "9 - 10" },
@@ -33,8 +33,8 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { name: WeaponNames.PEAK_PATROL_SONG, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.FAVONIUS_SWORD, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.FLUTE_OF_EZPITZAL, best: "Лучшее крафтовое оружие", r: 5 },
+    { id: WeaponIds.PEAK_PATROL_SONG, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FLUTE_OF_EZPITZAL, best: "Лучшее крафтовое оружие", r: 5 },
   ],
 } as CharacterRecommendations;

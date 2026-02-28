@@ -1,62 +1,62 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { fetchElementByName, fetchElementsName } from "./slice";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { type ElementName } from "@/types/elements.types";
+import { fetchElement, fetchElementList } from "./slice";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { type ElementId } from "@/types/elements.types";
 
-export const useElement = (name: ElementName) => {
+export const useElement = (id: ElementId) => {
   const dispatch = useAppDispatch();
-  const elements = useAppSelector(state => state.elements.entities);
+  const elements = useAppSelector(state => state.elements.details);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getElement = useCallback(async (name: ElementName) => {
+  const getElement = useCallback(async (id: ElementId) => {
     try {
       setLoading(true);
-      await dispatch(fetchElementByName(name));
+      await dispatch(fetchElement(id));
       setError(null);
     }
     catch (error) {
-      setError("Ошибка загрузки данных из genshin-db");
-      console.error(`Ошибка при получении элемента "${name}":`, error);
+      setError("Ошибка загрузки данных с сервера");
+      console.error(`Ошибка при получении элемента с ID "${id}":`, error);
     }
     finally {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((name: ElementName) => !!elements[name], [elements]);
-  const preloadElement = useCallback((name: ElementName) => {
-    if (!isStored(name)) {
-      getElement(name);
+  const isStored = useCallback((id: ElementId) => !!elements[id], [elements]);
+  const preloadElement = useCallback((id: ElementId) => {
+    if (!isStored(id)) {
+      getElement(id);
     }
     else {
       setLoading(false);
     }
   }, [getElement, isStored]);
 
-  const element = useMemo(() => elements[name], [elements, name]);
+  const element = useMemo(() => elements[id], [elements, id]);
 
   useEffect(() => {
-    preloadElement(name);
-  }, [name, preloadElement]);
+    preloadElement(id);
+  }, [id, preloadElement]);
 
   return { element, error, loading };
 };
-export const useElementsNames = () => {
+export const useElementList = () => {
   const dispatch = useAppDispatch();
-  const elementsNames = useAppSelector(state => state.elements.names);
+  const elements = useAppSelector(state => state.elements.list);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getElementsNames = useCallback(async () => {
+  const getElements = useCallback(async () => {
     try {
       setLoading(true);
-      await dispatch(fetchElementsName());
+      await dispatch(fetchElementList());
       setError(null);
     }
     catch (error) {
-      setError("Ошибка загрузки данных из genshin-db");
-      console.error("Ошибка при получении имен элементов:", error);
+      setError("Ошибка загрузки данных с сервера");
+      console.error("Ошибка при получении списка элементов:", error);
     }
     finally {
       setLoading(false);
@@ -64,8 +64,8 @@ export const useElementsNames = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    getElementsNames();
-  }, [getElementsNames]);
+    getElements();
+  }, [getElements]);
 
-  return { elementsNames, error, loading };
+  return { elements, error, loading };
 };

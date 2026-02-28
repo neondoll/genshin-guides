@@ -2,18 +2,18 @@ import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { CharacterIds } from "@/types/characters.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ElementNames } from "@/types/elements.types";
+import { ElementIds, ElementNames } from "@/types/elements.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", id: ArtifactSetIds.GILDED_DREAMS },
-      { type: "complete", id: ArtifactSetIds.DEEPWOOD_MEMORIES },
-      { type: "complete", id: ArtifactSetIds.SILKEN_MOONS_SERENADE },
-      { type: "combined", ids: [ArtifactSetIds.GILDED_DREAMS, ArtifactSetIds.WANDERERS_TROUPE] },
+      { ids: [ArtifactSetIds.GILDED_DREAMS] },
+      { ids: [ArtifactSetIds.DEEPWOOD_MEMORIES] },
+      { ids: [ArtifactSetIds.SILKEN_MOONS_SERENADE] },
+      { ids: [ArtifactSetIds.GILDED_DREAMS, ArtifactSetIds.WANDERERS_TROUPE] },
     ],
     stats: {
       sands: [{ name: Stats.ELEMENTAL_MASTERY }, { name: Stats.ENERGY_RECHARGE }],
@@ -40,18 +40,18 @@ export default {
     {
       description: "Бутонизация",
       template: [
-        { type: "element", name: ElementNames.HYDRO },
+        { type: "element", id: ElementIds.HYDRO },
         { type: "character", id: CharacterIds.NILOU },
         { type: "character", id: CharacterIds.LAUMA },
-        { type: "element", name: ElementNames.DENDRO },
+        { type: "element", id: ElementIds.DENDRO },
       ],
     },
     {
       description: "Цветение",
       template: [
         { type: "character", id: CharacterIds.LAUMA },
-        { type: "element", name: ElementNames.HYDRO },
-        { type: "element", name: ElementNames.PYRO },
+        { type: "element", id: ElementIds.HYDRO },
+        { type: "element", id: ElementIds.PYRO },
         { type: "other", title: `${ElementNames.DENDRO}/${ElementNames.HYDRO}/${ElementNames.PYRO} персонаж` },
       ],
     },
@@ -59,8 +59,8 @@ export default {
       description: "Вегетация",
       template: [
         { type: "character", id: CharacterIds.LAUMA },
-        { type: "element", name: ElementNames.HYDRO },
-        { type: "element", name: ElementNames.ELECTRO },
+        { type: "element", id: ElementIds.HYDRO },
+        { type: "element", id: ElementIds.ELECTRO },
         { type: "other", title: `${ElementNames.DENDRO}/${ElementNames.HYDRO}/${ElementNames.ELECTRO} персонаж` },
       ],
     },
@@ -68,7 +68,7 @@ export default {
   keyConstellations: [2],
   recommendedLevel: "90",
   roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SUPPORT],
-  signatureWeaponNames: [WeaponNames.NIGHTWEAVERS_LOOKING_GLASS],
+  signatureWeaponIds: [WeaponIds.NIGHTWEAVERS_LOOKING_GLASS],
   talents: [
     { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
     { type: "combat2", priority: "В первую очередь", referenceLevel: 10 },
@@ -76,14 +76,14 @@ export default {
   ],
   videoSourceIds: [VideoSourceIds.GUIDE_TO_LAUMA_IN_6_0_AnimeCool, VideoSourceIds.GUIDE_TO_LAUMA_IN_6_0_MironMinMax],
   weapons: [
-    { name: WeaponNames.NIGHTWEAVERS_LOOKING_GLASS, best: "Лучшее оружие" },
-    { name: WeaponNames.A_THOUSAND_FLOATING_DREAMS },
-    { name: WeaponNames.SUNNY_MORNING_SLEEP_IN },
-    { name: WeaponNames.STARCALLERS_WATCH },
-    { name: WeaponNames.ETHERLIGHT_SPINDLELUTE, best: "Лучшее эвентовое оружие" },
-    { name: WeaponNames.BLACKMARROW_LANTERN, best: "Лучшее доступное оружие" },
-    { name: WeaponNames.SACRIFICIAL_FRAGMENTS },
-    { name: WeaponNames.FAVONIUS_CODEX },
-    { name: WeaponNames.THRILLING_TALES_OF_DRAGON_SLAYERS },
+    { id: WeaponIds.NIGHTWEAVERS_LOOKING_GLASS, best: "Лучшее оружие" },
+    { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS },
+    { id: WeaponIds.SUNNY_MORNING_SLEEP_IN },
+    { id: WeaponIds.STARCALLERS_WATCH },
+    { id: WeaponIds.ETHERLIGHT_SPINDLELUTE, best: "Лучшее эвентовое оружие" },
+    { id: WeaponIds.BLACKMARROW_LANTERN, best: "Лучшее доступное оружие" },
+    { id: WeaponIds.SACRIFICIAL_FRAGMENTS },
+    { id: WeaponIds.FAVONIUS_CODEX },
+    { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS },
   ],
 } as CharacterRecommendations;

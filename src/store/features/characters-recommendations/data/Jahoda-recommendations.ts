@@ -3,14 +3,14 @@ import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", id: ArtifactSetIds.VIRIDESCENT_VENERER, notes: ["если играем c Флинсом"] },
-      { type: "complete", id: ArtifactSetIds.SILKEN_MOONS_SERENADE, notes: ["если играем c Нефер"] },
-      { type: "complete", id: ArtifactSetIds.DEEPWOOD_MEMORIES, notes: ["если играем c Нефер"] },
+      { ids: [ArtifactSetIds.VIRIDESCENT_VENERER], notes: ["если играем c Флинсом"] },
+      { ids: [ArtifactSetIds.SILKEN_MOONS_SERENADE], notes: ["если играем c Нефер"] },
+      { ids: [ArtifactSetIds.DEEPWOOD_MEMORIES], notes: ["если играем c Нефер"] },
     ],
     stats: {
       sands: [{ name: Stats.ENERGY_RECHARGE }],
@@ -35,9 +35,9 @@ export default {
   ],
   videoSourceIds: [VideoSourceIds.GUIDE_TO_JAHODA_IN_6_2],
   weapons: [
-    { name: WeaponNames.ELEGY_FOR_THE_END, best: "Лучшее оружие" },
-    { name: WeaponNames.FAVONIUS_WARBOW },
-    { name: WeaponNames.SACRIFICIAL_BOW },
-    { name: WeaponNames.SNARE_HOOK, best: "Лучшее доступное оружие" },
+    { id: WeaponIds.ELEGY_FOR_THE_END, best: "Лучшее оружие" },
+    { id: WeaponIds.FAVONIUS_WARBOW },
+    { id: WeaponIds.SACRIFICIAL_BOW },
+    { id: WeaponIds.SNARE_HOOK, best: "Лучшее доступное оружие" },
   ],
 } as CharacterRecommendations;

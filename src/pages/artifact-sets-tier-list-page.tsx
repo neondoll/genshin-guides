@@ -52,12 +52,9 @@ const ArtifactSetsTierListPage: FC = () => {
                   <TableCell className={cn(item.tierClassName)}>{item.tier}</TableCell>
                   <TableCell>
                     <ul className="flex flex-wrap gap-2">
-                      {item.artifactSetIds.map(artifactSetId => (
-                        <li className="shrink-0" key={artifactSetId}>
-                          <ArtifactSetImageLoading
-                            artifactSetId={artifactSetId}
-                            className="size-16 rounded-md rounded-br-2xl"
-                          />
+                      {item.ids.map(id => (
+                        <li className="shrink-0" key={id}>
+                          <ArtifactSetImageLoading artifactSetId={id} className="size-16 rounded-md rounded-br-2xl" />
                         </li>
                       ))}
                     </ul>

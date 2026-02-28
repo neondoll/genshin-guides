@@ -1,12 +1,12 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "Сигна",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.VERDICT],
+  signatureWeaponIds: [WeaponIds.VERDICT],
   talents: [
     { type: "combat1", priority: "Во вторую очередь", recommendedLevel: "8 - 10" },
     { type: "combat2", priority: "В первую очередь", recommendedLevel: "9 - 10" },
@@ -20,7 +20,7 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { name: WeaponNames.VERDICT, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.TIDAL_SHADOW, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.VERDICT, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.TIDAL_SHADOW, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

@@ -1,13 +1,13 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "Сигна",
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.PRIMORDIAL_JADE_WINGED_SPEAR],
+  signatureWeaponIds: [WeaponIds.PRIMORDIAL_JADE_WINGED_SPEAR],
   talents: [
     { type: "combat1", priority: "Во вторую очередь", recommendedLevel: 10 },
     { type: "combat2", priority: "По необходимости", recommendedLevel: 9 },
@@ -22,10 +22,10 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.PRIMORDIAL_JADE_WINGED_SPEAR, r: 1 },
-    { name: WeaponNames.BLACKCLIFF_POLE, best: "Лучшее доступное оружие (когда работает)", r: 5 },
-    { name: WeaponNames.WHITE_TASSEL, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.FAVONIUS_LANCE, r: 5 },
+    { id: WeaponIds.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.PRIMORDIAL_JADE_WINGED_SPEAR, r: 1 },
+    { id: WeaponIds.BLACKCLIFF_POLE, best: "Лучшее доступное оружие (когда работает)", r: 5 },
+    { id: WeaponIds.WHITE_TASSEL, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FAVONIUS_LANCE, r: 5 },
   ],
 } as CharacterRecommendations;

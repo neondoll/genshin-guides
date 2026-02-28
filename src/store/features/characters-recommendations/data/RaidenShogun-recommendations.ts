@@ -1,13 +1,13 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "С1 < Сигна < С2",
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SUPPORT],
-  signatureWeaponNames: [WeaponNames.ENGULFING_LIGHTNING],
+  signatureWeaponIds: [WeaponIds.ENGULFING_LIGHTNING],
   talents: [
     { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
     { type: "combat2", priority: "Во вторую очередь", referenceLevel: 9 },
@@ -23,8 +23,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { name: WeaponNames.ENGULFING_LIGHTNING, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.THE_CATCH, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.DRAGONS_BANE, r: 5 },
+    { id: WeaponIds.ENGULFING_LIGHTNING, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.THE_CATCH, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.DRAGONS_BANE, r: 5 },
   ],
 } as CharacterRecommendations;

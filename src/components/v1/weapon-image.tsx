@@ -3,20 +3,49 @@ import { type CSSProperties, type FC, useMemo } from "react";
 import { ImageWithFallback } from "./image-with-fallback";
 import { Skeleton } from "../ui/skeleton";
 import { cn } from "@/lib/utils";
-import { useWeapon, WeaponIcons } from "@/store/features/weapons";
+import { useWeapon, WeaponImages } from "@/store/features/weapons";
 import { RarityGradients } from "@/types/rarities.types";
-import { type WeaponName } from "@/types/weapons.types";
+import { type Weapon } from "@/types/weapons.types";
 
-interface WeaponImageProps {
+interface WeaponImagePropsTemplate {
   className?: string;
-  name: WeaponName;
   style?: CSSProperties;
+  weaponId: Weapon["id"];
 }
 
-export const WeaponImage: FC<WeaponImageProps> = ({ className, name, style }) => {
-  const { loading, weapon } = useWeapon(name);
+interface WeaponImageProps extends WeaponImagePropsTemplate {
+  weaponImage: Weapon["image"];
+  weaponName: Weapon["name"];
+  weaponRarity: Weapon["rarity"];
+}
 
-  const fallbackSrc = useMemo(() => WeaponIcons[name], [name]);
+type WeaponImageLoadingProps = WeaponImagePropsTemplate;
+
+export const WeaponImage: FC<WeaponImageProps> = ({
+  className,
+  style,
+  weaponId,
+  weaponImage,
+  weaponName,
+  weaponRarity,
+}) => {
+  const fallbackSrc = useMemo(() => WeaponImages[weaponId], [weaponId]);
+
+  return (
+    <ImageWithFallback
+      alt={weaponName}
+      className={cn(RarityGradients[weaponRarity], className)}
+      draggable={false}
+      fallbackSrc={fallbackSrc}
+      src={weaponImage ?? fallbackSrc}
+      style={style}
+    />
+  );
+};
+export const WeaponImageLoading: FC<WeaponImageLoadingProps> = ({ className, style, weaponId }) => {
+  const { loading, weapon } = useWeapon(weaponId);
+
+  const fallbackSrc = useMemo(() => WeaponImages[weaponId], [weaponId]);
 
   if (loading) {
     return <Skeleton className={cn(RarityGradients[0], className)} style={style} />;
@@ -24,11 +53,11 @@ export const WeaponImage: FC<WeaponImageProps> = ({ className, name, style }) =>
 
   return (
     <ImageWithFallback
-      alt={name}
+      alt={weapon?.name ?? `weapon-${weaponId}`}
       className={cn(RarityGradients[weapon?.rarity ?? 0], className)}
       draggable={false}
       fallbackSrc={fallbackSrc}
-      src={weapon?.images.mihoyo_icon ?? fallbackSrc}
+      src={weapon?.image ?? fallbackSrc}
       style={style}
     />
   );

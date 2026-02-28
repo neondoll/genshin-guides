@@ -1,7 +1,7 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "70/80",
@@ -18,9 +18,9 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.MISTSPLITTER_REFORGED, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.FINALE_OF_THE_DEEP, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.BLACKCLIFF_LONGSWORD, best: "Лучшее доступное оружие (когда работает на полную)", r: 5 },
-    { name: WeaponNames.FAVONIUS_SWORD, r: 5 },
+    { id: WeaponIds.MISTSPLITTER_REFORGED, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.BLACKCLIFF_LONGSWORD, best: "Лучшее доступное оружие (когда работает на полную)", r: 5 },
+    { id: WeaponIds.FAVONIUS_SWORD, r: 5 },
   ],
 } as CharacterRecommendations;

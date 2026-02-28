@@ -4,6 +4,10 @@ import path from "path";
 
 const OUTPUT_DIR = path.resolve("public/data");
 
+function getElementId(elementType) {
+  return elementType.replace(/^ELEMENT_/i, "").toLowerCase();
+}
+
 // Трансформер для артефактов (детальная информация)
 function transformArtifactDetail(item) {
   const data = {
@@ -102,7 +106,8 @@ function transformCharacterDetail(item) {
     rarity: item.rarity,
     // birthdaymmdd: item.birthdaymmdd,
     birthday: item.birthday,
-    elementType: item.elementType,
+    elementId: getElementId(item.elementType),
+    // elementType: item.elementType,
     elementText: item.elementText,
     affiliation: item.affiliation,
     // associationType: item.associationType,
@@ -126,7 +131,7 @@ function transformCharacterListItem(item) {
     id: item.id,
     name: item.name,
     rarity: item.rarity,
-    elementType: item.elementType,
+    elementId: getElementId(item.elementType),
     elementText: item.elementText,
     image: item.images.mihoyo_icon,
   };
@@ -235,7 +240,18 @@ const CATEGORIES = {
     transformList: transformElementListItem,
   },
   "talents": { function: "talents", transformDetail: transformTalentDetail, transformList: transformTalentListItem },
-  "weapons": { function: "weapons", transformDetail: transformWeaponDetail, transformList: transformWeaponListItem },
+  "weapons": {
+    filterNames: (names) => {
+      // Убираем дубли
+      const unique = [...new Set(names)];
+
+      // Исключаем "Легендарный клинок Иссин"
+      return unique.filter(name => name !== "Prized Isshin Blade");
+    },
+    function: "weapons",
+    transformDetail: transformWeaponDetail,
+    transformList: transformWeaponListItem,
+  },
 };
 
 // Функция для безопасного создания директории
@@ -255,21 +271,23 @@ async function generateCategory(categoryName, config) {
   console.log(`Генерация данных для ${categoryName}...`);
 
   // Получаем все имена элементов в категории
-  const names = genshinDb[config.function]("names", {
+  let names = genshinDb[config.function]("names", {
     matchCategories: true,
     resultLanguage: genshinDb.Language.English,
   });
+
+  // Применяем фильтр, если он задан
+  if (config.filterNames) {
+    names = config.filterNames(names);
+  }
+
   const items = names.map((name) => {
     const data = genshinDb[config.function](name, {
       queryLanguages: [genshinDb.Language.English, genshinDb.Language.Russian],
       resultLanguage: genshinDb.Language.Russian,
     });
 
-    if (categoryName === "elements") {
-      return { ...data, id: `ELEMENT_${name.toUpperCase()}` };
-    }
-
-    return data;
+    return { ...data, id: name.toLowerCase().replace(/[()"']/g, "").replace(/[\s-]+/g, "_") };
   });
 
   // Создаём папку категории
@@ -287,6 +305,10 @@ async function generateCategory(categoryName, config) {
   for (const item of items) {
     const id = String(item.id || item.name);
     const safeId = id.replace(/[^a-z0-9]/gi, "_");
+
+    if (id !== safeId) {
+      console.warn({ id, safeId });
+    }
 
     const detailData = config.transformDetail(item);
     await fs.writeFile(path.join(detailsDir, `${safeId}.json`), JSON.stringify(detailData, null, 2));

@@ -3,13 +3,13 @@ import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", id: ArtifactSetIds.VIRIDESCENT_VENERER, notes: ["если играем из кармана"] },
-      { type: "complete", id: ArtifactSetIds.DESERT_PAVILION_CHRONICLE, notes: ["если играем на поле"] },
+      { ids: [ArtifactSetIds.VIRIDESCENT_VENERER], notes: ["если играем из кармана"] },
+      { ids: [ArtifactSetIds.DESERT_PAVILION_CHRONICLE], notes: ["если играем на поле"] },
     ],
     stats: {
       sands: [{ name: Stats.ATK_PERCENTAGE }],
@@ -26,7 +26,7 @@ export default {
   constellationOrSignatureWeapon: "Если нет Легендарного лука: С1 < Сигна\nЕсли есть Легендарный лук: С1 > Сигна",
   recommendedLevel: "80/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SUPPORT],
-  signatureWeaponNames: [WeaponNames.ELEGY_FOR_THE_END, WeaponNames.SKYWARD_HARP, WeaponNames.THE_DAYBREAK_CHRONICLES],
+  signatureWeaponIds: [WeaponIds.ELEGY_FOR_THE_END, WeaponIds.SKYWARD_HARP, WeaponIds.THE_DAYBREAK_CHRONICLES],
   talents: [
     { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
     { type: "combat2", priority: "Во вторую очередь", recommendedLevel: "6 - 8" },
@@ -43,23 +43,23 @@ export default {
   ],
   weapons: {
     "если играем на поле": [
-      { name: WeaponNames.THE_DAYBREAK_CHRONICLES, best: "Лучшее оружие", r: 1, percent: 1.239 },
-      { name: WeaponNames.POLAR_STAR, r: 1, percent: 1.162, notes: ["Нужно сделать быструю заряженную атаку"] },
-      { name: WeaponNames.THUNDERING_PULSE, r: 1, percent: 1.149 },
-      { name: WeaponNames.AQUA_SIMULACRA, r: 1, percent: 1.112 },
-      { name: WeaponNames.SKYWARD_HARP, r: 1, percent: 1.106 },
-      { name: WeaponNames.THE_FIRST_GREAT_MAGIC, r: 1, percent: 1.096 },
-      { name: WeaponNames.HUNTERS_PATH, r: 1, percent: 1.032 },
-      { name: WeaponNames.AMOS_BOW, r: 1, percent: 1.004 },
-      { name: WeaponNames.RUST, best: "Лучшее эпическое решение", r: 5, percent: 1.000 },
-      { name: WeaponNames.SONG_OF_STILLNESS, r: 5, percent: 0.969, notes: ["Нужно получить лечение"] },
-      { name: WeaponNames.SLINGSHOT, r: 5, percent: 0.960 },
+      { id: WeaponIds.THE_DAYBREAK_CHRONICLES, best: "Лучшее оружие", r: 1, percent: 1.239 },
+      { id: WeaponIds.POLAR_STAR, r: 1, percent: 1.162, notes: ["Нужно сделать быструю заряженную атаку"] },
+      { id: WeaponIds.THUNDERING_PULSE, r: 1, percent: 1.149 },
+      { id: WeaponIds.AQUA_SIMULACRA, r: 1, percent: 1.112 },
+      { id: WeaponIds.SKYWARD_HARP, r: 1, percent: 1.106 },
+      { id: WeaponIds.THE_FIRST_GREAT_MAGIC, r: 1, percent: 1.096 },
+      { id: WeaponIds.HUNTERS_PATH, r: 1, percent: 1.032 },
+      { id: WeaponIds.AMOS_BOW, r: 1, percent: 1.004 },
+      { id: WeaponIds.RUST, best: "Лучшее эпическое решение", r: 5, percent: 1.000 },
+      { id: WeaponIds.SONG_OF_STILLNESS, r: 5, percent: 0.969, notes: ["Нужно получить лечение"] },
+      { id: WeaponIds.SLINGSHOT, r: 5, percent: 0.960 },
 
     ],
     "если играем из кармана": [
-      { name: WeaponNames.ELEGY_FOR_THE_END, best: "Лучшее оружие", r: 1 },
-      { name: WeaponNames.THE_STRINGLESS, r: 5 },
-      { name: WeaponNames.FAVONIUS_WARBOW, best: "Лучшее доступное оружие", r: 5 },
+      { id: WeaponIds.ELEGY_FOR_THE_END, best: "Лучшее оружие", r: 1 },
+      { id: WeaponIds.THE_STRINGLESS, r: 5 },
+      { id: WeaponIds.FAVONIUS_WARBOW, best: "Лучшее доступное оружие", r: 5 },
     ],
   },
 } as CharacterRecommendations;

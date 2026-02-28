@@ -1,13 +1,13 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "Сигна",
   recommendedLevel: "80/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.MISTSPLITTER_REFORGED],
+  signatureWeaponIds: [WeaponIds.MISTSPLITTER_REFORGED],
   talents: [
     { type: "combat1", priority: "Во вторую очередь", referenceLevel: 10 },
     { type: "combat2", priority: "По необходимости", referenceLevel: 8 },
@@ -21,8 +21,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.MISTSPLITTER_REFORGED, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.FINALE_OF_THE_DEEP, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.AMENOMA_KAGEUCHI, r: 5 },
+    { id: WeaponIds.MISTSPLITTER_REFORGED, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.AMENOMA_KAGEUCHI, r: 5 },
   ],
 } as CharacterRecommendations;

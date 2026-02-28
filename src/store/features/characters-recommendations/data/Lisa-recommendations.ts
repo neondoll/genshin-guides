@@ -1,7 +1,7 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "80/90",
@@ -18,8 +18,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.THE_WIDSITH, best: "Лучшее доступное оружие (для ДД)", r: 5 },
-    { name: WeaponNames.SACRIFICIAL_FRAGMENTS, best: "Лучшее доступное оружие (для максимизации МС)", r: 5 },
+    { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие (для ДД)", r: 5 },
+    { id: WeaponIds.SACRIFICIAL_FRAGMENTS, best: "Лучшее доступное оружие (для максимизации МС)", r: 5 },
   ],
 } as CharacterRecommendations;

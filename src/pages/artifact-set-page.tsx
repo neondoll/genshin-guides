@@ -35,8 +35,8 @@ import { type ArtifactSetRecommendations as Recommendations } from "@/types/arti
 import { CharacterIds } from "@/types/characters.types";
 
 const ArtifactSetPage: FC = () => {
-  const { artifactSetId } = useParams();
-  const { artifactSet, error, loading } = useArtifactSet(Number(artifactSetId) as ArtifactSetId);
+  const { artifactSetId } = useParams<{ artifactSetId: ArtifactSetId }>();
+  const { artifactSet, error, loading } = useArtifactSet(artifactSetId!);
 
   const characteristics = useMemo(() => {
     return [
