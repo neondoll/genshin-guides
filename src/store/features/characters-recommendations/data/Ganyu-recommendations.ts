@@ -1,10 +1,10 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponIds } from "@/types/weapons.types";
+import { WeaponIds, WeaponNames } from "@/types/weapons.types";
 
 export default {
-  constellationOrSignatureWeapon: `Сигна < С1 < ${WeaponIds.ASTRAL_VULTURES_CRIMSON_PLUMAGE}`,
+  constellationOrSignatureWeapon: `Сигна < С1 < ${WeaponNames.ASTRAL_VULTURES_CRIMSON_PLUMAGE}`,
   recommendedLevel: "80/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
   signatureWeaponIds: [WeaponIds.AMOS_BOW],

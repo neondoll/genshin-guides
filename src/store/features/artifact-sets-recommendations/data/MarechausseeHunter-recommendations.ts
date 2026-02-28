@@ -1,5 +1,5 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterIds } from "@/types/characters.types";
+import { CharacterIds, CharacterNames } from "@/types/characters.types";
 import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 
@@ -9,7 +9,7 @@ export default {
     { type: "character", id: CharacterIds.LYNEY, best: true },
     { type: "character", id: CharacterIds.NEUVILLETTE, best: true },
     { type: "character", id: CharacterIds.WRIOTHESLEY, best: true },
-    { type: "other", title: `Любые дамагеры с ${CharacterIds.FURINA}` },
+    { type: "other", title: `Любые дамагеры с ${CharacterNames.FURINA}` },
   ],
   preferredStats: {
     sands: [Stats.ATK_PERCENTAGE, Stats.ELEMENTAL_MASTERY, Stats.HP_PERCENTAGE],

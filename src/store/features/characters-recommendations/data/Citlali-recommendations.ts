@@ -4,7 +4,7 @@ import { CharacterNames } from "@/types/characters.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponIds } from "@/types/weapons.types";
+import { WeaponIds, WeaponNames } from "@/types/weapons.types";
 
 export default {
   artifacts: {
@@ -12,8 +12,7 @@ export default {
       { ids: [ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY], best: true },
       { ids: [ArtifactSetIds.TENACITY_OF_THE_MILLELITH] },
       { ids: [ArtifactSetIds.NOBLESSE_OBLIGE] },
-      { ids: [ArtifactSetIds.INSTRUCTOR] },
-      {
+      { ids: [ArtifactSetIds.INSTRUCTOR] }, {
         ids: [ArtifactSetIds.ARCHAIC_PETRA],
         notes: [`Если в отряде есть ${CharacterNames.XILONEN}`, "Носитель должен подбирать осколок"],
       },
@@ -23,7 +22,7 @@ export default {
       goblet: [{ name: Stats.ELEMENTAL_MASTERY }],
       circlet: [
         { name: Stats.ELEMENTAL_MASTERY, notes: ["всегда"] },
-        { name: Stats.CRIT_RATE, notes: [`можно рассмотреть, если в руках ${WeaponIds.FAVONIUS_CODEX}`] },
+        { name: Stats.CRIT_RATE, notes: [`можно рассмотреть, если в руках ${WeaponNames.FAVONIUS_CODEX}`] },
       ],
       additional: [
         { name: Stats.ENERGY_RECHARGE, notes: ["Приоритетно", "от 170%"] },

@@ -3,7 +3,7 @@ import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponIds } from "@/types/weapons.types";
+import { WeaponIds, WeaponNames } from "@/types/weapons.types";
 
 export default {
   artifacts: {
@@ -24,7 +24,7 @@ export default {
       goblet: [{ name: Stats.HP_PERCENTAGE }],
       circlet: [
         { name: Stats.HP_PERCENTAGE },
-        { name: Stats.CRIT_RATE, notes: [`Если в руках ${WeaponIds.FAVONIUS_LANCE}`] },
+        { name: Stats.CRIT_RATE, notes: [`Если в руках ${WeaponNames.FAVONIUS_LANCE}`] },
       ],
       additional: [{ name: Stats.HP_PERCENTAGE }, { name: Stats.ENERGY_RECHARGE }],
     },

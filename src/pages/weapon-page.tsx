@@ -17,7 +17,7 @@ import { WeaponImage } from "@/components/v1/weapon-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useWeapon } from "@/store/features/weapons";
-import type { WeaponId } from "@/types/weapons.types";
+import { type WeaponId } from "@/types/weapons.types";
 
 function extractValues(str: string): [string, number][] {
   const regex = /<color=#([A-Fa-f0-9]+)>\{(\d+(?:\.\d+)?)}<\/color>/g;

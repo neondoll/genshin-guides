@@ -1,5 +1,5 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterIds } from "@/types/characters.types";
+import { CharacterIds, CharacterNames } from "@/types/characters.types";
 import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 
@@ -8,7 +8,7 @@ export default {
     { type: "character", id: CharacterIds.GAMING, best: true },
     { type: "character", id: CharacterIds.VARESA, best: true },
     { type: "character", id: CharacterIds.XIAO, best: true },
-    { type: "other", title: `Дамагеры с ${CharacterIds.XIANYUN}` },
+    { type: "other", title: `Дамагеры с ${CharacterNames.XIANYUN}` },
   ],
   preferredStats: {
     sands: [Stats.ATK_PERCENTAGE, Stats.ELEMENTAL_MASTERY],

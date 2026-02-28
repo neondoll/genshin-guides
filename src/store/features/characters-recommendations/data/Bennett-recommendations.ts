@@ -7,10 +7,7 @@ import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
-    sets: [
-      { ids: [ArtifactSetIds.NOBLESSE_OBLIGE], best: true },
-      { id: [ArtifactSetIds.EMBLEM_OF_SEVERED_FATE] },
-    ],
+    sets: [{ ids: [ArtifactSetIds.NOBLESSE_OBLIGE], best: true }, { ids: [ArtifactSetIds.EMBLEM_OF_SEVERED_FATE] }],
     stats: {
       sands: [{ name: Stats.ENERGY_RECHARGE }, { name: Stats.HP_PERCENTAGE }, { name: Stats.ATK_PERCENTAGE }],
       goblet: [{ name: Stats.HP_PERCENTAGE }, { name: Stats.ATK_PERCENTAGE }, { name: Stats.PYRO_DMG_BONUS }],
