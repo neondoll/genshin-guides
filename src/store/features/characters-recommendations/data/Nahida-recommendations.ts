@@ -1,17 +1,17 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.DEEPWOOD_MEMORIES, best: true },
-      { type: "complete", name: ArtifactSetNames.GOLDEN_TROUPE },
-      { type: "complete", name: ArtifactSetNames.GILDED_DREAMS },
-      { type: "complete", name: ArtifactSetNames.INSTRUCTOR },
+      { ids: [ArtifactSetIds.DEEPWOOD_MEMORIES], best: true },
+      { ids: [ArtifactSetIds.GOLDEN_TROUPE] },
+      { ids: [ArtifactSetIds.GILDED_DREAMS] },
+      { ids: [ArtifactSetIds.INSTRUCTOR] },
     ],
     stats: {
       sands: [{ name: Stats.ELEMENTAL_MASTERY }],
@@ -29,7 +29,7 @@ export default {
   keyConstellations: [2],
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.OFF_FIELD, CharacterRoleIds.DPS, CharacterRoleIds.SUPPORT],
-  signatureWeaponNames: [WeaponNames.A_THOUSAND_FLOATING_DREAMS],
+  signatureWeaponIds: [WeaponIds.A_THOUSAND_FLOATING_DREAMS],
   talents: [
     { type: "combat1", priority: "По необходимости", referenceLevel: "6-8" },
     { type: "combat2", priority: "В первую очередь", referenceLevel: 10 },
@@ -45,28 +45,28 @@ export default {
   ],
   weapons: {
     Вегетация: [
-      { name: WeaponNames.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее оружие", r: 1, percent: 1.0000 },
-      { name: WeaponNames.WANDERING_EVENSTAR, r: 5, percent: 0.9841 },
-      { name: WeaponNames.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5, percent: 0.9705 },
-      { name: WeaponNames.WANDERING_EVENSTAR, r: 1, percent: 0.9702 },
-      { name: WeaponNames.SURFS_UP, r: 1, percent: 0.9679 },
-      { name: WeaponNames.KAGURAS_VERITY, r: 1, percent: 0.9668 },
-      { name: WeaponNames.TOME_OF_THE_ETERNAL_FLOW, r: 1, percent: 0.9664 },
-      { name: WeaponNames.SACRIFICIAL_JADE, r: 5, percent: 0.9654 },
-      { name: WeaponNames.THE_WIDSITH, r: 1, percent: 0.9646 },
-      { name: WeaponNames.SOLAR_PEARL, r: 1, percent: 0.9628 },
+      { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее оружие", r: 1, percent: 1.0000 },
+      { id: WeaponIds.WANDERING_EVENSTAR, r: 5, percent: 0.9841 },
+      { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5, percent: 0.9705 },
+      { id: WeaponIds.WANDERING_EVENSTAR, r: 1, percent: 0.9702 },
+      { id: WeaponIds.SURFS_UP, r: 1, percent: 0.9679 },
+      { id: WeaponIds.KAGURAS_VERITY, r: 1, percent: 0.9668 },
+      { id: WeaponIds.TOME_OF_THE_ETERNAL_FLOW, r: 1, percent: 0.9664 },
+      { id: WeaponIds.SACRIFICIAL_JADE, r: 5, percent: 0.9654 },
+      { id: WeaponIds.THE_WIDSITH, r: 1, percent: 0.9646 },
+      { id: WeaponIds.SOLAR_PEARL, r: 1, percent: 0.9628 },
     ],
     Стимуляция: [
-      { name: WeaponNames.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее оружие", r: 1, percent: 1.0000 },
-      { name: WeaponNames.WANDERING_EVENSTAR, r: 5, percent: 0.9789 },
-      { name: WeaponNames.WANDERING_EVENSTAR, r: 1, percent: 0.9718 },
-      { name: WeaponNames.MAGIC_GUIDE, best: "Лучшее доступное оружие", r: 5, percent: 0.9552 },
-      { name: WeaponNames.THE_WIDSITH, r: 5, percent: 0.9522 },
-      { name: WeaponNames.SACRIFICIAL_JADE, r: 5, percent: 0.9518 },
-      { name: WeaponNames.KAGURAS_VERITY, r: 1, percent: 0.9502 },
-      { name: WeaponNames.SACRIFICIAL_FRAGMENTS, r: 5, percent: 0.9489 },
-      { name: WeaponNames.MAPPA_MARE, r: 5, percent: 0.9484 },
-      { name: WeaponNames.SURFS_UP, r: 1, percent: 0.9471 },
+      { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее оружие", r: 1, percent: 1.0000 },
+      { id: WeaponIds.WANDERING_EVENSTAR, r: 5, percent: 0.9789 },
+      { id: WeaponIds.WANDERING_EVENSTAR, r: 1, percent: 0.9718 },
+      { id: WeaponIds.MAGIC_GUIDE, best: "Лучшее доступное оружие", r: 5, percent: 0.9552 },
+      { id: WeaponIds.THE_WIDSITH, r: 5, percent: 0.9522 },
+      { id: WeaponIds.SACRIFICIAL_JADE, r: 5, percent: 0.9518 },
+      { id: WeaponIds.KAGURAS_VERITY, r: 1, percent: 0.9502 },
+      { id: WeaponIds.SACRIFICIAL_FRAGMENTS, r: 5, percent: 0.9489 },
+      { id: WeaponIds.MAPPA_MARE, r: 5, percent: 0.9484 },
+      { id: WeaponIds.SURFS_UP, r: 1, percent: 0.9471 },
     ],
   },
 } as CharacterRecommendations;

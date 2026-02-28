@@ -56,7 +56,6 @@ export const VideoSourceIds = {
   WHO_NEEDS_LEVELING_PART_2: "who_needs_leveling_part_2",
   XIANGLING_ELEMENTAL_BURST_GUIDE: "Xiangling_elemental_burst_guide",
 } as const;
-
 export type VideoSourceId = typeof VideoSourceIds[keyof typeof VideoSourceIds];
 
 export interface VideoSource {
@@ -64,7 +63,6 @@ export interface VideoSource {
   author: string;
   title: string;
   date: string;
-  rutube?: string;
   vkvideo?: string;
   youtube?: string;
 }

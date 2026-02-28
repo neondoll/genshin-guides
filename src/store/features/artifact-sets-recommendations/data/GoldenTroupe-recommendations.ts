@@ -1,17 +1,17 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.ALBEDO, best: true },
-    { type: "character", name: CharacterNames.CHIORI, best: true },
-    { type: "character", name: CharacterNames.ESCOFFIER, best: true },
-    { type: "character", name: CharacterNames.FISCHL, best: true },
-    { type: "character", name: CharacterNames.FURINA, best: true },
-    { type: "character", name: CharacterNames.NAHIDA, best: true },
-    { type: "character", name: CharacterNames.YAE_MIKO, best: true },
+    { type: "character", id: CharacterIds.ALBEDO, best: true },
+    { type: "character", id: CharacterIds.CHIORI, best: true },
+    { type: "character", id: CharacterIds.ESCOFFIER, best: true },
+    { type: "character", id: CharacterIds.FISCHL, best: true },
+    { type: "character", id: CharacterIds.FURINA, best: true },
+    { type: "character", id: CharacterIds.NAHIDA, best: true },
+    { type: "character", id: CharacterIds.YAE_MIKO, best: true },
     { type: "other", title: "..." },
   ],
   preferredStats: {

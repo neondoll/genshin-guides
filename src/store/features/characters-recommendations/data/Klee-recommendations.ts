@@ -1,13 +1,13 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "С1",
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.LOST_PRAYER_TO_THE_SACRED_WINDS],
+  signatureWeaponIds: [WeaponIds.LOST_PRAYER_TO_THE_SACRED_WINDS],
   talents: [
     { type: "combat1", priority: "В первую очередь", recommendedLevel: "9 - 10", overallLevel: 10 },
     { type: "combat2", priority: "По необходимости", recommendedLevel: "6 - 9", overallLevel: 8 },
@@ -22,10 +22,10 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.LOST_PRAYER_TO_THE_SACRED_WINDS, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее оружие", r: 5 },
-    { name: WeaponNames.DODOCO_TALES, best: "Лучшее эвентовое оружие", r: 5 },
-    { name: WeaponNames.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.FLOWING_PURITY, r: 5 },
+    { id: WeaponIds.LOST_PRAYER_TO_THE_SACRED_WINDS, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.DODOCO_TALES, best: "Лучшее эвентовое оружие", r: 5 },
+    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FLOWING_PURITY, r: 5 },
   ],
 } as CharacterRecommendations;

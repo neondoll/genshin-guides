@@ -1,10 +1,15 @@
-import type { Talent as TalentDB } from "genshin-db";
+import type { CharacterId, TravelerId } from "./characters.types";
+import type { ElementId } from "./elements.types";
 
-import type { CharacterName, TravelerName } from "./characters.types";
-import type { ElementName } from "./elements.types";
+export type TalentId = Exclude<CharacterId, TravelerId> | `traveler_${ElementId}`;
 
-export interface Talent extends TalentDB {
-  name: TalentName;
+export interface Talent {
+  id: TalentId;
+  name: string;
+  combat1: string;
+  combat2: string;
+  combat3: string;
+  version: string;
 }
 
-export type TalentName = Exclude<CharacterName, TravelerName> | `Путешественница (${ElementName})`;
+export type TalentListItem = Pick<Talent, "id" | "name">;

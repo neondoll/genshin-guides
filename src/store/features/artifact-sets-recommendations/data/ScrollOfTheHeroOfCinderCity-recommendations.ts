@@ -1,17 +1,17 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
 import { ElementNames } from "@/types/elements.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
 import { Stats, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.CHEVREUSE, best: true },
-    { type: "character", name: CharacterNames.CITLALI, best: true },
-    { type: "character", name: CharacterNames.IANSAN, best: true },
-    { type: "character", name: CharacterNames.MAVUIKA, best: true },
-    { type: "character", name: CharacterNames.ORORON, best: true },
-    { type: "character", name: CharacterNames.XILONEN, best: true },
+    { type: "character", id: CharacterIds.CHEVREUSE, best: true },
+    { type: "character", id: CharacterIds.CITLALI, best: true },
+    { type: "character", id: CharacterIds.IANSAN, best: true },
+    { type: "character", id: CharacterIds.MAVUIKA, best: true },
+    { type: "character", id: CharacterIds.ORORON, best: true },
+    { type: "character", id: CharacterIds.XILONEN, best: true },
     { type: "traveler", elementName: ElementNames.PYRO, best: true },
     { type: "other", title: "..." },
   ],

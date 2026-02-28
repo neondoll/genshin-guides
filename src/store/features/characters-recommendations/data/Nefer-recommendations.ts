@@ -1,19 +1,19 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterNames } from "@/types/characters.types";
-import { ElementNames } from "@/types/elements.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { CharacterIds } from "@/types/characters.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
+import { ElementIds } from "@/types/elements.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.NIGHT_OF_THE_SKYS_UNVEILING, best: true },
-      { type: "complete", name: ArtifactSetNames.MARECHAUSSEE_HUNTER },
-      { type: "complete", name: ArtifactSetNames.GILDED_DREAMS },
-      { type: "complete", name: ArtifactSetNames.FLOWER_OF_PARADISE_LOST },
+      { ids: [ArtifactSetIds.NIGHT_OF_THE_SKYS_UNVEILING], best: true },
+      { ids: [ArtifactSetIds.MARECHAUSSEE_HUNTER] },
+      { ids: [ArtifactSetIds.GILDED_DREAMS] },
+      { ids: [ArtifactSetIds.FLOWER_OF_PARADISE_LOST] },
     ],
     stats: {
       sands: [{ name: Stats.ELEMENTAL_MASTERY }],
@@ -37,9 +37,9 @@ export default {
   detachments: [
     {
       template: [
-        { type: "character", name: CharacterNames.NEFER },
-        { type: "element", name: ElementNames.DENDRO },
-        { type: "element", name: ElementNames.HYDRO },
+        { type: "character", id: CharacterIds.NEFER },
+        { type: "element", id: ElementIds.DENDRO },
+        { type: "element", id: ElementIds.HYDRO },
         { type: "other", title: "Саппорт" },
       ],
     },
@@ -47,7 +47,7 @@ export default {
   keyConstellations: [2],
   recommendedLevel: "80/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.RELIQUARY_OF_TRUTH],
+  signatureWeaponIds: [WeaponIds.RELIQUARY_OF_TRUTH],
   talents: [
     { type: "combat1", priority: "Не качаем", referenceLevel: 1 },
     { type: "combat2", priority: "В первую очередь", referenceLevel: 10 },
@@ -55,16 +55,16 @@ export default {
   ],
   videoSourceIds: [VideoSourceIds.GUIDE_TO_NEFER_IN_6_1_AnimeCool, VideoSourceIds.GUIDE_TO_NEFER_IN_6_1_MironMinMax],
   weapons: [
-    { name: WeaponNames.RELIQUARY_OF_TRUTH, best: "Лучшее оружие", percent: 1.2412 },
-    { name: WeaponNames.NIGHTWEAVERS_LOOKING_GLASS, percent: 1.0948 },
-    { name: WeaponNames.DAWNING_FROST, r: 5, percent: 1.0884 },
-    { name: WeaponNames.TOME_OF_THE_ETERNAL_FLOW, percent: 1.0351 },
-    { name: WeaponNames.STARCALLERS_WATCH, percent: 1.0119 },
-    { name: WeaponNames.SUNNY_MORNING_SLEEP_IN, percent: 1.0047 },
-    { name: WeaponNames.BLACKMARROW_LANTERN, best: "Лучшее доступное оружие", r: 5, percent: 1.0000 },
-    { name: WeaponNames.DAWNING_FROST, r: 1, percent: 0.9962 },
-    { name: WeaponNames.A_THOUSAND_FLOATING_DREAMS, percent: 0.9848 },
-    { name: WeaponNames.BLACKMARROW_LANTERN, r: 1, percent: 0.9679 },
-    { name: WeaponNames.THE_WIDSITH, r: 5, percent: 0.9611 },
+    { id: WeaponIds.RELIQUARY_OF_TRUTH, best: "Лучшее оружие", percent: 1.2412 },
+    { id: WeaponIds.NIGHTWEAVERS_LOOKING_GLASS, percent: 1.0948 },
+    { id: WeaponIds.DAWNING_FROST, r: 5, percent: 1.0884 },
+    { id: WeaponIds.TOME_OF_THE_ETERNAL_FLOW, percent: 1.0351 },
+    { id: WeaponIds.STARCALLERS_WATCH, percent: 1.0119 },
+    { id: WeaponIds.SUNNY_MORNING_SLEEP_IN, percent: 1.0047 },
+    { id: WeaponIds.BLACKMARROW_LANTERN, best: "Лучшее доступное оружие", r: 5, percent: 1.0000 },
+    { id: WeaponIds.DAWNING_FROST, r: 1, percent: 0.9962 },
+    { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, percent: 0.9848 },
+    { id: WeaponIds.BLACKMARROW_LANTERN, r: 1, percent: 0.9679 },
+    { id: WeaponIds.THE_WIDSITH, r: 5, percent: 0.9611 },
   ],
 } as CharacterRecommendations;

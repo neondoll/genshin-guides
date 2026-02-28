@@ -11,22 +11,26 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Newspaper } from "./ui/icons";
+import { Skeleton } from "./ui/skeleton";
 import { ArtifactSetImage } from "./v1/artifact-set-image";
 import { CharacterImage } from "./v1/character-image";
 import { WeaponImage } from "./v1/weapon-image";
 import Paths from "@/paths";
-import { type ArtifactSetName } from "@/types/artifact-sets.types";
-import { type CharacterName, CharacterNames } from "@/types/characters.types";
-import { type WeaponName, WeaponNames } from "@/types/weapons.types";
+import { useArtifactSet } from "@/store/features/artifact-sets";
+import { useCharacter } from "@/store/features/characters";
+import { useWeapon } from "@/store/features/weapons";
+import { type ArtifactSetId } from "@/types/artifact-sets.types";
+import { type CharacterId, CharacterIds } from "@/types/characters.types";
+import { type WeaponId, WeaponIds } from "@/types/weapons.types";
 
-const artifactSetNames: ArtifactSetName[] = [];
-const characterNames: CharacterName[] = [CharacterNames.VARKA];
-const weaponNames: WeaponName[] = [WeaponNames.GEST_OF_THE_MIGHTY_WOLF];
+const artifactSetIds: ArtifactSetId[] = [];
+const characterIds: CharacterId[] = [CharacterIds.VARKA];
+const weaponIds: WeaponId[] = [WeaponIds.GEST_OF_THE_MIGHTY_WOLF];
 
 export const NewsDropdown: FC = () => {
-  const artifactSetsShow = useMemo(() => artifactSetNames.length > 0, []);
-  const charactersShow = useMemo(() => characterNames.length > 0, []);
-  const weaponsShow = useMemo(() => weaponNames.length > 0, []);
+  const artifactSetsShow = useMemo(() => artifactSetIds.length > 0, []);
+  const charactersShow = useMemo(() => characterIds.length > 0, []);
+  const weaponsShow = useMemo(() => weaponIds.length > 0, []);
 
   return (artifactSetsShow || charactersShow || weaponsShow) && (
     <DropdownMenu>
@@ -39,43 +43,107 @@ export const NewsDropdown: FC = () => {
       <DropdownMenuContent align="end">
         {charactersShow && (
           <DropdownMenuGroup>
-            {characterNames.map(characterName => (
-              <DropdownMenuItem asChild key={characterName}>
-                <Link to={Paths.CHARACTER(JSON.stringify(characterName))}>
-                  <CharacterImage className="size-8 rounded-sm" name={characterName} />
-                  {characterName}
-                </Link>
-              </DropdownMenuItem>
+            {characterIds.map(characterId => (
+              <CharacterDropdownMenuItem characterId={characterId} key={characterId} />
             ))}
           </DropdownMenuGroup>
         )}
         {weaponsShow && (
           <DropdownMenuGroup>
             {charactersShow && <DropdownMenuSeparator />}
-            {weaponNames.map(weaponName => (
-              <DropdownMenuItem asChild key={weaponName}>
-                <Link to={Paths.WEAPON(JSON.stringify(weaponName))}>
-                  <WeaponImage className="size-8 rounded-sm" name={weaponName} />
-                  {weaponName}
-                </Link>
-              </DropdownMenuItem>
+            {weaponIds.map(weaponId => (
+              <WeaponDropdownMenuItem key={weaponId} weaponId={weaponId} />
             ))}
           </DropdownMenuGroup>
         )}
         {artifactSetsShow && (
           <DropdownMenuGroup>
             {(charactersShow || weaponsShow) && <DropdownMenuSeparator />}
-            {artifactSetNames.map(artifactSetName => (
-              <DropdownMenuItem asChild key={artifactSetName}>
-                <Link to={Paths.ARTIFACT_SET(JSON.stringify(artifactSetName))}>
-                  <ArtifactSetImage className="size-8 rounded-sm" name={artifactSetName} />
-                  {artifactSetName}
-                </Link>
-              </DropdownMenuItem>
+            {artifactSetIds.map(artifactSetId => (
+              <ArtifactSetDropdownMenuItem artifactSetId={artifactSetId} key={artifactSetId} />
             ))}
           </DropdownMenuGroup>
         )}
       </DropdownMenuContent>
     </DropdownMenu>
+  );
+};
+
+const ArtifactSetDropdownMenuItem: FC<{ artifactSetId: ArtifactSetId }> = ({ artifactSetId }) => {
+  const { artifactSet, loading } = useArtifactSet(artifactSetId);
+
+  if (loading) {
+    return (
+      <DropdownMenuItem asChild>
+        <Skeleton className="h-11" />
+      </DropdownMenuItem>
+    );
+  }
+
+  return artifactSet && (
+    <DropdownMenuItem asChild>
+      <Link to={Paths.ARTIFACT_SET(artifactSet.id)}>
+        <ArtifactSetImage
+          artifactSetId={artifactSet.id}
+          artifactSetImage={artifactSet.image}
+          artifactSetRarityList={artifactSet.rarityList}
+          artifactSetName={artifactSet.name}
+          className="size-8 rounded-sm"
+        />
+        {artifactSet.name}
+      </Link>
+    </DropdownMenuItem>
+  );
+};
+const CharacterDropdownMenuItem: FC<{ characterId: CharacterId }> = ({ characterId }) => {
+  const { character, loading } = useCharacter(characterId);
+
+  if (loading) {
+    return (
+      <DropdownMenuItem asChild>
+        <Skeleton className="h-11" />
+      </DropdownMenuItem>
+    );
+  }
+
+  return character && (
+    <DropdownMenuItem asChild>
+      <Link to={Paths.CHARACTER(character.id)}>
+        <CharacterImage
+          characterId={character.id}
+          characterImage={character.image}
+          characterRarity={character.rarity}
+          characterName={character.name}
+          className="size-8 rounded-sm"
+        />
+        {character.name}
+      </Link>
+    </DropdownMenuItem>
+  );
+};
+const WeaponDropdownMenuItem: FC<{ weaponId: WeaponId }> = ({ weaponId }) => {
+  const { weapon, loading } = useWeapon(weaponId);
+
+  if (loading) {
+    return (
+      <DropdownMenuItem asChild>
+        <Skeleton className="h-11" />
+      </DropdownMenuItem>
+    );
+  }
+
+  return weapon && (
+    <DropdownMenuItem asChild>
+      <Link to={Paths.WEAPON(weapon.id)}>
+        <WeaponImage
+          className="size-8 rounded-sm"
+          weaponId={weapon.id}
+          weaponImage={weapon.image}
+          weaponRarity={weapon.rarity}
+          weaponName={weapon.name}
+        />
+        {weapon.name}
+      </Link>
+    </DropdownMenuItem>
   );
 };

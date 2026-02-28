@@ -1,17 +1,17 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
+import { WeaponIds } from "@/types/weapons.types";
 import { formatPercent } from "@/utils/format";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.TENACITY_OF_THE_MILLELITH, best: true },
-      { type: "complete", name: ArtifactSetNames.NOBLESSE_OBLIGE },
-      { type: "complete", name: ArtifactSetNames.BLIZZARD_STRAYER },
+      { ids: [ArtifactSetIds.TENACITY_OF_THE_MILLELITH], best: true },
+      { ids: [ArtifactSetIds.NOBLESSE_OBLIGE] },
+      { ids: [ArtifactSetIds.BLIZZARD_STRAYER] },
     ],
     stats: {
       sands: [
@@ -51,5 +51,5 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
-  weapons: [{ name: WeaponNames.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 }],
+  weapons: [{ id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 }],
 } as CharacterRecommendations;

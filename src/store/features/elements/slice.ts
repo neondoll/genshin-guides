@@ -1,34 +1,46 @@
 import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
-import { type Element, type ElementName } from "@/types/elements.types";
-import { getElement, getElementsNames } from "@/utils/genshinDbAdapter";
+import { type Element, type ElementListItem } from "@/types/elements.types";
+import { getElement, getElementList } from "@/utils/genshinDbAdapter";
 
 export interface ElementsState {
-  entities: { [P in ElementName]?: Element | null };
-  names: ElementName[];
+  details: { [P in Element["id"]]?: Element };
+  list: ElementListItem[];
 }
 
-const initialState: ElementsState = { entities: {}, names: [] };
+const initialState: ElementsState = { details: {}, list: [] };
 
-export const fetchElementByName = createAsyncThunk<Element | null, ElementName>("elements/fetchByName", async (elementName: ElementName, { getState }) => {
+export const fetchElement = createAsyncThunk<Element, Element["id"]>("elements/fetch", async (elementId, { getState }) => {
   const state = getState() as { elements: ElementsState };
 
-  const stateElement = state.elements.entities[elementName];
+  const stateElement = state.elements.details[elementId];
 
   if (stateElement) {
-    // console.log(`Элемент "${elementName}" найден в хранилище`);
+    console.log(`Элемент с ID "${elementId}" найден в хранилище`);
 
     return stateElement;
   }
 
-  // console.log(`Загрузка элемента "${elementName}" с сервера`);
+  console.log(`Загрузка элемента с ID "${elementId}" с сервера`);
 
-  return getElement(elementName);
+  return await getElement(elementId);
 });
-export const fetchElementsName = createAsyncThunk<ElementName[]>("elements/fetchNames", async () => {
-  // console.log(`Загрузка имен элементов с сервера`);
+export const fetchElementList = createAsyncThunk<ElementListItem[]>("elements/fetchList", async (_, { getState }) => {
+  const state = getState() as { elements: ElementsState };
 
-  return getElementsNames();
+  const stateList = state.elements.list;
+
+  if (stateList.length) {
+    console.log("Список элементов найден в хранилище");
+
+    return stateList;
+  }
+
+  console.log(`Загрузка списка элементов с сервера`);
+
+  const list = await getElementList();
+
+  return list.sort((a, b) => a.name.localeCompare(b.name));
 });
 
 export const elementsSlice = createSlice<ElementsState, SliceCaseReducers<ElementsState>, string, SliceSelectors<ElementsState>, string>({
@@ -36,21 +48,11 @@ export const elementsSlice = createSlice<ElementsState, SliceCaseReducers<Elemen
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchElementByName.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.entities[action.payload.name] = action.payload;
-
-        if (!state.names.includes(action.payload.name)) {
-          state.names = [...state.names, action.payload.name].sort((a, b) => a.localeCompare(b));
-        }
-      }
+    builder.addCase(fetchElement.fulfilled, (state, action) => {
+      state.details[action.payload.id] = action.payload;
     });
-    builder.addCase(fetchElementsName.fulfilled, (state, action) => {
-      action.payload.forEach((name) => {
-        if (!state.names.includes(name)) {
-          state.names = [...state.names, name].sort((a, b) => a.localeCompare(b));
-        }
-      });
+    builder.addCase(fetchElementList.fulfilled, (state, action) => {
+      state.list = action.payload;
     });
   },
 });

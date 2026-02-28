@@ -1,8 +1,8 @@
 export {
   useWeapon as useWeapon,
-  useWeaponsNames as useWeaponsNames,
+  useWeaponList as useWeaponList,
 } from "./hooks";
-export { WeaponIcons as WeaponIcons } from "./icons";
+export { WeaponImages as WeaponImages } from "./images";
 export {
   default as weaponsReducer,
   type WeaponsState as WeaponsState,

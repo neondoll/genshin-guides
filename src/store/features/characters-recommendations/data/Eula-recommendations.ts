@@ -1,13 +1,13 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "Сигна",
   recommendedLevel: "80/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.SONG_OF_BROKEN_PINES],
+  signatureWeaponIds: [WeaponIds.SONG_OF_BROKEN_PINES],
   talents: [
     { type: "combat1", priority: "Во вторую очередь", referenceLevel: 10 },
     { type: "combat2", priority: "По необходимости", referenceLevel: 6 },
@@ -21,9 +21,9 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.SONG_OF_BROKEN_PINES, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.ULTIMATE_OVERLORDS_MEGA_MAGIC_SWORD, best: "Лучшее эвентовое оружие", r: 5 },
-    { name: WeaponNames.PROTOTYPE_ARCHAIC, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.TIDAL_SHADOW, r: 5 },
+    { id: WeaponIds.SONG_OF_BROKEN_PINES, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.ULTIMATE_OVERLORDS_MEGA_MAGIC_SWORD, best: "Лучшее эвентовое оружие", r: 5 },
+    { id: WeaponIds.PROTOTYPE_ARCHAIC, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.TIDAL_SHADOW, r: 5 },
   ],
 } as CharacterRecommendations;

@@ -1,12 +1,12 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "Сигна",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.CASHFLOW_SUPERVISION],
+  signatureWeaponIds: [WeaponIds.CASHFLOW_SUPERVISION],
   talents: [
     { type: "combat1", priority: "В первую очередь", referenceLevel: 10 },
     { type: "combat2", priority: "По необходимости", referenceLevel: 10 },
@@ -19,8 +19,8 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { name: WeaponNames.CASHFLOW_SUPERVISION, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.FLOWING_PURITY, r: 5 },
+    { id: WeaponIds.CASHFLOW_SUPERVISION, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FLOWING_PURITY, r: 5 },
   ],
 } as CharacterRecommendations;

@@ -1,7 +1,7 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
@@ -16,11 +16,11 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { name: WeaponNames.SERPENT_SPINE, best: "Лучшее оружие", r: 5 },
-    { name: WeaponNames.REDHORN_STONETHRESHER, r: 1 },
-    { name: WeaponNames.WOLFS_GRAVESTONE, r: 1 },
-    { name: WeaponNames.EARTH_SHAKER, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.RAINSLASHER, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.TIDAL_SHADOW, r: 5 },
+    { id: WeaponIds.SERPENT_SPINE, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.REDHORN_STONETHRESHER, r: 1 },
+    { id: WeaponIds.WOLFS_GRAVESTONE, r: 1 },
+    { id: WeaponIds.EARTH_SHAKER, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.RAINSLASHER, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.TIDAL_SHADOW, r: 5 },
   ],
 } as CharacterRecommendations;

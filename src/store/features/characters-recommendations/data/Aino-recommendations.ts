@@ -1,17 +1,17 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.SILKEN_MOONS_SERENADE, best: true },
-      { type: "complete", name: ArtifactSetNames.NOBLESSE_OBLIGE },
-      { type: "complete", name: ArtifactSetNames.INSTRUCTOR },
-      { type: "complete", name: ArtifactSetNames.GILDED_DREAMS },
+      { ids: [ArtifactSetIds.SILKEN_MOONS_SERENADE], best: true },
+      { ids: [ArtifactSetIds.NOBLESSE_OBLIGE] },
+      { ids: [ArtifactSetIds.INSTRUCTOR] },
+      { ids: [ArtifactSetIds.GILDED_DREAMS] },
     ],
     stats: {
       sands: [{ name: Stats.ENERGY_RECHARGE }, { name: Stats.ELEMENTAL_MASTERY }],
@@ -31,10 +31,10 @@ export default {
   ],
   videoSourceIds: [VideoSourceIds.GUIDE_TO_AINO_IN_6_0, VideoSourceIds.TALENT_GAINS_HYDRO],
   weapons: [
-    { name: WeaponNames.FLAME_FORGED_INSIGHT },
-    { name: WeaponNames.MASTER_KEY },
-    { name: WeaponNames.MAKHAIRA_AQUAMARINE },
-    { name: WeaponNames.FAVONIUS_GREATSWORD },
-    { name: WeaponNames.SACRIFICIAL_GREATSWORD },
+    { id: WeaponIds.FLAME_FORGED_INSIGHT },
+    { id: WeaponIds.MASTER_KEY },
+    { id: WeaponIds.MAKHAIRA_AQUAMARINE },
+    { id: WeaponIds.FAVONIUS_GREATSWORD },
+    { id: WeaponIds.SACRIFICIAL_GREATSWORD },
   ],
 } as CharacterRecommendations;

@@ -1,13 +1,13 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
-  constellationOrSignatureWeapon: `С1 если ${WeaponNames.THE_WIDSITH} R5 | Сигна если ${WeaponNames.THE_WIDSITH} не R5`,
+  constellationOrSignatureWeapon: `С1 если ${WeaponIds.THE_WIDSITH} R5 | Сигна если ${WeaponIds.THE_WIDSITH} не R5`,
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.TULAYTULLAHS_REMEMBRANCE],
+  signatureWeaponIds: [WeaponIds.TULAYTULLAHS_REMEMBRANCE],
   talents: [
     { type: "combat1", priority: "В первую очередь", recommendedLevel: 10 },
     { type: "combat2", priority: "Во вторую очередь", recommendedLevel: 10 },
@@ -22,8 +22,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { name: WeaponNames.TULAYTULLAHS_REMEMBRANCE, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.FLOWING_PURITY, r: 5 },
+    { id: WeaponIds.TULAYTULLAHS_REMEMBRANCE, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FLOWING_PURITY, r: 5 },
   ],
 } as CharacterRecommendations;

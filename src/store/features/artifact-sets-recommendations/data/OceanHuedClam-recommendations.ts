@@ -1,12 +1,12 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.BARBARA, best: true },
-    { type: "character", name: CharacterNames.SANGONOMIYA_KOKOMI, best: true },
+    { type: "character", id: CharacterIds.BARBARA, best: true },
+    { type: "character", id: CharacterIds.SANGONOMIYA_KOKOMI, best: true },
     { type: "other", title: "..." },
   ],
   preferredStats: {

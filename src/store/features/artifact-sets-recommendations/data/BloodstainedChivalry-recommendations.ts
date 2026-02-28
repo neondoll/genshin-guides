@@ -1,10 +1,10 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.XINYAN, best: true },
+    { type: "character", id: CharacterIds.XINYAN, best: true },
     { type: "other", title: ":(" },
   ],
   preferredStats: { sands: [], goblet: [], circlet: [], additional: [] },

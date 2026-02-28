@@ -1,7 +1,7 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "80/80",
@@ -17,5 +17,5 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
-  weapons: [{ name: WeaponNames.FAVONIUS_LANCE, best: "Лучшее оружие", r: 5 }],
+  weapons: [{ id: WeaponIds.FAVONIUS_LANCE, best: "Лучшее оружие", r: 5 }],
 } as CharacterRecommendations;

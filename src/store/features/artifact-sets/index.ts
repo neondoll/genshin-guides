@@ -1,8 +1,8 @@
 export {
   useArtifactSet as useArtifactSet,
-  useArtifactSetsNames as useArtifactSetsNames,
+  useArtifactSetList as useArtifactSetList,
 } from "./hooks";
-export { ArtifactSetIcons as ArtifactSetIcons } from "./icons";
+export { ArtifactSetImages as ArtifactSetImages } from "./images";
 export {
   default as artifactSetsReducer,
   type ArtifactSetsState as ArtifactSetsState,

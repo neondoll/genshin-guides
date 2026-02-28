@@ -1,16 +1,16 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.CITLALI, best: true },
-    { type: "character", name: CharacterNames.FURINA, best: true },
-    { type: "character", name: CharacterNames.LAYLA, best: true },
-    { type: "character", name: CharacterNames.MONA, best: true },
-    { type: "character", name: CharacterNames.SANGONOMIYA_KOKOMI, best: true },
-    { type: "character", name: CharacterNames.ZHONGLI, best: true },
+    { type: "character", id: CharacterIds.CITLALI, best: true },
+    { type: "character", id: CharacterIds.FURINA, best: true },
+    { type: "character", id: CharacterIds.LAYLA, best: true },
+    { type: "character", id: CharacterIds.MONA, best: true },
+    { type: "character", id: CharacterIds.SANGONOMIYA_KOKOMI, best: true },
+    { type: "character", id: CharacterIds.ZHONGLI, best: true },
     { type: "other", title: "..." },
   ],
   preferredStats: {

@@ -1,13 +1,13 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.CLORINDE, best: true },
-    { type: "character", name: CharacterNames.CYNO, best: true },
-    { type: "character", name: CharacterNames.KEQING, best: true },
+    { type: "character", id: CharacterIds.CLORINDE, best: true },
+    { type: "character", id: CharacterIds.CYNO, best: true },
+    { type: "character", id: CharacterIds.KEQING, best: true },
   ],
   preferredStats: {
     sands: [Stats.ATK_PERCENTAGE, Stats.ELEMENTAL_MASTERY],

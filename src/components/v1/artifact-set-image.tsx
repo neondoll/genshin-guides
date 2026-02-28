@@ -3,99 +3,130 @@ import { type CSSProperties, type FC, useMemo } from "react";
 import { ImageWithFallback } from "./image-with-fallback";
 import { Skeleton } from "../ui/skeleton";
 import { cn } from "@/lib/utils";
-import { ArtifactSetIcons, useArtifactSet } from "@/store/features/artifact-sets";
-import { type ArtifactSetName } from "@/types/artifact-sets.types";
+import { ArtifactSetImages, useArtifactSet } from "@/store/features/artifact-sets";
+import { type ArtifactSet, type ArtifactSetDetail } from "@/types/artifact-sets.types";
 import { type Rarity, RarityGradients } from "@/types/rarities.types";
 
-interface ArtifactSetImageProps {
+interface ArtifactSetImagePropsTemplate {
+  artifactSetId: ArtifactSet["id"];
   className?: string;
-  name: ArtifactSetName;
   style?: CSSProperties;
 }
 
-export const ArtifactSetCircletImage: FC<ArtifactSetImageProps> = ({ className, name, style }) => {
-  const { artifactSet, loading } = useArtifactSet(name);
+interface ArtifactSetDetailImageProps extends ArtifactSetImagePropsTemplate {
+  artifactSetDetail: ArtifactSetDetail;
+  artifactSetRarityList: ArtifactSet["rarityList"];
+}
 
-  const fallbackSrc = useMemo(() => ArtifactSetIcons[name]?.circlet, [name]);
+interface ArtifactSetImageProps extends ArtifactSetImagePropsTemplate {
+  artifactSetImage: ArtifactSet["image"];
+  artifactSetName: ArtifactSet["name"];
+  artifactSetRarityList: ArtifactSet["rarityList"];
+}
 
-  if (loading) {
-    return <Skeleton className={cn(RarityGradients[0], className)} style={style} />;
-  }
+type ArtifactSetImageLoadingProps = ArtifactSetImagePropsTemplate;
+
+export const ArtifactSetCircletImage: FC<ArtifactSetDetailImageProps> = ({
+  artifactSetDetail,
+  artifactSetId,
+  artifactSetRarityList,
+  className,
+  style,
+}) => {
+  const fallbackSrc = useMemo(() => ArtifactSetImages[artifactSetId]?.circlet, [artifactSetId]);
 
   return (
     <ImageWithFallback
-      alt={artifactSet?.circlet?.name ?? `${name} (circlet)`}
-      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
+      alt={artifactSetDetail.name}
+      className={cn(RarityGradients[Math.max(...artifactSetRarityList) as Rarity], className)}
       draggable={false}
       fallbackSrc={fallbackSrc}
-      src={artifactSet?.images.mihoyo_circlet ?? fallbackSrc}
+      src={artifactSetDetail.image ?? fallbackSrc}
       style={style}
     />
   );
 };
-export const ArtifactSetFlowerImage: FC<ArtifactSetImageProps> = ({ className, name, style }) => {
-  const { artifactSet, loading } = useArtifactSet(name);
-
-  const fallbackSrc = useMemo(() => ArtifactSetIcons[name]?.flower, [name]);
-
-  if (loading) {
-    return <Skeleton className={cn(RarityGradients[0], className)} style={style} />;
-  }
+export const ArtifactSetFlowerImage: FC<ArtifactSetDetailImageProps> = ({
+  artifactSetDetail,
+  artifactSetId,
+  artifactSetRarityList,
+  className,
+  style,
+}) => {
+  const fallbackSrc = useMemo(() => ArtifactSetImages[artifactSetId]?.flower, [artifactSetId]);
 
   return (
     <ImageWithFallback
-      alt={artifactSet?.flower?.name ?? `${name} (flower)`}
-      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
+      alt={artifactSetDetail.name}
+      className={cn(RarityGradients[Math.max(...artifactSetRarityList) as Rarity], className)}
       draggable={false}
       fallbackSrc={fallbackSrc}
-      src={artifactSet?.images.mihoyo_flower ?? fallbackSrc}
+      src={artifactSetDetail.image ?? fallbackSrc}
       style={style}
     />
   );
 };
-export const ArtifactSetGobletImage: FC<ArtifactSetImageProps> = ({ className, name, style }) => {
-  const { artifactSet, loading } = useArtifactSet(name);
-
-  const fallbackSrc = useMemo(() => ArtifactSetIcons[name]?.goblet, [name]);
-
-  if (loading) {
-    return <Skeleton className={cn(RarityGradients[0], className)} style={style} />;
-  }
+export const ArtifactSetGobletImage: FC<ArtifactSetDetailImageProps> = ({
+  artifactSetDetail,
+  artifactSetId,
+  artifactSetRarityList,
+  className,
+  style,
+}) => {
+  const fallbackSrc = useMemo(() => ArtifactSetImages[artifactSetId]?.goblet, [artifactSetId]);
 
   return (
     <ImageWithFallback
-      alt={artifactSet?.goblet?.name ?? `${name} (goblet)`}
-      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
+      alt={artifactSetDetail.name}
+      className={cn(RarityGradients[Math.max(...artifactSetRarityList) as Rarity], className)}
       draggable={false}
       fallbackSrc={fallbackSrc}
-      src={artifactSet?.images.mihoyo_goblet ?? fallbackSrc}
+      src={artifactSetDetail.image ?? fallbackSrc}
       style={style}
     />
   );
 };
-export const ArtifactSetImage: FC<ArtifactSetImageProps> = ({ className, name, style }) => {
-  const { artifactSet, loading } = useArtifactSet(name);
-
+export const ArtifactSetImage: FC<ArtifactSetImageProps> = ({
+  artifactSetId,
+  artifactSetImage,
+  artifactSetName,
+  artifactSetRarityList,
+  className,
+  style,
+}) => {
   const fallbackSrc = useMemo(() => {
-    const images = ArtifactSetIcons[name];
+    const images = ArtifactSetImages[artifactSetId];
 
     if (!images) {
       return undefined;
     }
 
     return images.flower || images.plume || images.sands || images.goblet || images.circlet;
-  }, [name]);
-  const src = useMemo(() => {
-    if (!artifactSet) {
+  }, [artifactSetId]);
+
+  return (
+    <ImageWithFallback
+      alt={artifactSetName}
+      className={cn(RarityGradients[Math.max(...artifactSetRarityList) as Rarity], className)}
+      draggable={false}
+      fallbackSrc={fallbackSrc}
+      src={artifactSetImage ?? fallbackSrc}
+      style={style}
+    />
+  );
+};
+export const ArtifactSetImageLoading: FC<ArtifactSetImageLoadingProps> = ({ artifactSetId, className, style }) => {
+  const { artifactSet, loading } = useArtifactSet(artifactSetId);
+
+  const fallbackSrc = useMemo(() => {
+    const images = ArtifactSetImages[artifactSetId];
+
+    if (!images) {
       return undefined;
     }
 
-    return artifactSet.images.mihoyo_flower
-      || artifactSet.images.mihoyo_plume
-      || artifactSet.images.mihoyo_sands
-      || artifactSet.images.mihoyo_goblet
-      || artifactSet.images.mihoyo_circlet;
-  }, [artifactSet]);
+    return images.flower || images.plume || images.sands || images.goblet || images.circlet;
+  }, [artifactSetId]);
 
   if (loading) {
     return <Skeleton className={cn(RarityGradients[0], className)} style={style} />;
@@ -103,51 +134,51 @@ export const ArtifactSetImage: FC<ArtifactSetImageProps> = ({ className, name, s
 
   return (
     <ImageWithFallback
-      alt={name}
+      alt={artifactSet?.name ?? `artifact-set-${artifactSetId}`}
       className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
       draggable={false}
       fallbackSrc={fallbackSrc}
-      src={src ?? fallbackSrc}
+      src={artifactSet?.image ?? fallbackSrc}
       style={style}
     />
   );
 };
-export const ArtifactSetPlumeImage: FC<ArtifactSetImageProps> = ({ className, name, style }) => {
-  const { artifactSet, loading } = useArtifactSet(name);
-
-  const fallbackSrc = useMemo(() => ArtifactSetIcons[name]?.plume, [name]);
-
-  if (loading) {
-    return <Skeleton className={cn(RarityGradients[0], className)} style={style} />;
-  }
+export const ArtifactSetPlumeImage: FC<ArtifactSetDetailImageProps> = ({
+  artifactSetDetail,
+  artifactSetId,
+  artifactSetRarityList,
+  className,
+  style,
+}) => {
+  const fallbackSrc = useMemo(() => ArtifactSetImages[artifactSetId]?.plume, [artifactSetId]);
 
   return (
     <ImageWithFallback
-      alt={artifactSet?.plume?.name ?? `${name} (plume)`}
-      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
+      alt={artifactSetDetail.name}
+      className={cn(RarityGradients[Math.max(...artifactSetRarityList) as Rarity], className)}
       draggable={false}
       fallbackSrc={fallbackSrc}
-      src={artifactSet?.images.mihoyo_plume ?? fallbackSrc}
+      src={artifactSetDetail.image ?? fallbackSrc}
       style={style}
     />
   );
 };
-export const ArtifactSetSandsImage: FC<ArtifactSetImageProps> = ({ className, name, style }) => {
-  const { artifactSet, loading } = useArtifactSet(name);
-
-  const fallbackSrc = useMemo(() => ArtifactSetIcons[name]?.sands, [name]);
-
-  if (loading) {
-    return <Skeleton className={cn(RarityGradients[0], className)} style={style} />;
-  }
+export const ArtifactSetSandsImage: FC<ArtifactSetDetailImageProps> = ({
+  artifactSetDetail,
+  artifactSetId,
+  artifactSetRarityList,
+  className,
+  style,
+}) => {
+  const fallbackSrc = useMemo(() => ArtifactSetImages[artifactSetId]?.sands, [artifactSetId]);
 
   return (
     <ImageWithFallback
-      alt={artifactSet?.sands?.name ?? `${name} (sands)`}
-      className={cn(RarityGradients[artifactSet ? Math.max(...artifactSet.rarityList) as Rarity : 0], className)}
+      alt={artifactSetDetail.name}
+      className={cn(RarityGradients[Math.max(...artifactSetRarityList) as Rarity], className)}
       draggable={false}
       fallbackSrc={fallbackSrc}
-      src={artifactSet?.images.mihoyo_sands ?? fallbackSrc}
+      src={artifactSetDetail.image ?? fallbackSrc}
       style={style}
     />
   );

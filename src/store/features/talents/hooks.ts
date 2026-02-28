@@ -1,44 +1,44 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { fetchTalentByName } from "./slice";
-import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { type TalentName } from "@/types/talents.types";
+import { fetchTalent } from "./slice";
+import { useAppDispatch, useAppSelector } from "@/store";
+import { type TalentId } from "@/types/talents.types";
 
-export const useTalent = (name: TalentName) => {
+export const useTalent = (id: TalentId) => {
   const dispatch = useAppDispatch();
-  const talents = useAppSelector(state => state.talents.entities);
+  const talents = useAppSelector(state => state.talents.details);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const getTalent = useCallback(async (name: TalentName) => {
+  const getTalent = useCallback(async (id: TalentId) => {
     try {
       setLoading(true);
-      await dispatch(fetchTalentByName(name));
+      await dispatch(fetchTalent(id));
       setError(null);
     }
     catch (error) {
-      setError("Ошибка загрузки данных из genshin-db");
-      console.error(`Ошибка при получении талантов для "${name}":`, error);
+      setError("Ошибка загрузки данных с сервера");
+      console.error(`Ошибка при получении талантов с ID "${id}":`, error);
     }
     finally {
       setLoading(false);
     }
   }, [dispatch]);
-  const isStored = useCallback((name: TalentName) => !!talents[name], [talents]);
-  const preloadTalent = useCallback((name: TalentName) => {
-    if (!isStored(name)) {
-      getTalent(name);
+  const isStored = useCallback((id: TalentId) => !!talents[id], [talents]);
+  const preloadTalent = useCallback((id: TalentId) => {
+    if (!isStored(id)) {
+      getTalent(id);
     }
     else {
       setLoading(false);
     }
   }, [getTalent, isStored]);
 
-  const talent = useMemo(() => talents[name], [name, talents]);
+  const talent = useMemo(() => talents[id], [id, talents]);
 
   useEffect(() => {
-    preloadTalent(name);
-  }, [name, preloadTalent]);
+    preloadTalent(id);
+  }, [id, preloadTalent]);
 
   return { error, loading, talent };
 };

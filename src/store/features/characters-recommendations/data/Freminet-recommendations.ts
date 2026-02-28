@@ -1,7 +1,7 @@
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "80/80",
@@ -18,8 +18,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { name: WeaponNames.SONG_OF_BROKEN_PINES, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.TIDAL_SHADOW, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.PROTOTYPE_ARCHAIC, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.SONG_OF_BROKEN_PINES, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.TIDAL_SHADOW, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.PROTOTYPE_ARCHAIC, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

@@ -1,11 +1,11 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.AINO, best: true },
+    { type: "character", id: CharacterIds.AINO, best: true },
     { type: "other", title: "Любой персонаж в отряде с героями из Нод-Края" },
   ],
   preferredStats: {

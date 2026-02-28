@@ -1,6 +1,6 @@
 export {
   useElement as useElement,
-  useElementsNames as useElementsNames,
+  useElementList as useElementList,
 } from "./hooks";
 export {
   default as elementsReducer,

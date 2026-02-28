@@ -1,27 +1,21 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds, ArtifactSetNames } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds, WeaponNames } from "@/types/weapons.types";
 
 export default {
   artifacts: {
     sets: [
-      { type: "complete", name: ArtifactSetNames.NOBLESSE_OBLIGE },
+      { ids: [ArtifactSetIds.NOBLESSE_OBLIGE] },
+      { ids: [ArtifactSetIds.SONG_OF_DAYS_PAST], notes: ["Не рекомендуется, слишком нестабильна и требует овер хил"] },
       {
-        type: "complete",
-        name: ArtifactSetNames.SONG_OF_DAYS_PAST,
-        notes: ["Не рекомендуется, слишком нестабильна и требует овер хил"],
-      },
-      {
-        type: "complete",
-        name: ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY,
+        ids: [ArtifactSetIds.SCROLL_OF_THE_HERO_OF_CINDER_CITY],
         notes: [`Если ${ArtifactSetNames.NOBLESSE_OBLIGE} занята`],
       },
       {
-        type: "complete",
-        name: ArtifactSetNames.EMBLEM_OF_SEVERED_FATE,
+        ids: [ArtifactSetIds.EMBLEM_OF_SEVERED_FATE],
         notes: [`Если ${ArtifactSetNames.NOBLESSE_OBLIGE} и ${ArtifactSetNames.SCROLL_OF_THE_HERO_OF_CINDER_CITY} заняты`],
       },
     ],
@@ -49,9 +43,9 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { name: WeaponNames.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.DIALOGUES_OF_THE_DESERT_SAGES, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.RIGHTFUL_REWARD, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.FAVONIUS_LANCE, r: 5 },
+    { id: WeaponIds.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.DIALOGUES_OF_THE_DESERT_SAGES, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.RIGHTFUL_REWARD, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FAVONIUS_LANCE, r: 5 },
   ],
 } as CharacterRecommendations;

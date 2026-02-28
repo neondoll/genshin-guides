@@ -1,17 +1,17 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.BENNETT, best: true },
-    { type: "character", name: CharacterNames.CHARLOTTE, best: true },
-    { type: "character", name: CharacterNames.CHEVREUSE, best: true },
-    { type: "character", name: CharacterNames.DIONA, best: true },
-    { type: "character", name: CharacterNames.MONA, best: true },
-    { type: "character", name: CharacterNames.ROSARIA, best: true },
-    { type: "character", name: CharacterNames.XIANYUN, best: true },
+    { type: "character", id: CharacterIds.BENNETT, best: true },
+    { type: "character", id: CharacterIds.CHARLOTTE, best: true },
+    { type: "character", id: CharacterIds.CHEVREUSE, best: true },
+    { type: "character", id: CharacterIds.DIONA, best: true },
+    { type: "character", id: CharacterIds.MONA, best: true },
+    { type: "character", id: CharacterIds.ROSARIA, best: true },
+    { type: "character", id: CharacterIds.XIANYUN, best: true },
     { type: "other", title: "Любой саппорт, использующий взрыв стихий" },
   ],
   preferredStats: {

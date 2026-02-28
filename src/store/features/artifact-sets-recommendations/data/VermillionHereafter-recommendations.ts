@@ -1,11 +1,11 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds, CharacterNames } from "@/types/characters.types";
 import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.XIAO, best: true },
+    { type: "character", id: CharacterIds.XIAO, best: true },
     { type: "other", title: `Атк дамагеры с ${CharacterNames.FURINA}` },
   ],
   preferredStats: {

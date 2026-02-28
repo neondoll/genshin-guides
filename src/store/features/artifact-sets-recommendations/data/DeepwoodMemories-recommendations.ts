@@ -1,17 +1,17 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.BAIZHU, best: true },
-    { type: "character", name: CharacterNames.KIRARA, best: true },
-    { type: "character", name: CharacterNames.LAUMA, best: true },
-    { type: "character", name: CharacterNames.NAHIDA, best: true },
-    { type: "character", name: CharacterNames.XINGQIU, best: true },
-    { type: "character", name: CharacterNames.YAOYAO, best: true },
-    { type: "character", name: CharacterNames.ZHONGLI, best: true },
+    { type: "character", id: CharacterIds.BAIZHU, best: true },
+    { type: "character", id: CharacterIds.KIRARA, best: true },
+    { type: "character", id: CharacterIds.LAUMA, best: true },
+    { type: "character", id: CharacterIds.NAHIDA, best: true },
+    { type: "character", id: CharacterIds.XINGQIU, best: true },
+    { type: "character", id: CharacterIds.YAOYAO, best: true },
+    { type: "character", id: CharacterIds.ZHONGLI, best: true },
     { type: "other", title: "..." },
   ],
   preferredStats: {

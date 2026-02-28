@@ -1,7 +1,7 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "80/90",
@@ -18,5 +18,5 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
-  weapons: [{ name: WeaponNames.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее оружие", r: 5 }],
+  weapons: [{ id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее оружие", r: 5 }],
 } as CharacterRecommendations;

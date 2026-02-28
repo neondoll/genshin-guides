@@ -1,11 +1,10 @@
 export const CharacterRoleIds = {
-  ON_FIELD: "on-field",
-  OFF_FIELD: "off-field",
+  ON_FIELD: "on_field",
+  OFF_FIELD: "off_field",
   DPS: "dps",
   SUPPORT: "support",
   SURVIVABILITY: "survivability",
 } as const;
-
 export type CharacterRoleId = typeof CharacterRoleIds[keyof typeof CharacterRoleIds];
 
 export interface CharacterRole {

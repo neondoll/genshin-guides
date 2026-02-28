@@ -1,13 +1,13 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   constellationOrSignatureWeapon: "Сигна",
   recommendedLevel: "90/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
-  signatureWeaponNames: [WeaponNames.THE_FIRST_GREAT_MAGIC],
+  signatureWeaponIds: [WeaponIds.THE_FIRST_GREAT_MAGIC],
   talents: [
     { type: "combat1", priority: "В первую очередь", recommendedLevel: "9 - 10", overallLevel: 10 },
     { type: "combat2", priority: "По необходимости", recommendedLevel: "8 - 10", overallLevel: 10 },
@@ -22,8 +22,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { name: WeaponNames.THE_FIRST_GREAT_MAGIC, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.SONG_OF_STILLNESS, best: "Лучшее доступное оружие", r: 5 },
-    { name: WeaponNames.PROTOTYPE_CRESCENT, r: 5 },
+    { id: WeaponIds.THE_FIRST_GREAT_MAGIC, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.SONG_OF_STILLNESS, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.PROTOTYPE_CRESCENT, r: 5 },
   ],
 } as CharacterRecommendations;

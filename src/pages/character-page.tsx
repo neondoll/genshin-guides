@@ -12,54 +12,56 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Card as UiCard } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { ArtifactSetImage } from "@/components/v1/artifact-set-image";
 import { BestTooltip } from "@/components/v1/best-tooltip";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/v1/card";
 import { CharacterImage } from "@/components/v1/character-image";
-import { ElementImage } from "@/components/v1/element-image";
+import { ElementImage, ElementImageLoading } from "@/components/v1/element-image";
 import { Loading, LoadingError } from "@/components/v1/loading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/v1/tabs";
 import { VideoSourcesTable } from "@/components/v1/video-sources-table";
 import { WeaponImage } from "@/components/v1/weapon-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
-import { useAppSelector } from "@/store/hooks";
+import { useArtifactSetList } from "@/store/features/artifact-sets";
 import { selectCharacterRolesByIds } from "@/store/features/character-roles";
-import { useCharacter } from "@/store/features/characters";
+import { useCharacter, useCharactersList } from "@/store/features/characters";
 import { useCharacterRecommendations } from "@/store/features/characters-recommendations";
-import { useElementsNames } from "@/store/features/elements";
+import { useElementList } from "@/store/features/elements";
 import { useTalent } from "@/store/features/talents";
-import { type CharacterName, type TravelerName, Travelers } from "@/types/characters.types";
+import { useWeaponList } from "@/store/features/weapons";
+import { useAppSelector } from "@/store/hooks";
+import { type CharacterId, type CharacterListItem, type TravelerId, TravelerIdArray } from "@/types/characters.types";
 import {
   type CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
   type CharacterArtifactStatRecommendation as ArtifactStatRecommendation,
   type CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
   type CharacterRecommendations as Recommendations,
-  type CharacterRecommendationsName,
+  type CharacterRecommendationsId as RecommendationsId,
   type CharacterTalentRecommendations as TalentRecommendations,
   type CharacterWeaponRecommendations as WeaponRecommendations,
 } from "@/types/characters-recommendations.types";
-import { type Talent, type TalentName } from "@/types/talents.types";
-import { type WeaponName } from "@/types/weapons.types";
+import { type Talent, type TalentId } from "@/types/talents.types";
+import { type WeaponId, type WeaponListItem } from "@/types/weapons.types";
 import { formatPercent } from "@/utils/format";
+import type { ArtifactSetListItem } from "@/types/artifact-sets.types.ts";
+import type { ElementListItem } from "@/types/elements.types.ts";
 
 const CharacterPage: FC = () => {
-  const { characterId } = useParams();
-
-  const characterName = useMemo(() => JSON.parse(characterId as string), [characterId]);
-
-  const { character, error, loading } = useCharacter(characterName);
+  const { characterId } = useParams<{ characterId: CharacterId }>();
+  const { character, error, loading } = useCharacter(characterId!);
 
   const characteristics = useMemo(() => [
-    { label: "Имя", value: characterName },
+    { label: "Имя", value: character?.name },
     { label: "День рождения", value: character?.birthday },
     { label: "Созвездие", value: character?.constellation },
     { label: "Титул", value: character?.title },
     { label: "Глаз Бога", value: character?.elementText },
     { label: "Группа", value: character?.affiliation },
     { label: "Версия выхода", value: character?.version },
-  ], [character, characterName]);
+  ], [character]);
 
   if (loading) {
     return <Loading />;
@@ -69,7 +71,7 @@ const CharacterPage: FC = () => {
     return <LoadingError error={error} />;
   }
 
-  return (
+  return character && (
     <>
       <Breadcrumb className="mb-8">
         <BreadcrumbList>
@@ -88,20 +90,26 @@ const CharacterPage: FC = () => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{characterName}</BreadcrumbPage>
+            <BreadcrumbPage>{character.name}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
       <div className="flex gap-6 mb-6">
-        <CharacterImage className="shrink-0 size-27 rounded-2xl rounded-br-4xl" name={characterName} />
+        <CharacterImage
+          characterId={character.id}
+          characterImage={character.image}
+          characterName={character.name}
+          characterRarity={character.rarity}
+          className="shrink-0 size-27 rounded-2xl rounded-br-4xl"
+        />
         <div>
           <div className="flex gap-1 items-center mb-1 text-[2rem]/10.5">
-            <h1>{characterName}</h1>
-            {character?.elementText && character.elementText !== "Нет" && (
-              <ElementImage className="shrink-0 size-7" name={character.elementText} />
+            <h1>{character.name}</h1>
+            {character.elementId !== "none" && (
+              <ElementImageLoading className="shrink-0 size-7" elementId={character.elementId} />
             )}
           </div>
-          {character?.rarity && (
+          {character.rarity && (
             <div className="flex">
               {[...Array(character.rarity)].map((_, i) => (
                 <span className="leading-none text-amber-400" key={i}>★</span>
@@ -109,11 +117,11 @@ const CharacterPage: FC = () => {
             </div>
           )}
           <div className="flex flex-wrap gap-x-1 gap-y-2 mt-4">
-            {character?.elementText && <Badge children={character.elementText} variant="secondary" />}
-            {character?.rarity && <Badge children={`${character.rarity}★`} variant="secondary" />}
-            {character?.region && <Badge children={character.region} variant="secondary" />}
-            {character?.substatText && <Badge children={character.substatText} variant="secondary" />}
-            {character?.weaponText && <Badge children={character.weaponText} variant="secondary" />}
+            {character.elementText && <Badge children={character.elementText} variant="secondary" />}
+            {character.rarity && <Badge children={`${character.rarity}★`} variant="secondary" />}
+            {character.region && <Badge children={character.region} variant="secondary" />}
+            {character.substatText && <Badge children={character.substatText} variant="secondary" />}
+            {character.weaponText && <Badge children={character.weaponText} variant="secondary" />}
           </div>
         </div>
       </div>
@@ -132,15 +140,15 @@ const CharacterPage: FC = () => {
           })}
         </CardContent>
       </Card>
-      {Travelers.includes(characterName)
-        ? <TravelerRecommendations name={characterName} />
-        : <CharacterRecommendations name={characterName} />}
+      {TravelerIdArray.includes(character.id as TravelerId)
+        ? <TravelerRecommendations travelerId={character.id as TravelerId} />
+        : <CharacterRecommendations recommendationsId={character.id as RecommendationsId} />}
     </>
   );
 };
 
-const TravelerRecommendations: FC<{ name: TravelerName }> = ({ name }) => {
-  const { elementsNames, loading } = useElementsNames();
+const TravelerRecommendations: FC<{ travelerId: TravelerId }> = ({ travelerId }) => {
+  const { elements, loading } = useElementList();
 
   if (loading) {
     return (
@@ -151,18 +159,23 @@ const TravelerRecommendations: FC<{ name: TravelerName }> = ({ name }) => {
   }
 
   return (
-    <Tabs className="gap-6" defaultValue={elementsNames[0]}>
+    <Tabs className="gap-6" defaultValue={elements[0].id}>
       <TabsList className="flex w-full">
-        {elementsNames.map(elementName => (
-          <TabsTrigger className="font-bold" key={elementName} value={elementName}>
-            <ElementImage className="shrink-0 size-7" name={elementName} />
-            {elementName}
+        {elements.map(element => (
+          <TabsTrigger className="font-bold" key={element.id} value={element.id}>
+            <ElementImage
+              className="shrink-0 size-7"
+              elementId={element.id}
+              elementImage={element.image}
+              elementName={element.name}
+            />
+            {element.name}
           </TabsTrigger>
         ))}
       </TabsList>
-      {elementsNames.map(elementName => (
-        <TabsContent key={elementName} value={elementName}>
-          <CharacterRecommendations name={`Путешественница (${elementName})`} characterName={name} />
+      {elements.map(element => (
+        <TabsContent key={element.id} value={element.id}>
+          <CharacterRecommendations characterId={travelerId} recommendationsId={`traveler_${element.id}`} />
         </TabsContent>
       ))}
     </Tabs>
@@ -180,17 +193,17 @@ const RecommendationTabs = {
 } as const;
 
 const CharacterRecommendations: FC<{
-  characterName?: CharacterName;
-  name: CharacterRecommendationsName;
-}> = ({ name }) => {
-  const { characterRecommendations } = useCharacterRecommendations(name);
+  characterId?: CharacterId;
+  recommendationsId: RecommendationsId;
+}> = ({ recommendationsId }) => {
+  const { characterRecommendations } = useCharacterRecommendations(recommendationsId);
 
   const tabs = useMemo(() => {
     const items = [];
 
     if (
       characterRecommendations?.constellationOrSignatureWeapon || characterRecommendations?.keyConstellations
-      || characterRecommendations?.recommendedLevel || characterRecommendations?.signatureWeaponNames
+      || characterRecommendations?.recommendedLevel || characterRecommendations?.signatureWeaponIds
     ) {
       items.push(RecommendationTabs.BASE);
     }
@@ -257,24 +270,9 @@ const CharacterRecommendations: FC<{
                     </TableCell>
                   </TableRow>
                 )}
-                {characterRecommendations.signatureWeaponNames && characterRecommendations.signatureWeaponNames.map((signatureWeaponName: WeaponName, index: number) => (
-                  <TableRow key={signatureWeaponName}>
-                    {index === 0 && (
-                      <TableCell
-                        className="text-base text-slate-700 dark:text-slate-300"
-                        rowSpan={characterRecommendations.signatureWeaponNames?.length}
-                      >
-                        Сигнатурное оружие
-                      </TableCell>
-                    )}
-                    <TableCell className="text-pretty whitespace-normal">
-                      <div className="flex gap-4 justify-start items-center">
-                        <WeaponImage className="size-16 rounded-md rounded-br-2xl" name={signatureWeaponName} />
-                        <span>{signatureWeaponName}</span>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
+                {characterRecommendations.signatureWeaponIds && (
+                  <CharacterSignatureWeaponTableRows signatureWeaponIds={characterRecommendations.signatureWeaponIds} />
+                )}
                 {characterRecommendations.constellationOrSignatureWeapon && (
                   <TableRow>
                     <TableCell className="text-base text-slate-700 dark:text-slate-300">Сигна или Созвездия?</TableCell>
@@ -293,7 +291,10 @@ const CharacterRecommendations: FC<{
           </TabsContent>
           <TabsContent value={RecommendationTabs.TALENTS.value}>
             {characterRecommendations.talents && (
-              <CharacterTalentRecommendations name={name} recommendations={characterRecommendations.talents} />
+              <CharacterTalentRecommendations
+                recommendations={characterRecommendations.talents}
+                talentId={recommendationsId}
+              />
             )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.WEAPONS.value}>
@@ -448,6 +449,8 @@ const CharacterArtifactSetRecommendations: FC<{
 const CharacterArtifactSetRecommendationsTable: FC<{
   recommendations: ArtifactSetRecommendations;
 }> = ({ recommendations }) => {
+  const { artifactSets, loading } = useArtifactSetList();
+
   const hasBest = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.best));
   }, [recommendations]);
@@ -458,202 +461,92 @@ const CharacterArtifactSetRecommendationsTable: FC<{
     return recommendations.some(recommendation => Boolean(recommendation.percent));
   }, [recommendations]);
 
+  if (loading) {
+    return (
+      <Skeleton />
+    );
+  }
+
   return (
     <Table>
       <TableBody>
         {recommendations.map((recommendation) => {
-          switch (recommendation.type) {
-            case "combined":
-              return (
-                <TableRow key={`combined-${recommendation.names.join("+")}`}>
-                  {hasBest && (
-                    <TableCell className="w-16">
-                      <BestTooltip className="size-12" value={recommendation.best} />
-                    </TableCell>
-                  )}
-                  <TableCell className="w-20">
-                    <div
-                      className="grid size-16"
-                      style={{ gridTemplateColumns: `repeat(${recommendation.names.length},minmax(0,1fr))` }}
-                    >
-                      {recommendation.names.map((name, index) => (
-                        <ArtifactSetImage
-                          className="aspect-square rounded-sm rounded-br-lg"
-                          key={name}
-                          name={name}
-                          style={{
-                            gridColumnEnd: index + 2,
-                            gridColumnStart: index + 1,
-                            gridRowEnd: index + 2,
-                            gridRowStart: index + 1,
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </TableCell>
-                  {/* <TableCell className="w-38">
-                    <div className="flex gap-4 justify-center items-center">
-                      {recommendation.names.map(name => (
-                        <ArtifactSetImage
-                          className="shrink-0 size-16 rounded-md rounded-br-2xl"
-                          key={name}
-                          name={name}
-                        />
-                      ))}
-                    </div>
-                  </TableCell> */}
-                  <TableCell className="text-pretty whitespace-normal">{recommendation.names.join(" + ")}</TableCell>
-                  {hasPercent && (
-                    <TableCell
-                      className={cn("text-center", recommendation.percent && {
-                        "text-green-500": recommendation.percent >= 1.02,
-                        "text-yellow-500": recommendation.percent >= 0.98 && recommendation.percent < 1.02,
-                        "text-red-500": recommendation.percent < 0.98,
-                      })}
-                    >
-                      {recommendation.percent ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
-                    </TableCell>
-                  )}
-                  {hasNotes && (
-                    <TableCell className="whitespace-normal">
-                      {recommendation.notes && (
-                        <ul className="pl-5 list-outside list-disc">
-                          {recommendation.notes.map((note, index) => (
-                            <li className="text-pretty" key={index}>{note}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </TableCell>
-                  )}
-                </TableRow>
-              );
-            case "complete":
-              return (
-                <TableRow key={`complete-${recommendation.name}`}>
-                  {hasBest && (
-                    <TableCell className="w-16">
-                      <BestTooltip className="size-12" value={recommendation.best} />
-                    </TableCell>
-                  )}
-                  <TableCell className="w-20">
-                    <div className="flex gap-4 justify-center items-center">
-                      <ArtifactSetImage
-                        className="shrink-0 size-16 rounded-md rounded-br-2xl"
-                        name={recommendation.name}
-                      />
-                    </div>
-                  </TableCell>
-                  <TableCell className="text-pretty whitespace-normal">{recommendation.name}</TableCell>
-                  {hasPercent && (
-                    <TableCell
-                      className={cn("text-center", recommendation.percent && {
-                        "text-green-500": recommendation.percent >= 1.02,
-                        "text-yellow-500": recommendation.percent >= 0.98 && recommendation.percent < 1.02,
-                        "text-red-500": recommendation.percent < 0.98,
-                      })}
-                    >
-                      {recommendation.percent ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
-                    </TableCell>
-                  )}
-                  {hasNotes && (
-                    <TableCell className="whitespace-normal">
-                      {recommendation.notes && (
-                        <ul className="pl-5 list-outside list-disc">
-                          {recommendation.notes.map((note, index) => (
-                            <li className="text-pretty" key={index}>{note}</li>
-                          ))}
-                        </ul>
-                      )}
-                    </TableCell>
-                  )}
-                </TableRow>
-              );
-          }
+          const combinedArtifactSets = artifactSets.filter(artifactSet => recommendation.ids.includes(artifactSet.id));
 
-          return null;
+          return (
+            <TableRow key={recommendation.ids.join("+")}>
+              {hasBest && (
+                <TableCell className="w-16">
+                  <BestTooltip className="size-12" value={recommendation.best} />
+                </TableCell>
+              )}
+              <TableCell className="w-20">
+                <div
+                  className="grid size-16"
+                  style={{ gridTemplateColumns: `repeat(${combinedArtifactSets.length}, minmax(0, 1fr))` }}
+                >
+                  {combinedArtifactSets.map((combinedArtifactSet, index) => (
+                    <ArtifactSetImage
+                      artifactSetId={combinedArtifactSet.id}
+                      artifactSetImage={combinedArtifactSet.image}
+                      artifactSetName={combinedArtifactSet.name}
+                      artifactSetRarityList={combinedArtifactSet.rarityList}
+                      className="aspect-square"
+                      key={combinedArtifactSet.id}
+                      style={{
+                        borderTopLeftRadius: `calc(var(--radius-md, 6px) / ${combinedArtifactSets.length})`,
+                        borderTopRightRadius: `calc(var(--radius-md, 6px) / ${combinedArtifactSets.length})`,
+                        borderBottomLeftRadius: `calc(var(--radius-md, 6px) / ${combinedArtifactSets.length})`,
+                        borderBottomRightRadius: `calc(var(--radius-2xl, 16px) / ${combinedArtifactSets.length})`,
+                        gridColumnEnd: index + 2,
+                        gridColumnStart: index + 1,
+                        gridRowEnd: index + 2,
+                        gridRowStart: index + 1,
+                      }}
+                    />
+                  ))}
+                </div>
+              </TableCell>
+              <TableCell className="text-pretty whitespace-normal">
+                {combinedArtifactSets.map(combinedArtifactSet => combinedArtifactSet.name).join(" + ")}
+              </TableCell>
+              {hasPercent && (
+                <TableCell
+                  className={cn("text-center", recommendation.percent && {
+                    "text-green-500": recommendation.percent >= 1.02,
+                    "text-yellow-500": recommendation.percent >= 0.98 && recommendation.percent < 1.02,
+                    "text-red-500": recommendation.percent < 0.98,
+                  })}
+                >
+                  {recommendation.percent ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
+                </TableCell>
+              )}
+              {hasNotes && (
+                <TableCell className="whitespace-normal">
+                  {recommendation.notes && (
+                    <ul className="pl-5 list-outside list-disc">
+                      {recommendation.notes.map((note, index) => (
+                        <li className="text-pretty" key={index}>{note}</li>
+                      ))}
+                    </ul>
+                  )}
+                </TableCell>
+              )}
+            </TableRow>
+          );
         })}
       </TableBody>
     </Table>
   );
 };
-const CharacterDetachmentItemRecommendation: FC<{ item: DetachmentItemRecommendation }> = ({ item }) => {
-  switch (item.type) {
-    case "character":
-      return (
-        <UiCard className="flex relative flex-col gap-1 justify-start items-center p-2">
-          <CharacterImage className="shrink-0 size-21.5 rounded-md rounded-br-2xl" name={item.name} />
-          <p className="my-auto text-center">{item.name}</p>
-          {item.c !== undefined && (
-            <span className="absolute top-2 left-2 p-1 text-sm/none text-center bg-card/60 rounded-tl-md rounded-br-md">
-              {`С${item.c}`}
-            </span>
-          )}
-          {(item.weapon || item.artifacts) && (
-            <div className="grid grid-cols-2 gap-1 items-center my-auto">
-              {item.weapon
-                ? (
-                    <div className="aspect-square relative">
-                      <WeaponImage className="rounded-sm" name={item.weapon} />
-                      {item.weaponR !== undefined && (
-                        <span
-                          className={cn([
-                            "absolute top-0 left-0 p-0.75 text-xs/none text-center bg-card/60 rounded-tl-sm",
-                            "rounded-br-sm",
-                          ])}
-                        >
-                          {`Р${item.weaponR}`}
-                        </span>
-                      )}
-                    </div>
-                  )
-                : <span />}
-              {item.artifacts
-                ? (
-                    <div
-                      className="grid"
-                      style={{ gridTemplateColumns: `repeat(${item.artifacts.length},minmax(0,1fr))` }}
-                    >
-                      {item.artifacts.map((artifact, index) => (
-                        <ArtifactSetImage
-                          className="aspect-square rounded-sm"
-                          key={artifact}
-                          name={artifact}
-                          style={{
-                            gridColumnEnd: index + 2,
-                            gridColumnStart: index + 1,
-                            gridRowEnd: index + 2,
-                            gridRowStart: index + 1,
-                          }}
-                        />
-                      ))}
-                    </div>
-                  )
-                : <span />}
-            </div>
-          )}
-        </UiCard>
-      );
-    case "element":
-      return (
-        <UiCard className="flex flex-col gap-1 justify-start items-center p-2">
-          <ElementImage className="shrink-0 p-2 size-21.5 rounded-md rounded-br-2xl" name={item.name} />
-          <p className="my-auto text-center">
-            {item.name}
-            {" персонаж"}
-          </p>
-        </UiCard>
-      );
-    case "other":
-      return (
-        <UiCard className="flex flex-col gap-1 justify-start items-center p-2">
-          <p className="my-auto text-center">{item.title}</p>
-        </UiCard>
-      );
-  }
-};
 const CharacterDetachmentRecommendations: FC<{
   recommendations: NonNullable<Recommendations["detachments"]>;
 }> = ({ recommendations }) => {
+  const { artifactSets } = useArtifactSetList();
+  const { characters } = useCharactersList();
+  const { elements } = useElementList();
+  const { weapons } = useWeaponList();
+
   const hasBest = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.best));
   }, [recommendations]);
@@ -680,7 +573,14 @@ const CharacterDetachmentRecommendations: FC<{
             <TableCell className="text-pretty whitespace-normal">
               <div className="grid grid-cols-[repeat(4,calc(var(--spacing)*26))] gap-2">
                 {recommendation.template.map((item, index) => (
-                  <CharacterDetachmentItemRecommendation item={item} key={index} />
+                  <CharacterDetachmentItemRecommendation
+                    artifactSets={artifactSets}
+                    characters={characters}
+                    elements={elements}
+                    item={item}
+                    key={index}
+                    weapons={weapons}
+                  />
                 ))}
               </div>
             </TableCell>
@@ -689,7 +589,14 @@ const CharacterDetachmentRecommendations: FC<{
                 {recommendation.variants?.map((variant, index) => (
                   <div className="grid grid-cols-[repeat(4,calc(var(--spacing)*26))] gap-2" key={index}>
                     {variant.map((item, index) => (
-                      <CharacterDetachmentItemRecommendation item={item} key={index} />
+                      <CharacterDetachmentItemRecommendation
+                        artifactSets={artifactSets}
+                        characters={characters}
+                        elements={elements}
+                        item={item}
+                        key={index}
+                        weapons={weapons}
+                      />
                     ))}
                   </div>
                 ))}
@@ -700,6 +607,120 @@ const CharacterDetachmentRecommendations: FC<{
       </TableBody>
     </Table>
   );
+};
+const CharacterDetachmentItemRecommendation: FC<{
+  artifactSets: ArtifactSetListItem[];
+  characters: CharacterListItem[];
+  elements: ElementListItem[];
+  item: DetachmentItemRecommendation;
+  weapons: WeaponListItem[];
+}> = ({ artifactSets: artifactSetsProp, characters, elements, item, weapons }) => {
+  switch (item.type) {
+    case "character": {
+      const artifactSets = artifactSetsProp.filter(artifactSet => item.artifactSetIds?.includes(artifactSet.id));
+      const character = characters.find(character => character.id === item.id);
+      const weapon = weapons.find(weapon => weapon.id === item.weaponId);
+
+      return (
+        <UiCard className="flex relative flex-col gap-1 justify-start items-center p-2">
+          <div className="shrink-0 size-21.5">
+            {character && (
+              <CharacterImage
+                characterId={character.id}
+                characterImage={character.image}
+                characterName={character.name}
+                characterRarity={character.rarity}
+                className="size-full rounded-md rounded-br-2xl"
+              />
+            )}
+          </div>
+          <p className="my-auto text-center">{character?.name}</p>
+          {item.c !== undefined && (
+            <span className="absolute top-2 left-2 p-1 text-sm/none text-center bg-card/60 rounded-tl-md rounded-br-md">
+              {`С${item.c}`}
+            </span>
+          )}
+          {(weapon || artifactSets.length > 0) && (
+            <div className="grid grid-cols-2 gap-1 items-center my-auto">
+              {weapon
+                ? (
+                    <div className="aspect-square relative">
+                      <WeaponImage
+                        className="rounded-sm"
+                        weaponId={weapon.id}
+                        weaponImage={weapon.image}
+                        weaponName={weapon.name}
+                        weaponRarity={weapon.rarity}
+                      />
+                      {item.weaponR !== undefined && (
+                        <span
+                          className={cn([
+                            "absolute top-0 left-0 p-0.75 text-xs/none text-center bg-card/60 rounded-tl-sm",
+                            "rounded-br-sm",
+                          ])}
+                        >
+                          {`Р${item.weaponR}`}
+                        </span>
+                      )}
+                    </div>
+                  )
+                : <span />}
+              {artifactSets.length > 0
+                ? (
+                    <div
+                      className="grid"
+                      style={{ gridTemplateColumns: `repeat(${artifactSets.length},minmax(0,1fr))` }}
+                    >
+                      {artifactSets.map((artifactSet, index) => (
+                        <ArtifactSetImage
+                          artifactSetId={artifactSet.id}
+                          artifactSetImage={artifactSet.image}
+                          artifactSetName={artifactSet.name}
+                          artifactSetRarityList={artifactSet.rarityList}
+                          className="aspect-square rounded-sm"
+                          key={artifactSet.id}
+                          style={{
+                            gridColumnEnd: index + 2,
+                            gridColumnStart: index + 1,
+                            gridRowEnd: index + 2,
+                            gridRowStart: index + 1,
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )
+                : <span />}
+            </div>
+          )}
+        </UiCard>
+      );
+    }
+    case "element": {
+      const element = elements.find(element => element.id === item.id);
+
+      return (
+        <UiCard className="flex flex-col gap-1 justify-start items-center p-2">
+          <div className="shrink-0 p-2 size-21.5">
+            {element && (
+              <ElementImage
+                className="size-full rounded-md rounded-br-2xl"
+                elementId={element.id}
+                elementImage={element.image}
+                elementName={element.name}
+              />
+            )}
+          </div>
+          <p className="my-auto text-center">{`${element?.name ?? item.id} персонаж`}</p>
+        </UiCard>
+      );
+    }
+    case "other":
+      return (
+        <UiCard className="flex flex-col gap-1 justify-start items-center p-2">
+          <p className="my-auto text-center">{item.title}</p>
+        </UiCard>
+      );
+  }
 };
 const CharacterRoleRecommendations: FC<{
   recommendations: NonNullable<Recommendations["roleIds"]>;
@@ -721,11 +742,44 @@ const CharacterRoleRecommendations: FC<{
     </Table>
   );
 };
+const CharacterSignatureWeaponTableRows: FC<{ signatureWeaponIds: WeaponId[] }> = ({ signatureWeaponIds }) => {
+  const { weapons } = useWeaponList();
+
+  const signatureWeapons = useMemo(() => {
+    return weapons.filter(weapon => signatureWeaponIds.includes(weapon.id));
+  }, [signatureWeaponIds, weapons]);
+
+  return (
+    <>
+      {signatureWeapons.map((signatureWeapon, index) => (
+        <TableRow key={signatureWeapon.id}>
+          {index === 0 && (
+            <TableCell className="text-base text-slate-700 dark:text-slate-300" rowSpan={signatureWeapons.length}>
+              Сигнатурное оружие
+            </TableCell>
+          )}
+          <TableCell className="text-pretty whitespace-normal">
+            <div className="flex gap-4 justify-start items-center">
+              <WeaponImage
+                className="size-16 rounded-md rounded-br-2xl"
+                weaponId={signatureWeapon.id}
+                weaponImage={signatureWeapon.image}
+                weaponName={signatureWeapon.name}
+                weaponRarity={signatureWeapon.rarity}
+              />
+              <span>{signatureWeapon.name}</span>
+            </div>
+          </TableCell>
+        </TableRow>
+      ))}
+    </>
+  );
+};
 const CharacterTalentRecommendations: FC<{
-  name: TalentName;
   recommendations: NonNullable<Recommendations["talents"]>;
-}> = ({ name, recommendations }) => {
-  const { talent } = useTalent(name);
+  talentId: TalentId;
+}> = ({ recommendations, talentId }) => {
+  const { talent } = useTalent(talentId);
 
   if (Array.isArray(recommendations)) {
     return talent && (
@@ -787,7 +841,7 @@ const CharacterTalentRecommendationsTable: FC<{
         {recommendations.map(recommendation => (
           <TableRow key={recommendation.type}>
             <TableCell className="text-center text-pretty whitespace-normal">
-              {talent[recommendation.type].name}
+              {talent[recommendation.type]}
             </TableCell>
             <TableCell className="text-center text-pretty whitespace-normal">{recommendation.priority}</TableCell>
             {hasReferenceLevel && (
@@ -834,6 +888,8 @@ const CharacterWeaponRecommendations: FC<{
   );
 };
 const CharacterWeaponRecommendationsTable: FC<{ recommendations: WeaponRecommendations }> = ({ recommendations }) => {
+  const { weapons } = useWeaponList();
+
   const hasBest = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.best));
   }, [recommendations]);
@@ -850,58 +906,64 @@ const CharacterWeaponRecommendationsTable: FC<{ recommendations: WeaponRecommend
   return (
     <Table>
       <TableBody>
-        {recommendations.map(recommendation => (
-          <TableRow
-            key={
-              recommendation.name
-              + (recommendation.postfix ? `-(${recommendation.postfix})` : "")
-              + (recommendation.r ? `-R${recommendation.r}` : "")
-            }
-          >
-            {hasBest && (
-              <TableCell className="w-16">
-                <BestTooltip className="size-12" value={recommendation.best} />
-              </TableCell>
-            )}
-            <TableCell className="w-20">
-              <WeaponImage className="size-16 rounded-md rounded-br-2xl" name={recommendation.name} />
-            </TableCell>
-            <TableCell className="text-pretty whitespace-normal">
-              {recommendation.name}
-              {recommendation.postfix && (
-                <>
-                  {" "}
-                  <span className="relative -bottom-[0.25em] text-[75%]/0 align-baseline">
-                    {`(${recommendation.postfix})`}
-                  </span>
-                </>
+        {recommendations.map((recommendation) => {
+          const weapon = weapons.find(weapon => weapon.id === recommendation.id);
+
+          return (
+            <TableRow key={recommendation.id + (recommendation.postfix && `-(${recommendation.postfix})`) + (recommendation.r && `-R${recommendation.r}`)}>
+              {hasBest && (
+                <TableCell className="w-16">
+                  <BestTooltip className="size-12" value={recommendation.best} />
+                </TableCell>
               )}
-            </TableCell>
-            {hasR && <TableCell className="text-center">{recommendation.r ? `R${recommendation.r}` : ""}</TableCell>}
-            {hasPercent && (
-              <TableCell
-                className={cn("text-center", recommendation.percent && {
-                  "text-green-500": recommendation.percent >= 1.02,
-                  "text-yellow-500": recommendation.percent >= 0.98 && recommendation.percent < 1.02,
-                  "text-red-500": recommendation.percent < 0.98,
-                })}
-              >
-                {recommendation.percent ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
-              </TableCell>
-            )}
-            {hasNotes && (
-              <TableCell className="whitespace-normal">
-                {recommendation.notes && (
-                  <ul className="pl-5 list-outside list-disc">
-                    {recommendation.notes.map((note, index) => (
-                      <li className="text-pretty" key={index}>{note}</li>
-                    ))}
-                  </ul>
+              <TableCell className="w-20">
+                {weapon && (
+                  <WeaponImage
+                    className="size-16 rounded-md rounded-br-2xl"
+                    weaponId={weapon.id}
+                    weaponImage={weapon.image}
+                    weaponName={weapon.name}
+                    weaponRarity={weapon.rarity}
+                  />
                 )}
               </TableCell>
-            )}
-          </TableRow>
-        ))}
+              <TableCell className="text-pretty whitespace-normal">
+                {weapon?.name}
+                {recommendation.postfix && (
+                  <>
+                    {" "}
+                    <span className="relative -bottom-[0.25em] text-[75%]/0 align-baseline">
+                      {`(${recommendation.postfix})`}
+                    </span>
+                  </>
+                )}
+              </TableCell>
+              {hasR && <TableCell className="text-center">{recommendation.r ? `R${recommendation.r}` : ""}</TableCell>}
+              {hasPercent && (
+                <TableCell
+                  className={cn("text-center", recommendation.percent && {
+                    "text-green-500": recommendation.percent >= 1.02,
+                    "text-yellow-500": recommendation.percent >= 0.98 && recommendation.percent < 1.02,
+                    "text-red-500": recommendation.percent < 0.98,
+                  })}
+                >
+                  {recommendation.percent ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
+                </TableCell>
+              )}
+              {hasNotes && (
+                <TableCell className="whitespace-normal">
+                  {recommendation.notes && (
+                    <ul className="pl-5 list-outside list-disc">
+                      {recommendation.notes.map((note, index) => (
+                        <li className="text-pretty" key={index}>{note}</li>
+                      ))}
+                    </ul>
+                  )}
+                </TableCell>
+              )}
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

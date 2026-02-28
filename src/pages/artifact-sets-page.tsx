@@ -16,11 +16,11 @@ import { Card, CardContent, CardTitle } from "@/components/v1/card";
 import { Loading, LoadingError } from "@/components/v1/loading";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
-import { useArtifactSetsNames } from "@/store/features/artifact-sets";
-import { type ArtifactSetName } from "@/types/artifact-sets.types";
+import { useArtifactSetList } from "@/store/features/artifact-sets";
+import { type ArtifactSetListItem } from "@/types/artifact-sets.types";
 
 const ArtifactSetsPage: FC = () => {
-  const { artifactSetsNames, error, loading } = useArtifactSetsNames();
+  const { artifactSets, error, loading } = useArtifactSetList();
   // const artifactSetsList = createRef<HTMLDivElement>();
 
   // useEffect(() => {
@@ -44,6 +44,24 @@ const ArtifactSetsPage: FC = () => {
   //     console.log("Max width:", maxWidth);
   //   }
   // }, [artifactSetsList]);
+  // useEffect(() => {
+  //   if (artifactSets.length) {
+  //     const ids: Record<string, ArtifactSetListItem["id"]> = {};
+  //
+  //     Object.entries(ArtifactSetNames).forEach(([key, name]) => {
+  //       const artifactSet = artifactSets.find(item => item.name === name);
+  //
+  //       if (artifactSet) {
+  //         ids[key] = artifactSet.id;
+  //       }
+  //       else {
+  //         console.error(`Artifact set "${name}" not found`);
+  //       }
+  //     });
+  //
+  //     console.log(ids);
+  //   }
+  // }, [artifactSets]);
 
   if (loading) {
     return <Loading />;
@@ -76,28 +94,34 @@ const ArtifactSetsPage: FC = () => {
         </Button>
       </div>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(232px,1fr))] gap-6 justify-center items-stretch">
-        {artifactSetsNames.map(artifactSetName => (
-          <ArtifactSetCard key={artifactSetName} name={artifactSetName} />
+        {artifactSets.map(artifactSet => (
+          <ArtifactSetCard item={artifactSet} key={artifactSet.id} />
         ))}
       </div>
     </>
   );
 };
-const ArtifactSetCard: FC<{ name: ArtifactSetName }> = ({ name }) => {
+const ArtifactSetCard: FC<{ item: ArtifactSetListItem }> = ({ item }) => {
   return (
     <Card
       className="relative transition-all duration-300 has-[a:hover]:border-amber-500/30 has-[a:hover]:shadow-2xl group"
     >
       <CardContent className="flex flex-col gap-6 items-center">
         <div className="shrink-0 size-24.5">
-          <ArtifactSetImage className="object-cover size-full rounded-lg rounded-br-3xl" name={name} />
+          <ArtifactSetImage
+            artifactSetId={item.id}
+            artifactSetImage={item.image}
+            artifactSetName={item.name}
+            artifactSetRarityList={item.rarityList}
+            className="object-cover size-full rounded-lg rounded-br-3xl"
+          />
         </div>
         <CardTitle
           className={cn([
             "text-center transition-colors group-has-[a:hover]:text-amber-700 dark:group-has-[a:hover]:text-amber-300",
           ])}
         >
-          <Link className="before:absolute before:inset-0" to={Paths.ARTIFACT_SET(JSON.stringify(name))}>{name}</Link>
+          <Link className="before:absolute before:inset-0" to={Paths.ARTIFACT_SET(item.id)}>{item.name}</Link>
         </CardTitle>
       </CardContent>
     </Card>

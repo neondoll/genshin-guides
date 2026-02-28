@@ -1,34 +1,46 @@
 import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
-import { type ArtifactSet, type ArtifactSetName } from "@/types/artifact-sets.types";
-import { getArtifactSet, getArtifactSetsNames } from "@/utils/genshinDbAdapter";
+import { type ArtifactSet, type ArtifactSetListItem } from "@/types/artifact-sets.types";
+import { getArtifactSet, getArtifactSetList } from "@/utils/genshinDbAdapter";
 
 export interface ArtifactSetsState {
-  entities: { [P in ArtifactSetName]?: ArtifactSet | null };
-  names: ArtifactSetName[];
+  details: { [P in ArtifactSet["id"]]?: ArtifactSet };
+  list: ArtifactSetListItem[];
 }
 
-const initialState: ArtifactSetsState = { entities: {}, names: [] };
+const initialState: ArtifactSetsState = { details: {}, list: [] };
 
-export const fetchArtifactSetByName = createAsyncThunk<ArtifactSet | null, ArtifactSetName>("artifactSets/fetchByName", async (artifactSetName, { getState }) => {
+export const fetchArtifactSet = createAsyncThunk<ArtifactSet, ArtifactSet["id"]>("artifactSets/fetch", async (artifactSetId, { getState }) => {
   const state = getState() as { artifactSets: ArtifactSetsState };
 
-  const stateArtifactSet = state.artifactSets.entities[artifactSetName];
+  const stateArtifactSet = state.artifactSets.details[artifactSetId];
 
   if (stateArtifactSet) {
-    // console.log(`Набор артефактов "${artifactSetName}" найден в хранилище`);
+    console.log(`Набор артефактов c ID "${artifactSetId}" найден в хранилище`);
 
     return stateArtifactSet;
   }
 
-  // console.log(`Загрузка набора артефактов "${artifactSetName}" с сервера`);
+  console.log(`Загрузка набора артефактов c ID "${artifactSetId}" с сервера`);
 
-  return getArtifactSet(artifactSetName);
+  return await getArtifactSet(artifactSetId);
 });
-export const fetchArtifactSetsName = createAsyncThunk<ArtifactSetName[]>("artifactSets/fetchNames", async () => {
-  // console.log(`Загрузка имен наборов артефактов с сервера`);
+export const fetchArtifactSetList = createAsyncThunk<ArtifactSetListItem[]>("artifactSets/fetchList", async (_, { getState }) => {
+  const state = getState() as { artifactSets: ArtifactSetsState };
 
-  return getArtifactSetsNames();
+  const stateList = state.artifactSets.list;
+
+  if (stateList.length) {
+    console.log("Список наборов артефактов найден в хранилище");
+
+    return stateList;
+  }
+
+  console.log("Загрузка списка наборов артефактов с сервера");
+
+  const list = await getArtifactSetList();
+
+  return list.sort((a, b) => a.name.localeCompare(b.name));
 });
 
 export const artifactSetsSlice = createSlice<ArtifactSetsState, SliceCaseReducers<ArtifactSetsState>, string, SliceSelectors<ArtifactSetsState>, string>({
@@ -36,21 +48,11 @@ export const artifactSetsSlice = createSlice<ArtifactSetsState, SliceCaseReducer
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchArtifactSetByName.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.entities[action.payload.name] = action.payload;
-
-        if (!state.names.includes(action.payload.name)) {
-          state.names = [...state.names, action.payload.name].sort((a, b) => a.localeCompare(b));
-        }
-      }
+    builder.addCase(fetchArtifactSet.fulfilled, (state, action) => {
+      state.details[action.payload.id] = action.payload;
     });
-    builder.addCase(fetchArtifactSetsName.fulfilled, (state, action) => {
-      action.payload.forEach((name) => {
-        if (!state.names.includes(name)) {
-          state.names = [...state.names, name].sort((a, b) => a.localeCompare(b));
-        }
-      });
+    builder.addCase(fetchArtifactSetList.fulfilled, (state, action) => {
+      state.list = action.payload;
     });
   },
 });

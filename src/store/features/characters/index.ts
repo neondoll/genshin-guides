@@ -1,8 +1,8 @@
 export {
   useCharacter as useCharacter,
-  useCharactersNames as useCharactersNames,
+  useCharactersList as useCharactersList,
 } from "./hooks";
-export { CharacterIcons as CharacterIcons } from "./icons";
+export { CharacterImages as CharacterImages } from "./images";
 export {
   default as charactersReducer,
   type CharactersState as CharactersState,

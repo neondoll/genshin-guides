@@ -1,12 +1,12 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.KAMISATO_AYATO, best: true },
-    { type: "character", name: CharacterNames.TARTAGLIA, best: true },
+    { type: "character", id: CharacterIds.KAMISATO_AYATO, best: true },
+    { type: "character", id: CharacterIds.TARTAGLIA, best: true },
   ],
   preferredStats: {
     sands: [Stats.ATK_PERCENTAGE],

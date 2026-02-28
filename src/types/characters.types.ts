@@ -1,6 +1,124 @@
-import type { Character as CharacterDB } from "genshin-db";
+import type { ElementId, ElementName } from "./elements.types";
+import type { Rarity } from "./rarities.types";
 
-import type { ElementName } from "./elements.types";
+export const CharacterIds = {
+  AETHER: "aether",
+  AINO: "aino",
+  ALBEDO: "albedo",
+  ALHAITHAM: "alhaitham",
+  ALOY: "aloy",
+  AMBER: "amber",
+  ARATAKI_ITTO: "arataki_itto",
+  ARLECCHINO: "arlecchino",
+  BAIZHU: "baizhu",
+  BARBARA: "barbara",
+  BEIDOU: "beidou",
+  BENNETT: "bennett",
+  CANDACE: "candace",
+  CHARLOTTE: "charlotte",
+  CHASCA: "chasca",
+  CHEVREUSE: "chevreuse",
+  CHIORI: "chiori",
+  CHONGYUN: "chongyun",
+  CITLALI: "citlali",
+  CLORINDE: "clorinde",
+  COLLEI: "collei",
+  COLUMBINA_HYPOSELENIA: "columbina",
+  CYNO: "cyno",
+  DAHLIA: "dahlia",
+  DEHYA: "dehya",
+  DILUC: "diluc",
+  DIONA: "diona",
+  DORI: "dori",
+  DURIN: "durin",
+  EMILIE: "emilie",
+  ESCOFFIER: "escoffier",
+  EULA: "eula",
+  FARUZAN: "faruzan",
+  FISCHL: "fischl",
+  FREMINET: "freminet",
+  FURINA: "furina",
+  GAMING: "gaming",
+  GANYU: "ganyu",
+  GOROU: "gorou",
+  HU_TAO: "hu_tao",
+  IANSAN: "iansan",
+  IFA: "ifa",
+  ILLUGA: "illuga",
+  INEFFA: "ineffa",
+  JAHODA: "jahoda",
+  JEAN: "jean",
+  KACHINA: "kachina",
+  KAEDEHARA_KAZUHA: "kaedehara_kazuha",
+  KAEYA: "kaeya",
+  KAMISATO_AYAKA: "kamisato_ayaka",
+  KAMISATO_AYATO: "kamisato_ayato",
+  KAVEH: "kaveh",
+  KEQING: "keqing",
+  KINICH: "kinich",
+  KIRARA: "kirara",
+  KLEE: "klee",
+  KUJOU_SARA: "kujou_sara",
+  KUKI_SHINOBU: "kuki_shinobu",
+  KYRYLL_CHUDOMIROVICH_FLINS: "flins",
+  LAN_YAN: "lan_yan",
+  LAUMA: "lauma",
+  LAYLA: "layla",
+  LISA: "lisa",
+  LUMINE: "lumine",
+  LYNETTE: "lynette",
+  LYNEY: "lyney",
+  MANEKIN: "manekin",
+  MANEKINA: "manekina",
+  MAVUIKA: "mavuika",
+  MIKA: "mika",
+  MONA: "mona",
+  MUALANI: "mualani",
+  NAHIDA: "nahida",
+  NAVIA: "navia",
+  NEFER: "nefer",
+  NEUVILLETTE: "neuvillette",
+  NILOU: "nilou",
+  NINGGUANG: "ningguang",
+  NOELLE: "noelle",
+  ORORON: "ororon",
+  QIQI: "qiqi",
+  RAIDEN_SHOGUN: "raiden_shogun",
+  RAZOR: "razor",
+  ROSARIA: "rosaria",
+  SANGONOMIYA_KOKOMI: "sangonomiya_kokomi",
+  SAYU: "sayu",
+  SETHOS: "sethos",
+  SHENHE: "shenhe",
+  SHIKANOIN_HEIZOU: "shikanoin_heizou",
+  SIGEWINNE: "sigewinne",
+  SKIRK: "skirk",
+  SUCROSE: "sucrose",
+  TARTAGLIA: "tartaglia",
+  THOMA: "thoma",
+  TIGHNARI: "tighnari",
+  VARESA: "varesa",
+  VARKA: "varka",
+  VENTI: "venti",
+  WANDERER: "wanderer",
+  WRIOTHESLEY: "wriothesley",
+  XIANGLING: "xiangling",
+  XIANYUN: "xianyun",
+  XIAO: "xiao",
+  XILONEN: "xilonen",
+  XINGQIU: "xingqiu",
+  XINYAN: "xinyan",
+  YAE_MIKO: "yae_miko",
+  YANFEI: "yanfei",
+  YAOYAO: "yaoyao",
+  YELAN: "yelan",
+  YOIMIYA: "yoimiya",
+  YUMEMIZUKI_MIZUKI: "yumemizuki_mizuki",
+  YUN_JIN: "yun_jin",
+  ZIBAI: "zibai",
+  ZHONGLI: "zhongli",
+} as const;
+export type CharacterId = typeof CharacterIds[keyof typeof CharacterIds];
 
 export const CharacterNames = {
   AETHER: "Итэр",
@@ -121,10 +239,26 @@ export const CharacterNames = {
 } as const;
 export type CharacterName = typeof CharacterNames[keyof typeof CharacterNames];
 
-export const Travelers = [CharacterNames.AETHER, CharacterNames.LUMINE] as const;
-export type TravelerName = typeof Travelers[number];
+export const TravelerIdArray = [CharacterIds.AETHER, CharacterIds.LUMINE] as const;
+export type TravelerId = typeof TravelerIdArray[number];
 
-export interface Character extends Omit<CharacterDB, "stats"> {
-  elementText: ElementName | "Нет";
+export interface Character {
+  id: CharacterId;
   name: CharacterName;
+  fullName?: string;
+  title: string;
+  weaponText: string;
+  rarity: Extract<Rarity, 4 | 5>;
+  birthday: string;
+  elementId: ElementId | "none";
+  elementText: ElementName | "Нет";
+  affiliation: string;
+  region: string;
+  substatText: string;
+  constellation: string;
+  image: string;
+  version: string;
 }
+
+export type CharacterConstellations = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+export type CharacterListItem = Pick<Character, "id" | "name" | "rarity" | "elementId" | "elementText" | "image">;

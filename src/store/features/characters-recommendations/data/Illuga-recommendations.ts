@@ -1,13 +1,13 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
-    sets: [{ type: "complete", name: ArtifactSetNames.SILKEN_MOONS_SERENADE }],
+    sets: [{ ids: [ArtifactSetIds.SILKEN_MOONS_SERENADE] }],
     stats: {
       sands: [{ name: Stats.ELEMENTAL_MASTERY }, { name: Stats.ENERGY_RECHARGE }],
       goblet: [{ name: Stats.ELEMENTAL_MASTERY }],
@@ -28,8 +28,8 @@ export default {
   ],
   videoSourceIds: [VideoSourceIds.GUIDE_TO_ILLUGA_IN_6_3],
   weapons: [
-    { name: WeaponNames.FAVONIUS_LANCE },
-    { name: WeaponNames.DRAGONS_BANE },
-    { name: WeaponNames.KITAIN_CROSS_SPEAR },
+    { id: WeaponIds.FAVONIUS_LANCE },
+    { id: WeaponIds.DRAGONS_BANE },
+    { id: WeaponIds.KITAIN_CROSS_SPEAR },
   ],
 } as CharacterRecommendations;

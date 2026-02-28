@@ -1,17 +1,17 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.ALHAITHAM, best: true },
-    { type: "character", name: CharacterNames.HU_TAO, best: true },
-    { type: "character", name: CharacterNames.INEFFA, best: true },
-    { type: "character", name: CharacterNames.LAUMA, best: true },
-    { type: "character", name: CharacterNames.KUKI_SHINOBU, best: true },
-    { type: "character", name: CharacterNames.RAIDEN_SHOGUN, best: true },
-    { type: "character", name: CharacterNames.TIGHNARI, best: true },
+    { type: "character", id: CharacterIds.ALHAITHAM, best: true },
+    { type: "character", id: CharacterIds.HU_TAO, best: true },
+    { type: "character", id: CharacterIds.INEFFA, best: true },
+    { type: "character", id: CharacterIds.LAUMA, best: true },
+    { type: "character", id: CharacterIds.KUKI_SHINOBU, best: true },
+    { type: "character", id: CharacterIds.RAIDEN_SHOGUN, best: true },
+    { type: "character", id: CharacterIds.TIGHNARI, best: true },
     { type: "other", title: "..." },
   ],
   preferredStats: {

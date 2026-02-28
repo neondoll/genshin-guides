@@ -1,16 +1,13 @@
-import { ArtifactSetNames } from "@/types/artifact-sets.types";
+import { ArtifactSetIds } from "@/types/artifact-sets.types";
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { Stats } from "@/types/stats.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   artifacts: {
-    sets: [
-      { type: "complete", name: ArtifactSetNames.NOBLESSE_OBLIGE, best: true },
-      { type: "complete", name: ArtifactSetNames.EMBLEM_OF_SEVERED_FATE },
-    ],
+    sets: [{ ids: [ArtifactSetIds.NOBLESSE_OBLIGE], best: true }, { ids: [ArtifactSetIds.EMBLEM_OF_SEVERED_FATE] }],
     stats: {
       sands: [{ name: Stats.ENERGY_RECHARGE }, { name: Stats.HP_PERCENTAGE }, { name: Stats.ATK_PERCENTAGE }],
       goblet: [{ name: Stats.HP_PERCENTAGE }, { name: Stats.ATK_PERCENTAGE }, { name: Stats.PYRO_DMG_BONUS }],
@@ -47,9 +44,9 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.MISTSPLITTER_REFORGED, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.AQUILA_FAVONIA, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.SKYWARD_BLADE, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.SAPWOOD_BLADE, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.MISTSPLITTER_REFORGED, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.AQUILA_FAVONIA, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.SKYWARD_BLADE, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.SAPWOOD_BLADE, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;

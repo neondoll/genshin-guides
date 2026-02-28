@@ -1,10 +1,10 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
-  carriers: [{ type: "character", name: CharacterNames.DEHYA, best: true }],
+  carriers: [{ type: "character", id: CharacterIds.DEHYA, best: true }],
   preferredStats: {
     sands: [Stats.ATK_PERCENTAGE, Stats.HP_PERCENTAGE],
     goblet: [Stats.PYRO_DMG_BONUS],

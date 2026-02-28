@@ -1,14 +1,14 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds } from "@/types/characters.types";
 import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.EMILIE, best: true },
-    { type: "character", name: CharacterNames.GANYU, best: true },
-    { type: "character", name: CharacterNames.KINICH, best: true },
-    { type: "character", name: CharacterNames.MUALANI, best: true },
+    { type: "character", id: CharacterIds.EMILIE, best: true },
+    { type: "character", id: CharacterIds.GANYU, best: true },
+    { type: "character", id: CharacterIds.KINICH, best: true },
+    { type: "character", id: CharacterIds.MUALANI, best: true },
   ],
   preferredStats: {
     sands: [Stats.ATK_PERCENTAGE, Stats.ELEMENTAL_MASTERY],

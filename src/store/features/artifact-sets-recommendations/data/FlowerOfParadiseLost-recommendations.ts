@@ -1,13 +1,13 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { CharacterIds, CharacterNames } from "@/types/characters.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.KUKI_SHINOBU, best: true },
-    { type: "character", name: CharacterNames.RAIDEN_SHOGUN, best: true },
-    { type: "character", name: CharacterNames.THOMA, best: true },
+    { type: "character", id: CharacterIds.KUKI_SHINOBU, best: true },
+    { type: "character", id: CharacterIds.RAIDEN_SHOGUN, best: true },
+    { type: "character", id: CharacterIds.THOMA, best: true },
     { type: "other", title: `Драйверы ${CharacterNames.NILOU} отрядов` },
   ],
   preferredStats: {

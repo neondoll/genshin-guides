@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import { ArtifactSetImage } from "@/components/v1/artifact-set-image";
+import { ArtifactSetImageLoading } from "@/components/v1/artifact-set-image";
 import { Card, CardContent } from "@/components/v1/card";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
@@ -52,9 +52,9 @@ const ArtifactSetsTierListPage: FC = () => {
                   <TableCell className={cn(item.tierClassName)}>{item.tier}</TableCell>
                   <TableCell>
                     <ul className="flex flex-wrap gap-2">
-                      {item.artifactSetNames.map(artifactSetName => (
-                        <li className="shrink-0" key={artifactSetName}>
-                          <ArtifactSetImage className="size-16 rounded-md rounded-br-2xl" name={artifactSetName} />
+                      {item.ids.map(id => (
+                        <li className="shrink-0" key={id}>
+                          <ArtifactSetImageLoading artifactSetId={id} className="size-16 rounded-md rounded-br-2xl" />
                         </li>
                       ))}
                     </ul>

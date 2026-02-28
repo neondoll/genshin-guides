@@ -1,16 +1,16 @@
-import { VideoSourceIds } from "@/types/video-sources.types";
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterNames } from "@/types/characters.types";
+import { CharacterIds } from "@/types/characters.types";
 import { ElementNames } from "@/types/elements.types";
 import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", name: CharacterNames.CHASCA, best: true },
-    { type: "character", name: CharacterNames.KINICH, best: true },
-    { type: "character", name: CharacterNames.MAVUIKA, best: true },
-    { type: "character", name: CharacterNames.MUALANI, best: true },
-    { type: "character", name: CharacterNames.VARESA, best: true },
+    { type: "character", id: CharacterIds.CHASCA, best: true },
+    { type: "character", id: CharacterIds.KINICH, best: true },
+    { type: "character", id: CharacterIds.MAVUIKA, best: true },
+    { type: "character", id: CharacterIds.MUALANI, best: true },
+    { type: "character", id: CharacterIds.VARESA, best: true },
     { type: "traveler", elementName: ElementNames.PYRO, best: true },
   ],
   preferredStats: {

@@ -1,6 +1,6 @@
 import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
 import { Stats } from "@/types/stats.types";
+import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [{ type: "other", title: "Вообще хиллеры, но не стоит" }],

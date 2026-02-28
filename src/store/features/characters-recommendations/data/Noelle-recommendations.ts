@@ -1,7 +1,7 @@
 import { CharacterRoleIds } from "@/types/character-roles.types";
 import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
 import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponNames } from "@/types/weapons.types";
+import { WeaponIds } from "@/types/weapons.types";
 
 export default {
   recommendedLevel: "80/90",
@@ -19,8 +19,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { name: WeaponNames.REDHORN_STONETHRESHER, best: "Лучшее оружие", r: 1 },
-    { name: WeaponNames.FAVONIUS_GREATSWORD, best: "Лучшее оружие", r: 5 },
-    { name: WeaponNames.WHITEBLIND, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.REDHORN_STONETHRESHER, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.FAVONIUS_GREATSWORD, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.WHITEBLIND, best: "Лучшее доступное оружие", r: 5 },
   ],
 } as CharacterRecommendations;
