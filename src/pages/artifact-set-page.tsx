@@ -22,7 +22,7 @@ import {
 } from "@/components/v1/artifact-set-image";
 import { BestTooltip } from "@/components/v1/best-tooltip";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/v1/card";
-import { CharacterImageLoading } from "@/components/v1/character-image";
+import { CharacterImage } from "@/components/v1/character-image";
 import { Loading, LoadingError } from "@/components/v1/loading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/v1/tabs";
 import { VideoSourcesTable } from "@/components/v1/video-sources-table";
@@ -30,6 +30,7 @@ import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useArtifactSet } from "@/store/features/artifact-sets";
 import { useArtifactSetRecommendations } from "@/store/features/artifact-sets-recommendations";
+import { useCharactersList } from "@/store/features/characters";
 import { type ArtifactSetId } from "@/types/artifact-sets.types";
 import { type ArtifactSetRecommendations as Recommendations } from "@/types/artifact-sets-recommendations.types";
 import { CharacterIds } from "@/types/characters.types";
@@ -89,7 +90,7 @@ const ArtifactSetPage: FC = () => {
         />
         <div>
           <h1 className="text-[2rem]/10.5">{artifactSet.name}</h1>
-          {artifactSet.rarityList && artifactSet.rarityList.map(rarity => (
+          {artifactSet.rarityList.map(rarity => (
             <div className="flex" key={rarity}>
               {[...Array(rarity)].map((_, i) => (
                 <span className="leading-none text-amber-400" key={i}>★</span>
@@ -97,7 +98,7 @@ const ArtifactSetPage: FC = () => {
             </div>
           ))}
           <div className="flex flex-wrap gap-x-1 gap-y-2 mt-4">
-            {artifactSet.rarityList && artifactSet.rarityList.map(rarity => (
+            {artifactSet.rarityList.map(rarity => (
               <Badge children={`${rarity}★`} key={rarity} variant="secondary" />
             ))}
           </div>
@@ -254,6 +255,8 @@ const ArtifactSetRecommendations: FC<{ artifactSetId: ArtifactSetId }> = ({ arti
 const ArtifactSetCarrierRecommendations: FC<{
   recommendations: Recommendations["carriers"];
 }> = ({ recommendations }) => {
+  const { characters } = useCharactersList();
+
   const hasBest = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.best));
   }, [recommendations]);
@@ -263,7 +266,9 @@ const ArtifactSetCarrierRecommendations: FC<{
       <TableBody>
         {recommendations.map((recommendation) => {
           switch (recommendation.type) {
-            case "character":
+            case "character": {
+              const character = characters.find(character => character.id === recommendation.id);
+
               return (
                 <TableRow key={"character-" + recommendation.id}>
                   {hasBest && (
@@ -272,14 +277,20 @@ const ArtifactSetCarrierRecommendations: FC<{
                     </TableCell>
                   )}
                   <TableCell className="w-20">
-                    <CharacterImageLoading
-                      characterId={recommendation.id}
-                      className="size-16 rounded-md rounded-br-2xl"
-                    />
+                    {character && (
+                      <CharacterImage
+                        characterId={character.id}
+                        characterImage={character.image}
+                        characterName={character.name}
+                        characterRarity={character.rarity}
+                        className="size-16 rounded-md rounded-br-2xl"
+                      />
+                    )}
                   </TableCell>
-                  <TableCell className="text-pretty whitespace-normal">{recommendation.id}</TableCell>
+                  <TableCell className="text-pretty whitespace-normal">{character?.name}</TableCell>
                 </TableRow>
               );
+            }
             case "other":
               return (
                 <TableRow key={"other-" + recommendation.title}>
@@ -291,7 +302,9 @@ const ArtifactSetCarrierRecommendations: FC<{
                   <TableCell className="text-pretty whitespace-normal" colSpan={2}>{recommendation.title}</TableCell>
                 </TableRow>
               );
-            case "traveler":
+            case "traveler": {
+              const traveler = characters.find(character => character.id === CharacterIds.LUMINE);
+
               return (
                 <TableRow key={"traveler-" + recommendation.elementName}>
                   {hasBest && (
@@ -300,16 +313,22 @@ const ArtifactSetCarrierRecommendations: FC<{
                     </TableCell>
                   )}
                   <TableCell className="w-20">
-                    <CharacterImageLoading
-                      characterId={CharacterIds.LUMINE}
-                      className="size-16 rounded-md rounded-br-2xl"
-                    />
+                    {traveler && (
+                      <CharacterImage
+                        characterId={traveler.id}
+                        characterImage={traveler.image}
+                        characterName={traveler.name}
+                        characterRarity={traveler.rarity}
+                        className="size-16 rounded-md rounded-br-2xl"
+                      />
+                    )}
                   </TableCell>
                   <TableCell className="text-pretty whitespace-normal">
                     {`Путешественник (${recommendation.elementName})`}
                   </TableCell>
                 </TableRow>
               );
+            }
           }
         })}
       </TableBody>
