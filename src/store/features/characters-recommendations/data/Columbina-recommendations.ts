@@ -32,18 +32,18 @@ export default {
   constellationOrSignatureWeapon: "С1 < Сигна",
   detachments: [
     {
-      description: `Увеличение урона героев Нод-Края: ${CharacterIds.KYRYLL_CHUDOMIROVICH_FLINS}`,
+      description: `Увеличение урона героев Нод-Края: ${CharacterIds.FLINS}`,
       template: [
-        { type: "character", id: CharacterIds.KYRYLL_CHUDOMIROVICH_FLINS },
+        { type: "character", id: CharacterIds.FLINS },
         { type: "character", id: CharacterIds.INEFFA },
-        { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+        { type: "character", id: CharacterIds.COLUMBINA },
         { type: "other", title: "Герой" },
       ],
       variants: [
         [
-          { type: "character", id: CharacterIds.KYRYLL_CHUDOMIROVICH_FLINS },
+          { type: "character", id: CharacterIds.FLINS },
           { type: "character", id: CharacterIds.INEFFA },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.SUCROSE },
         ],
       ],
@@ -53,26 +53,26 @@ export default {
       template: [
         { type: "character", id: CharacterIds.NEFER },
         { type: "character", id: CharacterIds.LAUMA },
-        { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+        { type: "character", id: CharacterIds.COLUMBINA },
         { type: "other", title: "Герой" },
       ],
       variants: [
         [
           { type: "character", id: CharacterIds.NEFER },
           { type: "character", id: CharacterIds.LAUMA },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.NAHIDA },
         ],
         [
           { type: "character", id: CharacterIds.NEFER },
           { type: "character", id: CharacterIds.LAUMA },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.DIONA },
         ],
         [
           { type: "character", id: CharacterIds.NEFER },
           { type: "character", id: CharacterIds.LAUMA },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.KUKI_SHINOBU },
         ],
       ],
@@ -81,14 +81,14 @@ export default {
       description: `Увеличение урона героев Нод-Края: ${CharacterIds.ZIBAI}`,
       template: [
         { type: "character", id: CharacterIds.ZIBAI },
-        { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+        { type: "character", id: CharacterIds.COLUMBINA },
         { type: "other", title: "Герой" },
         { type: "character", id: CharacterIds.ILLUGA },
       ],
       variants: [
         [
           { type: "character", id: CharacterIds.ZIBAI },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.GOROU },
           { type: "character", id: CharacterIds.ILLUGA },
         ],
@@ -98,68 +98,68 @@ export default {
       description: "Помощь с врагами Нод-Края",
       template: [
         { type: "other", title: "Герой" },
-        { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+        { type: "character", id: CharacterIds.COLUMBINA },
         { type: "character", id: CharacterIds.INEFFA },
         { type: "other", title: "Герой" },
       ],
       variants: [
         [
           { type: "character", id: CharacterIds.CLORINDE },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.INEFFA },
           { type: "character", id: CharacterIds.XILONEN },
         ],
         [
           { type: "character", id: CharacterIds.RAIDEN_SHOGUN },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.INEFFA },
           { type: "character", id: CharacterIds.DURIN },
         ],
         [
           { type: "character", id: CharacterIds.VARESA },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.INEFFA },
           { type: "character", id: CharacterIds.IANSAN },
         ],
         [
           { type: "character", id: CharacterIds.NAVIA },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.XILONEN },
           { type: "character", id: CharacterIds.FURINA },
         ],
         [
           { type: "character", id: CharacterIds.ARATAKI_ITTO },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.INEFFA },
           { type: "character", id: CharacterIds.XILONEN },
         ],
         [
           { type: "character", id: CharacterIds.NEUVILLETTE },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.INEFFA },
           { type: "character", id: CharacterIds.LAUMA },
         ],
         [
           { type: "character", id: CharacterIds.ARLECCHINO },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.INEFFA },
           { type: "character", id: CharacterIds.XILONEN },
         ],
         [
           { type: "character", id: CharacterIds.ARLECCHINO },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.INEFFA },
           { type: "character", id: CharacterIds.BENNETT },
         ],
         [
           { type: "character", id: CharacterIds.ARLECCHINO },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.INEFFA },
           { type: "character", id: CharacterIds.YELAN },
         ],
         [
           { type: "character", id: CharacterIds.HU_TAO },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.INEFFA },
           { type: "character", id: CharacterIds.YELAN },
         ],
@@ -169,7 +169,7 @@ export default {
       description: "Гидро аппликация (не Нод-Край герои)",
       template: [
         { type: "character", id: CharacterIds.ARLECCHINO },
-        { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+        { type: "character", id: CharacterIds.COLUMBINA },
       ],
     },
   ],
@@ -181,10 +181,11 @@ export default {
     { type: "combat2", priority: "В первую очередь", referenceLevel: 10 },
     { type: "combat3", priority: "Во вторую очередь", referenceLevel: 9 },
   ],
-  videoSourceIds: [
-    VideoSourceIds.GUIDE_TO_COLUMBINA_HYPOSELENIA_IN_6_3_AnimeCool,
-    VideoSourceIds.GUIDE_TO_COLUMBINA_HYPOSELENIA_IN_6_3_MironMinMax,
-  ],
+  videoSourceIds:
+    [
+      VideoSourceIds.GUIDE_TO_COLUMBINA_IN_6_3_AnimeCool,
+      VideoSourceIds.GUIDE_TO_COLUMBINA_IN_6_3_MironMinMax,
+    ],
   weapons: {
     "Лунный Заряд": [
       {

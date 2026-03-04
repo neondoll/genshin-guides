@@ -403,7 +403,7 @@ export default {
           },
           {
             type: "character",
-            id: CharacterIds.COLUMBINA_HYPOSELENIA,
+            id: CharacterIds.COLUMBINA,
             c: 0,
             weaponId: WeaponIds.PROTOTYPE_AMBER,
             weaponR: 5,

@@ -55,7 +55,7 @@ export default {
           },
           {
             type: "character",
-            id: CharacterIds.COLUMBINA_HYPOSELENIA,
+            id: CharacterIds.COLUMBINA,
             c: 0,
             weaponId: WeaponIds.SACRIFICIAL_JADE,
             weaponR: 1,
@@ -89,7 +89,7 @@ export default {
           },
           {
             type: "character",
-            id: CharacterIds.COLUMBINA_HYPOSELENIA,
+            id: CharacterIds.COLUMBINA,
             c: 0,
             weaponId: WeaponIds.SACRIFICIAL_JADE,
             weaponR: 1,
@@ -148,7 +148,7 @@ export default {
         ], // Если нет Коломбины, Айно будет достойной альтернативой
         [
           { type: "character", id: CharacterIds.ZIBAI },
-          { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+          { type: "character", id: CharacterIds.COLUMBINA },
           { type: "character", id: CharacterIds.ILLUGA },
           { type: "character", id: CharacterIds.ZHONGLI },
         ], // Чжун Ли добавит отряду выживаемости

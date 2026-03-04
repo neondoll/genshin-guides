@@ -4,7 +4,7 @@ import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
-    { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+    { type: "character", id: CharacterIds.COLUMBINA },
     { type: "character", id: CharacterIds.INEFFA, best: true },
   ],
   videoSourceIds: [VideoSourceIds.GUIDE_TO_A_DAY_CARVED_FROM_RISING_WINDS_AND_AUBADE_OF_MORNINGSTAR_AND_MOON_IN_6_3],
