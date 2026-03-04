@@ -710,7 +710,7 @@ const CharacterDetachmentItemRecommendation: FC<{
               />
             )}
           </div>
-          <p className="my-auto text-center">{`${element?.name ?? item.id} персонаж`}</p>
+          <p className="my-auto text-center">{`${element?.name ?? item.id} герой`}</p>
         </UiCard>
       );
     }

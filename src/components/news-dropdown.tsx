@@ -24,7 +24,7 @@ import { type CharacterId, CharacterIds } from "@/types/characters.types";
 import { type WeaponId, WeaponIds } from "@/types/weapons.types";
 
 const artifactSetIds: ArtifactSetId[] = [];
-const characterIds: CharacterId[] = [CharacterIds.VARKA];
+const characterIds: CharacterId[] = [CharacterIds.FLINS, CharacterIds.VARKA];
 const weaponIds: WeaponId[] = [WeaponIds.GEST_OF_THE_MIGHTY_WOLF];
 
 export const NewsDropdown: FC = () => {

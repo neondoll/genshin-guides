@@ -5,8 +5,8 @@ import { VideoSourceIds } from "@/types/video-sources.types";
 
 export default {
   carriers: [
+    { type: "character", id: CharacterIds.FLINS, best: true },
     { type: "character", id: CharacterIds.LAUMA, best: true },
-    { type: "character", id: CharacterIds.KYRYLL_CHUDOMIROVICH_FLINS, best: true },
     { type: "character", id: CharacterIds.NEFER, best: true },
   ],
   preferredStats: {

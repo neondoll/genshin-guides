@@ -34,9 +34,9 @@ export default {
     {
       description: "Лучшие",
       template: [
-        { type: "character", id: CharacterIds.KYRYLL_CHUDOMIROVICH_FLINS },
+        { type: "character", id: CharacterIds.FLINS },
         { type: "character", id: CharacterIds.INEFFA },
-        { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+        { type: "character", id: CharacterIds.COLUMBINA },
         { type: "character", id: CharacterIds.SUCROSE },
       ],
     },
@@ -45,7 +45,7 @@ export default {
       template: [
         { type: "character", id: CharacterIds.INEFFA },
         { type: "character", id: CharacterIds.SUCROSE },
-        { type: "character", id: CharacterIds.COLUMBINA_HYPOSELENIA },
+        { type: "character", id: CharacterIds.COLUMBINA },
         { type: "other", title: "Колясочник" },
       ],
     },
