@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "npm run prebuild && tsc -b && vite build",
+    "build": "tsc -b && vite build",
     "build:analyze": "npm run build -- --mode analyze",
     "dev": "npm run generate-data && vite",
     "generate-data": "tsx scripts/generate-data.ts",

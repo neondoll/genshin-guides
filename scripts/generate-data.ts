@@ -76,6 +76,7 @@ function transformArtifactDetail(item: GenshinDbArtifact): ArtifactSet {
       image: item.images.mihoyo_flower,
     };
   }
+
   if (item.plume) {
     data.plume = {
       name: item.plume.name,
@@ -86,6 +87,7 @@ function transformArtifactDetail(item: GenshinDbArtifact): ArtifactSet {
       image: item.images.mihoyo_plume,
     };
   }
+
   if (item.sands) {
     data.sands = {
       name: item.sands.name,
@@ -96,6 +98,7 @@ function transformArtifactDetail(item: GenshinDbArtifact): ArtifactSet {
       image: item.images.mihoyo_sands,
     };
   }
+
   if (item.goblet) {
     data.goblet = {
       name: item.goblet.name,
@@ -106,6 +109,7 @@ function transformArtifactDetail(item: GenshinDbArtifact): ArtifactSet {
       image: item.images.mihoyo_goblet,
     };
   }
+
   if (item.circlet) {
     data.circlet = {
       name: item.circlet.name,
@@ -352,7 +356,7 @@ async function generateCategory<F extends GenshinDbFunction>(categoryName: strin
   console.log(`Генерация данных для ${categoryName}...`);
 
   // Получаем все имена элементов в категории
-  let names: string[] = genshinDb[config.function]("names", {
+  let names = genshinDb[config.function]("names", {
     matchCategories: true,
     resultLanguage: genshinDb.Language.English,
   });
@@ -389,7 +393,14 @@ async function generateCategory<F extends GenshinDbFunction>(categoryName: strin
   await ensureDir(detailsDir);
 
   for (const item of items) {
-    const safeId = toSafeId(item.id); // уже безопасно, но на всякий случай
+    const id = item.id;
+    const safeId = id.replace(/[^a-z0-9]/gi, "_");
+
+    if (id !== safeId) {
+      console.warn({ id, safeId });
+    }
+
+    // const safeId = toSafeId(item.id); // уже безопасно, но на всякий случай
     const detailData = config.transformDetail(item);
     await fs.writeFile(path.join(detailsDir, `${safeId}.json`), JSON.stringify(detailData, null, 2));
   }
@@ -398,7 +409,7 @@ async function generateCategory<F extends GenshinDbFunction>(categoryName: strin
 }
 
 // Основная функция
-async function main(): Promise<void> {
+async function main() {
   try {
     console.log("Начинаем генерацию статических данных...");
     await ensureDir(OUTPUT_DIR);
