@@ -22,8 +22,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.STAFF_OF_HOMA, best: "Лучшее решение", r: 1 },
     { id: WeaponIds.STAFF_OF_THE_SCARLET_SANDS, r: 1 },
-    { id: WeaponIds.DRAGONS_BANE, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.DRAGONS_BANE, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

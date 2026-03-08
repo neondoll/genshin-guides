@@ -18,8 +18,8 @@ export default {
       VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     ],
     weapons: [
-      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее решение", r: 5 },
+      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее решение", r: 5 },
     ],
   },
   [ElementIds.DENDRO]: {
@@ -30,8 +30,8 @@ export default {
       VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
     ],
     weapons: [
-      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее решение", r: 5 },
+      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее решение", r: 5 },
     ],
   },
   [ElementIds.ELECTRO]: {
@@ -40,8 +40,8 @@ export default {
       VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     ],
     weapons: [
-      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее решение", r: 5 },
+      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее решение", r: 5 },
     ],
   },
   [ElementIds.GEO]: {
@@ -56,8 +56,8 @@ export default {
       VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     ],
     weapons: [
-      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее решение", r: 5 },
+      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее решение", r: 5 },
     ],
   },
   [ElementIds.HYDRO]: {
@@ -72,8 +72,8 @@ export default {
       VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     ],
     weapons: [
-      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
-      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 },
+      { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее решение", r: 5 },
+      { id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее решение", r: 5 },
     ],
   },
   [ElementIds.PYRO]: {

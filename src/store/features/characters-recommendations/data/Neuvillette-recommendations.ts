@@ -57,7 +57,7 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.TOME_OF_THE_ETERNAL_FLOW, best: "Лучшее оружие", percent: 1.1537 },
+    { id: WeaponIds.TOME_OF_THE_ETERNAL_FLOW, best: "Лучшее решение", percent: 1.1537 },
     { id: WeaponIds.SACRIFICIAL_JADE, r: 5, percent: 1.1458 },
     { id: WeaponIds.SURFS_UP, percent: 1.0764 },
     { id: WeaponIds.SACRIFICIAL_JADE, r: 1, percent: 1.0690 },
@@ -65,7 +65,7 @@ export default {
     { id: WeaponIds.RELIQUARY_OF_TRUTH, percent: 1.0531 },
     { id: WeaponIds.CASHFLOW_SUPERVISION, percent: 1.0225 },
     { id: WeaponIds.KAGURAS_VERITY, percent: 1.0186 },
-    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5, percent: 1.0000 },
+    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное решение", r: 5, percent: 1.0000 },
     { id: WeaponIds.LOST_PRAYER_TO_THE_SACRED_WINDS, percent: 0.9932 },
     { id: WeaponIds.ASH_GRAVEN_DRINKING_HORN, r: 5, percent: 0.9853 },
     { id: WeaponIds.DAWNING_FROST, percent: 0.9733 },

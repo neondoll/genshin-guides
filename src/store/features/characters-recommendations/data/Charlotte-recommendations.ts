@@ -16,7 +16,7 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.FAVONIUS_CODEX, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.FAVONIUS_CODEX, best: "Лучшее решение", r: 5 },
     { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, r: 5 },
   ],
 } as CharacterRecommendations;

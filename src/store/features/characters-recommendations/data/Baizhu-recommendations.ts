@@ -21,10 +21,10 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.FAVONIUS_CODEX, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.FAVONIUS_CODEX, best: "Лучшее решение", r: 5 },
     { id: WeaponIds.HAKUSHIN_RING, r: 5 },
     { id: WeaponIds.JADEFALLS_SPLENDOR, r: 1 },
-    { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.PROTOTYPE_AMBER, r: 5 },
   ],
 } as CharacterRecommendations;

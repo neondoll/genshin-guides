@@ -19,8 +19,8 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.SILVERSHOWER_HEARTSTRINGS, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.SACRIFICIAL_BOW, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.SILVERSHOWER_HEARTSTRINGS, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.SACRIFICIAL_BOW, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.RECURVE_BOW, r: 5 },
   ],
 } as CharacterRecommendations;

@@ -461,7 +461,7 @@ export default {
     VideoSourceIds.GUIDE_TO_VARKA_IN_6_4_xPandaChannelx,
   ],
   weapons: [
-    { id: WeaponIds.GEST_OF_THE_MIGHTY_WOLF, best: "Лучшее оружие", percent: 1.3299 },
+    { id: WeaponIds.GEST_OF_THE_MIGHTY_WOLF, best: "Лучшее решение", percent: 1.3299 },
     { id: WeaponIds.A_THOUSAND_BLAZING_SUNS, percent: 1.1753 },
     { id: WeaponIds.REDHORN_STONETHRESHER, percent: 1.1443 },
     { id: WeaponIds.BEACON_OF_THE_REED_SEA, percent: 1.1431 },
@@ -471,10 +471,10 @@ export default {
     { id: WeaponIds.WOLFS_GRAVESTONE, percent: 1.0722 },
     { id: WeaponIds.THE_UNFORGED, postfix: "с щитом", percent: 1.0619 },
     { id: WeaponIds.FANG_OF_THE_MOUNTAIN_KING, percent: 1.0604 },
-    { id: WeaponIds.TIDAL_SHADOW, best: "Лучшее доступное оружие", postfix: "с хилом", r: 5, percent: 1.0412 },
-    { id: WeaponIds.BLACKCLIFF_SLASHER, best: "Лучшее доступное оружие", postfix: "без стаков", percent: 1.0309 },
-    { id: WeaponIds.ULTIMATE_OVERLORDS_MEGA_MAGIC_SWORD, best: "Лучшее эвентовое оружие", percent: 1.0103 },
-    { id: WeaponIds.EARTH_SHAKER, best: "Лучшее доступное оружие", r: 5, percent: 1.0000 },
+    { id: WeaponIds.TIDAL_SHADOW, best: "Лучшее доступное решение", postfix: "с хилом", r: 5, percent: 1.0412 },
+    { id: WeaponIds.BLACKCLIFF_SLASHER, best: "Лучшее доступное решение", postfix: "без стаков", percent: 1.0309 },
+    { id: WeaponIds.ULTIMATE_OVERLORDS_MEGA_MAGIC_SWORD, best: "Лучшее эвентовое решение", percent: 1.0103 },
+    { id: WeaponIds.EARTH_SHAKER, best: "Лучшее доступное решение", r: 5, percent: 1.0000 },
     { id: WeaponIds.TIDAL_SHADOW, postfix: "без хила", r: 5, percent: 0.9794 },
   ],
 } as CharacterRecommendations;

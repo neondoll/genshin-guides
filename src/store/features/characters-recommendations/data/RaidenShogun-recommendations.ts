@@ -23,8 +23,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.ENGULFING_LIGHTNING, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.THE_CATCH, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.ENGULFING_LIGHTNING, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.THE_CATCH, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.DRAGONS_BANE, r: 5 },
   ],
 } as CharacterRecommendations;

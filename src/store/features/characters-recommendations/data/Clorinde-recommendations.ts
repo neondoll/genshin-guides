@@ -13,7 +13,7 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.ABSOLUTION, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.ABSOLUTION, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

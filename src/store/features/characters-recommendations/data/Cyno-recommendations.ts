@@ -21,8 +21,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.STAFF_OF_THE_SCARLET_SANDS, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.KITAIN_CROSS_SPEAR, best: "Лучшее доступное оружие", r: 5 },
-    { id: WeaponIds.WHITE_TASSEL, best: "Лучшее доступное оружие (более простой вариант)", r: 5 },
+    { id: WeaponIds.STAFF_OF_THE_SCARLET_SANDS, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.KITAIN_CROSS_SPEAR, best: "Лучшее доступное решение", r: 5 },
+    { id: WeaponIds.WHITE_TASSEL, best: "Лучшее доступное решение (более простой вариант)", r: 5 },
   ],
 } as CharacterRecommendations;

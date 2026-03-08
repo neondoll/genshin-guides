@@ -19,8 +19,8 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.CRANES_ECHOING_CALL, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.OATHSWORN_EYE, best: "Лучшее эвентовое оружие", r: 5 },
-    { id: WeaponIds.FAVONIUS_CODEX, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.CRANES_ECHOING_CALL, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.OATHSWORN_EYE, best: "Лучшее эвентовое решение", r: 5 },
+    { id: WeaponIds.FAVONIUS_CODEX, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

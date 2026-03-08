@@ -18,9 +18,9 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.BLOODTAINTED_GREATSWORD, best: "Лучшее оружие", r: 5 },
-    { id: WeaponIds.RAINSLASHER, best: "Лучшее оружие", r: 5 },
-    { id: WeaponIds.MAKHAIRA_AQUAMARINE, best: "Лучшее оружие", r: 5 },
-    { id: WeaponIds.MAILED_FLOWER, best: "Лучшее эвентовое оружие", r: 5 },
+    { id: WeaponIds.BLOODTAINTED_GREATSWORD, best: "Лучшее решение", r: 5 },
+    { id: WeaponIds.RAINSLASHER, best: "Лучшее решение", r: 5 },
+    { id: WeaponIds.MAKHAIRA_AQUAMARINE, best: "Лучшее решение", r: 5 },
+    { id: WeaponIds.MAILED_FLOWER, best: "Лучшее эвентовое решение", r: 5 },
   ],
 } as CharacterRecommendations;

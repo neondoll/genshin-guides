@@ -99,7 +99,7 @@ export type ArtifactSetName = typeof ArtifactSetNames[keyof typeof ArtifactSetNa
 export interface ArtifactSetDetail {
   name: string;
   relicText: string;
-  image: string;
+  image?: string;
 }
 
 export interface ArtifactSet {
@@ -109,7 +109,7 @@ export interface ArtifactSet {
   effect1Pc?: string;
   effect2Pc?: string;
   effect4Pc?: string;
-  image: string;
+  image?: string;
   version: string;
   flower?: ArtifactSetDetail;
   plume?: ArtifactSetDetail;

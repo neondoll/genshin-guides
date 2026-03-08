@@ -22,8 +22,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.THE_FIRST_GREAT_MAGIC, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.SONG_OF_STILLNESS, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.THE_FIRST_GREAT_MAGIC, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.SONG_OF_STILLNESS, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.PROTOTYPE_CRESCENT, r: 5 },
   ],
 } as CharacterRecommendations;

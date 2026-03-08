@@ -22,10 +22,10 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.STAFF_OF_HOMA, best: "Лучшее решение", r: 1 },
     { id: WeaponIds.PRIMORDIAL_JADE_WINGED_SPEAR, r: 1 },
-    { id: WeaponIds.BLACKCLIFF_POLE, best: "Лучшее доступное оружие (когда работает)", r: 5 },
-    { id: WeaponIds.WHITE_TASSEL, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.BLACKCLIFF_POLE, best: "Лучшее доступное решение (когда работает)", r: 5 },
+    { id: WeaponIds.WHITE_TASSEL, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.FAVONIUS_LANCE, r: 5 },
   ],
 } as CharacterRecommendations;

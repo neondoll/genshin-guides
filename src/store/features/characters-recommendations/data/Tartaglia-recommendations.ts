@@ -22,7 +22,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.POLAR_STAR, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.RUST, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.POLAR_STAR, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.RUST, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

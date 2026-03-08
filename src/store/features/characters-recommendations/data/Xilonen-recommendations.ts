@@ -33,8 +33,8 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.PEAK_PATROL_SONG, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.PEAK_PATROL_SONG, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.FLUTE_OF_EZPITZAL, best: "Лучшее крафтовое оружие", r: 5 },
   ],
 } as CharacterRecommendations;

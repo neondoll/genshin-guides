@@ -18,7 +18,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.AQUILA_FAVONIA, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.AQUILA_FAVONIA, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее решение", r: 5 },
   ],
 } as CharacterRecommendations;

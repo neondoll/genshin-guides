@@ -190,14 +190,14 @@ export default {
     "Лунный Заряд": [
       {
         id: WeaponIds.NOCTURNES_CURTAIN_CALL,
-        best: "Лучшее оружие",
+        best: "Лучшее решение",
         percent: 1.06,
         notes: ["Лучшее решение в любом случае"],
       },
       { id: WeaponIds.SACRIFICIAL_JADE, r: 5, percent: 1.01, notes: ["Неплох на пробудах, но не даёт восстановление"] },
       {
         id: WeaponIds.FAVONIUS_CODEX,
-        best: "Лучшее доступное оружие",
+        best: "Лучшее доступное решение",
         r: 5,
         percent: 1.00,
         notes: ["Самое удобное решение"],
@@ -216,7 +216,7 @@ export default {
     "Лунная Бутонизация": [
       {
         id: WeaponIds.NOCTURNES_CURTAIN_CALL,
-        best: "Лучшее оружие",
+        best: "Лучшее решение",
         percent: 1.08,
         notes: ["Лучшее решение в любом случае"],
       },
@@ -228,13 +228,13 @@ export default {
       { id: WeaponIds.SACRIFICIAL_JADE, r: 1, percent: 1.01 },
       {
         id: WeaponIds.PROTOTYPE_AMBER,
-        best: "Лучшее доступное оружие",
+        best: "Лучшее доступное решение",
         percent: 1.00,
         notes: ["Удобное решение, плюс даёт лечение"],
       },
       {
         id: WeaponIds.FAVONIUS_CODEX,
-        best: "Лучшее доступное оружие",
+        best: "Лучшее доступное решение",
         percent: 1.00,
         notes: ["Самое удобное решение"],
       },
@@ -246,7 +246,7 @@ export default {
     "Лунная кристаллизация": [
       {
         id: WeaponIds.NOCTURNES_CURTAIN_CALL,
-        best: "Лучшее оружие",
+        best: "Лучшее решение",
         percent: 1.11,
         notes: ["Лучшее решение в любом случае"],
       },
@@ -256,7 +256,7 @@ export default {
       { id: WeaponIds.SURFS_UP, percent: 1.01 },
       {
         id: WeaponIds.PROTOTYPE_AMBER,
-        best: "Лучшее доступное оружие",
+        best: "Лучшее доступное решение",
         percent: 1.00,
         notes: ["Удобное решение, плюс даёт лечение"],
       },
@@ -271,14 +271,14 @@ export default {
     "Основной ДД": [
       {
         id: WeaponIds.NOCTURNES_CURTAIN_CALL,
-        best: "Лучшее оружие",
+        best: "Лучшее решение",
         percent: 1.21,
         notes: ["Лучшее решение в любом случае"],
       },
       { id: WeaponIds.RELIQUARY_OF_TRUTH, percent: 1.14 },
       { id: WeaponIds.SURFS_UP, percent: 1.07 },
       { id: WeaponIds.TOME_OF_THE_ETERNAL_FLOW, percent: 1.06 },
-      { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5, percent: 1.01 },
+      { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное решение", r: 5, percent: 1.01 },
       { id: WeaponIds.SACRIFICIAL_JADE, r: 5, percent: 1.00, notes: ["Неплох на пробудах, но не даёт восстановление"] },
       { id: WeaponIds.DAWNING_FROST, r: 5, percent: 1.00 },
       { id: WeaponIds.NIGHTWEAVERS_LOOKING_GLASS, percent: 0.99 },

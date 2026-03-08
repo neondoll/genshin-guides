@@ -20,7 +20,7 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.SURFS_UP, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.RING_OF_YAXCHE, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.SURFS_UP, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.RING_OF_YAXCHE, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

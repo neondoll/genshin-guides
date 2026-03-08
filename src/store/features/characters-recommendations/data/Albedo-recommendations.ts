@@ -20,11 +20,11 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.URAKU_MISUGIRI, best: "Лучшее оружие", r: 1, percent: 1.241 },
+    { id: WeaponIds.URAKU_MISUGIRI, best: "Лучшее решение", r: 1, percent: 1.241 },
     { id: WeaponIds.PRIMORDIAL_JADE_CUTTER, r: 1 },
-    { id: WeaponIds.CINNABAR_SPINDLE, best: "Лучшее эвентовое оружие", r: 5, percent: 1.229 },
-    { id: WeaponIds.FESTERING_DESIRE, best: "Лучшее эвентовое оружие", r: 5 },
-    { id: WeaponIds.HARBINGER_OF_DAWN, best: "Лучшее доступное оружие", r: 5, percent: 1.000 },
+    { id: WeaponIds.CINNABAR_SPINDLE, best: "Лучшее эвентовое решение", r: 5, percent: 1.229 },
+    { id: WeaponIds.FESTERING_DESIRE, best: "Лучшее эвентовое решение", r: 5 },
+    { id: WeaponIds.HARBINGER_OF_DAWN, best: "Лучшее доступное решение", r: 5, percent: 1.000 },
     { id: WeaponIds.FLUTE_OF_EZPITZAL, r: 5 },
   ],
 } as CharacterRecommendations;

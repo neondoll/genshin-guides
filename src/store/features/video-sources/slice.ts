@@ -161,6 +161,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     // vkvideo: "",
     youtube: "https://youtu.be/gF0XKMvg9xI",
   },
+  [VideoSourceIds.GUIDE_TO_FLINS_IN_6_4_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_FLINS_IN_6_4_MironMinMax,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Флинса в 6.4 [Genshin Impact]",
+    date: "2026-03-08",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239304",
+    youtube: "https://youtu.be/ZdhUYkPJU68",
+  },
   [VideoSourceIds.GUIDE_TO_FURINA_IN_5_4]: {
     id: VideoSourceIds.GUIDE_TO_FURINA_IN_5_4,
     author: "Miron MinMax",

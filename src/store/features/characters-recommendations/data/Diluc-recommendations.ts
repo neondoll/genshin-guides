@@ -20,10 +20,10 @@ export default {
   ],
   weapons: [
     { id: WeaponIds.REDHORN_STONETHRESHER, r: 1 },
-    { id: WeaponIds.SERPENT_SPINE, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.SERPENT_SPINE, best: "Лучшее решение", r: 5 },
     { id: WeaponIds.WOLFS_GRAVESTONE, r: 1 },
-    { id: WeaponIds.BLACKCLIFF_SLASHER, best: "Лучшее доступное оружие (когда работает на полную)", r: 5 },
-    { id: WeaponIds.EARTH_SHAKER, best: "Лучшее доступное оружие", r: 5 },
-    { id: WeaponIds.RAINSLASHER, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.BLACKCLIFF_SLASHER, best: "Лучшее доступное решение (когда работает на полную)", r: 5 },
+    { id: WeaponIds.EARTH_SHAKER, best: "Лучшее доступное решение", r: 5 },
+    { id: WeaponIds.RAINSLASHER, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

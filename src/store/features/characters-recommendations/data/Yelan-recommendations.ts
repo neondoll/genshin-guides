@@ -22,8 +22,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.AQUA_SIMULACRA, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.FAVONIUS_WARBOW, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.AQUA_SIMULACRA, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.FAVONIUS_WARBOW, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.SACRIFICIAL_BOW, r: 5 },
     { id: WeaponIds.THE_STRINGLESS, r: 5 },
     { id: WeaponIds.SLINGSHOT, r: 5 },

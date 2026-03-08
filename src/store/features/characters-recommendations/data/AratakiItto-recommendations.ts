@@ -22,7 +22,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.REDHORN_STONETHRESHER, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.WHITEBLIND, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.REDHORN_STONETHRESHER, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.WHITEBLIND, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

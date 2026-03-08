@@ -83,7 +83,7 @@ export default {
     VideoSourceIds.GUIDE_TO_SKIRK_IN_5_7_xPandaChannelx,
   ],
   weapons: [
-    { id: WeaponIds.AZURELIGHT, best: "Лучшее оружие", percent: 1.4256 },
+    { id: WeaponIds.AZURELIGHT, best: "Лучшее решение", percent: 1.4256 },
     { id: WeaponIds.HARAN_GEPPAKU_FUTSU, percent: 1.2239 },
     { id: WeaponIds.PRIMORDIAL_JADE_CUTTER, percent: 1.2238 },
     { id: WeaponIds.CALAMITY_OF_ESHU, postfix: "щит", percent: 1.1844 },
@@ -94,7 +94,7 @@ export default {
     { id: WeaponIds.LIGHT_OF_FOLIAR_INCISION, percent: 1.1176 },
     { id: WeaponIds.SPLENDOR_OF_TRANQUIL_WATERS, percent: 1.1023 },
     { id: WeaponIds.THE_BLACK_SWORD, percent: 1.0728 },
-    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное оружие", percent: 1.0000 },
+    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное решение", percent: 1.0000 },
     { id: WeaponIds.BLACKCLIFF_LONGSWORD, percent: 0.9451 },
   ],
 } as CharacterRecommendations;

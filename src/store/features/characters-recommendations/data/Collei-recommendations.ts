@@ -18,7 +18,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.ELEGY_FOR_THE_END, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.SACRIFICIAL_BOW, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.ELEGY_FOR_THE_END, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.SACRIFICIAL_BOW, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

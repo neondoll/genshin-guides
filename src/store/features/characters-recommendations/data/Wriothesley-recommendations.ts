@@ -19,8 +19,8 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.CASHFLOW_SUPERVISION, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.CASHFLOW_SUPERVISION, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.FLOWING_PURITY, r: 5 },
   ],
 } as CharacterRecommendations;

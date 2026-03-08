@@ -45,9 +45,9 @@ export default {
   ],
   weapons: {
     Вегетация: [
-      { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее оружие", r: 1, percent: 1.0000 },
+      { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее решение", r: 1, percent: 1.0000 },
       { id: WeaponIds.WANDERING_EVENSTAR, r: 5, percent: 0.9841 },
-      { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5, percent: 0.9705 },
+      { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное решение", r: 5, percent: 0.9705 },
       { id: WeaponIds.WANDERING_EVENSTAR, r: 1, percent: 0.9702 },
       { id: WeaponIds.SURFS_UP, r: 1, percent: 0.9679 },
       { id: WeaponIds.KAGURAS_VERITY, r: 1, percent: 0.9668 },
@@ -57,10 +57,10 @@ export default {
       { id: WeaponIds.SOLAR_PEARL, r: 1, percent: 0.9628 },
     ],
     Стимуляция: [
-      { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее оружие", r: 1, percent: 1.0000 },
+      { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее решение", r: 1, percent: 1.0000 },
       { id: WeaponIds.WANDERING_EVENSTAR, r: 5, percent: 0.9789 },
       { id: WeaponIds.WANDERING_EVENSTAR, r: 1, percent: 0.9718 },
-      { id: WeaponIds.MAGIC_GUIDE, best: "Лучшее доступное оружие", r: 5, percent: 0.9552 },
+      { id: WeaponIds.MAGIC_GUIDE, best: "Лучшее доступное решение", r: 5, percent: 0.9552 },
       { id: WeaponIds.THE_WIDSITH, r: 5, percent: 0.9522 },
       { id: WeaponIds.SACRIFICIAL_JADE, r: 5, percent: 0.9518 },
       { id: WeaponIds.KAGURAS_VERITY, r: 1, percent: 0.9502 },

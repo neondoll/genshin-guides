@@ -15,5 +15,5 @@ export default {
     VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
-  weapons: [{ id: WeaponIds.FAVONIUS_LANCE, best: "Лучшее оружие", r: 5 }],
+  weapons: [{ id: WeaponIds.FAVONIUS_LANCE, best: "Лучшее решение", r: 5 }],
 } as CharacterRecommendations;

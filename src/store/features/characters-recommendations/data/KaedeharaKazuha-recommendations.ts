@@ -22,10 +22,10 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.XIPHOS_MOONLIGHT, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.XIPHOS_MOONLIGHT, best: "Лучшее решение", r: 5 },
     { id: WeaponIds.FREEDOM_SWORN, r: 1 },
-    { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее доступное оружие", r: 5 },
-    { id: WeaponIds.TOUKABOU_SHIGURE, best: "Лучшее эвентовое оружие", r: 5 },
-    { id: WeaponIds.IRON_STING, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FAVONIUS_SWORD, best: "Лучшее доступное решение", r: 5 },
+    { id: WeaponIds.TOUKABOU_SHIGURE, best: "Лучшее эвентовое решение", r: 5 },
+    { id: WeaponIds.IRON_STING, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

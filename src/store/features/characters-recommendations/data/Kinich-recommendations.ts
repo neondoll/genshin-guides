@@ -13,7 +13,7 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.FANG_OF_THE_MOUNTAIN_KING, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.EARTH_SHAKER, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FANG_OF_THE_MOUNTAIN_KING, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.EARTH_SHAKER, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;
