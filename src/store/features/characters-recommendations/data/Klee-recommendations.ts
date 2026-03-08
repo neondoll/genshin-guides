@@ -22,10 +22,10 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.LOST_PRAYER_TO_THE_SACRED_WINDS, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее оружие", r: 5 },
-    { id: WeaponIds.DODOCO_TALES, best: "Лучшее эвентовое оружие", r: 5 },
-    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.LOST_PRAYER_TO_THE_SACRED_WINDS, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее решение", r: 5 },
+    { id: WeaponIds.DODOCO_TALES, best: "Лучшее эвентовое решение", r: 5 },
+    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.FLOWING_PURITY, r: 5 },
   ],
 } as CharacterRecommendations;

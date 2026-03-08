@@ -35,9 +35,9 @@ export default {
   ],
   videoSourceIds: [VideoSourceIds.GUIDE_TO_JAHODA_IN_6_2],
   weapons: [
-    { id: WeaponIds.ELEGY_FOR_THE_END, best: "Лучшее оружие" },
+    { id: WeaponIds.ELEGY_FOR_THE_END, best: "Лучшее решение" },
     { id: WeaponIds.FAVONIUS_WARBOW },
     { id: WeaponIds.SACRIFICIAL_BOW },
-    { id: WeaponIds.SNARE_HOOK, best: "Лучшее доступное оружие" },
+    { id: WeaponIds.SNARE_HOOK, best: "Лучшее доступное решение" },
   ],
 } as CharacterRecommendations;

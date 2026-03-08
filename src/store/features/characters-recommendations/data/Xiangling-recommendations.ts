@@ -61,7 +61,7 @@ export default {
   ],
   weapons: {
     Пар: [
-      { id: WeaponIds.STAFF_OF_THE_SCARLET_SANDS, best: "Лучшее оружие", percent: 1.07 },
+      { id: WeaponIds.STAFF_OF_THE_SCARLET_SANDS, best: "Лучшее решение", percent: 1.07 },
       { id: WeaponIds.BALLAD_OF_THE_FJORDS, r: 5, percent: 1.06 },
       { id: WeaponIds.WAVEBREAKERS_FIN, r: 5, percent: 1.02 },
       { id: WeaponIds.FRACTURED_HALO, percent: 1.02 },
@@ -69,7 +69,7 @@ export default {
       { id: WeaponIds.ENGULFING_LIGHTNING, percent: 1.01 },
       { id: WeaponIds.DEATHMATCH, r: 5, percent: 1.01 },
       { id: WeaponIds.LUMIDOUCE_ELEGY, percent: 1.00 },
-      { id: WeaponIds.THE_CATCH, best: "Лучшее доступное оружие", r: 5, percent: 1.00 },
+      { id: WeaponIds.THE_CATCH, best: "Лучшее доступное решение", r: 5, percent: 1.00 },
       { id: WeaponIds.SYMPHONIST_OF_SCENTS, percent: 0.99 },
       { id: WeaponIds.BALLAD_OF_THE_FJORDS, r: 1, percent: 0.99 },
       { id: WeaponIds.SKYWARD_SPINE, percent: 0.98 },
@@ -87,7 +87,7 @@ export default {
       { id: WeaponIds.TAMAYURATEI_NO_OHANASHI, percent: 0.89 },
     ],
     Перегрузка: [
-      { id: WeaponIds.STAFF_OF_THE_SCARLET_SANDS, best: "Лучшее оружие", percent: 1.06 },
+      { id: WeaponIds.STAFF_OF_THE_SCARLET_SANDS, best: "Лучшее решение", percent: 1.06 },
       { id: WeaponIds.LUMIDOUCE_ELEGY, percent: 1.05 },
       { id: WeaponIds.FRACTURED_HALO, percent: 1.05 },
       { id: WeaponIds.STAFF_OF_HOMA, percent: 1.05 },
@@ -97,7 +97,7 @@ export default {
       { id: WeaponIds.WAVEBREAKERS_FIN, r: 5, percent: 1.02 },
       { id: WeaponIds.ENGULFING_LIGHTNING, percent: 1.02 },
       { id: WeaponIds.SKYWARD_SPINE, percent: 1.01 },
-      { id: WeaponIds.THE_CATCH, best: "Лучшее доступное оружие", r: 5, percent: 1.00 },
+      { id: WeaponIds.THE_CATCH, best: "Лучшее доступное решение", r: 5, percent: 1.00 },
       { id: WeaponIds.CALAMITY_QUELLER, percent: 0.99 },
       { id: WeaponIds.DEATHMATCH, r: 1, percent: 0.99 },
       { id: WeaponIds.CRIMSON_MOONS_SEMBLANCE, percent: 0.98 },

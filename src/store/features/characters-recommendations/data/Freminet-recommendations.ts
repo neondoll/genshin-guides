@@ -18,8 +18,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.SONG_OF_BROKEN_PINES, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.TIDAL_SHADOW, best: "Лучшее доступное оружие", r: 5 },
-    { id: WeaponIds.PROTOTYPE_ARCHAIC, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.SONG_OF_BROKEN_PINES, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.TIDAL_SHADOW, best: "Лучшее доступное решение", r: 5 },
+    { id: WeaponIds.PROTOTYPE_ARCHAIC, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

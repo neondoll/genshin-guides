@@ -22,9 +22,9 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.HARAN_GEPPAKU_FUTSU, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.HARAN_GEPPAKU_FUTSU, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.AMENOMA_KAGEUCHI, r: 5 },
-    { id: WeaponIds.BLACKCLIFF_LONGSWORD, best: "Лучшее доступное оружие (когда работает на 3-х стаках)", r: 5 },
+    { id: WeaponIds.BLACKCLIFF_LONGSWORD, best: "Лучшее доступное решение (когда работает на 3-х стаках)", r: 5 },
   ],
 } as CharacterRecommendations;

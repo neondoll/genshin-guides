@@ -17,5 +17,5 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
-  weapons: [{ id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее оружие", r: 5 }],
+  weapons: [{ id: WeaponIds.SACRIFICIAL_SWORD, best: "Лучшее решение", r: 5 }],
 } as CharacterRecommendations;

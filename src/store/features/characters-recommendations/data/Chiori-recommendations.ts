@@ -19,10 +19,10 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.URAKU_MISUGIRI, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.CINNABAR_SPINDLE, best: "Лучшее эвентовое оружие", r: 5 },
-    { id: WeaponIds.FESTERING_DESIRE, best: "Лучшее эвентовое оружие", r: 5 },
-    { id: WeaponIds.HARBINGER_OF_DAWN, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.URAKU_MISUGIRI, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.CINNABAR_SPINDLE, best: "Лучшее эвентовое решение", r: 5 },
+    { id: WeaponIds.FESTERING_DESIRE, best: "Лучшее эвентовое решение", r: 5 },
+    { id: WeaponIds.HARBINGER_OF_DAWN, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.FLUTE_OF_EZPITZAL, r: 5 },
   ],
 } as CharacterRecommendations;

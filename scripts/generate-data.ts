@@ -2,22 +2,66 @@ import fs from "fs/promises";
 import genshinDb from "genshin-db";
 import path from "path";
 
+import type {
+  ArtifactSet,
+  ArtifactSetId,
+  ArtifactSetListItem,
+  ArtifactSetName,
+} from "../src/types/artifact-sets.types";
+import type { Character, CharacterId, CharacterListItem, CharacterName } from "../src/types/characters.types";
+import type { Element, ElementId, ElementListItem, ElementName } from "../src/types/elements.types";
+import type { Talent, TalentId, TalentListItem } from "../src/types/talents.types";
+import type { Weapon, WeaponId, WeaponListItem, WeaponName } from "../src/types/weapons.types";
+
 const OUTPUT_DIR = path.resolve("public/data");
 
-function getElementId(elementType) {
-  return elementType.replace(/^ELEMENT_/i, "").toLowerCase();
+// Вспомогательная функция для безопасного имени файла
+function toSafeId(name: string) {
+  return name.toLowerCase().replace(/[()"']/g, "").replace(/[\s-]+/g, "_");
 }
 
-// Трансформер для артефактов (детальная информация)
-function transformArtifactDetail(item) {
-  const data = {
+// Преобразование типа элемента
+function getElementId(elementType: string) {
+  return elementType.replace(/^ELEMENT_/i, "").toLowerCase() as ElementId | "none";
+}
+
+// Типы для входных данных, обогащённые id
+interface GenshinDbArtifact extends Omit<genshinDb.Artifact, "id"> {
+  id: ArtifactSetId;
+  name: ArtifactSetName;
+}
+
+interface GenshinDbCharacter extends Omit<genshinDb.Character, "id"> {
+  id: CharacterId;
+  name: CharacterName;
+  elementText: ElementName | "Нет";
+}
+
+interface GenshinDbElement extends genshinDb.Element {
+  id: ElementId;
+  name: ElementName;
+}
+
+interface GenshinDbTalent extends Omit<genshinDb.Talent, "id"> {
+  id: TalentId;
+}
+
+interface GenshinDbWeapon extends Omit<genshinDb.Weapon, "id"> {
+  id: WeaponId;
+  name: WeaponName;
+}
+
+// --- Трансформеры ---
+
+function transformArtifactDetail(item: GenshinDbArtifact): ArtifactSet {
+  const data: ArtifactSet = {
     id: item.id,
     name: item.name,
     rarityList: item.rarityList,
     effect1Pc: item.effect1Pc,
     effect2Pc: item.effect2Pc,
     effect4Pc: item.effect4Pc,
-    image: item.images.mihoyo_flower || item.images.mihoyo_plume || item.images.mihoyo_sands || item.images.mihoyo_goblet || item.images.mihoyo_circlet,
+    image: item.images.mihoyo_flower ?? item.images.mihoyo_plume ?? item.images.mihoyo_sands ?? item.images.mihoyo_goblet ?? item.images.mihoyo_circlet,
     // images: item.images,
     version: item.version,
   };
@@ -32,7 +76,6 @@ function transformArtifactDetail(item) {
       image: item.images.mihoyo_flower,
     };
   }
-
   if (item.plume) {
     data.plume = {
       name: item.plume.name,
@@ -43,7 +86,6 @@ function transformArtifactDetail(item) {
       image: item.images.mihoyo_plume,
     };
   }
-
   if (item.sands) {
     data.sands = {
       name: item.sands.name,
@@ -54,7 +96,6 @@ function transformArtifactDetail(item) {
       image: item.images.mihoyo_sands,
     };
   }
-
   if (item.goblet) {
     data.goblet = {
       name: item.goblet.name,
@@ -65,7 +106,6 @@ function transformArtifactDetail(item) {
       image: item.images.mihoyo_goblet,
     };
   }
-
   if (item.circlet) {
     data.circlet = {
       name: item.circlet.name,
@@ -80,18 +120,16 @@ function transformArtifactDetail(item) {
   return data;
 }
 
-// Трансформер для артефактов (список / карточка)
-function transformArtifactListItem(item) {
+function transformArtifactListItem(item: GenshinDbArtifact): ArtifactSetListItem {
   return {
     id: item.id,
     name: item.name,
     rarityList: item.rarityList,
-    image: item.images.mihoyo_flower || item.images.mihoyo_plume || item.images.mihoyo_sands || item.images.mihoyo_goblet || item.images.mihoyo_circlet,
+    image: item.images.mihoyo_flower ?? item.images.mihoyo_plume ?? item.images.mihoyo_sands ?? item.images.mihoyo_goblet ?? item.images.mihoyo_circlet,
   };
 }
 
-// Трансформер для персонажей (детальная информация)
-function transformCharacterDetail(item) {
+function transformCharacterDetail(item: GenshinDbCharacter): Character {
   return {
     id: item.id,
     name: item.name,
@@ -125,8 +163,7 @@ function transformCharacterDetail(item) {
   };
 }
 
-// Трансформер для персонажей (список / карточка)
-function transformCharacterListItem(item) {
+function transformCharacterListItem(item: GenshinDbCharacter): CharacterListItem {
   return {
     id: item.id,
     name: item.name,
@@ -137,8 +174,7 @@ function transformCharacterListItem(item) {
   };
 }
 
-// Трансформер для элементов (детальная информация)
-function transformElementDetail(item) {
+function transformElementDetail(item: GenshinDbElement): Element {
   return {
     id: item.id,
     name: item.name,
@@ -153,23 +189,21 @@ function transformElementDetail(item) {
   };
 }
 
-// Трансформер для элементов (список / карточка)
-function transformElementListItem(item) {
+function transformElementListItem(item: GenshinDbElement): ElementListItem {
   return { id: item.id, name: item.name, color: item.color, image: item.images.wikia };
 }
 
-// Трансформер для талантов (детальная информация)
-function transformTalentDetail(item) {
+function transformTalentDetail(item: GenshinDbTalent): Talent {
   return {
     id: item.id,
     name: item.name,
-    combat1: item.combat1.name,
+    combat1: item.combat1?.name ?? "",
     // combat1: item.combat1,
-    combat2: item.combat2?.name,
+    combat2: item.combat2?.name ?? "",
     // combat2: item.combat2,
     // combatsp: item.combatsp,
     // combatju: item.combatju,
-    combat3: item.combat3?.name,
+    combat3: item.combat3?.name ?? "",
     // combat3: item.combat3,
     // passive1: item.passive1,
     // passive2: item.passive2,
@@ -181,13 +215,11 @@ function transformTalentDetail(item) {
   };
 }
 
-// Трансформер для талантов (список / карточка)
-function transformTalentListItem(item) {
+function transformTalentListItem(item: GenshinDbTalent): TalentListItem {
   return { id: item.id, name: item.name };
 }
 
-// Трансформер для оружия (детальная информация)
-function transformWeaponDetail(item) {
+function transformWeaponDetail(item: GenshinDbWeapon): Weapon {
   return {
     id: item.id,
     name: item.name,
@@ -217,61 +249,110 @@ function transformWeaponDetail(item) {
   };
 }
 
-// Трансформер для оружия (список / карточка)
-function transformWeaponListItem(item) {
+function transformWeaponListItem(item: GenshinDbWeapon): WeaponListItem {
   return { id: item.id, name: item.name, rarity: item.rarity, image: item.images.mihoyo_icon };
 }
 
-// Конфигурация для категорий
+// Тип для всех возможных функций genshin-db
+type GenshinDbFunction = "artifacts" | "characters" | "elements" | "talents" | "weapons";
+
+// Типы для входных данных (обогащённые id)
+type InputData<F extends GenshinDbFunction>
+  = F extends "artifacts" ? GenshinDbArtifact
+    : F extends "characters" ? GenshinDbCharacter
+      : F extends "elements" ? GenshinDbElement
+        : F extends "talents" ? GenshinDbTalent
+          : F extends "weapons" ? GenshinDbWeapon
+            : never;
+
+// Типы для выходных данных
+type OutputDataDetail<F extends GenshinDbFunction>
+  = F extends "artifacts" ? ArtifactSet
+    : F extends "characters" ? Character
+      : F extends "elements" ? Element
+        : F extends "talents" ? Talent
+          : F extends "weapons" ? Weapon
+            : never;
+
+type OutputDataList<F extends GenshinDbFunction>
+  = F extends "artifacts" ? ArtifactSetListItem
+    : F extends "characters" ? CharacterListItem
+      : F extends "elements" ? ElementListItem
+        : F extends "talents" ? TalentListItem
+          : F extends "weapons" ? WeaponListItem
+            : never;
+
+// Конфигурация категории
+interface CategoryConfig<F extends GenshinDbFunction> {
+  function: F;
+  transformDetail: (item: InputData<F>) => OutputDataDetail<F>;
+  transformList: (item: InputData<F>) => OutputDataList<F>;
+  filterNames?: (names: string[]) => string[];
+}
+
+// Конфигурация категории
 const CATEGORIES = {
   "artifact-sets": {
-    function: "artifacts",
+    function: "artifacts" as const,
     transformDetail: transformArtifactDetail,
     transformList: transformArtifactListItem,
   },
   "characters": {
-    function: "characters",
+    function: "characters" as const,
     transformDetail: transformCharacterDetail,
     transformList: transformCharacterListItem,
   },
   "elements": {
-    function: "elements",
+    function: "elements" as const,
     transformDetail: transformElementDetail,
     transformList: transformElementListItem,
   },
-  "talents": { function: "talents", transformDetail: transformTalentDetail, transformList: transformTalentListItem },
+  "talents": {
+    function: "talents" as const,
+    transformDetail: transformTalentDetail,
+    transformList: transformTalentListItem,
+  },
   "weapons": {
+    function: "weapons" as const,
+    transformDetail: transformWeaponDetail,
+    transformList: transformWeaponListItem,
     filterNames: (names) => {
       // Убираем дубли
       const unique = [...new Set(names)];
 
-      // Исключаем "Легендарный клинок Иссин"
+      // Исключаем "Легендарный клинок Иссин" (английское имя)
       return unique.filter(name => name !== "Prized Isshin Blade");
     },
-    function: "weapons",
-    transformDetail: transformWeaponDetail,
-    transformList: transformWeaponListItem,
   },
+} satisfies {
+  "artifact-sets": CategoryConfig<"artifacts">;
+  "characters": CategoryConfig<"characters">;
+  "elements": CategoryConfig<"elements">;
+  "talents": CategoryConfig<"talents">;
+  "weapons": CategoryConfig<"weapons">;
 };
 
 // Функция для безопасного создания директории
-async function ensureDir(dir) {
+async function ensureDir(dir: string) {
   try {
     await fs.mkdir(dir, { recursive: true });
   }
   catch (err) {
-    if (err.code !== "EEXIST") {
-      throw err;
+    // Проверяем, что ошибка не "EEXIST" (папка уже существует)
+    if (err && typeof err === "object" && "code" in err && err.code === "EEXIST") {
+      return;
     }
+
+    throw err;
   }
 }
 
 // Генерация данных для одной категории
-async function generateCategory(categoryName, config) {
+async function generateCategory<F extends GenshinDbFunction>(categoryName: string, config: CategoryConfig<F>) {
   console.log(`Генерация данных для ${categoryName}...`);
 
   // Получаем все имена элементов в категории
-  let names = genshinDb[config.function]("names", {
+  let names: string[] = genshinDb[config.function]("names", {
     matchCategories: true,
     resultLanguage: genshinDb.Language.English,
   });
@@ -281,13 +362,18 @@ async function generateCategory(categoryName, config) {
     names = config.filterNames(names);
   }
 
+  // Получаем данные для каждого имени и дополняем id
   const items = names.map((name) => {
     const data = genshinDb[config.function](name, {
       queryLanguages: [genshinDb.Language.English, genshinDb.Language.Russian],
       resultLanguage: genshinDb.Language.Russian,
     });
 
-    return { ...data, id: name.toLowerCase().replace(/[()"']/g, "").replace(/[\s-]+/g, "_") };
+    if (!data) {
+      throw new Error(`Данные не найдены для ${name} в категории ${categoryName}`);
+    }
+
+    return { ...data, id: toSafeId(name) } as InputData<F>; // здесь требуется утверждение, т.к. мы добавляем поле id
   });
 
   // Создаём папку категории
@@ -303,13 +389,7 @@ async function generateCategory(categoryName, config) {
   await ensureDir(detailsDir);
 
   for (const item of items) {
-    const id = String(item.id || item.name);
-    const safeId = id.replace(/[^a-z0-9]/gi, "_");
-
-    if (id !== safeId) {
-      console.warn({ id, safeId });
-    }
-
+    const safeId = toSafeId(item.id); // уже безопасно, но на всякий случай
     const detailData = config.transformDetail(item);
     await fs.writeFile(path.join(detailsDir, `${safeId}.json`), JSON.stringify(detailData, null, 2));
   }
@@ -318,15 +398,17 @@ async function generateCategory(categoryName, config) {
 }
 
 // Основная функция
-async function main() {
+async function main(): Promise<void> {
   try {
     console.log("Начинаем генерацию статических данных...");
-
     await ensureDir(OUTPUT_DIR);
 
-    for (const [name, config] of Object.entries(CATEGORIES)) {
-      await generateCategory(name, config);
-    }
+    // Явно вызываем для каждой категории – так TypeScript выводит типы без any
+    await generateCategory("artifact-sets", CATEGORIES["artifact-sets"]);
+    await generateCategory("characters", CATEGORIES["characters"]);
+    await generateCategory("elements", CATEGORIES["elements"]);
+    await generateCategory("talents", CATEGORIES["talents"]);
+    await generateCategory("weapons", CATEGORIES["weapons"]);
 
     console.log("✅ Генерация завершена!");
   }

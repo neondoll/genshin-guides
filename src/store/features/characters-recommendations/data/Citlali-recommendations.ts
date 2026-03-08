@@ -43,10 +43,10 @@ export default {
   ],
   videoSourceIds: [VideoSourceIds.FIRST_CONSTELLATION_OR_SIGNATURE_WEAPON, VideoSourceIds.GUIDE_TO_CITLALI_IN_5_8],
   weapons: [
-    { id: WeaponIds.STARCALLERS_WATCH, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.STARCALLERS_WATCH, best: "Лучшее решение", r: 1 },
     { id: WeaponIds.FAVONIUS_CODEX, r: 5 },
     { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, r: 5 },
-    { id: WeaponIds.SACRIFICIAL_FRAGMENTS, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.SACRIFICIAL_FRAGMENTS, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.PROTOTYPE_AMBER, r: 5 },
     { id: WeaponIds.WANDERING_EVENSTAR, r: 5 },
   ],

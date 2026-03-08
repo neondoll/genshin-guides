@@ -18,8 +18,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.SKYWARD_PRIDE, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.ULTIMATE_OVERLORDS_MEGA_MAGIC_SWORD, best: "Лучшее эвентовое оружие", r: 5 },
-    { id: WeaponIds.TIDAL_SHADOW, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.SKYWARD_PRIDE, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.ULTIMATE_OVERLORDS_MEGA_MAGIC_SWORD, best: "Лучшее эвентовое решение", r: 5 },
+    { id: WeaponIds.TIDAL_SHADOW, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

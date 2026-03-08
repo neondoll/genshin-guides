@@ -21,8 +21,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.MISTSPLITTER_REFORGED, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.MISTSPLITTER_REFORGED, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.AMENOMA_KAGEUCHI, r: 5 },
   ],
 } as CharacterRecommendations;

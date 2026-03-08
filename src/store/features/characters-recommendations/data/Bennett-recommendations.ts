@@ -44,9 +44,9 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.MISTSPLITTER_REFORGED, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.AQUILA_FAVONIA, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.SKYWARD_BLADE, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.SAPWOOD_BLADE, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.MISTSPLITTER_REFORGED, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.AQUILA_FAVONIA, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.SKYWARD_BLADE, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.SAPWOOD_BLADE, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

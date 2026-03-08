@@ -19,8 +19,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее оружие", r: 5 },
-    { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее решение", r: 5 },
+    { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее решение", r: 1 },
     { id: WeaponIds.SACRIFICIAL_FRAGMENTS, r: 5 },
   ],
 } as CharacterRecommendations;

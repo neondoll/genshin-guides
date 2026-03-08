@@ -13,8 +13,8 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.LUMIDOUCE_ELEGY, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.LUMIDOUCE_ELEGY, best: "Лучшее решение", r: 1 },
     { id: WeaponIds.BLACKCLIFF_POLE, r: 5 },
-    { id: WeaponIds.FAVONIUS_LANCE, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FAVONIUS_LANCE, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

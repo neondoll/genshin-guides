@@ -24,6 +24,7 @@ export const VideoSourceIds = {
   GUIDE_TO_FLINS_IN_6_0_MironMinMax: "guide_to_Flins_in_6.0_MironMinMax",
   GUIDE_TO_FLINS_IN_6_0_xPandaChannelx: "guide_to_Flins_in_6.0_xPandaChannelx",
   GUIDE_TO_FLINS_IN_6_4_AnimeCool: "guide_to_Flins_in_6.4_AnimeCool",
+  GUIDE_TO_FLINS_IN_6_4_MironMinMax: "guide_to_Flins_in_6.4_MironMinMax",
   GUIDE_TO_MAVUIKA: "guide_to_Mavuika",
   GUIDE_TO_MUALANI_IN_5_8: "guide_to_Mualani_in_5.8",
   GUIDE_TO_NAHIDA_IN_5_1: "guide_to_Nahida_in_5.1",

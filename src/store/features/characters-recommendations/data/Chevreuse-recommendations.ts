@@ -43,9 +43,9 @@ export default {
     VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
   ],
   weapons: [
-    { id: WeaponIds.STAFF_OF_HOMA, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.DIALOGUES_OF_THE_DESERT_SAGES, best: "Лучшее доступное оружие", r: 5 },
-    { id: WeaponIds.RIGHTFUL_REWARD, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.STAFF_OF_HOMA, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.DIALOGUES_OF_THE_DESERT_SAGES, best: "Лучшее доступное решение", r: 5 },
+    { id: WeaponIds.RIGHTFUL_REWARD, best: "Лучшее доступное решение", r: 5 },
     { id: WeaponIds.FAVONIUS_LANCE, r: 5 },
   ],
 } as CharacterRecommendations;

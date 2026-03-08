@@ -33,10 +33,10 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.ASTRAL_VULTURES_CRIMSON_PLUMAGE, best: "Лучшее оружие", r: 1 },
+    { id: WeaponIds.ASTRAL_VULTURES_CRIMSON_PLUMAGE, best: "Лучшее решение", r: 1 },
     { id: WeaponIds.AMOS_BOW, r: 1 },
     { id: WeaponIds.ELEGY_FOR_THE_END, r: 1 },
-    { id: WeaponIds.SONG_OF_STILLNESS, best: "Лучшее доступное оружие (когда условия выполняются)", r: 5 },
-    { id: WeaponIds.HAMAYUMI, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.SONG_OF_STILLNESS, best: "Лучшее доступное решение (когда условия выполняются)", r: 5 },
+    { id: WeaponIds.HAMAYUMI, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

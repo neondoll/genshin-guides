@@ -51,8 +51,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.FREEDOM_SWORN, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.TOUKABOU_SHIGURE, best: "Лучшее эвентовое оружие", r: 5 },
-    { id: WeaponIds.IRON_STING, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FREEDOM_SWORN, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.TOUKABOU_SHIGURE, best: "Лучшее эвентовое решение", r: 5 },
+    { id: WeaponIds.IRON_STING, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

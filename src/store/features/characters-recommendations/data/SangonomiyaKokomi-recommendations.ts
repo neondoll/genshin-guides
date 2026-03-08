@@ -22,7 +22,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее оружие", r: 5 },
+    { id: WeaponIds.THRILLING_TALES_OF_DRAGON_SLAYERS, best: "Лучшее решение", r: 5 },
     { id: WeaponIds.EVERLASTING_MOONGLOW, r: 1 },
     { id: WeaponIds.FLOWING_PURITY, r: 5 },
     { id: WeaponIds.PROTOTYPE_AMBER, r: 5 },

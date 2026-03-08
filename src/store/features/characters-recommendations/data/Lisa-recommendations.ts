@@ -18,8 +18,8 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее оружие", r: 1 },
-    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное оружие (для ДД)", r: 5 },
-    { id: WeaponIds.SACRIFICIAL_FRAGMENTS, best: "Лучшее доступное оружие (для максимизации МС)", r: 5 },
+    { id: WeaponIds.A_THOUSAND_FLOATING_DREAMS, best: "Лучшее решение", r: 1 },
+    { id: WeaponIds.THE_WIDSITH, best: "Лучшее доступное решение (для ДД)", r: 5 },
+    { id: WeaponIds.SACRIFICIAL_FRAGMENTS, best: "Лучшее доступное решение (для максимизации МС)", r: 5 },
   ],
 } as CharacterRecommendations;

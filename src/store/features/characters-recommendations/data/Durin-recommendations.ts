@@ -43,7 +43,7 @@ export default {
     VideoSourceIds.TALENT_GAINS_PYRO,
   ],
   weapons: [
-    { id: WeaponIds.ATHAME_ARTIS, best: "Лучшее оружие", percent: 1.24 },
+    { id: WeaponIds.ATHAME_ARTIS, best: "Лучшее решение", percent: 1.24 },
     { id: WeaponIds.PRIMORDIAL_JADE_CUTTER, percent: 1.17 },
     { id: WeaponIds.MISTSPLITTER_REFORGED, percent: 1.15 },
     { id: WeaponIds.HARAN_GEPPAKU_FUTSU, percent: 1.11 },
@@ -55,7 +55,7 @@ export default {
     { id: WeaponIds.URAKU_MISUGIRI, percent: 1.03 },
     { id: WeaponIds.LIONS_ROAR, r: 5, percent: 1.03 },
     { id: WeaponIds.WOLF_FANG, r: 1, percent: 1.01 },
-    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное оружие", r: 5, percent: 1.00 },
+    { id: WeaponIds.FINALE_OF_THE_DEEP, best: "Лучшее доступное решение", r: 5, percent: 1.00 },
     { id: WeaponIds.MOONWEAVERS_DAWN, r: 1, percent: 0.97 },
     { id: WeaponIds.THE_BLACK_SWORD, percent: 0.93 },
   ],

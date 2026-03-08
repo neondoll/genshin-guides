@@ -19,7 +19,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_2,
   ],
   weapons: [
-    { id: WeaponIds.FOOTPRINT_OF_THE_RAINBOW, best: "Лучшее оружие", r: 5 },
-    { id: WeaponIds.FAVONIUS_LANCE, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FOOTPRINT_OF_THE_RAINBOW, best: "Лучшее решение", r: 5 },
+    { id: WeaponIds.FAVONIUS_LANCE, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;

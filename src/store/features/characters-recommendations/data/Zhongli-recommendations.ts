@@ -22,7 +22,7 @@ export default {
     VideoSourceIds.WHO_NEEDS_LEVELING_PART_1,
   ],
   weapons: [
-    { id: WeaponIds.FAVONIUS_LANCE, best: "Лучшее оружие", r: 5 },
-    { id: WeaponIds.BLACK_TASSEL, best: "Лучшее доступное оружие", r: 5 },
+    { id: WeaponIds.FAVONIUS_LANCE, best: "Лучшее решение", r: 5 },
+    { id: WeaponIds.BLACK_TASSEL, best: "Лучшее доступное решение", r: 5 },
   ],
 } as CharacterRecommendations;
