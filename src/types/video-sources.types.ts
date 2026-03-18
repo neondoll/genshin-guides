@@ -12,6 +12,7 @@ export const VideoSourceIds = {
   GUIDE_TO_COLUMBINA_IN_6_3_MironMinMax: "guide_to_Columbina_in_6.3_MironMinMax",
   GUIDE_TO_DURIN_IN_6_2_AnimeCool: "guide_to_Durin_in_6.2_AnimeCool",
   GUIDE_TO_DURIN_IN_6_2_MironMinMax: "guide_to_Durin_in_6.2_MironMinMax",
+  GUIDE_TO_ESCOFFIER_IN_6_4: "guide_to_Escoffier_in_6.4",
   GUIDE_TO_FISCHL_IN_6_2: "guide_to_Fischl_in_6.2",
   GUIDE_TO_FURINA_IN_5_4: "guide_to_Furina_in_5.4",
   GUIDE_TO_ILLUGA_IN_6_3: "guide_to_Illuga_in_6.3",
