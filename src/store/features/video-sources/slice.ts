@@ -122,6 +122,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239277",
     youtube: "https://youtu.be/s7cCUf-tQ_E",
   },
+  [VideoSourceIds.GUIDE_TO_ESCOFFIER_IN_6_4]: {
+    id: VideoSourceIds.GUIDE_TO_ESCOFFIER_IN_6_4,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Эскофье в 6.4 [Genshin Impact]",
+    date: "2026-03-17",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239306",
+    youtube: "https://youtu.be/AvoHh0l8Ze4",
+  },
   [VideoSourceIds.GUIDE_TO_FISCHL_IN_6_2]: {
     id: VideoSourceIds.GUIDE_TO_FISCHL_IN_6_2,
     author: "Miron MinMax",
