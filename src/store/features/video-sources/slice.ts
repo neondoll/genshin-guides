@@ -328,6 +328,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-226836627_456239384",
     youtube: "https://www.youtube.com/watch?v=Rr26SHvbmXE",
   },
+  [VideoSourceIds.GUIDE_TO_SKIRK_IN_6_4_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_SKIRK_IN_6_4_MironMinMax,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Скирк в 6.4 [Genshin Impact]",
+    date: "2026-03-19",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239309",
+    youtube: "https://youtu.be/lVm_dJ5hJYE",
+  },
   [VideoSourceIds.GUIDE_TO_TRAVELER_PYRO]: {
     id: VideoSourceIds.GUIDE_TO_TRAVELER_PYRO,
     author: "Анимекул",
