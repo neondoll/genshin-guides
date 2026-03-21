@@ -2,23 +2,29 @@ import { type FC } from "react";
 import { Link } from "react-router";
 
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
+  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import { ArtifactSetImageLoading } from "@/components/v1/artifact-set-image";
+import { ArtifactSetImage } from "@/components/v1/artifact-set-image";
 import { Card, CardContent } from "@/components/v1/card";
+import { Loading, LoadingError } from "@/components/v1/loading";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
+import { useArtifactSetList } from "@/store/features/artifact-sets";
 import { useAppSelector } from "@/store/hooks";
 
 const ArtifactSetsTierListPage: FC = () => {
+  const { artifactSets, error, loading } = useArtifactSetList();
   const artifactSetsTierList = useAppSelector(state => state.artifactSetsTierList);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <LoadingError error={error} />;
+  }
 
   return (
     <>
@@ -52,11 +58,23 @@ const ArtifactSetsTierListPage: FC = () => {
                   <TableCell className={cn(item.tierClassName)}>{item.tier}</TableCell>
                   <TableCell>
                     <ul className="flex flex-wrap gap-2">
-                      {item.ids.map(id => (
-                        <li className="shrink-0" key={id}>
-                          <ArtifactSetImageLoading artifactSetId={id} className="size-16 rounded-md rounded-br-2xl" />
-                        </li>
-                      ))}
+                      {item.ids.map((id) => {
+                        const artifactSet = artifactSets.find(artifactSet => artifactSet.id === id)!;
+
+                        return (
+                          <li className="shrink-0" key={id}>
+                            <Link to={Paths.ARTIFACT_SET(id)}>
+                              <ArtifactSetImage
+                                artifactSetId={artifactSet.id}
+                                artifactSetImage={artifactSet.image}
+                                artifactSetName={artifactSet.name}
+                                artifactSetRarityList={artifactSet.rarityList}
+                                className="size-16 rounded-md rounded-br-2xl"
+                              />
+                            </Link>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </TableCell>
                 </TableRow>
