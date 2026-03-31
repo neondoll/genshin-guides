@@ -62,7 +62,7 @@ const WeaponPage: FC = () => {
   const characteristics = useMemo(() => {
     return [
       { label: "Имя", value: weapon?.name },
-      { label: "Тип", value: weapon?.weaponText },
+      { label: "Тип", value: weapon?.typeText },
       { label: "Дополнительные характеристики", value: weapon?.mainStatText },
       { label: weapon?.effectName, value: weaponEffect, className: "col-span-full" },
       { label: "Версия выхода", value: weapon?.version },
@@ -120,7 +120,7 @@ const WeaponPage: FC = () => {
           <div className="flex flex-wrap gap-x-1 gap-y-2 mt-4">
             {weapon.mainStatText && <Badge children={weapon.mainStatText} variant="secondary" />}
             {weapon.rarity && <Badge children={`${weapon.rarity}★`} variant="secondary" />}
-            {weapon.weaponText && <Badge children={weapon.weaponText} variant="secondary" />}
+            {weapon.typeText && <Badge children={weapon.typeText} variant="secondary" />}
           </div>
         </div>
       </div>

@@ -54,7 +54,10 @@ export default defineConfig((env) => {
             groups: [
               {
                 name: (moduleId) => {
-                  if (moduleId.includes("/node_modules/@radix-ui/")) {
+                  if (
+                    moduleId.includes("/node_modules/@radix-ui/")
+                    || moduleId.includes("/node_modules/radix-ui/")
+                  ) {
                     return "libs-radix";
                   }
 

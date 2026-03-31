@@ -1,5 +1,6 @@
-import type { ElementId, ElementName } from "./elements.types";
+import type { Element } from "./elements.types";
 import type { Rarity } from "./rarities.types";
+import type { WeaponType } from "./weapon-types.types";
 
 export const CharacterIds = {
   AETHER: "aether",
@@ -242,16 +243,19 @@ export type CharacterName = typeof CharacterNames[keyof typeof CharacterNames];
 export const TravelerIdArray = [CharacterIds.AETHER, CharacterIds.LUMINE] as const;
 export type TravelerId = typeof TravelerIdArray[number];
 
+export type CharacterRarity = Extract<Rarity, 4 | 5>;
+
 export interface Character {
   id: CharacterId;
   name: CharacterName;
   fullName?: string;
   title: string;
-  weaponText: string;
-  rarity: Extract<Rarity, 4 | 5>;
+  weaponTypeId: WeaponType["id"];
+  weaponTypeText: WeaponType["name"];
+  rarity: CharacterRarity;
   birthday: string;
-  elementId: ElementId | "none";
-  elementText: ElementName | "Нет";
+  elementId: Element["id"] | "none";
+  elementText: Element["name"] | "Нет";
   affiliation: string;
   region: string;
   substatText: string;
@@ -261,4 +265,4 @@ export interface Character {
 }
 
 export type CharacterConstellations = 0 | 1 | 2 | 3 | 4 | 5 | 6;
-export type CharacterListItem = Pick<Character, "id" | "name" | "rarity" | "elementId" | "elementText" | "image">;
+export type CharacterListItem = Pick<Character, "id" | "name" | "weaponTypeId" | "rarity" | "elementId" | "elementText" | "image">;

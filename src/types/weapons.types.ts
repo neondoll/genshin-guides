@@ -1,4 +1,5 @@
 import type { Rarity } from "./rarities.types";
+import type { WeaponType } from "./weapon-types.types";
 
 export const WeaponIds = {
   A_THOUSAND_BLAZING_SUNS: "a_thousand_blazing_suns",
@@ -14,6 +15,7 @@ export const WeaponIds = {
   ASTRAL_VULTURES_CRIMSON_PLUMAGE: "astral_vultures_crimson_plumage",
   ATHAME_ARTIS: "athame_artis",
   AZURELIGHT: "azurelight",
+  BALLAD_OF_THE_BOUNDLESS_BLUE: "ballad_of_the_boundless_blue",
   BALLAD_OF_THE_FJORDS: "ballad_of_the_fjords",
   BEACON_OF_THE_REED_SEA: "beacon_of_the_reed_sea",
   BLACK_TASSEL: "black_tassel",
@@ -54,11 +56,13 @@ export const WeaponIds = {
   FINALE_OF_THE_DEEP: "finale_of_the_deep",
   FLAME_FORGED_INSIGHT: "flame_forged_insight",
   FLEUVE_CENDRE_FERRYMAN: "fleuve_cendre_ferryman",
+  FLOWER_WREATHED_FEATHERS: "flower_wreathed_feathers",
   FLOWING_PURITY: "flowing_purity",
   FLUTE_OF_EZPITZAL: "flute_of_ezpitzal",
   FOOTPRINT_OF_THE_RAINBOW: "footprint_of_the_rainbow",
   FRACTURED_HALO: "fractured_halo",
   FREEDOM_SWORN: "freedom_sworn",
+  FRUITFUL_HOOK: "fruitful_hook",
   GEST_OF_THE_MIGHTY_WOLF: "gest_of_the_mighty_wolf",
   HAKUSHIN_RING: "hakushin_ring",
   HAMAYUMI: "hamayumi",
@@ -94,6 +98,7 @@ export const WeaponIds = {
   OATHSWORN_EYE: "oathsworn_eye",
   PEAK_PATROL_SONG: "peak_patrol_song",
   POLAR_STAR: "polar_star",
+  PORTABLE_POWER_SAW: "portable_power_saw",
   PREDATOR: "predator",
   PRIMORDIAL_JADE_CUTTER: "primordial_jade_cutter",
   PRIMORDIAL_JADE_WINGED_SPEAR: "primordial_jade_winged_spear",
@@ -141,6 +146,7 @@ export const WeaponIds = {
   SUMMIT_SHAPER: "summit_shaper",
   SUNNY_MORNING_SLEEP_IN: "sunny_morning_sleep_in",
   SURFS_UP: "surfs_up",
+  SWORD_OF_NARZISSENKREUZ: "sword_of_narzissenkreuz",
   SYMPHONIST_OF_SCENTS: "symphonist_of_scents",
   TALKING_STICK: "talking_stick",
   TAMAYURATEI_NO_OHANASHI: "tamayuratei_no_ohanashi",
@@ -191,6 +197,7 @@ export const WeaponNames = {
   ASTRAL_VULTURES_CRIMSON_PLUMAGE: "Алое перо звёздного грифа",
   ATHAME_ARTIS: "Атаме артис",
   AZURELIGHT: "Лазурное сияние",
+  BALLAD_OF_THE_BOUNDLESS_BLUE: "Песнь необъятной лазури",
   BALLAD_OF_THE_FJORDS: "Баллада фьордов",
   BEACON_OF_THE_REED_SEA: "Маяк тростникового моря",
   BLACK_TASSEL: "Чёрная кисть",
@@ -231,11 +238,13 @@ export const WeaponNames = {
   FINALE_OF_THE_DEEP: "Грандиозный финал глубин",
   FLAME_FORGED_INSIGHT: "Выкованное пламенем озарение",
   FLEUVE_CENDRE_FERRYMAN: "Перевозчик Флёв Сандр",
+  FLOWER_WREATHED_FEATHERS: "Украшенные цветами перья",
   FLOWING_PURITY: "Сверкание чистых вод",
   FLUTE_OF_EZPITZAL: "Флейта Эспицаль",
   FOOTPRINT_OF_THE_RAINBOW: "След радуги",
   FRACTURED_HALO: "Расколотый ореол",
   FREEDOM_SWORN: "Клятва свободы",
+  FRUITFUL_HOOK: "Плодотворный крюк",
   GEST_OF_THE_MIGHTY_WOLF: "Подвиг могучего волка",
   HAKUSHIN_RING: "Кольцо Хакусин",
   HAMAYUMI: "Хамаюми",
@@ -271,6 +280,7 @@ export const WeaponNames = {
   OATHSWORN_EYE: "Око клятвы",
   PEAK_PATROL_SONG: "Песнь патруля пиков",
   POLAR_STAR: "Полярная звезда",
+  PORTABLE_POWER_SAW: "Переносная мотопила",
   PREDATOR: "Хищник",
   PRIMORDIAL_JADE_CUTTER: "Драгоценный омут",
   PRIMORDIAL_JADE_WINGED_SPEAR: "Нефритовый коршун",
@@ -318,6 +328,7 @@ export const WeaponNames = {
   SUMMIT_SHAPER: "Кромсатель пиков",
   SUNNY_MORNING_SLEEP_IN: "Сон солнечным утром",
   SURFS_UP: "Лови волну",
+  SWORD_OF_NARZISSENKREUZ: "Меч Нарциссенкрейца",
   SYMPHONIST_OF_SCENTS: "Симфонист ароматов",
   TALKING_STICK: "Говорящая палица",
   TAMAYURATEI_NO_OHANASHI: "Тамаюратэй но оханаси",
@@ -363,7 +374,8 @@ export interface Weapon {
   id: WeaponId;
   name: WeaponName;
   dupealias?: string;
-  weaponText: string;
+  typeId: WeaponType["id"];
+  typeText: WeaponType["name"];
   rarity: Rarity;
   mainStatText?: string;
   effectName?: string;
@@ -377,5 +389,5 @@ export interface Weapon {
   version: string;
 }
 
-export type WeaponListItem = Pick<Weapon, "id" | "name" | "rarity" | "image">;
+export type WeaponListItem = Pick<Weapon, "id" | "name" | "typeId" | "rarity" | "image">;
 export type WeaponR = 1 | 2 | 3 | 4 | 5;

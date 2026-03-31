@@ -3,14 +3,12 @@ import genshinDb from "genshin-db";
 import path from "path";
 
 import type {
-  ArtifactSet,
-  ArtifactSetId,
-  ArtifactSetListItem,
-  ArtifactSetName,
+  ArtifactSet, ArtifactSetId, ArtifactSetListItem, ArtifactSetName,
 } from "../src/types/artifact-sets.types";
 import type { Character, CharacterId, CharacterListItem, CharacterName } from "../src/types/characters.types";
 import type { Element, ElementId, ElementListItem, ElementName } from "../src/types/elements.types";
 import type { Talent, TalentId, TalentListItem } from "../src/types/talents.types";
+import type { WeaponTypeId } from "../src/types/weapon-types.types";
 import type { Weapon, WeaponId, WeaponListItem, WeaponName } from "../src/types/weapons.types";
 
 const OUTPUT_DIR = path.resolve("public/data");
@@ -22,7 +20,12 @@ function toSafeId(name: string) {
 
 // Преобразование типа элемента
 function getElementId(elementType: string) {
-  return elementType.replace(/^ELEMENT_/i, "").toLowerCase() as ElementId | "none";
+  return elementType.replace(/^ELEMENT_/i, "").toLowerCase() as (ElementId | "none");
+}
+
+// Преобразование типа оружия
+function getWeaponTypeId(weaponType: string) {
+  return weaponType.replace(/^WEAPON_/i, "").toLowerCase() as WeaponTypeId;
 }
 
 // Типы для входных данных, обогащённые id
@@ -61,8 +64,8 @@ function transformArtifactDetail(item: GenshinDbArtifact): ArtifactSet {
     effect1Pc: item.effect1Pc,
     effect2Pc: item.effect2Pc,
     effect4Pc: item.effect4Pc,
-    image: item.images.mihoyo_flower ?? item.images.mihoyo_plume ?? item.images.mihoyo_sands ?? item.images.mihoyo_goblet ?? item.images.mihoyo_circlet,
     // images: item.images,
+    image: item.images.mihoyo_flower ?? item.images.mihoyo_plume ?? item.images.mihoyo_sands ?? item.images.mihoyo_goblet ?? item.images.mihoyo_circlet,
     version: item.version,
   };
 
@@ -141,15 +144,17 @@ function transformCharacterDetail(item: GenshinDbCharacter): Character {
     title: item.title,
     // description: item.description,
     // weaponType: item.weaponType,
-    weaponText: item.weaponText,
+    // weaponText: item.weaponText,
+    weaponTypeId: getWeaponTypeId(item.weaponType),
+    weaponTypeText: item.weaponText,
     // bodyType: item.bodyType,
     // gender: item.gender,
     // qualityType: item.qualityType,
     rarity: item.rarity,
     // birthdaymmdd: item.birthdaymmdd,
     birthday: item.birthday,
-    elementId: getElementId(item.elementType),
     // elementType: item.elementType,
+    elementId: getElementId(item.elementType),
     elementText: item.elementText,
     affiliation: item.affiliation,
     // associationType: item.associationType,
@@ -159,8 +164,8 @@ function transformCharacterDetail(item: GenshinDbCharacter): Character {
     constellation: item.constellation,
     // cv: item.cv,
     // costs: item.costs,
-    image: item.images.mihoyo_icon,
     // images: item.images,
+    image: item.images.mihoyo_icon,
     // url: item.url,
     // stats: item.stats,
     version: item.version,
@@ -171,6 +176,7 @@ function transformCharacterListItem(item: GenshinDbCharacter): CharacterListItem
   return {
     id: item.id,
     name: item.name,
+    weaponTypeId: getWeaponTypeId(item.weaponType),
     rarity: item.rarity,
     elementId: getElementId(item.elementType),
     elementText: item.elementText,
@@ -188,8 +194,8 @@ function transformElementDetail(item: GenshinDbElement): Element {
     region: item.region,
     archon: item.archon,
     // theme: item.theme,
-    image: item.images.wikia,
     // images: item.images,
+    image: item.images.wikia,
   };
 }
 
@@ -201,14 +207,14 @@ function transformTalentDetail(item: GenshinDbTalent): Talent {
   return {
     id: item.id,
     name: item.name,
-    combat1: item.combat1?.name ?? "",
     // combat1: item.combat1,
-    combat2: item.combat2?.name ?? "",
+    combat1: item.combat1?.name ?? "",
     // combat2: item.combat2,
+    combat2: item.combat2?.name ?? "",
     // combatsp: item.combatsp,
     // combatju: item.combatju,
-    combat3: item.combat3?.name ?? "",
     // combat3: item.combat3,
+    combat3: item.combat3?.name ?? "",
     // passive1: item.passive1,
     // passive2: item.passive2,
     // passive3: item.passive3,
@@ -231,7 +237,9 @@ function transformWeaponDetail(item: GenshinDbWeapon): Weapon {
     // description: item.description,
     // descriptionRaw: item.descriptionRaw,
     // weaponType: item.weaponType,
-    weaponText: item.weaponText,
+    // weaponText: item.weaponText,
+    typeId: getWeaponTypeId(item.weaponType),
+    typeText: item.weaponText,
     rarity: item.rarity,
     // story: item.story,
     // baseAtkValue: item.baseAtkValue,
@@ -246,15 +254,21 @@ function transformWeaponDetail(item: GenshinDbWeapon): Weapon {
     r4: item.r4,
     r5: item.r5,
     // costs: item.costs,
-    image: item.images.mihoyo_icon,
     // images: item.images,
+    image: item.images.mihoyo_icon,
     // stats: item.stats,
     version: item.version,
   };
 }
 
 function transformWeaponListItem(item: GenshinDbWeapon): WeaponListItem {
-  return { id: item.id, name: item.name, rarity: item.rarity, image: item.images.mihoyo_icon };
+  return {
+    id: item.id,
+    name: item.name,
+    typeId: getWeaponTypeId(item.weaponType),
+    rarity: item.rarity,
+    image: item.images.mihoyo_icon,
+  };
 }
 
 // Тип для всех возможных функций genshin-db

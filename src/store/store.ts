@@ -9,6 +9,7 @@ import { charactersRecommendationsReducer } from "@/store/features/characters-re
 import { elementsReducer } from "@/store/features/elements";
 import { talentsReducer } from "@/store/features/talents";
 import { videoSourcesReducer } from "@/store/features/video-sources";
+import { weaponTypesReducer } from "@/store/features/weapon-types";
 import { weaponsReducer } from "@/store/features/weapons";
 
 const store = configureStore({
@@ -22,6 +23,7 @@ const store = configureStore({
     elements: elementsReducer,
     talents: talentsReducer,
     videoSources: videoSourcesReducer,
+    weaponTypes: weaponTypesReducer,
     weapons: weaponsReducer,
   },
 });

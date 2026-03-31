@@ -121,7 +121,7 @@ const CharacterPage: FC = () => {
             {character.rarity && <Badge children={`${character.rarity}★`} variant="secondary" />}
             {character.region && <Badge children={character.region} variant="secondary" />}
             {character.substatText && <Badge children={character.substatText} variant="secondary" />}
-            {character.weaponText && <Badge children={character.weaponText} variant="secondary" />}
+            {character.weaponTypeText && <Badge children={character.weaponTypeText} variant="secondary" />}
           </div>
         </div>
       </div>
