@@ -7,6 +7,7 @@ import type { CharactersRecommendationsState } from "./features/characters-recom
 import type { ElementsState } from "./features/elements";
 import type { TalentsState } from "./features/talents";
 import type { VideoSourcesState } from "./features/video-sources";
+import type { WeaponTypesState } from "./features/weapon-types";
 import type { WeaponsState } from "./features/weapons";
 import store from "./store";
 
@@ -22,5 +23,6 @@ export interface AppState {
   elements: ElementsState;
   talents: TalentsState;
   videoSources: VideoSourcesState;
+  weaponTypes: WeaponTypesState;
   weapons: WeaponsState;
 }

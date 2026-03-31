@@ -63,7 +63,13 @@ const ArtifactSetsTierListPage: FC = () => {
 
                         return (
                           <li className="shrink-0" key={id}>
-                            <Link to={Paths.ARTIFACT_SET(id)}>
+                            <Link
+                              className={cn([
+                                "outline-hidden transition-all duration-300 focus-visible:*:ring-3",
+                                "focus-visible:*:ring-ring/50",
+                              ])}
+                              to={Paths.ARTIFACT_SET(id)}
+                            >
                               <ArtifactSetImage
                                 artifactSetId={artifactSet.id}
                                 artifactSetImage={artifactSet.image}
