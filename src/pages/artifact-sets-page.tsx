@@ -87,7 +87,7 @@ const ArtifactSetsPage: FC = () => {
 
   return (
     <>
-      <Collapsible className="mb-8">
+      <Collapsible className="mb-8" defaultOpen={filterRarities.length > 0}>
         <div className="flex gap-2 items-start mb-8">
           <Breadcrumb className="mr-auto">
             <BreadcrumbList>
