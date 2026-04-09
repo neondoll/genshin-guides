@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import allRecommendations from "./data/all-recommendations";
 import { type ArtifactSetId } from "@/types/artifact-sets.types";
@@ -14,35 +14,37 @@ const initialState: ArtifactSetsRecommendationsState = { entities: {}, ids: [] }
 export const fetchArtifactSetRecommendationsById = createAsyncThunk<{
   data: ArtifactSetRecommendations | null;
   id: ArtifactSetId;
-}, ArtifactSetId>("artifactSetsRecommendations/fetchById", async (artifactSetId, { getState }) => {
-  const state = getState() as { artifactSetsRecommendations: ArtifactSetsRecommendationsState };
+}, ArtifactSetId>(
+  "artifactSetsRecommendations/fetchById",
+  async (artifactSetId, { getState }) => {
+    const state = getState() as { artifactSetsRecommendations: ArtifactSetsRecommendationsState };
+    const stateArtifactSetRecommendations = state.artifactSetsRecommendations.entities[artifactSetId];
 
-  const stateArtifactSetRecommendations = state.artifactSetsRecommendations.entities[artifactSetId];
+    if (stateArtifactSetRecommendations) {
+      console.log(`Рекомендации набора артефактов с ID "${artifactSetId}" найдены в хранилище`);
 
-  if (stateArtifactSetRecommendations) {
-    console.log(`Рекомендации набора артефактов с ID "${artifactSetId}" найдены в хранилище`);
-
-    return { data: stateArtifactSetRecommendations, id: artifactSetId };
-  }
-
-  try {
-    if (artifactSetId in allRecommendations) {
-      console.log(`Загрузка рекомендаций набора артефактов с ID "${artifactSetId}" с сервера`);
-
-      const module = await allRecommendations[artifactSetId]();
-
-      return { data: module.default, id: artifactSetId };
+      return { data: stateArtifactSetRecommendations, id: artifactSetId };
     }
 
-    return { data: null, id: artifactSetId };
-  }
-  catch (error) {
-    console.error(error);
-    throw new Error(`Failed to load recommendations for ${artifactSetId}`);
-  }
-});
+    try {
+      if (artifactSetId in allRecommendations) {
+        console.log(`Загрузка рекомендаций набора артефактов с ID "${artifactSetId}" с сервера`);
 
-export const artifactSetsRecommendationsSlice = createSlice<ArtifactSetsRecommendationsState, SliceCaseReducers<ArtifactSetsRecommendationsState>, string, SliceSelectors<ArtifactSetsRecommendationsState>, string>({
+        const module = await allRecommendations[artifactSetId]();
+
+        return { data: module.default, id: artifactSetId };
+      }
+
+      return { data: null, id: artifactSetId };
+    }
+    catch (error) {
+      console.error(error);
+      throw new Error(`Failed to load recommendations for ${artifactSetId}`);
+    }
+  },
+);
+
+export const artifactSetsRecommendationsSlice = createSlice({
   name: "artifactSetsRecommendations",
   initialState,
   reducers: {},

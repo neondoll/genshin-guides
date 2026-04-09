@@ -1,4 +1,4 @@
-import { type CSSProperties, type FC, useMemo, useState } from "react";
+import { type CSSProperties, type FC, useMemo } from "react";
 import { Link } from "react-router";
 
 import {
@@ -15,11 +15,11 @@ import { Loading, LoadingError } from "@/components/v1/loading";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useCharactersList } from "@/store/features/characters";
+import { useCharactersPageFilter } from "@/store/features/characters-page-filter";
 import { useElementList } from "@/store/features/elements";
 import { useWeaponTypes } from "@/store/features/weapon-types";
 import { type CharacterListItem, type CharacterRarity } from "@/types/characters.types";
-import { type ElementId, type ElementListItem } from "@/types/elements.types";
-import { type WeaponTypeId } from "@/types/weapon-types.types";
+import { type ElementListItem } from "@/types/elements.types";
 
 const RARITIES = [4, 5] as readonly CharacterRarity[];
 
@@ -27,10 +27,15 @@ const CharactersPage: FC = () => {
   const { characters, error, loading: charactersLoading } = useCharactersList();
   const { elements, loading: elementsLoading } = useElementList();
   const { weaponTypes } = useWeaponTypes();
+  const {
+    filterElementIds,
+    filterRarities,
+    filterWeaponTypeIds,
+    setFilterElementIds,
+    setFilterRarities,
+    setFilterWeaponTypeIds,
+  } = useCharactersPageFilter();
   // const charactersList = createRef<HTMLDivElement>();
-  const [filterElementIds, setFilterElementIds] = useState<ElementId[]>([]);
-  const [filterRarities, setFilterRarities] = useState<CharacterRarity[]>([]);
-  const [filterWeaponTypeIds, setFilterWeaponTypeIds] = useState<WeaponTypeId[]>([]);
 
   const filteredCharacters = useMemo(() => {
     let filteredCharacters = characters;
@@ -106,7 +111,10 @@ const CharactersPage: FC = () => {
 
   return (
     <>
-      <Collapsible className="mb-8">
+      <Collapsible
+        className="mb-8"
+        defaultOpen={filterElementIds.length > 0 || filterRarities.length > 0 || filterWeaponTypeIds.length > 0}
+      >
         <div className="flex gap-2 items-start mb-8">
           <Breadcrumb className="mr-auto">
             <BreadcrumbList>
@@ -140,20 +148,22 @@ const CharactersPage: FC = () => {
                     className="p-1 size-8.5 rounded-full group-has-[input:checked]:border-(--element-color)"
                     key={element.id}
                     name="elements"
-                    onChange={(event) => {
+                    onChange={event => setFilterElementIds((prev) => {
                       if (event.target.checked) {
-                        if (!filterElementIds.includes(element.id)) {
-                          setFilterElementIds(prev => prev.concat([element.id]));
+                        if (!prev.includes(element.id)) {
+                          return prev.concat([element.id]);
                         }
                       }
                       else {
-                        const index = filterElementIds.indexOf(element.id);
+                        const index = prev.indexOf(element.id);
 
                         if (index !== -1) {
-                          setFilterElementIds(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                          return prev.slice(0, index).concat(prev.slice(index + 1));
                         }
                       }
-                    }}
+
+                      return prev;
+                    })}
                     style={{ "--element-color": element.color } as CSSProperties}
                     value={element.id}
                   >
@@ -171,20 +181,22 @@ const CharactersPage: FC = () => {
                     className="p-1 size-8.5 rounded-full"
                     key={weaponType.id}
                     name="weapon-types"
-                    onChange={(event) => {
+                    onChange={event => setFilterWeaponTypeIds((prev) => {
                       if (event.target.checked) {
-                        if (!filterWeaponTypeIds.includes(weaponType.id)) {
-                          setFilterWeaponTypeIds(prev => prev.concat([weaponType.id]));
+                        if (!prev.includes(weaponType.id)) {
+                          return prev.concat([weaponType.id]);
                         }
                       }
                       else {
-                        const index = filterWeaponTypeIds.indexOf(weaponType.id);
+                        const index = prev.indexOf(weaponType.id);
 
                         if (index !== -1) {
-                          setFilterWeaponTypeIds(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                          return prev.slice(0, index).concat(prev.slice(index + 1));
                         }
                       }
-                    }}
+
+                      return prev;
+                    })}
                     value={weaponType.id}
                   >
                     <img alt={weaponType.name} draggable={false} src={weaponType.image} />
@@ -200,20 +212,22 @@ const CharactersPage: FC = () => {
                     className="flex justify-center items-center p-1 w-11.5 h-8.5 text-base/4"
                     key={rarity}
                     name="rarities"
-                    onChange={(event) => {
+                    onChange={event => setFilterRarities((prev) => {
                       if (event.target.checked) {
-                        if (!filterRarities.includes(rarity)) {
-                          setFilterRarities(prev => prev.concat([rarity]));
+                        if (!prev.includes(rarity)) {
+                          return prev.concat([rarity]);
                         }
                       }
                       else {
-                        const index = filterRarities.indexOf(rarity);
+                        const index = prev.indexOf(rarity);
 
                         if (index !== -1) {
-                          setFilterRarities(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                          return prev.slice(0, index).concat(prev.slice(index + 1));
                         }
                       }
-                    }}
+
+                      return prev;
+                    })}
                     value={rarity}
                   >
                     {`${rarity}★`}

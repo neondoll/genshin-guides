@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { type Element, type ElementListItem } from "@/types/elements.types";
 import { getElement, getElementList } from "@/utils/genshinDbAdapter";
@@ -10,40 +10,44 @@ export interface ElementsState {
 
 const initialState: ElementsState = { details: {}, list: [] };
 
-export const fetchElement = createAsyncThunk<Element, Element["id"]>("elements/fetch", async (elementId, { getState }) => {
-  const state = getState() as { elements: ElementsState };
+export const fetchElement = createAsyncThunk<Element, Element["id"]>(
+  "elements/fetch",
+  async (elementId, { getState }) => {
+    const state = getState() as { elements: ElementsState };
+    const stateElement = state.elements.details[elementId];
 
-  const stateElement = state.elements.details[elementId];
+    if (stateElement) {
+      console.log(`Элемент с ID "${elementId}" найден в хранилище`);
 
-  if (stateElement) {
-    console.log(`Элемент с ID "${elementId}" найден в хранилище`);
+      return stateElement;
+    }
 
-    return stateElement;
-  }
+    console.log(`Загрузка элемента с ID "${elementId}" с сервера`);
 
-  console.log(`Загрузка элемента с ID "${elementId}" с сервера`);
+    return await getElement(elementId);
+  },
+);
+export const fetchElementList = createAsyncThunk<ElementListItem[]>(
+  "elements/fetchList",
+  async (_, { getState }) => {
+    const state = getState() as { elements: ElementsState };
+    const stateList = state.elements.list;
 
-  return await getElement(elementId);
-});
-export const fetchElementList = createAsyncThunk<ElementListItem[]>("elements/fetchList", async (_, { getState }) => {
-  const state = getState() as { elements: ElementsState };
+    if (stateList.length) {
+      console.log("Список элементов найден в хранилище");
 
-  const stateList = state.elements.list;
+      return stateList;
+    }
 
-  if (stateList.length) {
-    console.log("Список элементов найден в хранилище");
+    console.log(`Загрузка списка элементов с сервера`);
 
-    return stateList;
-  }
+    const list = await getElementList();
 
-  console.log(`Загрузка списка элементов с сервера`);
+    return list.sort((a, b) => a.name.localeCompare(b.name));
+  },
+);
 
-  const list = await getElementList();
-
-  return list.sort((a, b) => a.name.localeCompare(b.name));
-});
-
-export const elementsSlice = createSlice<ElementsState, SliceCaseReducers<ElementsState>, string, SliceSelectors<ElementsState>, string>({
+export const elementsSlice = createSlice({
   name: "elements",
   initialState,
   reducers: {},

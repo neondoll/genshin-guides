@@ -1,4 +1,4 @@
-import { type FC, useMemo, useState } from "react";
+import { type FC, useMemo } from "react";
 import { Link } from "react-router";
 
 import {
@@ -14,6 +14,7 @@ import { Loading, LoadingError } from "@/components/v1/loading";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useArtifactSetList } from "@/store/features/artifact-sets";
+import { useArtifactSetsPageFilter } from "@/store/features/artifact-sets-page-filter";
 import { type ArtifactSetListItem } from "@/types/artifact-sets.types";
 import { type Rarity } from "@/types/rarities.types";
 
@@ -21,8 +22,8 @@ const RARITIES = [1, 2, 3, 4, 5] as readonly Rarity[];
 
 const ArtifactSetsPage: FC = () => {
   const { artifactSets, error, loading } = useArtifactSetList();
+  const { filterRarities, setFilterRarities } = useArtifactSetsPageFilter();
   // const artifactSetsList = createRef<HTMLDivElement>();
-  const [filterRarities, setFilterRarities] = useState<Rarity[]>([]);
 
   const filteredArtifactSets = useMemo(() => {
     let filteredArtifactSets = artifactSets;
@@ -122,20 +123,22 @@ const ArtifactSetsPage: FC = () => {
                     className="flex justify-center items-center p-1 w-11.5 h-8.5 text-base/4"
                     key={rarity}
                     name="rarities"
-                    onChange={(event) => {
+                    onChange={event => setFilterRarities((prev) => {
                       if (event.target.checked) {
-                        if (!filterRarities.includes(rarity)) {
-                          setFilterRarities(prev => prev.concat([rarity]));
+                        if (!prev.includes(rarity)) {
+                          return prev.concat([rarity]);
                         }
                       }
                       else {
-                        const index = filterRarities.indexOf(rarity);
+                        const index = prev.indexOf(rarity);
 
                         if (index !== -1) {
-                          setFilterRarities(prev => prev.slice(0, index).concat(prev.slice(index + 1)));
+                          return prev.slice(0, index).concat(prev.slice(index + 1));
                         }
                       }
-                    }}
+
+                      return prev;
+                    })}
                     value={rarity}
                   >
                     {`${rarity}★`}

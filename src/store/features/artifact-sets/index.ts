@@ -3,7 +3,4 @@ export {
   useArtifactSetList as useArtifactSetList,
 } from "./hooks";
 export { ArtifactSetImages as ArtifactSetImages } from "./images";
-export {
-  default as artifactSetsReducer,
-  type ArtifactSetsState as ArtifactSetsState,
-} from "./slice";
+export { default as artifactSetsReducer } from "./slice";
