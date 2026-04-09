@@ -1,51 +1,53 @@
-import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { type Weapon, type WeaponListItem, type WeaponName } from "@/types/weapons.types";
+import { type Weapon, type WeaponListItem } from "@/types/weapons.types";
 import { getWeapon, getWeaponList } from "@/utils/genshinDbAdapter";
 
 export interface WeaponsState {
   details: { [P in Weapon["id"]]?: Weapon };
-  entities: { [P in WeaponName]?: Weapon | null };
   list: WeaponListItem[];
-  names: WeaponName[];
 }
 
-const initialState: WeaponsState = { details: {}, list: [], entities: {}, names: [] };
+const initialState: WeaponsState = { details: {}, list: [] };
 
-export const fetchWeapon = createAsyncThunk<Weapon, Weapon["id"]>("weapons/fetch", async (weaponId, { getState }) => {
-  const state = getState() as { weapons: WeaponsState };
+export const fetchWeapon = createAsyncThunk<Weapon, Weapon["id"]>(
+  "weapons/fetch",
+  async (weaponId, { getState }) => {
+    const state = getState() as { weapons: WeaponsState };
+    const stateWeapon = state.weapons.details[weaponId];
 
-  const stateWeapon = state.weapons.details[weaponId];
+    if (stateWeapon) {
+      console.log(`Оружие с ID "${weaponId}" найдено в хранилище`);
 
-  if (stateWeapon) {
-    console.log(`Оружие с ID "${weaponId}" найдено в хранилище`);
+      return stateWeapon;
+    }
 
-    return stateWeapon;
-  }
+    console.log(`Загрузка оружия с ID "${weaponId}" с сервера`);
 
-  console.log(`Загрузка оружия с ID "${weaponId}" с сервера`);
+    return getWeapon(weaponId);
+  },
+);
+export const fetchWeaponList = createAsyncThunk<WeaponListItem[]>(
+  "weapons/fetchList",
+  async (_, { getState }) => {
+    const state = getState() as { weapons: WeaponsState };
+    const stateList = state.weapons.list;
 
-  return getWeapon(weaponId);
-});
-export const fetchWeaponList = createAsyncThunk<WeaponListItem[]>("weapons/fetchList", async (_, { getState }) => {
-  const state = getState() as { weapons: WeaponsState };
+    if (stateList.length) {
+      console.log("Список оружий найден в хранилище");
 
-  const stateList = state.weapons.list;
+      return stateList;
+    }
 
-  if (stateList.length) {
-    console.log("Список оружий найден в хранилище");
+    console.log(`Загрузка списка оружий с сервера`);
 
-    return stateList;
-  }
+    const list = await getWeaponList();
 
-  console.log(`Загрузка списка оружий с сервера`);
+    return list.sort((a, b) => a.name.localeCompare(b.name));
+  },
+);
 
-  const list = await getWeaponList();
-
-  return list.sort((a, b) => a.name.localeCompare(b.name));
-});
-
-export const weaponsSlice = createSlice<WeaponsState, SliceCaseReducers<WeaponsState>, string, SliceSelectors<WeaponsState>, string>({
+export const weaponsSlice = createSlice({
   name: "weapons",
   initialState,
   reducers: {},

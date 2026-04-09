@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { type Talent, type TalentListItem } from "@/types/talents.types";
 import { getTalent, getTalentList } from "@/utils/genshinDbAdapter";
@@ -10,40 +10,44 @@ export interface TalentsState {
 
 const initialState: TalentsState = { details: {}, list: [] };
 
-export const fetchTalent = createAsyncThunk<Talent, Talent["id"]>("talents/fetch", async (talentId, { getState }) => {
-  const state = getState() as { talents: TalentsState };
+export const fetchTalent = createAsyncThunk<Talent, Talent["id"]>(
+  "talents/fetch",
+  async (talentId, { getState }) => {
+    const state = getState() as { talents: TalentsState };
+    const stateTalent = state.talents.details[talentId];
 
-  const stateTalent = state.talents.details[talentId];
+    if (stateTalent) {
+      console.log(`Таланты с ID "${talentId}" найдены в хранилище`);
 
-  if (stateTalent) {
-    console.log(`Таланты с ID "${talentId}" найдены в хранилище`);
+      return stateTalent;
+    }
 
-    return stateTalent;
-  }
+    console.log(`Загрузка талантов с ID "${talentId}" с сервера`);
 
-  console.log(`Загрузка талантов с ID "${talentId}" с сервера`);
+    return await getTalent(talentId);
+  },
+);
+export const fetchTalentList = createAsyncThunk<TalentListItem[]>(
+  "talents/fetchList",
+  async (_, { getState }) => {
+    const state = getState() as { talents: TalentsState };
+    const stateList = state.talents.list;
 
-  return await getTalent(talentId);
-});
-export const fetchTalentList = createAsyncThunk<TalentListItem[]>("talents/fetchList", async (_, { getState }) => {
-  const state = getState() as { talents: TalentsState };
+    if (stateList.length) {
+      console.log("Список талантов найден в хранилище");
 
-  const stateList = state.talents.list;
+      return stateList;
+    }
 
-  if (stateList.length) {
-    console.log("Список талантов найден в хранилище");
+    console.log(`Загрузка списка талантов с сервера`);
 
-    return stateList;
-  }
+    const list = await getTalentList();
 
-  console.log(`Загрузка списка талантов с сервера`);
+    return list.sort((a, b) => a.name.localeCompare(b.name));
+  },
+);
 
-  const list = await getTalentList();
-
-  return list.sort((a, b) => a.name.localeCompare(b.name));
-});
-
-export const talentsSlice = createSlice<TalentsState, SliceCaseReducers<TalentsState>, string, SliceSelectors<TalentsState>, string>({
+export const talentsSlice = createSlice({
   name: "talents",
   initialState,
   reducers: {},

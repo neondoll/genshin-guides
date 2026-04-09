@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { type Character, type CharacterListItem } from "@/types/characters.types";
 import { getCharacter, getCharacterList } from "@/utils/genshinDbAdapter";
@@ -10,40 +10,44 @@ export interface CharactersState {
 
 const initialState: CharactersState = { details: {}, list: [] };
 
-export const fetchCharacter = createAsyncThunk<Character, Character["id"]>("characters/fetch", async (characterId, { getState }) => {
-  const state = getState() as { characters: CharactersState };
+export const fetchCharacter = createAsyncThunk<Character, Character["id"]>(
+  "characters/fetch",
+  async (characterId, { getState }) => {
+    const state = getState() as { characters: CharactersState };
+    const stateCharacter = state.characters.details[characterId];
 
-  const stateCharacter = state.characters.details[characterId];
+    if (stateCharacter) {
+      console.log(`Персонаж c ID "${characterId}" найден в хранилище`);
 
-  if (stateCharacter) {
-    console.log(`Персонаж c ID "${characterId}" найден в хранилище`);
+      return stateCharacter;
+    }
 
-    return stateCharacter;
-  }
+    console.log(`Загрузка персонажа c ID "${characterId}" с сервера`);
 
-  console.log(`Загрузка персонажа c ID "${characterId}" с сервера`);
+    return await getCharacter(characterId);
+  },
+);
+export const fetchCharacterList = createAsyncThunk<CharacterListItem[]>(
+  "characters/fetchList",
+  async (_, { getState }) => {
+    const state = getState() as { characters: CharactersState };
+    const stateList = state.characters.list;
 
-  return await getCharacter(characterId);
-});
-export const fetchCharacterList = createAsyncThunk<CharacterListItem[]>("characters/fetchList", async (_, { getState }) => {
-  const state = getState() as { characters: CharactersState };
+    if (stateList.length) {
+      console.log("Список персонажей найден в хранилище");
 
-  const stateList = state.characters.list;
+      return stateList;
+    }
 
-  if (stateList.length) {
-    console.log("Список персонажей найден в хранилище");
+    console.log("Загрузка списка персонажей с сервера");
 
-    return stateList;
-  }
+    const list = await getCharacterList();
 
-  console.log("Загрузка списка персонажей с сервера");
+    return list.sort((a, b) => a.name.localeCompare(b.name));
+  },
+);
 
-  const list = await getCharacterList();
-
-  return list.sort((a, b) => a.name.localeCompare(b.name));
-});
-
-export const charactersSlice = createSlice<CharactersState, SliceCaseReducers<CharactersState>, string, SliceSelectors<CharactersState>, string>({
+export const charactersSlice = createSlice({
   name: "characters",
   initialState,
   reducers: {},

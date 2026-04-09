@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchTalent } from "./slice";
-import { useAppDispatch, useAppSelector } from "@/store";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { type TalentId } from "@/types/talents.types";
 
 export const useTalent = (id: TalentId) => {

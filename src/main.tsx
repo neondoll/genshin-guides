@@ -5,7 +5,7 @@ import { HashRouter } from "react-router";
 
 import App from "./App";
 import { ThemeProvider } from "./components/theme-provider";
-import store from "./store";
+import { store } from "./store";
 import "./index.css";
 
 const container = document.getElementById("root");

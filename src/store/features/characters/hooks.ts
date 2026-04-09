@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { fetchCharacter, fetchCharacterList } from "./slice";
-import { useAppDispatch, useAppSelector } from "@/store";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { type CharacterId } from "@/types/characters.types";
 
 export const useCharacter = (id: CharacterId) => {

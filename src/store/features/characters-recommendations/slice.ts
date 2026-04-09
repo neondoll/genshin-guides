@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import allRecommendations from "./data/all-recommendations";
 import {
@@ -16,35 +16,37 @@ const initialState: CharactersRecommendationsState = { entities: {}, names: [] }
 export const fetchCharacterRecommendations = createAsyncThunk<{
   data: CharacterRecommendations | null;
   id: CharacterRecommendationsId;
-}, CharacterRecommendationsId>("charactersRecommendations/fetch", async (characterRecommendationsId, { getState }) => {
-  const state = getState() as { charactersRecommendations: CharactersRecommendationsState };
+}, CharacterRecommendationsId>(
+  "charactersRecommendations/fetch",
+  async (characterRecommendationsId, { getState }) => {
+    const state = getState() as { charactersRecommendations: CharactersRecommendationsState };
+    const stateCharacterRecommendations = state.charactersRecommendations.entities[characterRecommendationsId];
 
-  const stateCharacterRecommendations = state.charactersRecommendations.entities[characterRecommendationsId];
+    if (stateCharacterRecommendations) {
+      console.log(`Рекомендации персонажа с ID "${characterRecommendationsId}" найдены в хранилище`);
 
-  if (stateCharacterRecommendations) {
-    console.log(`Рекомендации персонажа с ID "${characterRecommendationsId}" найдены в хранилище`);
-
-    return { data: stateCharacterRecommendations, id: characterRecommendationsId };
-  }
-
-  try {
-    if (characterRecommendationsId in allRecommendations) {
-      console.log(`Загрузка рекомендаций персонажа с ID "${characterRecommendationsId}" с сервера`);
-
-      const module = await allRecommendations[characterRecommendationsId]();
-
-      return { data: module.default, id: characterRecommendationsId };
+      return { data: stateCharacterRecommendations, id: characterRecommendationsId };
     }
 
-    return { data: null, id: characterRecommendationsId };
-  }
-  catch (error) {
-    console.error(error);
-    throw new Error(`Failed to load recommendations for ${characterRecommendationsId}`);
-  }
-});
+    try {
+      if (characterRecommendationsId in allRecommendations) {
+        console.log(`Загрузка рекомендаций персонажа с ID "${characterRecommendationsId}" с сервера`);
 
-export const charactersRecommendationsSlice = createSlice<CharactersRecommendationsState, SliceCaseReducers<CharactersRecommendationsState>, string, SliceSelectors<CharactersRecommendationsState>, string>({
+        const module = await allRecommendations[characterRecommendationsId]();
+
+        return { data: module.default, id: characterRecommendationsId };
+      }
+
+      return { data: null, id: characterRecommendationsId };
+    }
+    catch (error) {
+      console.error(error);
+      throw new Error(`Failed to load recommendations for ${characterRecommendationsId}`);
+    }
+  },
+);
+
+export const charactersRecommendationsSlice = createSlice({
   name: "charactersRecommendations",
   initialState,
   reducers: {},

@@ -1,10 +1,4 @@
-import {
-  createEntityAdapter,
-  createSelector,
-  createSlice,
-  type SliceCaseReducers,
-  type SliceSelectors,
-} from "@reduxjs/toolkit";
+import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 
 import { type WeaponType, type WeaponTypeId, WeaponTypeIds } from "@/types/weapon-types.types";
 
@@ -40,19 +34,19 @@ const initialState = weaponTypesAdapter.getInitialState(undefined, {
 
 export type WeaponTypesState = typeof initialState;
 
-export const weaponTypesSlice = createSlice<WeaponTypesState, SliceCaseReducers<WeaponTypesState>, string, SliceSelectors<WeaponTypesState>, string>({
+export const { selectAll: selectAllWeaponTypes } = weaponTypesAdapter.getSelectors<{
+  weaponTypes: WeaponTypesState;
+}>(state => state.weaponTypes);
+
+export const selectWeaponTypesByIds = createSelector(
+  [selectAllWeaponTypes, (_, ids: WeaponTypeId[]) => ids],
+  (weaponTypes, ids) => weaponTypes.filter(weaponType => ids.includes(weaponType.id)),
+);
+
+export const weaponTypesSlice = createSlice({
   name: "weaponTypes",
   initialState,
   reducers: {},
 });
 
 export default weaponTypesSlice.reducer;
-
-export const { selectAll: selectAllWeaponTypes } = weaponTypesAdapter.getSelectors((state: {
-  weaponTypes: WeaponTypesState;
-}) => state.weaponTypes);
-
-export const selectWeaponTypesByIds = createSelector(
-  [selectAllWeaponTypes, (_, ids: WeaponTypeId[]) => ids],
-  (weaponTypes, ids) => weaponTypes.filter(weaponType => ids.includes(weaponType.id)),
-);

@@ -1,4 +1,4 @@
-import { createEntityAdapter, createSelector, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
+import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 
 import { type CharacterRole, type CharacterRoleId, CharacterRoleIds } from "@/types/character-roles.types";
 
@@ -39,19 +39,19 @@ const initialState = characterRolesAdapter.getInitialState(undefined, {
 
 export type CharacterRolesState = typeof initialState;
 
-export const characterRolesSlice = createSlice<CharacterRolesState, SliceCaseReducers<CharacterRolesState>, string, SliceSelectors<CharacterRolesState>, string>({
+export const { selectAll: selectAllCharacterRoles } = characterRolesAdapter.getSelectors<{
+  characterRoles: CharacterRolesState;
+}>(state => state.characterRoles);
+
+export const selectCharacterRolesByIds = createSelector(
+  [selectAllCharacterRoles, (_, ids: CharacterRoleId[]) => ids],
+  (characterRoles, ids) => characterRoles.filter(characterRole => ids.includes(characterRole.id)),
+);
+
+export const characterRolesSlice = createSlice({
   name: "characterRoles",
   initialState,
   reducers: {},
 });
 
 export default characterRolesSlice.reducer;
-
-export const { selectAll: selectAllCharacterRoles } = characterRolesAdapter.getSelectors((state: {
-  characterRoles: CharacterRolesState;
-}) => state.characterRoles);
-
-export const selectCharacterRolesByIds = createSelector(
-  [selectAllCharacterRoles, (_, ids: CharacterRoleId[]) => ids],
-  (characterRoles, ids) => characterRoles.filter(characterRole => ids.includes(characterRole.id)),
-);

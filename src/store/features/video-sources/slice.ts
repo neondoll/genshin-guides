@@ -1,10 +1,4 @@
-import {
-  createEntityAdapter,
-  createSelector,
-  createSlice,
-  type SliceCaseReducers,
-  type SliceSelectors,
-} from "@reduxjs/toolkit";
+import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 
 import { type VideoSource, type VideoSourceId, VideoSourceIds } from "@/types/video-sources.types";
 
@@ -499,19 +493,19 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
 
 export type VideoSourcesState = typeof initialState;
 
-export const videoSourcesSlice = createSlice<VideoSourcesState, SliceCaseReducers<VideoSourcesState>, string, SliceSelectors<VideoSourcesState>, string>({
+export const { selectAll: selectAllVideoSources } = videoSourcesAdapter.getSelectors<{
+  videoSources: VideoSourcesState;
+}>(state => state.videoSources);
+
+export const selectVideoSourcesByIds = createSelector(
+  [selectAllVideoSources, (_, ids: VideoSourceId[]) => ids],
+  (videoSources, ids) => videoSources.filter(videoSource => ids.includes(videoSource.id)),
+);
+
+export const videoSourcesSlice = createSlice({
   name: "videoSources",
   initialState,
   reducers: {},
 });
 
 export default videoSourcesSlice.reducer;
-
-export const { selectAll: selectAllVideoSources } = videoSourcesAdapter.getSelectors((state: {
-  videoSources: VideoSourcesState;
-}) => state.videoSources);
-
-export const selectVideoSourcesByIds = createSelector(
-  [selectAllVideoSources, (_, ids: VideoSourceId[]) => ids],
-  (videoSources, ids) => videoSources.filter(videoSource => ids.includes(videoSource.id)),
-);

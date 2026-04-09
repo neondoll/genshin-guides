@@ -1,5 +1,5 @@
 import { selectAllWeaponTypes } from "./slice";
-import { useAppSelector } from "@/store";
+import { useAppSelector } from "../../hooks";
 
 export const useWeaponTypes = () => {
   const weaponTypes = useAppSelector(state => selectAllWeaponTypes(state));

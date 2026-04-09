@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import { type ArtifactSet, type ArtifactSetListItem } from "@/types/artifact-sets.types";
 import { getArtifactSet, getArtifactSetList } from "@/utils/genshinDbAdapter";
@@ -10,40 +10,45 @@ export interface ArtifactSetsState {
 
 const initialState: ArtifactSetsState = { details: {}, list: [] };
 
-export const fetchArtifactSet = createAsyncThunk<ArtifactSet, ArtifactSet["id"]>("artifactSets/fetch", async (artifactSetId, { getState }) => {
-  const state = getState() as { artifactSets: ArtifactSetsState };
+export const fetchArtifactSet = createAsyncThunk<ArtifactSet, ArtifactSet["id"]>(
+  "artifactSets/fetch",
+  async (artifactSetId, { getState }) => {
+    const state = getState() as { artifactSets: ArtifactSetsState };
+    const stateArtifactSet = state.artifactSets.details[artifactSetId];
 
-  const stateArtifactSet = state.artifactSets.details[artifactSetId];
+    if (stateArtifactSet) {
+      console.log(`Набор артефактов c ID "${artifactSetId}" найден в хранилище`);
 
-  if (stateArtifactSet) {
-    console.log(`Набор артефактов c ID "${artifactSetId}" найден в хранилище`);
+      return stateArtifactSet;
+    }
 
-    return stateArtifactSet;
-  }
+    console.log(`Загрузка набора артефактов c ID "${artifactSetId}" с сервера`);
 
-  console.log(`Загрузка набора артефактов c ID "${artifactSetId}" с сервера`);
+    return await getArtifactSet(artifactSetId);
+  },
+);
 
-  return await getArtifactSet(artifactSetId);
-});
-export const fetchArtifactSetList = createAsyncThunk<ArtifactSetListItem[]>("artifactSets/fetchList", async (_, { getState }) => {
-  const state = getState() as { artifactSets: ArtifactSetsState };
+export const fetchArtifactSetList = createAsyncThunk<ArtifactSetListItem[]>(
+  "artifactSets/fetchList",
+  async (_, { getState }) => {
+    const state = getState() as { artifactSets: ArtifactSetsState };
+    const stateList = state.artifactSets.list;
 
-  const stateList = state.artifactSets.list;
+    if (stateList.length) {
+      console.log("Список наборов артефактов найден в хранилище");
 
-  if (stateList.length) {
-    console.log("Список наборов артефактов найден в хранилище");
+      return stateList;
+    }
 
-    return stateList;
-  }
+    console.log("Загрузка списка наборов артефактов с сервера");
 
-  console.log("Загрузка списка наборов артефактов с сервера");
+    const list = await getArtifactSetList();
 
-  const list = await getArtifactSetList();
+    return list.sort((a, b) => a.name.localeCompare(b.name));
+  },
+);
 
-  return list.sort((a, b) => a.name.localeCompare(b.name));
-});
-
-export const artifactSetsSlice = createSlice<ArtifactSetsState, SliceCaseReducers<ArtifactSetsState>, string, SliceSelectors<ArtifactSetsState>, string>({
+export const artifactSetsSlice = createSlice({
   name: "artifactSets",
   initialState,
   reducers: {},

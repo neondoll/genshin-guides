@@ -3,7 +3,7 @@ import { type FC, useMemo } from "react";
 import { Button } from "../ui/button";
 import { SquarePlay } from "../ui/icons";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
-import { useAppSelector } from "@/store";
+import { useAppSelector } from "@/store/hooks";
 import { selectVideoSourcesByIds } from "@/store/features/video-sources";
 import { type VideoSourceId } from "@/types/video-sources.types";
 
