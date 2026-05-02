@@ -1,4 +1,4 @@
-import { type ArtifactSetId, ArtifactSetIds } from "@/types/artifact-sets.types";
+import { type ArtifactSetId, ArtifactSetIds } from "@/types/artifact-sets";
 
 export const ArtifactSetImages = {
   [ArtifactSetIds.A_DAY_CARVED_FROM_RISING_WINDS]: {

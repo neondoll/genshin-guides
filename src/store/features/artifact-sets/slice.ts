@@ -1,14 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { type ArtifactSet, type ArtifactSetListItem } from "@/types/artifact-sets.types";
+import type { ArtifactSet, ArtifactSetListItem } from "@/types/artifact-sets";
 import { getArtifactSet, getArtifactSetList } from "@/utils/genshinDbAdapter";
 
 export interface ArtifactSetsState {
   details: { [P in ArtifactSet["id"]]?: ArtifactSet };
+  detailsError: string | null;
+  detailsLoading: boolean;
   list: ArtifactSetListItem[];
+  listError: string | null;
+  listLoading: boolean;
 }
 
-const initialState: ArtifactSetsState = { details: {}, list: [] };
+const initialState: ArtifactSetsState = {
+  details: {},
+  detailsError: null,
+  detailsLoading: false,
+  list: [],
+  listError: null,
+  listLoading: false,
+};
 
 export const fetchArtifactSet = createAsyncThunk<ArtifactSet, ArtifactSet["id"]>(
   "artifactSets/fetch",
@@ -53,12 +64,33 @@ export const artifactSetsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchArtifactSet.fulfilled, (state, action) => {
-      state.details[action.payload.id] = action.payload;
-    });
-    builder.addCase(fetchArtifactSetList.fulfilled, (state, action) => {
-      state.list = action.payload;
-    });
+    builder
+      // fetchArtifactSet
+      .addCase(fetchArtifactSet.pending, (state) => {
+        state.detailsLoading = true;
+        state.detailsError = null;
+      })
+      .addCase(fetchArtifactSet.fulfilled, (state, action) => {
+        state.detailsLoading = false;
+        state.details[action.payload.id] = action.payload;
+      })
+      .addCase(fetchArtifactSet.rejected, (state, action) => {
+        state.detailsLoading = false;
+        state.detailsError = action.error.message ?? `Ошибка загрузки набора артефактов с ID "${action.meta.arg}"`;
+      })
+      // fetchArtifactSetList
+      .addCase(fetchArtifactSetList.pending, (state) => {
+        state.listLoading = true;
+        state.listError = null;
+      })
+      .addCase(fetchArtifactSetList.fulfilled, (state, action) => {
+        state.listLoading = false;
+        state.list = action.payload;
+      })
+      .addCase(fetchArtifactSetList.rejected, (state, action) => {
+        state.listLoading = false;
+        state.listError = action.error.message ?? "Ошибка загрузки списка наборов артефактов";
+      });
   },
 });
 

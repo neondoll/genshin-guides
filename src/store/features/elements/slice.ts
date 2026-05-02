@@ -1,14 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { type Element, type ElementListItem } from "@/types/elements.types";
+import type { Element, ElementListItem } from "@/types/elements";
 import { getElement, getElementList } from "@/utils/genshinDbAdapter";
 
 export interface ElementsState {
   details: { [P in Element["id"]]?: Element };
+  detailsError: string | null;
+  detailsLoading: boolean;
   list: ElementListItem[];
+  listError: string | null;
+  listLoading: boolean;
 }
 
-const initialState: ElementsState = { details: {}, list: [] };
+const initialState: ElementsState = {
+  details: {},
+  detailsError: null,
+  detailsLoading: false,
+  list: [],
+  listError: null,
+  listLoading: false,
+};
 
 export const fetchElement = createAsyncThunk<Element, Element["id"]>(
   "elements/fetch",
@@ -52,12 +63,33 @@ export const elementsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchElement.fulfilled, (state, action) => {
-      state.details[action.payload.id] = action.payload;
-    });
-    builder.addCase(fetchElementList.fulfilled, (state, action) => {
-      state.list = action.payload;
-    });
+    builder
+      // fetchElement
+      .addCase(fetchElement.pending, (state) => {
+        state.detailsLoading = true;
+        state.detailsError = null;
+      })
+      .addCase(fetchElement.fulfilled, (state, action) => {
+        state.detailsLoading = false;
+        state.details[action.payload.id] = action.payload;
+      })
+      .addCase(fetchElement.rejected, (state, action) => {
+        state.detailsLoading = false;
+        state.detailsError = action.error.message ?? `Ошибка загрузки элемента с ID "${action.meta.arg}"`;
+      })
+      // fetchElementList
+      .addCase(fetchElementList.pending, (state) => {
+        state.listLoading = true;
+        state.listError = null;
+      })
+      .addCase(fetchElementList.fulfilled, (state, action) => {
+        state.listLoading = false;
+        state.list = action.payload;
+      })
+      .addCase(fetchElementList.rejected, (state, action) => {
+        state.listLoading = false;
+        state.listError = action.error.message ?? "Ошибка загрузки списка элементов";
+      });
   },
 });
 

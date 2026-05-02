@@ -1,11 +1,12 @@
-import { ArtifactSetIds } from "@/types/artifact-sets.types";
-import { CharacterIds } from "@/types/characters.types";
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { Stats } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponIds } from "@/types/weapons.types";
+import { ArtifactSetIds } from "@/types/artifact-sets";
+import { CharacterIds } from "@/types/characters";
+import type { CharacterRecommendations } from "@/types/characters-recommendations";
+import { Stats } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
+import { WeaponIds } from "@/types/weapons";
 
 export default {
+  id: CharacterIds.COLUMBINA,
   artifacts: {
     sets: [
       { ids: [ArtifactSetIds.SILKEN_MOONS_SERENADE], best: true },
@@ -181,11 +182,10 @@ export default {
     { type: "combat2", priority: "В первую очередь", referenceLevel: 10 },
     { type: "combat3", priority: "Во вторую очередь", referenceLevel: 9 },
   ],
-  videoSourceIds:
-    [
-      VideoSourceIds.GUIDE_TO_COLUMBINA_IN_6_3_AnimeCool,
-      VideoSourceIds.GUIDE_TO_COLUMBINA_IN_6_3_MironMinMax,
-    ],
+  videoSourceIds: [
+    VideoSourceIds.GUIDE_TO_COLUMBINA_IN_6_3_AnimeCool,
+    VideoSourceIds.GUIDE_TO_COLUMBINA_IN_6_3_MironMinMax,
+  ],
   weapons: {
     "Лунный Заряд": [
       {

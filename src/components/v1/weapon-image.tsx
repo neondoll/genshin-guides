@@ -4,8 +4,8 @@ import { ImageWithFallback } from "./image-with-fallback";
 import { Skeleton } from "../ui/skeleton";
 import { cn } from "@/lib/utils";
 import { useWeapon, WeaponImages } from "@/store/features/weapons";
-import { RarityGradients } from "@/types/rarities.types";
-import { type Weapon } from "@/types/weapons.types";
+import { RarityGradients } from "@/types/rarities.ts";
+import { type Weapon } from "@/types/weapons.ts";
 
 interface WeaponImagePropsTemplate {
   className?: string;

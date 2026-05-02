@@ -1,71 +1,45 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { fetchElement, fetchElementList } from "./slice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { type ElementId } from "@/types/elements.types";
+import type { ElementId } from "@/types/elements";
 
 export const useElement = (id: ElementId) => {
   const dispatch = useAppDispatch();
   const elements = useAppSelector(state => state.elements.details);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const error = useAppSelector(state => state.elements.detailsError);
+  const loading = useAppSelector(state => state.elements.detailsLoading);
 
-  const getElement = useCallback(async (id: ElementId) => {
-    try {
-      setLoading(true);
-      await dispatch(fetchElement(id));
-      setError(null);
-    }
-    catch (error) {
-      setError("Ошибка загрузки данных с сервера");
-      console.error(`Ошибка при получении элемента с ID "${id}":`, error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
   const isStored = useCallback((id: ElementId) => !!elements[id], [elements]);
-  const preloadElement = useCallback((id: ElementId) => {
-    if (!isStored(id)) {
-      getElement(id);
+  const ensureLoaded = useCallback((id: ElementId) => {
+    if (!isStored(id) && !loading) {
+      dispatch(fetchElement(id));
     }
-    else {
-      setLoading(false);
-    }
-  }, [getElement, isStored]);
-
-  const element = useMemo(() => elements[id], [elements, id]);
+  }, [dispatch, isStored, loading]);
 
   useEffect(() => {
-    preloadElement(id);
-  }, [id, preloadElement]);
+    ensureLoaded(id);
+  }, [id, ensureLoaded]);
+
+  const element = useMemo(() => elements[id], [elements, id]);
 
   return { element, error, loading };
 };
 export const useElementList = () => {
   const dispatch = useAppDispatch();
   const elements = useAppSelector(state => state.elements.list);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const error = useAppSelector(state => state.elements.listError);
+  const loading = useAppSelector(state => state.elements.listLoading);
 
-  const getElements = useCallback(async () => {
-    try {
-      setLoading(true);
-      await dispatch(fetchElementList());
-      setError(null);
+  const ensureLoaded = useCallback(() => {
+    if (elements.length === 0 && !loading) {
+      dispatch(fetchElementList());
     }
-    catch (error) {
-      setError("Ошибка загрузки данных с сервера");
-      console.error("Ошибка при получении списка элементов:", error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
+  }, [dispatch, elements.length, loading]);
 
   useEffect(() => {
-    getElements();
-  }, [getElements]);
+    ensureLoaded();
+  }, [ensureLoaded]);
 
   return { elements, error, loading };
 };

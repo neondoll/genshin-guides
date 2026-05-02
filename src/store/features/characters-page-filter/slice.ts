@@ -1,8 +1,8 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-import { type CharacterRarity } from "@/types/characters.types";
-import { type ElementId } from "@/types/elements.types";
-import { type WeaponTypeId } from "@/types/weapon-types.types";
+import type { CharacterRarity } from "@/types/characters";
+import type { ElementId } from "@/types/elements";
+import type { WeaponTypeId } from "@/types/weapon-types";
 
 export interface CharactersPageFilterState {
   elementIds: ElementId[];

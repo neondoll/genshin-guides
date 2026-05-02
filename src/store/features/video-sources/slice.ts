@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 
-import { type VideoSource, type VideoSourceId, VideoSourceIds } from "@/types/video-sources.types";
+import { type VideoSource, type VideoSourceId, VideoSourceIds } from "@/types/video-sources";
 
 export const videoSourcesAdapter = createEntityAdapter<VideoSource>({
   sortComparer: (a, b) => {
@@ -225,6 +225,22 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     date: "2025-09-10",
     vkvideo: "https://vkvideo.ru/video-227044935_456239254",
     youtube: "https://youtu.be/BMpFDebyZck",
+  },
+  [VideoSourceIds.GUIDE_TO_LAUMA_IN_6_5_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_LAUMA_IN_6_5_MironMinMax,
+    author: "Miron MinMax",
+    title: "Подробный и Актуальный | Гайд на Лауму в 6.5 [Genshin Impact]",
+    date: "2026-04-30",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239319",
+    youtube: "https://youtu.be/IXahofxctSQ",
+  },
+  [VideoSourceIds.GUIDE_TO_LINNEA_IN_6_5_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_LINNEA_IN_6_5_MironMinMax,
+    author: "Miron MinMax",
+    title: "Линнея - Очередная Имба? Гайд на Линнею [Genshin Impact]",
+    date: "2026-04-08",
+    // vkvideo: "",
+    youtube: "https://youtu.be/XbO5PqwOobk",
   },
   [VideoSourceIds.GUIDE_TO_MAVUIKA]: {
     id: VideoSourceIds.GUIDE_TO_MAVUIKA,

@@ -14,17 +14,17 @@ import { Filter, FilterCheckbox, FilterGroup } from "@/components/v1/filter";
 import { Loading, LoadingError } from "@/components/v1/loading";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
-import { useCharactersList } from "@/store/features/characters";
+import { useCharacterList } from "@/store/features/characters";
 import { useCharactersPageFilter } from "@/store/features/characters-page-filter";
 import { useElementList } from "@/store/features/elements";
 import { useWeaponTypes } from "@/store/features/weapon-types";
-import { type CharacterListItem, type CharacterRarity } from "@/types/characters.types";
-import { type ElementListItem } from "@/types/elements.types";
+import type { CharacterListItem, CharacterRarity } from "@/types/characters";
+import type { ElementListItem } from "@/types/elements";
 
 const RARITIES = [4, 5] as readonly CharacterRarity[];
 
 const CharactersPage: FC = () => {
-  const { characters, error, loading: charactersLoading } = useCharactersList();
+  const { characters, error, loading: charactersLoading } = useCharacterList();
   const { elements, loading: elementsLoading } = useElementList();
   const { weaponTypes } = useWeaponTypes();
   const {

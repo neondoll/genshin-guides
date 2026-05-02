@@ -1,9 +1,11 @@
-import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterIds, CharacterNames } from "@/types/characters.types";
-import { Stats } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import type { ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations";
+import { CharacterIds, CharacterNames } from "@/types/characters";
+import { Stats } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
+import { ArtifactSetIds } from "@/types/artifact-sets.ts";
 
 export default {
+  id: ArtifactSetIds.FLOWER_OF_PARADISE_LOST,
   carriers: [
     { type: "character", id: CharacterIds.KUKI_SHINOBU, best: true },
     { type: "character", id: CharacterIds.RAIDEN_SHOGUN, best: true },

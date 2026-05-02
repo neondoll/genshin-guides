@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSelector, createSlice } from "@reduxjs/toolkit";
 
-import { type WeaponType, type WeaponTypeId, WeaponTypeIds } from "@/types/weapon-types.types";
+import { type WeaponType, type WeaponTypeId, WeaponTypeIds } from "@/types/weapon-types";
 
 export const weaponTypesAdapter = createEntityAdapter<WeaponType>();
 

@@ -1,22 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
 import allRecommendations from "./data/all-recommendations";
-import {
-  type CharacterRecommendations,
-  type CharacterRecommendationsId,
-} from "@/types/characters-recommendations.types";
+import type { CharacterRecommendations } from "@/types/characters-recommendations";
 
-export interface CharactersRecommendationsState {
-  entities: { [P in CharacterRecommendationsId]?: CharacterRecommendations | null };
-  names: CharacterRecommendationsId[];
-}
-
-const initialState: CharactersRecommendationsState = { entities: {}, names: [] };
-
-export const fetchCharacterRecommendations = createAsyncThunk<{
-  data: CharacterRecommendations | null;
-  id: CharacterRecommendationsId;
-}, CharacterRecommendationsId>(
+export const fetchCharacterRecommendations = createAsyncThunk<CharacterRecommendations, CharacterRecommendations["id"]>(
   "charactersRecommendations/fetch",
   async (characterRecommendationsId, { getState }) => {
     const state = getState() as { charactersRecommendations: CharactersRecommendationsState };
@@ -25,7 +12,7 @@ export const fetchCharacterRecommendations = createAsyncThunk<{
     if (stateCharacterRecommendations) {
       console.log(`Рекомендации персонажа с ID "${characterRecommendationsId}" найдены в хранилище`);
 
-      return { data: stateCharacterRecommendations, id: characterRecommendationsId };
+      return stateCharacterRecommendations;
     }
 
     try {
@@ -34,26 +21,50 @@ export const fetchCharacterRecommendations = createAsyncThunk<{
 
         const module = await allRecommendations[characterRecommendationsId]();
 
-        return { data: module.default, id: characterRecommendationsId };
+        return module.default;
       }
 
-      return { data: null, id: characterRecommendationsId };
+      return { id: characterRecommendationsId };
     }
     catch (error) {
       console.error(error);
-      throw new Error(`Failed to load recommendations for ${characterRecommendationsId}`);
+      throw new Error(`Failed to load recommendations for ${characterRecommendationsId}`, { cause: error });
     }
   },
 );
+
+export const charactersRecommendationsAdapter = createEntityAdapter<CharacterRecommendations>();
+
+const initialState = charactersRecommendationsAdapter.getInitialState<{
+  error: string | null;
+  loading: boolean;
+}>({ error: null, loading: false });
+
+export type CharactersRecommendationsState = typeof initialState;
+
+export const { selectEntities: selectEntitiesCharactersRecommendations } = charactersRecommendationsAdapter.getSelectors<{
+  charactersRecommendations: CharactersRecommendationsState;
+}>(state => state.charactersRecommendations);
 
 export const charactersRecommendationsSlice = createSlice({
   name: "charactersRecommendations",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchCharacterRecommendations.fulfilled, (state, action) => {
-      state.entities[action.payload.id] = action.payload.data;
-    });
+    builder
+      // fetchCharacterRecommendations
+      .addCase(fetchCharacterRecommendations.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchCharacterRecommendations.fulfilled, (state, action) => {
+        state.loading = false;
+        charactersRecommendationsAdapter.addOne(state, action);
+      })
+      .addCase(fetchCharacterRecommendations.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message ?? `Ошибка загрузки рекомендаций персонажа c ID "${action.meta.arg}"`;
+      });
   },
 });
 

@@ -1,25 +1,21 @@
-import { type ComponentProps, type FC, useEffect, useState } from "react";
+import { type FC, useState } from "react";
 
-interface ImageWithFallbackProps extends ComponentProps<"img"> {
-  fallbackSrc?: string;
-}
+import type { ImageWithFallbackProps } from "./image-with-fallback.types";
 
 export const ImageWithFallback: FC<ImageWithFallbackProps> = ({ alt, fallbackSrc, src, ...props }) => {
-  const [imgSrc, setImgSrc] = useState(src);
+  const [hasError, setHasError] = useState(false);
+  const [prevSrc, setPrevSrc] = useState(src);
 
-  const handleError = () => {
-    setImgSrc(fallbackSrc);
-  };
-
-  useEffect(() => {
-    setImgSrc(src);
-  }, [src]);
+  if (src !== prevSrc) {
+    setPrevSrc(src);
+    setHasError(false);
+  }
 
   return (
     <img
-      src={imgSrc}
       alt={alt}
-      onError={handleError}
+      onError={() => setHasError(true)}
+      src={hasError ? fallbackSrc : src}
       {...props}
     />
   );

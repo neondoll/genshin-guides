@@ -1,9 +1,11 @@
-import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterIds } from "@/types/characters.types";
-import { Stats, StatsCrit } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import type { ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations";
+import { CharacterIds } from "@/types/characters";
+import { Stats, StatsCrit } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
+import { ArtifactSetIds } from "@/types/artifact-sets.ts";
 
 export default {
+  id: ArtifactSetIds.HUSK_OF_OPULENT_DREAMS,
   carriers: [
     { type: "character", id: CharacterIds.ALBEDO, best: true },
     { type: "character", id: CharacterIds.ARATAKI_ITTO, best: true },

@@ -1,14 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { type Character, type CharacterListItem } from "@/types/characters.types";
+import type { Character, CharacterListItem } from "@/types/characters";
 import { getCharacter, getCharacterList } from "@/utils/genshinDbAdapter";
 
 export interface CharactersState {
   details: { [P in Character["id"]]?: Character };
+  detailsError: string | null;
+  detailsLoading: boolean;
   list: CharacterListItem[];
+  listError: string | null;
+  listLoading: boolean;
 }
 
-const initialState: CharactersState = { details: {}, list: [] };
+const initialState: CharactersState = {
+  details: {},
+  detailsError: null,
+  detailsLoading: false,
+  list: [],
+  listError: null,
+  listLoading: false,
+};
 
 export const fetchCharacter = createAsyncThunk<Character, Character["id"]>(
   "characters/fetch",
@@ -52,12 +63,33 @@ export const charactersSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchCharacter.fulfilled, (state, action) => {
-      state.details[action.payload.id] = action.payload;
-    });
-    builder.addCase(fetchCharacterList.fulfilled, (state, action) => {
-      state.list = action.payload;
-    });
+    builder
+      // fetchCharacter
+      .addCase(fetchCharacter.pending, (state) => {
+        state.detailsLoading = true;
+        state.detailsError = null;
+      })
+      .addCase(fetchCharacter.fulfilled, (state, action) => {
+        state.detailsLoading = false;
+        state.details[action.payload.id] = action.payload;
+      })
+      .addCase(fetchCharacter.rejected, (state, action) => {
+        state.detailsLoading = false;
+        state.detailsError = action.error.message ?? `Ошибка загрузки персонажа с ID "${action.meta.arg}"`;
+      })
+      // fetchCharacterList
+      .addCase(fetchCharacterList.pending, (state) => {
+        state.listLoading = true;
+        state.listError = null;
+      })
+      .addCase(fetchCharacterList.fulfilled, (state, action) => {
+        state.listLoading = false;
+        state.list = action.payload;
+      })
+      .addCase(fetchCharacterList.rejected, (state, action) => {
+        state.listLoading = false;
+        state.listError = action.error.message ?? "Ошибка загрузки списка персонажей";
+      });
   },
 });
 

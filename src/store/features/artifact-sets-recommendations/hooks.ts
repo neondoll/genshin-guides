@@ -1,48 +1,27 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
-import { fetchArtifactSetRecommendationsById } from "./slice";
+import { fetchArtifactSetRecommendations, selectEntitiesArtifactSetsRecommendations } from "./slice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { type ArtifactSetId } from "@/types/artifact-sets.types";
+import type { ArtifactSetId } from "@/types/artifact-sets";
 
-export const useArtifactSetRecommendations = (artifactSetId: ArtifactSetId) => {
+export const useArtifactSetRecommendations = (id: ArtifactSetId) => {
   const dispatch = useAppDispatch();
-  const artifactSetsRecommendations = useAppSelector(state => state.artifactSetsRecommendations.entities);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const artifactSetsRecommendations = useAppSelector(selectEntitiesArtifactSetsRecommendations);
+  const error = useAppSelector(state => state.artifactSetsRecommendations.error);
+  const loading = useAppSelector(state => state.artifactSetsRecommendations.loading);
 
-  const getArtifactSetRecommendations = useCallback(async (artifactSetId: ArtifactSetId) => {
-    try {
-      setLoading(true);
-      await dispatch(fetchArtifactSetRecommendationsById(artifactSetId));
-      setError(null);
+  const isStored = useCallback((id: ArtifactSetId) => !!artifactSetsRecommendations[id], [artifactSetsRecommendations]);
+  const ensureLoaded = useCallback((id: ArtifactSetId) => {
+    if (!isStored(id) && !loading) {
+      dispatch(fetchArtifactSetRecommendations(id));
     }
-    catch (error) {
-      setError("Ошибка загрузки данных");
-      console.error(`Ошибка при получении рекомендаций набора артефактов с ID "${artifactSetId}":`, error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
-  const isStored = useCallback((artifactSetId: ArtifactSetId) => {
-    return !!artifactSetsRecommendations[artifactSetId];
-  }, [artifactSetsRecommendations]);
-  const preloadArtifactSetRecommendations = useCallback((artifactSetId: ArtifactSetId) => {
-    if (!isStored(artifactSetId)) {
-      getArtifactSetRecommendations(artifactSetId);
-    }
-    else {
-      setLoading(false);
-    }
-  }, [getArtifactSetRecommendations, isStored]);
-
-  const artifactSetRecommendations = useMemo(() => {
-    return artifactSetsRecommendations[artifactSetId];
-  }, [artifactSetId, artifactSetsRecommendations]);
+  }, [dispatch, isStored, loading]);
 
   useEffect(() => {
-    preloadArtifactSetRecommendations(artifactSetId);
-  }, [artifactSetId, preloadArtifactSetRecommendations]);
+    ensureLoaded(id);
+  }, [id, ensureLoaded]);
+
+  const artifactSetRecommendations = useMemo(() => artifactSetsRecommendations[id], [artifactSetsRecommendations, id]);
 
   return { artifactSetRecommendations, error, loading };
 };

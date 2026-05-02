@@ -1,12 +1,13 @@
-import { ArtifactSetIds } from "@/types/artifact-sets.types";
-import { CharacterIds } from "@/types/characters.types";
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { ElementIds } from "@/types/elements.types";
-import { Stats } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponIds } from "@/types/weapons.types";
+import { ArtifactSetIds } from "@/types/artifact-sets";
+import { CharacterIds } from "@/types/characters";
+import type { CharacterRecommendations } from "@/types/characters-recommendations";
+import { ElementIds } from "@/types/elements";
+import { Stats } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
+import { WeaponIds } from "@/types/weapons";
 
 export default {
+  id: CharacterIds.VARKA,
   artifacts: {
     sets: [
       { ids: [ArtifactSetIds.A_DAY_CARVED_FROM_RISING_WINDS], best: true, notes: ["При игре на поле"] },

@@ -1,4 +1,4 @@
-import { type SetStateAction } from "react";
+import type { SetStateAction } from "react";
 
 import { changeCharactersPageFilterValue, type CharactersPageFilterState } from "./slice";
 import { useAppDispatch, useAppSelector } from "../../hooks";

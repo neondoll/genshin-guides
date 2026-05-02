@@ -4,8 +4,8 @@ import { ImageWithFallback } from "./image-with-fallback";
 import { Skeleton } from "../ui/skeleton";
 import { cn } from "@/lib/utils";
 import { ArtifactSetImages, useArtifactSet } from "@/store/features/artifact-sets";
-import { type ArtifactSet, type ArtifactSetDetail } from "@/types/artifact-sets.types";
-import { type Rarity, RarityGradients } from "@/types/rarities.types";
+import { type ArtifactSet, type ArtifactSetDetail } from "@/types/artifact-sets.ts";
+import { type Rarity, RarityGradients } from "@/types/rarities.ts";
 
 interface ArtifactSetImagePropsTemplate {
   artifactSetId: ArtifactSet["id"];

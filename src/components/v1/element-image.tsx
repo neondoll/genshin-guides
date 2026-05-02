@@ -2,7 +2,7 @@ import { type CSSProperties, type FC } from "react";
 
 import { Skeleton } from "../ui/skeleton";
 import { useElement } from "@/store/features/elements";
-import { type Element } from "@/types/elements.types";
+import { type Element } from "@/types/elements.ts";
 
 interface ElementImagePropsTemplate {
   className?: string;

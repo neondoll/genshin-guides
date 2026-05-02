@@ -1,71 +1,45 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { fetchWeapon, fetchWeaponList } from "./slice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { type WeaponId } from "@/types/weapons.types";
+import type { WeaponId } from "@/types/weapons";
 
 export const useWeapon = (id: WeaponId) => {
   const dispatch = useAppDispatch();
   const weapons = useAppSelector(state => state.weapons.details);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const error = useAppSelector(state => state.weapons.detailsError);
+  const loading = useAppSelector(state => state.weapons.detailsLoading);
 
-  const getWeapon = useCallback(async (id: WeaponId) => {
-    try {
-      setLoading(true);
-      await dispatch(fetchWeapon(id));
-      setError(null);
-    }
-    catch (error) {
-      setError("Ошибка загрузки данных с сервера");
-      console.error(`Ошибка при получении оружия с ID "${id}":`, error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
   const isStored = useCallback((id: WeaponId) => !!weapons[id], [weapons]);
-  const preloadWeapon = useCallback((id: WeaponId) => {
-    if (!isStored(id)) {
-      getWeapon(id);
+  const ensureLoaded = useCallback((id: WeaponId) => {
+    if (!isStored(id) && !loading) {
+      dispatch(fetchWeapon(id));
     }
-    else {
-      setLoading(false);
-    }
-  }, [getWeapon, isStored]);
-
-  const weapon = useMemo(() => weapons[id], [id, weapons]);
+  }, [dispatch, isStored, loading]);
 
   useEffect(() => {
-    preloadWeapon(id);
-  }, [id, preloadWeapon]);
+    ensureLoaded(id);
+  }, [id, ensureLoaded]);
+
+  const weapon = useMemo(() => weapons[id], [id, weapons]);
 
   return { error, loading, weapon };
 };
 export const useWeaponList = () => {
   const dispatch = useAppDispatch();
   const weapons = useAppSelector(state => state.weapons.list);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const error = useAppSelector(state => state.weapons.listError);
+  const loading = useAppSelector(state => state.weapons.listLoading);
 
-  const getWeapons = useCallback(async () => {
-    try {
-      setLoading(true);
-      await dispatch(fetchWeaponList());
-      setError(null);
+  const ensureLoaded = useCallback(() => {
+    if (weapons.length === 0 && !loading) {
+      dispatch(fetchWeaponList());
     }
-    catch (error) {
-      setError("Ошибка загрузки данных с сервера");
-      console.error("Ошибка при получении списка оружий:", error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
+  }, [dispatch, loading, weapons.length]);
 
   useEffect(() => {
-    getWeapons();
-  }, [getWeapons]);
+    ensureLoaded();
+  }, [ensureLoaded]);
 
   return { error, loading, weapons };
 };

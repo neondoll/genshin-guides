@@ -1,71 +1,45 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { fetchArtifactSet, fetchArtifactSetList } from "./slice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { type ArtifactSetId } from "@/types/artifact-sets.types";
+import type { ArtifactSetId } from "@/types/artifact-sets";
 
 export const useArtifactSet = (id: ArtifactSetId) => {
   const dispatch = useAppDispatch();
   const artifactSets = useAppSelector(state => state.artifactSets.details);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const error = useAppSelector(state => state.artifactSets.detailsError);
+  const loading = useAppSelector(state => state.artifactSets.detailsLoading);
 
-  const getArtifactSet = useCallback(async (id: ArtifactSetId) => {
-    try {
-      setLoading(true);
-      await dispatch(fetchArtifactSet(id));
-      setError(null);
-    }
-    catch (error) {
-      setError("Ошибка загрузки данных с сервера");
-      console.error(`Ошибка при получении набора артефактов с ID "${id}":`, error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
   const isStored = useCallback((id: ArtifactSetId) => !!artifactSets[id], [artifactSets]);
-  const preloadArtifactSet = useCallback((id: ArtifactSetId) => {
-    if (!isStored(id)) {
-      getArtifactSet(id);
+  const ensureLoaded = useCallback((id: ArtifactSetId) => {
+    if (!isStored(id) && !loading) {
+      dispatch(fetchArtifactSet(id));
     }
-    else {
-      setLoading(false);
-    }
-  }, [getArtifactSet, isStored]);
-
-  const artifactSet = useMemo(() => artifactSets[id], [artifactSets, id]);
+  }, [dispatch, isStored, loading]);
 
   useEffect(() => {
-    preloadArtifactSet(id);
-  }, [id, preloadArtifactSet]);
+    ensureLoaded(id);
+  }, [id, ensureLoaded]);
+
+  const artifactSet = useMemo(() => artifactSets[id], [artifactSets, id]);
 
   return { artifactSet, error, loading };
 };
 export const useArtifactSetList = () => {
   const dispatch = useAppDispatch();
   const artifactSets = useAppSelector(state => state.artifactSets.list);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const error = useAppSelector(state => state.artifactSets.listError);
+  const loading = useAppSelector(state => state.artifactSets.listLoading);
 
-  const getArtifactSets = useCallback(async () => {
-    try {
-      setLoading(true);
-      await dispatch(fetchArtifactSetList());
-      setError(null);
+  const ensureLoaded = useCallback(() => {
+    if (artifactSets.length === 0 && !loading) {
+      dispatch(fetchArtifactSetList());
     }
-    catch (error) {
-      setError("Ошибка загрузки данных с сервера");
-      console.error("Ошибка при получении списка наборов артефактов:", error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
+  }, [artifactSets.length, dispatch, loading]);
 
   useEffect(() => {
-    getArtifactSets();
-  }, [getArtifactSets]);
+    ensureLoaded();
+  }, [ensureLoaded]);
 
   return { artifactSets, error, loading };
 };

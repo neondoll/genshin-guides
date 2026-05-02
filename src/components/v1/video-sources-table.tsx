@@ -5,7 +5,7 @@ import { SquarePlay } from "../ui/icons";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../ui/table";
 import { useAppSelector } from "@/store/hooks";
 import { selectVideoSourcesByIds } from "@/store/features/video-sources";
-import { type VideoSourceId } from "@/types/video-sources.types";
+import type { VideoSourceId } from "@/types/video-sources";
 
 export const VideoSourcesTable: FC<{ videoSourceIds: VideoSourceId[] }> = ({ videoSourceIds }) => {
   const videoSources = useAppSelector(state => selectVideoSourcesByIds(state, videoSourceIds));
@@ -14,7 +14,7 @@ export const VideoSourcesTable: FC<{ videoSourceIds: VideoSourceId[] }> = ({ vid
     return videoSources.some(videoSource => Boolean(videoSource.vkvideo));
   }, [videoSources]);
   const hasYoutube = useMemo(() => {
-    return videoSources.some(videoSource => Boolean(videoSource.vkvideo));
+    return videoSources.some(videoSource => Boolean(videoSource.youtube));
   }, [videoSources]);
 
   return (

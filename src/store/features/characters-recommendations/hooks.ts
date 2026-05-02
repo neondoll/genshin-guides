@@ -1,44 +1,27 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
-import { fetchCharacterRecommendations } from "./slice";
+import { fetchCharacterRecommendations, selectEntitiesCharactersRecommendations } from "./slice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { type CharacterRecommendationsId } from "@/types/characters-recommendations.types";
+import type { CharacterRecommendationsId } from "@/types/characters-recommendations";
 
 export const useCharacterRecommendations = (id: CharacterRecommendationsId) => {
   const dispatch = useAppDispatch();
-  const charactersRecommendations = useAppSelector(state => state.charactersRecommendations.entities);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const charactersRecommendations = useAppSelector(selectEntitiesCharactersRecommendations);
+  const error = useAppSelector(state => state.charactersRecommendations.error);
+  const loading = useAppSelector(state => state.charactersRecommendations.loading);
 
-  const getCharacterRecommendations = useCallback(async (id: CharacterRecommendationsId) => {
-    try {
-      setLoading(true);
-      await dispatch(fetchCharacterRecommendations(id));
-      setError(null);
-    }
-    catch (error) {
-      setError("Ошибка загрузки данных");
-      console.error(`Ошибка при получении рекомендаций персонажа c ID "${id}":`, error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
   const isStored = useCallback((id: CharacterRecommendationsId) => !!charactersRecommendations[id], [charactersRecommendations]);
-  const preloadCharacterRecommendations = useCallback((id: CharacterRecommendationsId) => {
-    if (!isStored(id)) {
-      getCharacterRecommendations(id);
+  const ensureLoaded = useCallback((id: CharacterRecommendationsId) => {
+    if (!isStored(id) && !loading) {
+      dispatch(fetchCharacterRecommendations(id));
     }
-    else {
-      setLoading(false);
-    }
-  }, [getCharacterRecommendations, isStored]);
-
-  const characterRecommendations = useMemo(() => charactersRecommendations[id], [charactersRecommendations, id]);
+  }, [dispatch, isStored, loading]);
 
   useEffect(() => {
-    preloadCharacterRecommendations(id);
-  }, [id, preloadCharacterRecommendations]);
+    ensureLoaded(id);
+  }, [id, ensureLoaded]);
+
+  const characterRecommendations = useMemo(() => charactersRecommendations[id], [charactersRecommendations, id]);
 
   return { characterRecommendations, error, loading };
 };

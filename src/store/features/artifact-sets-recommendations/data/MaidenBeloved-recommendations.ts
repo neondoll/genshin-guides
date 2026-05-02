@@ -1,8 +1,10 @@
-import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { Stats } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import type { ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations";
+import { Stats } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
+import { ArtifactSetIds } from "@/types/artifact-sets.ts";
 
 export default {
+  id: ArtifactSetIds.MAIDEN_BELOVED,
   carriers: [{ type: "other", title: "Вообще хиллеры, но не стоит" }],
   preferredStats: {
     sands: [Stats.ENERGY_RECHARGE, Stats.HP_PERCENTAGE],

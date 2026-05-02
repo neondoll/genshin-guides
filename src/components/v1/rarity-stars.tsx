@@ -1,7 +1,7 @@
 import { type FC } from "react";
 
 import { cn } from "@/lib/utils";
-import { type Rarity } from "@/types/rarities.types";
+import { type Rarity } from "@/types/rarities.ts";
 
 export const RarityStars: FC<{ className?: string; length: Rarity }> = ({ className, length }) => {
   return (

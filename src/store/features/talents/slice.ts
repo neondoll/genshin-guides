@@ -1,14 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { type Talent, type TalentListItem } from "@/types/talents.types";
+import type { Talent, TalentListItem } from "@/types/talents";
 import { getTalent, getTalentList } from "@/utils/genshinDbAdapter";
 
 export interface TalentsState {
   details: { [P in Talent["id"]]?: Talent };
+  detailsError: string | null;
+  detailsLoading: boolean;
   list: TalentListItem[];
+  listError: string | null;
+  listLoading: boolean;
 }
 
-const initialState: TalentsState = { details: {}, list: [] };
+const initialState: TalentsState = {
+  details: {},
+  detailsError: null,
+  detailsLoading: false,
+  list: [],
+  listError: null,
+  listLoading: false,
+};
 
 export const fetchTalent = createAsyncThunk<Talent, Talent["id"]>(
   "talents/fetch",
@@ -52,12 +63,33 @@ export const talentsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchTalent.fulfilled, (state, action) => {
-      state.details[action.payload.id] = action.payload;
-    });
-    builder.addCase(fetchTalentList.fulfilled, (state, action) => {
-      state.list = action.payload;
-    });
+    builder
+      // fetchTalent
+      .addCase(fetchTalent.pending, (state) => {
+        state.detailsLoading = true;
+        state.detailsError = null;
+      })
+      .addCase(fetchTalent.fulfilled, (state, action) => {
+        state.detailsLoading = false;
+        state.details[action.payload.id] = action.payload;
+      })
+      .addCase(fetchTalent.rejected, (state, action) => {
+        state.detailsLoading = false;
+        state.detailsError = action.error.message ?? `Ошибка загрузки талантов с ID "${action.meta.arg}"`;
+      })
+      // fetchTalentList
+      .addCase(fetchTalentList.pending, (state) => {
+        state.listLoading = true;
+        state.listError = null;
+      })
+      .addCase(fetchTalentList.fulfilled, (state, action) => {
+        state.listLoading = false;
+        state.list = action.payload;
+      })
+      .addCase(fetchTalentList.rejected, (state, action) => {
+        state.listLoading = false;
+        state.listError = action.error.message ?? "Ошибка загрузки списка талантов";
+      });
   },
 });
 

@@ -1,9 +1,11 @@
-import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterIds } from "@/types/characters.types";
-import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { ArtifactSetIds } from "@/types/artifact-sets";
+import type { ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations";
+import { CharacterIds } from "@/types/characters";
+import { Stats, StatsCrit, StatsElementDmgBonus } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
 
 export default {
+  id: ArtifactSetIds.EMBLEM_OF_SEVERED_FATE,
   carriers: [
     { type: "character", id: CharacterIds.BEIDOU, best: true },
     { type: "character", id: CharacterIds.RAIDEN_SHOGUN, best: true },

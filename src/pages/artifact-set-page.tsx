@@ -3,21 +3,12 @@ import { Link, useParams } from "react-router";
 
 import { Badge } from "@/components/ui/badge";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
+  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Home } from "@/components/ui/icons";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import {
-  ArtifactSetCircletImage,
-  ArtifactSetFlowerImage,
-  ArtifactSetGobletImage,
-  ArtifactSetImage,
-  ArtifactSetPlumeImage,
+  ArtifactSetCircletImage, ArtifactSetFlowerImage, ArtifactSetGobletImage, ArtifactSetImage, ArtifactSetPlumeImage,
   ArtifactSetSandsImage,
 } from "@/components/v1/artifact-set-image";
 import { BestTooltip } from "@/components/v1/best-tooltip";
@@ -30,10 +21,10 @@ import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useArtifactSet } from "@/store/features/artifact-sets";
 import { useArtifactSetRecommendations } from "@/store/features/artifact-sets-recommendations";
-import { useCharactersList } from "@/store/features/characters";
-import { type ArtifactSetId } from "@/types/artifact-sets.types";
-import { type ArtifactSetRecommendations as Recommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterIds } from "@/types/characters.types";
+import { useCharacterList } from "@/store/features/characters";
+import type { ArtifactSetId } from "@/types/artifact-sets";
+import type { ArtifactSetRecommendations as Recommendations } from "@/types/artifact-sets-recommendations";
+import { CharacterIds } from "@/types/characters";
 
 const ArtifactSetPage: FC = () => {
   const { artifactSetId } = useParams<{ artifactSetId: ArtifactSetId }>();
@@ -213,18 +204,22 @@ const ArtifactSetRecommendations: FC<{ artifactSetId: ArtifactSetId }> = ({ arti
   const tabs = useMemo(() => {
     const items = [];
 
-    items.push(RecommendationTabs.CARRIERS);
+    if (artifactSetRecommendations?.carriers) {
+      items.push(RecommendationTabs.CARRIERS);
+    }
 
     if (artifactSetRecommendations?.preferredStats) {
       items.push(RecommendationTabs.PREFERRED_STATS);
     }
 
-    items.push(RecommendationTabs.VIDEO_SOURCES);
+    if (artifactSetRecommendations?.videoSourceIds) {
+      items.push(RecommendationTabs.VIDEO_SOURCES);
+    }
 
     return items;
   }, [artifactSetRecommendations]);
 
-  return artifactSetRecommendations && (
+  return tabs.length > 0 && (
     <Card className="mb-6">
       <CardHeader>
         <CardTitle>Рекомендации по носителям и характеристикам</CardTitle>
@@ -237,7 +232,9 @@ const ArtifactSetRecommendations: FC<{ artifactSetId: ArtifactSetId }> = ({ arti
             ))}
           </TabsList>
           <TabsContent value={RecommendationTabs.CARRIERS.value}>
-            <ArtifactSetCarrierRecommendations recommendations={artifactSetRecommendations.carriers} />
+            {artifactSetRecommendations.carriers && (
+              <ArtifactSetCarrierRecommendations recommendations={artifactSetRecommendations.carriers} />
+            )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.PREFERRED_STATS.value}>
             {artifactSetRecommendations.preferredStats && (
@@ -245,7 +242,9 @@ const ArtifactSetRecommendations: FC<{ artifactSetId: ArtifactSetId }> = ({ arti
             )}
           </TabsContent>
           <TabsContent value={RecommendationTabs.VIDEO_SOURCES.value}>
-            <VideoSourcesTable videoSourceIds={artifactSetRecommendations.videoSourceIds} />
+            {artifactSetRecommendations.videoSourceIds && (
+              <VideoSourcesTable videoSourceIds={artifactSetRecommendations.videoSourceIds} />
+            )}
           </TabsContent>
         </Tabs>
       </CardContent>
@@ -253,9 +252,9 @@ const ArtifactSetRecommendations: FC<{ artifactSetId: ArtifactSetId }> = ({ arti
   );
 };
 const ArtifactSetCarrierRecommendations: FC<{
-  recommendations: Recommendations["carriers"];
+  recommendations: NonNullable<Recommendations["carriers"]>;
 }> = ({ recommendations }) => {
-  const { characters } = useCharactersList();
+  const { characters } = useCharacterList();
 
   const hasBest = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.best));

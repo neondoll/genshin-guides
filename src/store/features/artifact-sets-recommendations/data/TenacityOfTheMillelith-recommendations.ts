@@ -1,9 +1,11 @@
-import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterIds } from "@/types/characters.types";
-import { Stats, StatsElementDmgBonus } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import type { ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations";
+import { CharacterIds } from "@/types/characters";
+import { Stats, StatsElementDmgBonus } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
+import { ArtifactSetIds } from "@/types/artifact-sets.ts";
 
 export default {
+  id: ArtifactSetIds.TENACITY_OF_THE_MILLELITH,
   carriers: [
     { type: "character", id: CharacterIds.CITLALI, best: true },
     { type: "character", id: CharacterIds.FURINA, best: true },

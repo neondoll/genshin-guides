@@ -1,8 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type SliceCaseReducers, type SliceSelectors } from "@reduxjs/toolkit";
 
-import { ArtifactSetIds } from "@/types/artifact-sets.types";
-import { type ArtifactSetsTierList } from "@/types/artifact-sets-tier-list.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { ArtifactSetIds } from "@/types/artifact-sets";
+import type { ArtifactSetsTierList } from "@/types/artifact-sets-tier-list";
+import { VideoSourceIds } from "@/types/video-sources";
 
 export type ArtifactSetsTierListState = ArtifactSetsTierList;
 
@@ -53,7 +53,7 @@ const initialState: ArtifactSetsTierListState = {
   videoSourceId: VideoSourceIds.ALL_ABOUT_ALL_ARTIFACT_SETS_2025,
 };
 
-export const artifactSetsTierListSlice = createSlice({
+export const artifactSetsTierListSlice = createSlice<ArtifactSetsTierListState, SliceCaseReducers<ArtifactSetsTierListState>, string, SliceSelectors<ArtifactSetsTierListState>, string>({
   name: "artifactSetsTierList",
   initialState,
   reducers: {},

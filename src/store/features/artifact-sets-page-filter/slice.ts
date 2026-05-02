@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-import { type Rarity } from "@/types/rarities.types";
+import type { Rarity } from "@/types/rarities";
 
 export interface ArtifactSetsPageFilterState {
   rarities: Rarity[];

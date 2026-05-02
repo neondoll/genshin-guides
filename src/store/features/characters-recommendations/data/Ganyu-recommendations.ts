@@ -1,9 +1,11 @@
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { CharacterRoleIds } from "@/types/character-roles.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponIds, WeaponNames } from "@/types/weapons.types";
+import { CharacterRoleIds } from "@/types/character-roles";
+import { CharacterIds } from "@/types/characters";
+import type { CharacterRecommendations } from "@/types/characters-recommendations";
+import { VideoSourceIds } from "@/types/video-sources";
+import { WeaponIds, WeaponNames } from "@/types/weapons";
 
 export default {
+  id: CharacterIds.GANYU,
   constellationOrSignatureWeapon: `Сигна < С1 < ${WeaponNames.ASTRAL_VULTURES_CRIMSON_PLUMAGE}`,
   recommendedLevel: "80/90",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],

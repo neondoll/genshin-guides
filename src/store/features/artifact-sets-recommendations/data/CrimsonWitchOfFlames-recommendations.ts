@@ -1,9 +1,11 @@
-import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterIds } from "@/types/characters.types";
-import { Stats, StatsCrit } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { ArtifactSetIds } from "@/types/artifact-sets";
+import type { ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations";
+import { CharacterIds } from "@/types/characters";
+import { Stats, StatsCrit } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
 
 export default {
+  id: ArtifactSetIds.CRIMSON_WITCH_OF_FLAMES,
   carriers: [
     { type: "character", id: CharacterIds.DILUC, best: true },
     { type: "character", id: CharacterIds.GAMING, best: true },
