@@ -1,4 +1,4 @@
-import { type WeaponId, WeaponIds } from "@/types/weapons.types";
+import { type WeaponId, WeaponIds } from "@/types/weapons";
 
 export const WeaponImages = {
   [WeaponIds.A_THOUSAND_BLAZING_SUNS]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/26/da1910fbe0e825e1e3704c126720ab24_2121228058184091562.png?x-oss-process=image%2Fformat%2Cwebp",
@@ -32,6 +32,7 @@ export const WeaponImages = {
   [WeaponIds.FRACTURED_HALO]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/07/21/6f0271a3d35033b8ec7260faa56b8cc1_2090404062568539078.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponIds.FRUITFUL_HOOK]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/09/27/25c75653d47f882870e96d9119a17e9a_6960324287026452673.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponIds.GEST_OF_THE_MIGHTY_WOLF]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/02/09/69a9c4711061f96f155bbe236d1ac188_2915183031167827788.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponIds.GOLDEN_FROSTBOUND_OATH]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/04/03/56dfea855cb96781fc3fa4409463e523_641344848709162695.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponIds.IBIS_PIERCER]: "https://upload-static.hoyoverse.com/hoyolab-wiki/2023/05/25/51635400/3c33fbd1aeadf27dc00617c3f4d31c55_2918362787867635712.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponIds.LIGHTBEARING_MOONSHARD]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/01/07/5df9a7e1f45c7967eb263a37362c76d9_5509634125074303398.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponIds.LUMIDOUCE_ELEGY]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/07/31/3dff07a4b024917cb63c933d2078ccc8_8401589850337226556.png?x-oss-process=image%2Fformat%2Cwebp",

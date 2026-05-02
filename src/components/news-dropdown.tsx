@@ -3,12 +3,7 @@ import { Link } from "react-router";
 
 import { Button } from "./ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Newspaper } from "./ui/icons";
 import { Skeleton } from "./ui/skeleton";
@@ -16,16 +11,16 @@ import { ArtifactSetImage } from "./v1/artifact-set-image";
 import { CharacterImage } from "./v1/character-image";
 import { WeaponImage } from "./v1/weapon-image";
 import Paths from "@/paths";
-import { useArtifactSet } from "@/store/features/artifact-sets";
-import { useCharacter } from "@/store/features/characters";
-import { useWeapon } from "@/store/features/weapons";
-import { type ArtifactSetId } from "@/types/artifact-sets.types";
-import { type CharacterId, CharacterIds } from "@/types/characters.types";
-import { type WeaponId, WeaponIds } from "@/types/weapons.types";
+import { useArtifactSetList } from "@/store/features/artifact-sets";
+import { useCharacterList } from "@/store/features/characters";
+import { useWeaponList } from "@/store/features/weapons";
+import { type ArtifactSetId } from "@/types/artifact-sets";
+import { type CharacterId, CharacterIds } from "@/types/characters";
+import { type WeaponId, WeaponIds } from "@/types/weapons";
 
 const artifactSetIds: ArtifactSetId[] = [];
-const characterIds: CharacterId[] = [CharacterIds.SKIRK, CharacterIds.ESCOFFIER, CharacterIds.FLINS, CharacterIds.VARKA];
-const weaponIds: WeaponId[] = [WeaponIds.GEST_OF_THE_MIGHTY_WOLF];
+const characterIds: CharacterId[] = [CharacterIds.NEFER, CharacterIds.LAUMA, CharacterIds.CHASCA, CharacterIds.LINNEA];
+const weaponIds: WeaponId[] = [WeaponIds.GOLDEN_FROSTBOUND_OATH];
 
 export const NewsDropdown: FC = () => {
   const artifactSetsShow = useMemo(() => artifactSetIds.length > 0, []);
@@ -70,7 +65,11 @@ export const NewsDropdown: FC = () => {
 };
 
 const ArtifactSetDropdownMenuItem: FC<{ artifactSetId: ArtifactSetId }> = ({ artifactSetId }) => {
-  const { artifactSet, loading } = useArtifactSet(artifactSetId);
+  const { artifactSets, loading } = useArtifactSetList();
+
+  const artifactSet = useMemo(() => {
+    return artifactSets.find(artifactSet => artifactSet.id === artifactSetId);
+  }, [artifactSetId, artifactSets]);
 
   if (loading) {
     return (
@@ -96,7 +95,11 @@ const ArtifactSetDropdownMenuItem: FC<{ artifactSetId: ArtifactSetId }> = ({ art
   );
 };
 const CharacterDropdownMenuItem: FC<{ characterId: CharacterId }> = ({ characterId }) => {
-  const { character, loading } = useCharacter(characterId);
+  const { characters, loading } = useCharacterList();
+
+  const character = useMemo(() => {
+    return characters.find(character => character.id === characterId);
+  }, [characterId, characters]);
 
   if (loading) {
     return (
@@ -122,7 +125,11 @@ const CharacterDropdownMenuItem: FC<{ characterId: CharacterId }> = ({ character
   );
 };
 const WeaponDropdownMenuItem: FC<{ weaponId: WeaponId }> = ({ weaponId }) => {
-  const { weapon, loading } = useWeapon(weaponId);
+  const { weapons, loading } = useWeaponList();
+
+  const weapon = useMemo(() => {
+    return weapons.find(weapon => weapon.id === weaponId);
+  }, [weaponId, weapons]);
 
   if (loading) {
     return (

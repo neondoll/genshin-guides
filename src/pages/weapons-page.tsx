@@ -15,9 +15,9 @@ import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useWeaponTypes } from "@/store/features/weapon-types";
 import { useWeaponList } from "@/store/features/weapons";
-import { type Rarity } from "@/types/rarities.types";
-import { type WeaponTypeId } from "@/types/weapon-types.types";
-import { type WeaponListItem } from "@/types/weapons.types";
+import type { Rarity } from "@/types/rarities";
+import type { WeaponTypeId } from "@/types/weapon-types";
+import type { WeaponListItem } from "@/types/weapons";
 
 const RARITIES = [1, 2, 3, 4, 5] as readonly Rarity[];
 

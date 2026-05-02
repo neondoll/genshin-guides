@@ -1,14 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { type Weapon, type WeaponListItem } from "@/types/weapons.types";
+import type { Weapon, WeaponListItem } from "@/types/weapons";
 import { getWeapon, getWeaponList } from "@/utils/genshinDbAdapter";
 
 export interface WeaponsState {
   details: { [P in Weapon["id"]]?: Weapon };
+  detailsError: string | null;
+  detailsLoading: boolean;
   list: WeaponListItem[];
+  listError: string | null;
+  listLoading: boolean;
 }
 
-const initialState: WeaponsState = { details: {}, list: [] };
+const initialState: WeaponsState = {
+  details: {},
+  detailsError: null,
+  detailsLoading: false,
+  list: [],
+  listError: null,
+  listLoading: false,
+};
 
 export const fetchWeapon = createAsyncThunk<Weapon, Weapon["id"]>(
   "weapons/fetch",
@@ -52,12 +63,33 @@ export const weaponsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchWeapon.fulfilled, (state, action) => {
-      state.details[action.payload.id] = action.payload;
-    });
-    builder.addCase(fetchWeaponList.fulfilled, (state, action) => {
-      state.list = action.payload;
-    });
+    builder
+      // fetchWeapon
+      .addCase(fetchWeapon.pending, (state) => {
+        state.detailsLoading = true;
+        state.detailsError = null;
+      })
+      .addCase(fetchWeapon.fulfilled, (state, action) => {
+        state.detailsLoading = false;
+        state.details[action.payload.id] = action.payload;
+      })
+      .addCase(fetchWeapon.rejected, (state, action) => {
+        state.detailsLoading = false;
+        state.detailsError = action.error.message ?? `Ошибка загрузки оружия с ID "${action.meta.arg}"`;
+      })
+      // fetchWeaponList
+      .addCase(fetchWeaponList.pending, (state) => {
+        state.listLoading = true;
+        state.listError = null;
+      })
+      .addCase(fetchWeaponList.fulfilled, (state, action) => {
+        state.listLoading = false;
+        state.list = action.payload;
+      })
+      .addCase(fetchWeaponList.rejected, (state, action) => {
+        state.listLoading = false;
+        state.listError = action.error.message ?? "Ошибка загрузки списка оружий";
+      });
   },
 });
 

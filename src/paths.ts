@@ -1,6 +1,6 @@
-import type { ArtifactSetId } from "./types/artifact-sets.types";
-import type { CharacterId } from "./types/characters.types";
-import type { WeaponId } from "./types/weapons.types";
+import type { ArtifactSetId } from "./types/artifact-sets";
+import type { CharacterId } from "./types/characters";
+import type { WeaponId } from "./types/weapons";
 
 const Paths = {
   ARTIFACT_SET: (artifactSetId: ArtifactSetId | ":artifactSetId") => `/artifact-sets/${artifactSetId}`,

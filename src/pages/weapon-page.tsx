@@ -3,12 +3,7 @@ import { Link, useParams } from "react-router";
 
 import { Badge } from "@/components/ui/badge";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
+  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Home } from "@/components/ui/icons";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/v1/card";
@@ -17,7 +12,7 @@ import { WeaponImage } from "@/components/v1/weapon-image";
 import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useWeapon } from "@/store/features/weapons";
-import { type WeaponId } from "@/types/weapons.types";
+import type { WeaponId } from "@/types/weapons";
 
 function extractValues(str: string): [string, number][] {
   const regex = /<color=#([A-Fa-f0-9]+)>\{(\d+(?:\.\d+)?)}<\/color>/g;

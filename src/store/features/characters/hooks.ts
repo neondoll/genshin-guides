@@ -1,71 +1,45 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { fetchCharacter, fetchCharacterList } from "./slice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { type CharacterId } from "@/types/characters.types";
+import type { CharacterId } from "@/types/characters";
 
 export const useCharacter = (id: CharacterId) => {
   const dispatch = useAppDispatch();
   const characters = useAppSelector(state => state.characters.details);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const error = useAppSelector(state => state.characters.detailsError);
+  const loading = useAppSelector(state => state.characters.detailsLoading);
 
-  const getCharacter = useCallback(async (id: CharacterId) => {
-    try {
-      setLoading(true);
-      await dispatch(fetchCharacter(id));
-      setError(null);
-    }
-    catch (error) {
-      setError("Ошибка загрузки данных с сервера");
-      console.error(`Ошибка при получении персонажа с ID "${id}":`, error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
   const isStored = useCallback((id: CharacterId) => !!characters[id], [characters]);
-  const preloadCharacter = useCallback((id: CharacterId) => {
-    if (!isStored(id)) {
-      getCharacter(id);
+  const ensureLoaded = useCallback((id: CharacterId) => {
+    if (!isStored(id) && !loading) {
+      dispatch(fetchCharacter(id));
     }
-    else {
-      setLoading(false);
-    }
-  }, [getCharacter, isStored]);
+  }, [dispatch, isStored, loading]);
+
+  useEffect(() => {
+    ensureLoaded(id);
+  }, [id, ensureLoaded]);
 
   const character = useMemo(() => characters[id], [characters, id]);
 
-  useEffect(() => {
-    preloadCharacter(id);
-  }, [id, preloadCharacter]);
-
   return { character, error, loading };
 };
-export const useCharactersList = () => {
+export const useCharacterList = () => {
   const dispatch = useAppDispatch();
   const characters = useAppSelector(state => state.characters.list);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const error = useAppSelector(state => state.characters.listError);
+  const loading = useAppSelector(state => state.characters.listLoading);
 
-  const getCharacters = useCallback(async () => {
-    try {
-      setLoading(true);
-      await dispatch(fetchCharacterList());
-      setError(null);
+  const ensureLoaded = useCallback(() => {
+    if (characters.length === 0 && !loading) {
+      dispatch(fetchCharacterList());
     }
-    catch (error) {
-      setError("Ошибка загрузки данных с сервера");
-      console.error("Ошибка при получении списка персонажей:", error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
+  }, [characters.length, dispatch, loading]);
 
   useEffect(() => {
-    getCharacters();
-  }, [getCharacters]);
+    ensureLoaded();
+  }, [ensureLoaded]);
 
   return { characters, error, loading };
 };

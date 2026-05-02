@@ -1,11 +1,13 @@
-import { ArtifactSetIds, ArtifactSetNames } from "@/types/artifact-sets.types";
-import { CharacterRoleIds } from "@/types/character-roles.types";
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { Stats } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponIds, WeaponNames } from "@/types/weapons.types";
+import { ArtifactSetIds, ArtifactSetNames } from "@/types/artifact-sets";
+import { CharacterRoleIds } from "@/types/character-roles";
+import { CharacterIds } from "@/types/characters";
+import type { CharacterRecommendations } from "@/types/characters-recommendations";
+import { Stats } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
+import { WeaponIds, WeaponNames } from "@/types/weapons";
 
 export default {
+  id: CharacterIds.CHEVREUSE,
   artifacts: {
     sets: [
       { ids: [ArtifactSetIds.NOBLESSE_OBLIGE] },

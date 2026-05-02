@@ -1,7 +1,9 @@
-import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import type { ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations";
+import { VideoSourceIds } from "@/types/video-sources";
+import { ArtifactSetIds } from "@/types/artifact-sets.ts";
 
 export default {
+  id: ArtifactSetIds.THUNDERSOOTHER,
   carriers: [{ type: "other", title: ":(" }],
   preferredStats: {
     sands: [],

@@ -1,14 +1,15 @@
-import { ArtifactSetIds } from "@/types/artifact-sets.types";
-import { CharacterRoleIds } from "@/types/character-roles.types";
-import { CharacterIds } from "@/types/characters.types";
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { Stats } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponIds } from "@/types/weapons.types";
+import { ArtifactSetIds } from "@/types/artifact-sets";
+import { CharacterRoleIds } from "@/types/character-roles";
+import { CharacterIds } from "@/types/characters";
+import type { CharacterRecommendations } from "@/types/characters-recommendations";
+import { Stats } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
+import { WeaponIds } from "@/types/weapons";
 
 const GameVariants = { DPS: "Основной урон", SUPPORT: "Поддержка" } as const;
 
 export default {
+  id: CharacterIds.MAVUIKA,
   artifacts: {
     sets: [
       { ids: [ArtifactSetIds.OBSIDIAN_CODEX], best: true },

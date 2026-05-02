@@ -1,4 +1,4 @@
-import { type SetStateAction } from "react";
+import type { SetStateAction } from "react";
 
 import { type ArtifactSetsPageFilterState, changeArtifactSetsPageFilterValue } from "./slice";
 import { useAppDispatch, useAppSelector } from "../../hooks";

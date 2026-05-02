@@ -4,8 +4,8 @@ import { ImageWithFallback } from "./image-with-fallback";
 import { Skeleton } from "../ui/skeleton";
 import { cn } from "@/lib/utils";
 import { CharacterImages, useCharacter } from "@/store/features/characters";
-import { type Character } from "@/types/characters.types";
-import { RarityGradients } from "@/types/rarities.types";
+import { type Character } from "@/types/characters.ts";
+import { RarityGradients } from "@/types/rarities.ts";
 
 interface CharacterImagePropsTemplate {
   characterId: Character["id"];

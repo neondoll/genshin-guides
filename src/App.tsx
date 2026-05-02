@@ -11,7 +11,7 @@ function App() {
   return (
     <div
       className={cn([
-        "flex flex-col min-h-screen bg-gradient-to-b from-slate-100 via-slate-200 to-slate-100 dark:from-slate-900",
+        "flex flex-col min-h-screen bg-linear-to-b from-slate-100 via-slate-200 to-slate-100 dark:from-slate-900",
         "dark:via-slate-800 dark:to-slate-900",
       ])}
     >

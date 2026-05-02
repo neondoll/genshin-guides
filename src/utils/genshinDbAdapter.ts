@@ -1,8 +1,8 @@
-import { type ArtifactSet, type ArtifactSetListItem } from "@/types/artifact-sets.types";
-import { type Character, type CharacterListItem } from "@/types/characters.types";
-import { type Element, type ElementListItem } from "@/types/elements.types";
-import { type Talent, type TalentListItem } from "@/types/talents.types";
-import { type Weapon, type WeaponListItem } from "@/types/weapons.types";
+import type { ArtifactSet, ArtifactSetListItem } from "@/types/artifact-sets";
+import type { Character, CharacterListItem } from "@/types/characters";
+import type { Element, ElementListItem } from "@/types/elements";
+import type { Talent, TalentListItem } from "@/types/talents";
+import type { Weapon, WeaponListItem } from "@/types/weapons";
 
 // Базовый URL для статических данных (папка public/data)
 const BASE_URL = import.meta.env.BASE_URL + "data";

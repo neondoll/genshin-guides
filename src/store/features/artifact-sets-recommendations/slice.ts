@@ -1,21 +1,10 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createEntityAdapter, createSlice } from "@reduxjs/toolkit";
 
 import allRecommendations from "./data/all-recommendations";
-import { type ArtifactSetId } from "@/types/artifact-sets.types";
-import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
+import type { ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations";
 
-export interface ArtifactSetsRecommendationsState {
-  entities: { [P in ArtifactSetId]?: ArtifactSetRecommendations | null };
-  ids: ArtifactSetId[];
-}
-
-const initialState: ArtifactSetsRecommendationsState = { entities: {}, ids: [] };
-
-export const fetchArtifactSetRecommendationsById = createAsyncThunk<{
-  data: ArtifactSetRecommendations | null;
-  id: ArtifactSetId;
-}, ArtifactSetId>(
-  "artifactSetsRecommendations/fetchById",
+export const fetchArtifactSetRecommendations = createAsyncThunk<ArtifactSetRecommendations, ArtifactSetRecommendations["id"]>(
+  "artifactSetsRecommendations/fetch",
   async (artifactSetId, { getState }) => {
     const state = getState() as { artifactSetsRecommendations: ArtifactSetsRecommendationsState };
     const stateArtifactSetRecommendations = state.artifactSetsRecommendations.entities[artifactSetId];
@@ -23,7 +12,7 @@ export const fetchArtifactSetRecommendationsById = createAsyncThunk<{
     if (stateArtifactSetRecommendations) {
       console.log(`Рекомендации набора артефактов с ID "${artifactSetId}" найдены в хранилище`);
 
-      return { data: stateArtifactSetRecommendations, id: artifactSetId };
+      return stateArtifactSetRecommendations;
     }
 
     try {
@@ -32,32 +21,49 @@ export const fetchArtifactSetRecommendationsById = createAsyncThunk<{
 
         const module = await allRecommendations[artifactSetId]();
 
-        return { data: module.default, id: artifactSetId };
+        return module.default;
       }
 
-      return { data: null, id: artifactSetId };
+      return { id: artifactSetId };
     }
     catch (error) {
       console.error(error);
-      throw new Error(`Failed to load recommendations for ${artifactSetId}`);
+      throw new Error(`Failed to load recommendations for ${artifactSetId}`, { cause: error });
     }
   },
 );
+export const artifactSetsRecommendationsAdapter = createEntityAdapter<ArtifactSetRecommendations>();
+
+const initialState = artifactSetsRecommendationsAdapter.getInitialState<{
+  error: string | null;
+  loading: boolean;
+}>({ error: null, loading: false });
+
+export type ArtifactSetsRecommendationsState = typeof initialState;
+
+export const { selectEntities: selectEntitiesArtifactSetsRecommendations } = artifactSetsRecommendationsAdapter.getSelectors<{
+  artifactSetsRecommendations: ArtifactSetsRecommendationsState;
+}>(state => state.artifactSetsRecommendations);
 
 export const artifactSetsRecommendationsSlice = createSlice({
   name: "artifactSetsRecommendations",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchArtifactSetRecommendationsById.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.entities[action.payload.id] = action.payload.data;
-
-        if (!state.ids.includes(action.payload.id)) {
-          state.ids.push(action.payload.id);
-        }
-      }
-    });
+    builder
+      // fetchArtifactSetRecommendations
+      .addCase(fetchArtifactSetRecommendations.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchArtifactSetRecommendations.fulfilled, (state, action) => {
+        state.loading = false;
+        artifactSetsRecommendationsAdapter.addOne(state, action);
+      })
+      .addCase(fetchArtifactSetRecommendations.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message ?? `Ошибка загрузки рекомендаций набора артефактов с ID "${action.meta.arg}"`;
+      });
   },
 });
 

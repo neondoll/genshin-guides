@@ -1,9 +1,6 @@
-import { CharacterIds } from "@/types/characters.types";
-import {
-  type CharacterRecommendations,
-  type CharacterRecommendationsId,
-} from "@/types/characters-recommendations.types";
-import { ElementIds } from "@/types/elements.types";
+import { CharacterIds } from "@/types/characters";
+import type { CharacterRecommendations, CharacterRecommendationsId } from "@/types/characters-recommendations";
+import { ElementIds } from "@/types/elements";
 
 export default {
   [CharacterIds.AINO]: () => import("./Aino-recommendations"),
@@ -67,6 +64,7 @@ export default {
   [CharacterIds.LAN_YAN]: () => import("./LanYan-recommendations"),
   [CharacterIds.LAUMA]: () => import("./Lauma-recommendations"),
   [CharacterIds.LAYLA]: () => import("./Layla-recommendations"),
+  [CharacterIds.LINNEA]: () => import("./Linnea-recommendations"),
   [CharacterIds.LISA]: () => import("./Lisa-recommendations"),
   [CharacterIds.LYNETTE]: () => import("./Lynette-recommendations"),
   [CharacterIds.LYNEY]: () => import("./Lyney-recommendations"),

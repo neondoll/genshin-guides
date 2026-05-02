@@ -1,8 +1,10 @@
-import { type ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations.types";
-import { CharacterIds } from "@/types/characters.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
+import { ArtifactSetIds } from "@/types/artifact-sets";
+import type { ArtifactSetRecommendations } from "@/types/artifact-sets-recommendations";
+import { CharacterIds } from "@/types/characters";
+import { VideoSourceIds } from "@/types/video-sources";
 
 export default {
+  id: ArtifactSetIds.AUBADE_OF_MORNINGSTAR_AND_MOON,
   carriers: [
     { type: "character", id: CharacterIds.COLUMBINA },
     { type: "character", id: CharacterIds.INEFFA, best: true },

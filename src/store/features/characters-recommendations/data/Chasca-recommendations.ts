@@ -1,9 +1,11 @@
-import { CharacterRoleIds } from "@/types/character-roles.types";
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponIds } from "@/types/weapons.types";
+import { CharacterRoleIds } from "@/types/character-roles";
+import { CharacterIds } from "@/types/characters";
+import type { CharacterRecommendations } from "@/types/characters-recommendations";
+import { VideoSourceIds } from "@/types/video-sources";
+import { WeaponIds } from "@/types/weapons";
 
 export default {
+  id: CharacterIds.CHASCA,
   constellationOrSignatureWeapon: "Сигна",
   roleIds: [CharacterRoleIds.ON_FIELD, CharacterRoleIds.DPS],
   signatureWeaponIds: [WeaponIds.ASTRAL_VULTURES_CRIMSON_PLUMAGE],

@@ -1,10 +1,12 @@
-import { ArtifactSetIds } from "@/types/artifact-sets.types";
-import { CharacterRoleIds } from "@/types/character-roles.types";
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { Stats } from "@/types/stats.types";
-import { WeaponIds } from "@/types/weapons.types";
+import { ArtifactSetIds } from "@/types/artifact-sets";
+import { CharacterRoleIds } from "@/types/character-roles";
+import { CharacterIds } from "@/types/characters";
+import type { CharacterRecommendations } from "@/types/characters-recommendations";
+import { Stats } from "@/types/stats";
+import { WeaponIds } from "@/types/weapons";
 
 export default {
+  id: CharacterIds.IANSAN,
   artifacts: {
     sets: [
       {

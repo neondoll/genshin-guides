@@ -3,12 +3,7 @@ import { Link, useParams } from "react-router";
 
 import { Badge } from "@/components/ui/badge";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
+  Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Card as UiCard } from "@/components/ui/card";
 import { Home } from "@/components/ui/icons";
@@ -27,27 +22,27 @@ import { cn } from "@/lib/utils";
 import Paths from "@/paths";
 import { useArtifactSetList } from "@/store/features/artifact-sets";
 import { selectCharacterRolesByIds } from "@/store/features/character-roles";
-import { useCharacter, useCharactersList } from "@/store/features/characters";
+import { useCharacter, useCharacterList } from "@/store/features/characters";
 import { useCharacterRecommendations } from "@/store/features/characters-recommendations";
 import { useElementList } from "@/store/features/elements";
 import { useTalent } from "@/store/features/talents";
 import { useWeaponList } from "@/store/features/weapons";
 import { useAppSelector } from "@/store/hooks";
-import { type CharacterId, type CharacterListItem, type TravelerId, TravelerIdArray } from "@/types/characters.types";
-import {
-  type CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
-  type CharacterArtifactStatRecommendation as ArtifactStatRecommendation,
-  type CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
-  type CharacterRecommendations as Recommendations,
-  type CharacterRecommendationsId as RecommendationsId,
-  type CharacterTalentRecommendations as TalentRecommendations,
-  type CharacterWeaponRecommendations as WeaponRecommendations,
-} from "@/types/characters-recommendations.types";
-import { type Talent, type TalentId } from "@/types/talents.types";
-import { type WeaponId, type WeaponListItem } from "@/types/weapons.types";
+import type { ArtifactSetListItem } from "@/types/artifact-sets";
+import { type CharacterId, type CharacterListItem, type TravelerId, TravelerIdArray } from "@/types/characters";
+import type {
+  CharacterArtifactSetRecommendations as ArtifactSetRecommendations,
+  CharacterArtifactStatRecommendation as ArtifactStatRecommendation,
+  CharacterDetachmentItemRecommendation as DetachmentItemRecommendation,
+  CharacterRecommendations as Recommendations,
+  CharacterRecommendationsId as RecommendationsId,
+  CharacterTalentRecommendations as TalentRecommendations,
+  CharacterWeaponRecommendations as WeaponRecommendations,
+} from "@/types/characters-recommendations";
+import type { ElementListItem } from "@/types/elements";
+import type { Talent, TalentId } from "@/types/talents";
+import type { WeaponId, WeaponListItem } from "@/types/weapons";
 import { formatPercent } from "@/utils/format";
-import type { ArtifactSetListItem } from "@/types/artifact-sets.types.ts";
-import type { ElementListItem } from "@/types/elements.types.ts";
 
 const CharacterPage: FC = () => {
   const { characterId } = useParams<{ characterId: CharacterId }>();
@@ -235,7 +230,7 @@ const CharacterRecommendations: FC<{
     return items;
   }, [characterRecommendations]);
 
-  return characterRecommendations && (
+  return tabs.length > 0 && (
     <Card className="mb-6">
       <CardHeader>
         <CardTitle>Рекомендации по оружию, артефактам и отрядам</CardTitle>
@@ -543,7 +538,7 @@ const CharacterDetachmentRecommendations: FC<{
   recommendations: NonNullable<Recommendations["detachments"]>;
 }> = ({ recommendations }) => {
   const { artifactSets } = useArtifactSetList();
-  const { characters } = useCharactersList();
+  const { characters } = useCharacterList();
   const { elements } = useElementList();
   const { weapons } = useWeaponList();
 

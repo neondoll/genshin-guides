@@ -1,44 +1,27 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 
 import { fetchTalent } from "./slice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { type TalentId } from "@/types/talents.types";
+import type { TalentId } from "@/types/talents";
 
 export const useTalent = (id: TalentId) => {
   const dispatch = useAppDispatch();
   const talents = useAppSelector(state => state.talents.details);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const error = useAppSelector(state => state.talents.detailsError);
+  const loading = useAppSelector(state => state.talents.detailsLoading);
 
-  const getTalent = useCallback(async (id: TalentId) => {
-    try {
-      setLoading(true);
-      await dispatch(fetchTalent(id));
-      setError(null);
-    }
-    catch (error) {
-      setError("Ошибка загрузки данных с сервера");
-      console.error(`Ошибка при получении талантов с ID "${id}":`, error);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, [dispatch]);
   const isStored = useCallback((id: TalentId) => !!talents[id], [talents]);
-  const preloadTalent = useCallback((id: TalentId) => {
-    if (!isStored(id)) {
-      getTalent(id);
+  const ensureLoaded = useCallback((id: TalentId) => {
+    if (!isStored(id) && !loading) {
+      dispatch(fetchTalent(id));
     }
-    else {
-      setLoading(false);
-    }
-  }, [getTalent, isStored]);
-
-  const talent = useMemo(() => talents[id], [id, talents]);
+  }, [dispatch, isStored, loading]);
 
   useEffect(() => {
-    preloadTalent(id);
-  }, [id, preloadTalent]);
+    ensureLoaded(id);
+  }, [id, ensureLoaded]);
+
+  const talent = useMemo(() => talents[id], [id, talents]);
 
   return { error, loading, talent };
 };

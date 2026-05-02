@@ -1,12 +1,13 @@
-import { ArtifactSetIds } from "@/types/artifact-sets.types";
-import { type CharacterRecommendations } from "@/types/characters-recommendations.types";
-import { type ElementId, ElementIds } from "@/types/elements.types";
-import { Stats } from "@/types/stats.types";
-import { VideoSourceIds } from "@/types/video-sources.types";
-import { WeaponIds } from "@/types/weapons.types";
+import { ArtifactSetIds } from "@/types/artifact-sets";
+import type { CharacterRecommendations } from "@/types/characters-recommendations";
+import { type ElementId, ElementIds } from "@/types/elements";
+import { Stats } from "@/types/stats";
+import { VideoSourceIds } from "@/types/video-sources";
+import { WeaponIds } from "@/types/weapons";
 
 export default {
   [ElementIds.ANEMO]: {
+    id: `traveler_${ElementIds.ANEMO}`,
     talents: [
       { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
       { type: "combat2", priority: "Не качаем", recommendedLevel: 1 },
@@ -23,6 +24,7 @@ export default {
     ],
   },
   [ElementIds.DENDRO]: {
+    id: `traveler_${ElementIds.DENDRO}`,
     recommendedLevel: "90/90",
     videoSourceIds: [
       VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
@@ -35,6 +37,7 @@ export default {
     ],
   },
   [ElementIds.ELECTRO]: {
+    id: `traveler_${ElementIds.ELECTRO}`,
     videoSourceIds: [
       VideoSourceIds.THE_BEST_AVAILABLE_WEAPONS_FOR_EVERY_CHARACTER,
       VideoSourceIds.THE_BEST_WEAPONS_FOR_EVERY_CHARACTER,
@@ -45,6 +48,7 @@ export default {
     ],
   },
   [ElementIds.GEO]: {
+    id: `traveler_${ElementIds.GEO}`,
     talents: [
       { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
       { type: "combat2", priority: "Не качаем", recommendedLevel: 1 },
@@ -61,6 +65,7 @@ export default {
     ],
   },
   [ElementIds.HYDRO]: {
+    id: `traveler_${ElementIds.HYDRO}`,
     talents: [
       { type: "combat1", priority: "Не качаем", recommendedLevel: 1 },
       { type: "combat2", priority: "Не качаем", recommendedLevel: 1 },
@@ -77,6 +82,7 @@ export default {
     ],
   },
   [ElementIds.PYRO]: {
+    id: `traveler_${ElementIds.PYRO}`,
     artifacts: {
       sets: {
         "для игры из кармана": [

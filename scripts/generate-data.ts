@@ -4,12 +4,12 @@ import path from "path";
 
 import type {
   ArtifactSet, ArtifactSetId, ArtifactSetListItem, ArtifactSetName,
-} from "../src/types/artifact-sets.types";
-import type { Character, CharacterId, CharacterListItem, CharacterName } from "../src/types/characters.types";
-import type { Element, ElementId, ElementListItem, ElementName } from "../src/types/elements.types";
-import type { Talent, TalentId, TalentListItem } from "../src/types/talents.types";
-import type { WeaponTypeId } from "../src/types/weapon-types.types";
-import type { Weapon, WeaponId, WeaponListItem, WeaponName } from "../src/types/weapons.types";
+} from "../src/types/artifact-sets.ts";
+import type { Character, CharacterId, CharacterListItem, CharacterName } from "../src/types/characters.ts";
+import type { Element, ElementId, ElementListItem, ElementName } from "../src/types/elements.ts";
+import type { Talent, TalentId, TalentListItem } from "../src/types/talents.ts";
+import type { WeaponTypeId } from "../src/types/weapon-types.ts";
+import type { Weapon, WeaponId, WeaponListItem, WeaponName } from "../src/types/weapons.ts";
 
 const OUTPUT_DIR = path.resolve("public/data");
 
