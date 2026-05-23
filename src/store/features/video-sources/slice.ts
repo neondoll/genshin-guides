@@ -68,6 +68,14 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     vkvideo: "https://vkvideo.ru/video-227044935_456239191",
     youtube: "https://youtu.be/VY0Kt2AaMGY",
   },
+  [VideoSourceIds.GUIDE_TO_CELESTIAL_GIFT_AND_DISENCHANTMENT_IN_DEEP_SHADOW_IN_6_6]: {
+    id: VideoSourceIds.GUIDE_TO_CELESTIAL_GIFT_AND_DISENCHANTMENT_IN_DEEP_SHADOW_IN_6_6,
+    author: "Miron MinMax",
+    title: "Саппорт Сет Шабаша и Бафф Сверхпроводника | Разбор новых наборов артефактов [Genshin Impact 6.6]",
+    date: "2026-05-17",
+    vkvideo: "https://vkvideo.ru/video-227044935_456239323",
+    youtube: "https://youtu.be/MA2wZmdRfXg",
+  },
   [VideoSourceIds.GUIDE_TO_CHASCA_IN_5_8]: {
     id: VideoSourceIds.GUIDE_TO_CHASCA_IN_5_8,
     author: "Miron MinMax",
@@ -305,6 +313,22 @@ const initialState = videoSourcesAdapter.getInitialState(undefined, {
     date: "2026-02-10",
     vkvideo: "https://vkvideo.ru/video-227044935_456239296",
     youtube: "https://youtu.be/YUsnkh4oGKU",
+  },
+  [VideoSourceIds.GUIDE_TO_NICOLE_IN_6_6_MironMinMax]: {
+    id: VideoSourceIds.GUIDE_TO_NICOLE_IN_6_6_MironMinMax,
+    author: "Miron MinMax",
+    title: "Пятизвёздочный Беннет? | Гайд на Николь",
+    date: "2026-05-20",
+    // vkvideo: "",
+    youtube: "https://youtu.be/3mS_EYHk9UI",
+  },
+  [VideoSourceIds.GUIDE_TO_PRUNE_IN_6_6]: {
+    id: VideoSourceIds.GUIDE_TO_PRUNE_IN_6_6,
+    author: "Анимекул",
+    title: "Зачем нужна Прюн? | Подробный гайд на Прюн",
+    date: "2026-05-20",
+    // vkvideo: "",
+    youtube: "https://youtu.be/zVLLczmJ2q8",
   },
   [VideoSourceIds.GUIDE_TO_RAIDEN_SHOGUN_IN_5_0]: {
     id: VideoSourceIds.GUIDE_TO_RAIDEN_SHOGUN_IN_5_0,

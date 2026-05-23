@@ -3,6 +3,7 @@ import { type WeaponId, WeaponIds } from "@/types/weapons";
 export const WeaponImages = {
   [WeaponIds.A_THOUSAND_BLAZING_SUNS]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/12/26/da1910fbe0e825e1e3704c126720ab24_2121228058184091562.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponIds.ABSOLUTION]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/05/30/d5da78d8dd0ac8814b699d6195145776_7211910286782963050.png?x-oss-process=image%2Fformat%2Cwebp",
+  [WeaponIds.ANGELOS_HEPTADES]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/35faadca59d9ed40b7c448a1e628bcdc_4873659369821393193.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponIds.ASH_GRAVEN_DRINKING_HORN]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/08/23/28866045cbb3e5227244b4aa09ef0db3_8394892053233317551.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponIds.ASTRAL_VULTURES_CRIMSON_PLUMAGE]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2024/11/14/d3bb0f9d936379661d409644e4269ff1_2888646900955247330.png?x-oss-process=image%2Fformat%2Cwebp",
   [WeaponIds.ATHAME_ARTIS]: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/11/25/69991219a3eab8162a67513d013e6ef0_6929917729223804184.png?x-oss-process=image%2Fformat%2Cwebp",

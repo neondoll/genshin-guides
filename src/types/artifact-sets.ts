@@ -6,9 +6,11 @@ export const ArtifactSetIds = {
   AUBADE_OF_MORNINGSTAR_AND_MOON: "aubade_of_morningstar_and_moon",
   BLIZZARD_STRAYER: "blizzard_strayer",
   BLOODSTAINED_CHIVALRY: "bloodstained_chivalry",
+  CELESTIAL_GIFT: "celestial_gift", // Дар небес
   CRIMSON_WITCH_OF_FLAMES: "crimson_witch_of_flames",
   DEEPWOOD_MEMORIES: "deepwood_memories",
   DESERT_PAVILION_CHRONICLE: "desert_pavilion_chronicle",
+  DISENCHANTMENT_IN_DEEP_SHADOW: "disenchantment_in_deep_shadow", // Застывшее в тени разочарование
   ECHOES_OF_AN_OFFERING: "echoes_of_an_offering",
   EMBLEM_OF_SEVERED_FATE: "emblem_of_severed_fate",
   FINALE_OF_THE_DEEP_GALLERIES: "finale_of_the_deep_galleries",
@@ -32,7 +34,7 @@ export const ArtifactSetIds = {
   OCEAN_HUED_CLAM: "ocean_hued_clam",
   PALE_FLAME: "pale_flame",
   RETRACING_BOLIDE: "retracing_bolide",
-  SCROLL_OF_THE_HERO_OF_CINDER_CITY: "scroll_of_the_hero_of_cinder_city",
+  SCROLL_OF_THE_HERO_OF_CINDER_CITY: "scroll_of_the_hero_of_cinder_city", // Свиток героя сожжённого города
   SHIMENAWAS_REMINISCENCE: "shimenawas_reminiscence",
   SILKEN_MOONS_SERENADE: "silken_moons_serenade",
   SONG_OF_DAYS_PAST: "song_of_days_past",
@@ -54,9 +56,11 @@ export const ArtifactSetNames = {
   AUBADE_OF_MORNINGSTAR_AND_MOON: "Рассветная песнь звезды и луны",
   BLIZZARD_STRAYER: "Заблудший в метели",
   BLOODSTAINED_CHIVALRY: "Рыцарь крови",
+  CELESTIAL_GIFT: "Дар небес",
   CRIMSON_WITCH_OF_FLAMES: "Горящая алая ведьма",
   DEEPWOOD_MEMORIES: "Воспоминания дремучего леса",
   DESERT_PAVILION_CHRONICLE: "Хроники Чертогов в пустыне",
+  DISENCHANTMENT_IN_DEEP_SHADOW: "Застывшее в тени разочарование",
   ECHOES_OF_AN_OFFERING: "Отголоски подношения",
   EMBLEM_OF_SEVERED_FATE: "Эмблема рассечённой судьбы",
   FINALE_OF_THE_DEEP_GALLERIES: "Финал галерей глубин",
