@@ -35,7 +35,10 @@ interface CharacterDetachmentOtherRecommendation {
   title: string;
 }
 
-export type CharacterDetachmentItemRecommendation = CharacterDetachmentCharacterRecommendation | CharacterDetachmentElementRecommendation | CharacterDetachmentOtherRecommendation;
+export type CharacterDetachmentItemRecommendation
+  = CharacterDetachmentCharacterRecommendation
+    | CharacterDetachmentElementRecommendation
+    | CharacterDetachmentOtherRecommendation;
 export type CharacterRecommendationsId = Exclude<CharacterId, TravelerId> | `traveler_${ElementId}`;
 
 interface CharacterTalentRecommendation {
@@ -54,6 +57,10 @@ interface CharacterWeaponRecommendation {
   postfix?: string;
   r?: WeaponR;
   percent?: number;
+  atk?: number;
+  basicAtk?: number;
+  energyRecharge?: string;
+  otherBonuses?: string[];
   notes?: string[];
 }
 

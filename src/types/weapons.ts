@@ -9,13 +9,14 @@ export const WeaponIds = {
   ALLEY_HUNTER: "alley_hunter",
   AMENOMA_KAGEUCHI: "amenoma_kageuchi",
   AMOS_BOW: "amos_bow",
+  ANGELOS_HEPTADES: "angelos_heptades", // Гептада ангела
   AQUA_SIMULACRA: "aqua_simulacra",
   AQUILA_FAVONIA: "aquila_favonia",
   ASH_GRAVEN_DRINKING_HORN: "ash_graven_drinking_horn",
   ASTRAL_VULTURES_CRIMSON_PLUMAGE: "astral_vultures_crimson_plumage",
   ATHAME_ARTIS: "athame_artis",
   AZURELIGHT: "azurelight",
-  BALLAD_OF_THE_BOUNDLESS_BLUE: "ballad_of_the_boundless_blue",
+  BALLAD_OF_THE_BOUNDLESS_BLUE: "ballad_of_the_boundless_blue", // Песнь необъятной лазури
   BALLAD_OF_THE_FJORDS: "ballad_of_the_fjords",
   BEACON_OF_THE_REED_SEA: "beacon_of_the_reed_sea",
   BLACK_TASSEL: "black_tassel",
@@ -29,11 +30,11 @@ export const WeaponIds = {
   BLOODTAINTED_GREATSWORD: "bloodtainted_greatsword",
   CALAMITY_OF_ESHU: "calamity_of_eshu",
   CALAMITY_QUELLER: "calamity_queller",
-  CASHFLOW_SUPERVISION: "cashflow_supervision",
+  CASHFLOW_SUPERVISION: "cashflow_supervision", // Казначейский надзор
   CHAIN_BREAKER: "chain_breaker",
   CINNABAR_SPINDLE: "cinnabar_spindle",
   CLOUDFORGED: "cloudforged",
-  CRANES_ECHOING_CALL: "cranes_echoing_call",
+  CRANES_ECHOING_CALL: "cranes_echoing_call", // Звонкий клич журавля
   CRIMSON_MOONS_SEMBLANCE: "crimson_moons_semblance",
   DAWNING_FROST: "dawning_frost",
   DEATHMATCH: "deathmatch",
@@ -45,9 +46,10 @@ export const WeaponIds = {
   ENGULFING_LIGHTNING: "engulfing_lightning",
   ETHERLIGHT_SPINDLELUTE: "etherlight_spindlelute",
   EVERLASTING_MOONGLOW: "everlasting_moonglow",
+  EYE_OF_PERCEPTION: "eye_of_perception", // Око сознания
   FADING_TWILIGHT: "fading_twilight",
   FANG_OF_THE_MOUNTAIN_KING: "fang_of_the_mountain_king",
-  FAVONIUS_CODEX: "favonius_codex",
+  FAVONIUS_CODEX: "favonius_codex", // Кодекс Фавония
   FAVONIUS_GREATSWORD: "favonius_greatsword",
   FAVONIUS_LANCE: "favonius_lance",
   FAVONIUS_SWORD: "favonius_sword",
@@ -57,7 +59,7 @@ export const WeaponIds = {
   FLAME_FORGED_INSIGHT: "flame_forged_insight",
   FLEUVE_CENDRE_FERRYMAN: "fleuve_cendre_ferryman",
   FLOWER_WREATHED_FEATHERS: "flower_wreathed_feathers",
-  FLOWING_PURITY: "flowing_purity",
+  FLOWING_PURITY: "flowing_purity", // Сверкание чистых вод
   FLUTE_OF_EZPITZAL: "flute_of_ezpitzal",
   FOOTPRINT_OF_THE_RAINBOW: "footprint_of_the_rainbow",
   FRACTURED_HALO: "fractured_halo",
@@ -65,7 +67,7 @@ export const WeaponIds = {
   FRUITFUL_HOOK: "fruitful_hook",
   GEST_OF_THE_MIGHTY_WOLF: "gest_of_the_mighty_wolf",
   GOLDEN_FROSTBOUND_OATH: "golden_frostbound_oath", // Золотая клятва льда
-  HAKUSHIN_RING: "hakushin_ring",
+  HAKUSHIN_RING: "hakushin_ring", // Кольцо Хакусин
   HAMAYUMI: "hamayumi",
   HARAN_GEPPAKU_FUTSU: "haran_geppaku_futsu",
   HARBINGER_OF_DAWN: "harbinger_of_dawn",
@@ -89,14 +91,14 @@ export const WeaponIds = {
   MAKHAIRA_AQUAMARINE: "makhaira_aquamarine",
   MAPPA_MARE: "mappa_mare",
   MASTER_KEY: "master_key",
-  MEMORY_OF_DUST: "memory_of_dust",
+  MEMORY_OF_DUST: "memory_of_dust", // Память о пыли
   MISSIVE_WINDSPEAR: "missive_windspear",
   MISTSPLITTER_REFORGED: "mistsplitter_reforged",
   MOONWEAVERS_DAWN: "moonweavers_dawn",
   MOUNTAIN_BRACING_BOLT: "mountain_bracing_bolt",
   NIGHTWEAVERS_LOOKING_GLASS: "nightweavers_looking_glass",
   NOCTURNES_CURTAIN_CALL: "nocturnes_curtain_call",
-  OATHSWORN_EYE: "oathsworn_eye",
+  OATHSWORN_EYE: "oathsworn_eye", // Око клятвы
   PEAK_PATROL_SONG: "peak_patrol_song",
   POLAR_STAR: "polar_star",
   PORTABLE_POWER_SAW: "portable_power_saw",
@@ -116,6 +118,7 @@ export const WeaponIds = {
   RELIQUARY_OF_TRUTH: "reliquary_of_truth",
   RIGHTFUL_REWARD: "rightful_reward",
   RING_OF_YAXCHE: "ring_of_yaxche",
+  ROYAL_GRIMOIRE: "royal_grimoire", // Королевский гримуар
   RUST: "rust",
   SACRIFICERS_STAFF: "sacrificers_staff",
   SACRIFICIAL_BOW: "sacrificial_bow",
@@ -129,7 +132,7 @@ export const WeaponIds = {
   SERENITYS_CALL: "serenitys_call",
   SERPENT_SPINE: "serpent_spine",
   SILVERSHOWER_HEARTSTRINGS: "silvershower_heartstrings",
-  SKYWARD_ATLAS: "skyward_atlas",
+  SKYWARD_ATLAS: "skyward_atlas", // Небесный атлас
   SKYWARD_BLADE: "skyward_blade",
   SKYWARD_HARP: "skyward_harp",
   SKYWARD_PRIDE: "skyward_pride",
@@ -142,7 +145,7 @@ export const WeaponIds = {
   SPLENDOR_OF_TRANQUIL_WATERS: "splendor_of_tranquil_waters",
   STAFF_OF_HOMA: "staff_of_homa",
   STAFF_OF_THE_SCARLET_SANDS: "staff_of_the_scarlet_sands",
-  STARCALLERS_WATCH: "starcallers_watch",
+  STARCALLERS_WATCH: "starcallers_watch", // Бдение взывающего к звёздам
   STURDY_BONE: "sturdy_bone",
   SUMMIT_SHAPER: "summit_shaper",
   SUNNY_MORNING_SLEEP_IN: "sunny_morning_sleep_in",
@@ -161,12 +164,12 @@ export const WeaponIds = {
   THE_UNFORGED: "the_unforged",
   THE_VIRIDESCENT_HUNT: "the_viridescent_hunt",
   THE_WIDSITH: "the_widsith",
-  THRILLING_TALES_OF_DRAGON_SLAYERS: "thrilling_tales_of_dragon_slayers",
+  THRILLING_TALES_OF_DRAGON_SLAYERS: "thrilling_tales_of_dragon_slayers", // Эпос о драконоборцах
   THUNDERING_PULSE: "thundering_pulse",
   TIDAL_SHADOW: "tidal_shadow",
   TOME_OF_THE_ETERNAL_FLOW: "tome_of_the_eternal_flow",
   TOUKABOU_SHIGURE: "toukabou_shigure",
-  TULAYTULLAHS_REMEMBRANCE: "tulaytullahs_remembrance",
+  TULAYTULLAHS_REMEMBRANCE: "tulaytullahs_remembrance", // Воспоминания Тулайтуллы
   ULTIMATE_OVERLORDS_MEGA_MAGIC_SWORD: "ultimate_overlords_mega_magic_sword",
   URAKU_MISUGIRI: "uraku_misugiri",
   VERDICT: "verdict",
@@ -192,6 +195,7 @@ export const WeaponNames = {
   ALLEY_HUNTER: "Охотник во тьме",
   AMENOMA_KAGEUCHI: "Амэнома Кагэути",
   AMOS_BOW: "Лук Амоса",
+  ANGELOS_HEPTADES: "Гептада ангела",
   AQUA_SIMULACRA: "Аква симулякрум",
   AQUILA_FAVONIA: "Меч Сокола",
   ASH_GRAVEN_DRINKING_HORN: "Пепельный рог",
@@ -228,6 +232,7 @@ export const WeaponNames = {
   ENGULFING_LIGHTNING: "Сияющая жатва",
   ETHERLIGHT_SPINDLELUTE: "Лютня ткача света",
   EVERLASTING_MOONGLOW: "Вечное лунное сияние",
+  EYE_OF_PERCEPTION: "Око сознания",
   FADING_TWILIGHT: "Гаснущие сумерки",
   FANG_OF_THE_MOUNTAIN_KING: "Клык Горного короля",
   FAVONIUS_CODEX: "Кодекс Фавония",
@@ -299,6 +304,7 @@ export const WeaponNames = {
   RELIQUARY_OF_TRUTH: "Шкатулка истин",
   RIGHTFUL_REWARD: "Справедливая награда",
   RING_OF_YAXCHE: "Кольцо Яшче",
+  ROYAL_GRIMOIRE: "Королевский гримуар",
   RUST: "Ржавый лук",
   SACRIFICERS_STAFF: "Посох жертвующей",
   SACRIFICIAL_BOW: "Церемониальный лук",

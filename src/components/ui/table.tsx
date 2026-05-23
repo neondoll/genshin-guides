@@ -1,11 +1,32 @@
-import type { ComponentProps } from "react";
+import { type ComponentProps, type CSSProperties, type ReactNode, type Ref } from "react";
 
 import { cn } from "@/lib/utils";
 
-export function Table({ className, ...props }: ComponentProps<"table">) {
+export function Table({
+  childrenAfterTable,
+  childrenBeforeTable,
+  className,
+  containerClassName,
+  containerRef,
+  containerStyle,
+  ...props
+}: ComponentProps<"table"> & {
+  childrenAfterTable?: ReactNode;
+  childrenBeforeTable?: ReactNode;
+  containerClassName?: string;
+  containerRef?: Ref<HTMLDivElement>;
+  containerStyle?: CSSProperties;
+}) {
   return (
-    <div className="overflow-x-auto relative w-full" data-slot="table-container">
+    <div
+      className={cn("overflow-x-auto relative w-full", containerClassName)}
+      data-slot="table-container"
+      ref={containerRef}
+      style={containerStyle}
+    >
+      {childrenBeforeTable}
       <table className={cn("w-full text-sm caption-bottom", className)} data-slot="table" {...props} />
+      {childrenAfterTable}
     </div>
   );
 }

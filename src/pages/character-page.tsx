@@ -14,6 +14,7 @@ import { BestTooltip } from "@/components/v1/best-tooltip";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/v1/card";
 import { CharacterImage } from "@/components/v1/character-image";
 import { ElementImage, ElementImageLoading } from "@/components/v1/element-image";
+import { type CellBackgroundConfig, GradientTable } from "@/components/v1/gradient-table";
 import { Loading, LoadingError } from "@/components/v1/loading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/v1/tabs";
 import { VideoSourcesTable } from "@/components/v1/video-sources-table";
@@ -885,11 +886,23 @@ const CharacterWeaponRecommendations: FC<{
 const CharacterWeaponRecommendationsTable: FC<{ recommendations: WeaponRecommendations }> = ({ recommendations }) => {
   const { weapons } = useWeaponList();
 
+  const hasAtk = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.atk));
+  }, [recommendations]);
+  const hasBasicAtk = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.basicAtk));
+  }, [recommendations]);
   const hasBest = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.best));
   }, [recommendations]);
+  const hasEnergyRecharge = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.energyRecharge));
+  }, [recommendations]);
   const hasNotes = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.notes));
+  }, [recommendations]);
+  const hasOtherBonuses = useMemo(() => {
+    return recommendations.some(recommendation => Boolean(recommendation.otherBonuses));
   }, [recommendations]);
   const hasR = useMemo(() => {
     return recommendations.some(recommendation => Boolean(recommendation.r));
@@ -898,8 +911,68 @@ const CharacterWeaponRecommendationsTable: FC<{ recommendations: WeaponRecommend
     return recommendations.some(recommendation => Boolean(recommendation.percent));
   }, [recommendations]);
 
+  const cellBackgrounds = useMemo(() => {
+    const items: CellBackgroundConfig[] = [];
+
+    recommendations.forEach((recommendation, index) => {
+      if (recommendation.energyRecharge) {
+        items.push({
+          rowIndex: index,
+          className: "energy-recharge-cell",
+          backgroundColor: "oklch(72.3% 0.219 149.579)",
+        });
+      }
+
+      if (recommendation.otherBonuses) {
+        items.push({
+          rowIndex: index,
+          className: "other-bonuses-cell",
+          backgroundColor: "oklch(72.3% 0.219 149.579)",
+        });
+      }
+    });
+
+    return items;
+  }, [recommendations]);
+
   return (
-    <Table>
+    <GradientTable
+      cellBackgrounds={cellBackgrounds}
+      className="w-full"
+      gradients={[{ className: "basic-atk-column", gradientClass: "from-green-500 to-yellow-500" }]}
+    >
+      <colgroup>
+        {hasBest && <col />}
+        <col />
+        <col />
+        {hasR && <col />}
+        {hasPercent && <col />}
+        {hasAtk && <col />}
+        {hasBasicAtk && <col />}
+        {hasEnergyRecharge && <col />}
+        {hasOtherBonuses && <col />}
+        {hasNotes && <col />}
+      </colgroup>
+      <TableHeader>
+        <TableRow>
+          {hasBest && <TableHead className="text-base text-center text-slate-700 dark:text-slate-300" />}
+          <TableHead className="text-base text-center text-slate-700 dark:text-slate-300" />
+          <TableHead className="text-base text-center text-slate-700 dark:text-slate-300">Оружие</TableHead>
+          {hasR && <TableHead className="text-base text-center text-slate-700 dark:text-slate-300" />}
+          {hasPercent && <TableHead className="text-base text-center text-slate-700 dark:text-slate-300" />}
+          {hasAtk && <TableHead className="text-base text-center text-slate-700 dark:text-slate-300">АТК</TableHead>}
+          {hasBasicAtk && (
+            <TableHead className="text-base text-center text-slate-700 dark:text-slate-300">Базовая атака</TableHead>
+          )}
+          {hasEnergyRecharge && (
+            <TableHead className="text-base text-center text-slate-700 dark:text-slate-300">Восст. энергии</TableHead>
+          )}
+          {hasOtherBonuses && (
+            <TableHead className="text-base text-center text-slate-700 dark:text-slate-300">Прочие бонусы</TableHead>
+          )}
+          {hasNotes && <TableHead className="text-base text-center text-slate-700 dark:text-slate-300" />}
+        </TableRow>
+      </TableHeader>
       <TableBody>
         {recommendations.map((recommendation) => {
           const weapon = weapons.find(weapon => weapon.id === recommendation.id);
@@ -945,6 +1018,22 @@ const CharacterWeaponRecommendationsTable: FC<{ recommendations: WeaponRecommend
                   {recommendation.percent ? formatPercent(recommendation.percent, { minimumFractionDigits: 2 }) : ""}
                 </TableCell>
               )}
+              {hasAtk && <TableCell className="text-center">{recommendation.atk}</TableCell>}
+              {hasBasicAtk && (
+                <TableCell className="basic-atk-column text-center">{recommendation.basicAtk}</TableCell>
+              )}
+              {hasEnergyRecharge && (
+                <TableCell className="energy-recharge-cell text-center">{recommendation.energyRecharge ?? "-"}</TableCell>
+              )}
+              {hasOtherBonuses && (
+                <TableCell className="other-bonuses-cell text-center">
+                  {recommendation.otherBonuses
+                    ? recommendation.otherBonuses.map((otherBonus, index) => (
+                        <p key={index}>{otherBonus}</p>
+                      ))
+                    : "-"}
+                </TableCell>
+              )}
               {hasNotes && (
                 <TableCell className="whitespace-normal">
                   {recommendation.notes && (
@@ -960,7 +1049,7 @@ const CharacterWeaponRecommendationsTable: FC<{ recommendations: WeaponRecommend
           );
         })}
       </TableBody>
-    </Table>
+    </GradientTable>
   );
 };
 

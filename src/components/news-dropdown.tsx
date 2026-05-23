@@ -14,13 +14,13 @@ import Paths from "@/paths";
 import { useArtifactSetList } from "@/store/features/artifact-sets";
 import { useCharacterList } from "@/store/features/characters";
 import { useWeaponList } from "@/store/features/weapons";
-import { type ArtifactSetId } from "@/types/artifact-sets";
+import { type ArtifactSetId, ArtifactSetIds } from "@/types/artifact-sets";
 import { type CharacterId, CharacterIds } from "@/types/characters";
 import { type WeaponId, WeaponIds } from "@/types/weapons";
 
-const artifactSetIds: ArtifactSetId[] = [];
-const characterIds: CharacterId[] = [CharacterIds.NEFER, CharacterIds.LAUMA, CharacterIds.CHASCA, CharacterIds.LINNEA];
-const weaponIds: WeaponId[] = [WeaponIds.GOLDEN_FROSTBOUND_OATH];
+const artifactSetIds: ArtifactSetId[] = [ArtifactSetIds.CELESTIAL_GIFT, ArtifactSetIds.DISENCHANTMENT_IN_DEEP_SHADOW];
+const characterIds: CharacterId[] = [CharacterIds.DURIN, CharacterIds.NICOLE, CharacterIds.PRUNE];
+const weaponIds: WeaponId[] = [WeaponIds.ANGELOS_HEPTADES];
 
 export const NewsDropdown: FC = () => {
   const artifactSetsShow = useMemo(() => artifactSetIds.length > 0, []);

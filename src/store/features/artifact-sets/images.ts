@@ -15,6 +15,20 @@ export const ArtifactSetImages = {
     goblet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/c7d1810c3806c2b48610e279dece177f_6800424281444155660.png?x-oss-process=image%2Fformat%2Cwebp",
     circlet: "https://act-upload.hoyoverse.com/event-ugc-hoyowiki/2026/01/13/237301566/38f65c1a90f86c32fd7aae63e71a28f3_6153485391569346318.png?x-oss-process=image%2Fformat%2Cwebp",
   },
+  [ArtifactSetIds.CELESTIAL_GIFT]: {
+    flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/5ff646e4e9ff8f839490360edda862a2_2352330875956559301.png?x-oss-process=image%2Fformat%2Cwebp",
+    plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/ab4ca8789b216de5357f3686bcea2ef2_2359084499295082871.png?x-oss-process=image%2Fformat%2Cwebp",
+    sands: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/3dca399ac764602bd9ed4203e5897f54_8932222630076743991.png?x-oss-process=image%2Fformat%2Cwebp",
+    goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/b0a4185de908e04f9aa2c7abc7fa4941_4373162066960384781.png?x-oss-process=image%2Fformat%2Cwebp",
+    circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/068c3628cf202e98800d865db61044fa_8294755309243183413.png?x-oss-process=image%2Fformat%2Cwebp",
+  },
+  [ArtifactSetIds.DISENCHANTMENT_IN_DEEP_SHADOW]: {
+    flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/186ed0ccb206788d4832b848bdb91624_1196226685770777941.png?x-oss-process=image%2Fformat%2Cwebp",
+    plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/2e311abfb4fa96194a5420137b7262bf_8775615034839082974.png?x-oss-process=image%2Fformat%2Cwebp",
+    sands: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/95a4e544a3ee250e6b7551f4857196cc_872029035811212154.png?x-oss-process=image%2Fformat%2Cwebp",
+    goblet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/279668837734bed41e3963e8207ab4b1_2347963908422382260.png?x-oss-process=image%2Fformat%2Cwebp",
+    circlet: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2026/05/15/df16bd2dcd5f5f0582a3f8423de89884_246042224874063702.png?x-oss-process=image%2Fformat%2Cwebp",
+  },
   [ArtifactSetIds.FINALE_OF_THE_DEEP_GALLERIES]: {
     flower: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/bf39402f87db1168263c7c0898c8ab0c_4434336707917443666.png?x-oss-process=image%2Fformat%2Cwebp",
     plume: "https://act-webstatic.hoyoverse.com/event-static-hoyowiki-admin/2025/03/17/c498b33d2359b12603471fd65bd22261_7001131486318823058.png?x-oss-process=image%2Fformat%2Cwebp",
