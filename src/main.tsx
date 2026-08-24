@@ -1,12 +1,25 @@
+import { PrimeReactProvider } from "@primereact/core";
+import Aura from "@primeuix/themes/aura";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { HashRouter } from "react-router";
 
 import App from "./App";
-import { ThemeProvider } from "./components/theme-provider";
 import { store } from "./store";
 import "./index.css";
+
+const theme = {
+  preset: Aura,
+  // Default options
+  options: {
+    prefix: "p",
+    darkModeSelector: "system",
+    cssLayer: false,
+    cssVariables: true,
+    scoped: false,
+  },
+};
 
 const container = document.getElementById("root");
 
@@ -18,9 +31,9 @@ createRoot(container).render(
   <StrictMode>
     <HashRouter>
       <Provider store={store}>
-        <ThemeProvider defaultTheme="dark" storageKey="genshin-guides-theme">
+        <PrimeReactProvider theme={theme}>
           <App />
-        </ThemeProvider>
+        </PrimeReactProvider>
       </Provider>
     </HashRouter>
   </StrictMode>,
